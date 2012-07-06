@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pictureBox2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAANf7bzMYAQAAACBjSFJNAABs
+        mwAAcm8AAPauAACFgwAAbvcAAOhBAAAxdAAAF2yhti2bAAAACXBIWXMAAAsPAAALDwGS+QOlAAADPklE
+        QVQ4T2VTa0uTYRge0Ycggr7WF/sJ+qEsc+bUjFh4SBM7GGVO23RuTtx04vYq2szDmvOYTVRmai7tg7k5
+        NYan1BQlTxthTZ2kpgmxDELh6n7fSKxuuHmel+e5rue+r/t6eTyKmJiYqPArV55ci4x8q1KpvjP5DEZG
+        huFyubDq8UCcmoqo69G4/yDRG3iJ7wgLD38SRRgWy8vJzXXzg4Jw9tw56A0GzM/NYXR0BHZ7L9Y/r2Nn
+        ZwfTU1MYHh6Cx7OKkrIyEAH8L5wHi+VJpWnosfbAoNejuFiHykojZRXK6GJbezs6LBZutbx8id7eXtQ/
+        fcrdsdqsECWLwAu7fHlGo9VgYmIcKyvLcLvdWKZ1cvId7T9hdvY9pmemMUO59HEJGxvr2NzchMlkQpAg
+        eIYnFAoDUpKTMTQ0iJ97e9jb34eTeu981YWCokJkKDOhUuegqbkRs/Nz3PmP3V2UlpZCGBkZwOlwkX/R
+        fSM2FrnZ2VArlShgGBipzLR0KZJESUgRP0SGXAYpiVmg0SBDJsNVodDNgTmCwECHUqVEPgE7qWdrdzeX
+        dTU1YLRaZGZlgqEzy4sXeNPfh2fP6hEdE+04IIiIiGBEIhGMFRX4ur2NLhIsKysLXq8XjkEHpPRidk4O
+        tqj3zo4ONDY2Il0uZw4IfH19o8RiMV6/7sZjnQ6f19bAhrm5GTqajK6kGNU11ZBRS2w0NJjADw7+7QM2
+        4uPjz0gkYuTl5eGDy0nzX4Opvp6IPOjq6oSCWtBXGLgKKqlKi6UDarXa94CA3dxNSEBbWyv67XaMkZEG
+        +vvhXFzkCDSMFmXkk+dmM1eBmqbyF5j9YDWoq6vDQF8fFmhcLqcT1p4ebhqFuiJUUQt2mw3mpiZOq38J
+        jghCQiCXywm4yGnAiri6vEyWtiFFIoGBQM6FeZjIiaGhISzB0cMkx/l8vq2EzNHS3ITa6ipOQBtZvPBR
+        Ee4lJSGR/NDaYqYfzIm4+DgbgU9SHvlDcszf319Ar37b+rKJ3e9ejI2PoZZek2UqIE6TwFhl5BxII/4m
+        EAhCCXjivzZ8fHxOkZi6Ai2zoi8vh0KhwJ2EO7h5+xbEkodzMqm02M/P7/Th8n8BYhxIH6BtB3gAAAAA
+        SUVORK5CYII=
+</value>
+  </data>
+  <data name="pictureBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 55</value>
+  </data>
+  <data name="pictureBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 16</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="pictureBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;pictureBox2.Name" xml:space="preserve">
+    <value>pictureBox2</value>
+  </data>
+  <data name="&gt;&gt;pictureBox2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox2.Parent" xml:space="preserve">
+    <value>groupBox</value>
+  </data>
+  <data name="&gt;&gt;pictureBox2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAANf7bzMYAQAAACBjSFJNAABs
+        mwAAcm8AAPauAACFgwAAbvcAAOhBAAAxdAAAF2yhti2bAAAACXBIWXMAAAsPAAALDwGS+QOlAAAB4ElE
+        QVQ4T2NgQAMd60P+48LoarHyW1YF/r/29Mj/2y9Ow/Gt5yf+d6wJ/U+UAQ1Lff4vP9bwf+2pDjhedbz5
+        P0icKAOq57v9n3eg9P+Sw7VwvOhQ1X+QOFEGlMxw/D9tR+b/WXvz4XjGrpz/IHGiDMibZPW/Z1PM/wlb
+        Ev9P3JIEpvs3x/8HiRNlQHq3yf+8uaYYGCSO1YDEZr0P6Z2G/5NbDf4D2f/Teg3+Z88wwsAgcZB8cpvB
+        /7QOQxD7W1KLvg1DXK2GZVy95sfu9eH/O9dE/K9f5vM/faouBq5b6v2/c13Ef5C6uAbNb5HVajZwF4WW
+        yFtGVqp+rFhg+T99is7/5ImaGDh9qs7/igVW/yMqVb+FlishNMNM8SmQtgwulv9YudDif8okjf8JfWpw
+        nDpZ83/lIsv/wcVy33xzJexxBqZHupilf67Ux+olVv8T+9X+x3Yr/U+aoPa/Bsj3y5X67pkqglszzFTn
+        JCFLrwyxj7XLrP6nAW0G0R7pot9cEwUIa4YZYh/Ha+maKgQ0xPK/c5Lgd8dIHoKaGYGamYGYFYg5gJjb
+        0IPD2Sac84WRJ7svkM8LEoPKgdSA1IL0wAFIgAuIBYBYEogVgFidU5jBDEjrALEaVEwCqoYTaggDAPrB
+        G8IyJqFyAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 38</value>
+  </data>
+  <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 16</value>
+  </data>
+  <data name="pictureBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Name" xml:space="preserve">
+    <value>pictureBox1</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Parent" xml:space="preserve">
+    <value>groupBox</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tbFullPath.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="tbFullPath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 19</value>
+  </data>
+  <data name="tbFullPath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>421, 13</value>
+  </data>
+  <data name="tbFullPath.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;tbFullPath.Name" xml:space="preserve">
+    <value>tbFullPath</value>
+  </data>
+  <data name="&gt;&gt;tbFullPath.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbFullPath.Parent" xml:space="preserve">
+    <value>groupBox</value>
+  </data>
+  <data name="&gt;&gt;tbFullPath.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="chkFileFlagDEPLOYED.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkFileFlagDEPLOYED.Location" type="System.Drawing.Point, System.Drawing">
+    <value>31, 38</value>
+  </data>
+  <data name="chkFileFlagDEPLOYED.Size" type="System.Drawing.Size, System.Drawing">
+    <value>266, 17</value>
+  </data>
+  <data name="chkFileFlagDEPLOYED.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="chkFileFlagDEPLOYED.Text" xml:space="preserve">
+    <value>Deployed: extracts immediately upon first execution</value>
+  </data>
+  <data name="&gt;&gt;chkFileFlagDEPLOYED.Name" xml:space="preserve">
+    <value>chkFileFlagDEPLOYED</value>
+  </data>
+  <data name="&gt;&gt;chkFileFlagDEPLOYED.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkFileFlagDEPLOYED.Parent" xml:space="preserve">
+    <value>groupBox</value>
+  </data>
+  <data name="&gt;&gt;chkFileFlagDEPLOYED.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="chkFileFlagDELETED.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkFileFlagDELETED.Location" type="System.Drawing.Point, System.Drawing">
+    <value>31, 55</value>
+  </data>
+  <data name="chkFileFlagDELETED.Size" type="System.Drawing.Size, System.Drawing">
+    <value>246, 17</value>
+  </data>
+  <data name="chkFileFlagDELETED.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="chkFileFlagDELETED.Text" xml:space="preserve">
+    <value>Deleted: shown to virtual application as erased</value>
+  </data>
+  <data name="&gt;&gt;chkFileFlagDELETED.Name" xml:space="preserve">
+    <value>chkFileFlagDELETED</value>
+  </data>
+  <data name="&gt;&gt;chkFileFlagDELETED.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkFileFlagDELETED.Parent" xml:space="preserve">
+    <value>groupBox</value>
+  </data>
+  <data name="&gt;&gt;chkFileFlagDELETED.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="groupBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="groupBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 10</value>
+  </data>
+  <data name="groupBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>438, 78</value>
+  </data>
+  <data name="groupBox.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="groupBox.Text" xml:space="preserve">
+    <value>Properties</value>
+  </data>
+  <data name="&gt;&gt;groupBox.Name" xml:space="preserve">
+    <value>groupBox</value>
+  </data>
+  <data name="&gt;&gt;groupBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="buttonOK.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="buttonOK.Location" type="System.Drawing.Point, System.Drawing">
+    <value>264, 97</value>
+  </data>
+  <data name="buttonOK.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 26</value>
+  </data>
+  <data name="buttonOK.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="buttonOK.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="&gt;&gt;buttonOK.Name" xml:space="preserve">
+    <value>buttonOK</value>
+  </data>
+  <data name="&gt;&gt;buttonOK.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonOK.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonOK.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="buttonCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="buttonCancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>358, 97</value>
+  </data>
+  <data name="buttonCancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 26</value>
+  </data>
+  <data name="buttonCancel.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="buttonCancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="&gt;&gt;buttonCancel.Name" xml:space="preserve">
+    <value>buttonCancel</value>
+  </data>
+  <data name="&gt;&gt;buttonCancel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonCancel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonCancel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="chkFileFlagISFILE.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkFileFlagISFILE.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="chkFileFlagISFILE.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 113</value>
+  </data>
+  <data name="chkFileFlagISFILE.Size" type="System.Drawing.Size, System.Drawing">
+    <value>109, 17</value>
+  </data>
+  <data name="chkFileFlagISFILE.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="chkFileFlagISFILE.Text" xml:space="preserve">
+    <value>File (not directory)</value>
+  </data>
+  <data name="chkFileFlagISFILE.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;chkFileFlagISFILE.Name" xml:space="preserve">
+    <value>chkFileFlagISFILE</value>
+  </data>
+  <data name="&gt;&gt;chkFileFlagISFILE.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkFileFlagISFILE.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkFileFlagISFILE.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="chkFileFlagPKG_FILE.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkFileFlagPKG_FILE.Location" type="System.Drawing.Point, System.Drawing">
+    <value>19, 108</value>
+  </data>
+  <data name="chkFileFlagPKG_FILE.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 17</value>
+  </data>
+  <data name="chkFileFlagPKG_FILE.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="chkFileFlagPKG_FILE.Text" xml:space="preserve">
+    <value>Part of the original package</value>
+  </data>
+  <data name="chkFileFlagPKG_FILE.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;chkFileFlagPKG_FILE.Name" xml:space="preserve">
+    <value>chkFileFlagPKG_FILE</value>
+  </data>
+  <data name="&gt;&gt;chkFileFlagPKG_FILE.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkFileFlagPKG_FILE.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkFileFlagPKG_FILE.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="chkFileFlagDISCONNECTED.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkFileFlagDISCONNECTED.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="chkFileFlagDISCONNECTED.Location" type="System.Drawing.Point, System.Drawing">
+    <value>30, 104</value>
+  </data>
+  <data name="chkFileFlagDISCONNECTED.Size" type="System.Drawing.Size, System.Drawing">
+    <value>171, 17</value>
+  </data>
+  <data name="chkFileFlagDISCONNECTED.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="chkFileFlagDISCONNECTED.Text" xml:space="preserve">
+    <value>On-disk file is modified from DB</value>
+  </data>
+  <data name="chkFileFlagDISCONNECTED.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;chkFileFlagDISCONNECTED.Name" xml:space="preserve">
+    <value>chkFileFlagDISCONNECTED</value>
+  </data>
+  <data name="&gt;&gt;chkFileFlagDISCONNECTED.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkFileFlagDISCONNECTED.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkFileFlagDISCONNECTED.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>458, 130</value>
+  </data>
+  <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>10, 10, 10, 10</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FileProperties</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>
