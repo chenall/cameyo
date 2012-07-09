@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,52 +117,52 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="btnApply" xml:space="preserve">
+    <value>应用(&amp;A)</value>
+  </data>
   <data name="cannotSave" xml:space="preserve">
     <value>无法保存</value>
   </data>
+  <data name="changesWillTakeEffectOnNextStart" xml:space="preserve">
+    <value>该变更将在下一次启动时生效</value>
+  </data>
   <data name="confirm" xml:space="preserve">
-    <value>刚才做的更改将会丢失，确定放弃更改？</value>
+    <value>确认</value>
   </data>
   <data name="discardChanges" xml:space="preserve">
-    <value>显示菜单</value>
-  </data>
-  <data name="opening" xml:space="preserve">
-    <value>项目成功建立</value>
-  </data>
-  <data name="openingPackage" xml:space="preserve">
-    <value>保存项目</value>
-  </data>
-  <data name="packageBuiltOk" xml:space="preserve">
-    <value>&amp;保存</value>
-  </data>
-  <data name="packageSaved" xml:space="preserve">
-    <value>包保存</value>
-  </data>
-  <data name="saving" xml:space="preserve">
-    <value>&amp;保存</value>
-  </data>
-  <data name="savingPackage" xml:space="preserve">
-    <value>Saving</value>
-  </data>
-  <data name="changesWillTakeEffectOnNextStart" xml:space="preserve">
-    <value>确定</value>
-  </data>
-  <data name="fullAccess" xml:space="preserve">
-    <value>菜单中至少需要两个程序</value>
-  </data>
-  <data name="isolated" xml:space="preserve">
-    <value>菜单中至少需要两个程序。转化成指令？</value>
-  </data>
-  <data name="menuRequiresAtLeastTwo" xml:space="preserve">
-    <value>打开</value>
-  </data>
-  <data name="menuRequiresAtLeastTwoTransform" xml:space="preserve">
-    <value>打开项目</value>
-  </data>
-  <data name="btnApply" xml:space="preserve">
-    <value>&amp;申请</value>
+    <value>刚才做的更改将会丢失，确定放弃更改？</value>
   </data>
   <data name="displayMenu" xml:space="preserve">
+    <value>显示菜单</value>
+  </data>
+  <data name="fullAccess" xml:space="preserve">
+    <value>完全访问</value>
+  </data>
+  <data name="isolated" xml:space="preserve">
     <value>隔离</value>
+  </data>
+  <data name="menuRequiresAtLeastTwo" xml:space="preserve">
+    <value>至少需要两个菜单项</value>
+  </data>
+  <data name="menuRequiresAtLeastTwoTransform" xml:space="preserve">
+    <value>至少需要两个菜单项，是否转换成单独命令？</value>
+  </data>
+  <data name="opening" xml:space="preserve">
+    <value>正在打开</value>
+  </data>
+  <data name="openingPackage" xml:space="preserve">
+    <value>正在打开虚拟包</value>
+  </data>
+  <data name="packageBuiltOk" xml:space="preserve">
+    <value>虚拟包建立成功</value>
+  </data>
+  <data name="packageSaved" xml:space="preserve">
+    <value>已保存</value>
+  </data>
+  <data name="saving" xml:space="preserve">
+    <value>保存(&amp;S)</value>
+  </data>
+  <data name="savingPackage" xml:space="preserve">
+    <value>正在保存</value>
   </data>
 </root>
