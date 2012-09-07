@@ -55,7 +55,7 @@ namespace PackageEditor.FilesEditing
             else
                 groupBox.Text = files.Count + " " + itemsStr + ": " + sizeStr;
 
-            chkFileFlagDEPLOYED.CheckState = getCheckedState(VIRT_FILE_FLAGS.DEPLOYED, min, max);
+            chkFileFlagDEPLOYED.CheckState = getCheckedState(VIRT_FILE_FLAGS.DEPLOY_UPON_PRELOAD, min, max);
             chkFileFlagDELETED.CheckState = getCheckedState(VIRT_FILE_FLAGS.DELETED, min, max);
             chkFileFlagISFILE.CheckState = getCheckedState(VIRT_FILE_FLAGS.ISFILE, min, max);
             chkFileFlagPKG_FILE.CheckState = getCheckedState(VIRT_FILE_FLAGS.PKG_FILE, min, max);
@@ -64,8 +64,8 @@ namespace PackageEditor.FilesEditing
             {
                 min = VIRT_FILE_FLAGS.NO_FLAGS;
                 max = VIRT_FILE_FLAGS.ALL_FLAGS;
-                if (chkFileFlagDEPLOYED.CheckState == CheckState.Checked) min |= VIRT_FILE_FLAGS.DEPLOYED;
-                if (chkFileFlagDEPLOYED.CheckState == CheckState.Unchecked) max &= ~VIRT_FILE_FLAGS.DEPLOYED;
+                if (chkFileFlagDEPLOYED.CheckState == CheckState.Checked) min |= VIRT_FILE_FLAGS.DEPLOY_UPON_PRELOAD;
+                if (chkFileFlagDEPLOYED.CheckState == CheckState.Unchecked) max &= ~VIRT_FILE_FLAGS.DEPLOY_UPON_PRELOAD;
                 if (chkFileFlagDELETED.CheckState == CheckState.Checked) min |= VIRT_FILE_FLAGS.DELETED;
                 if (chkFileFlagDELETED.CheckState == CheckState.Unchecked) max &= ~VIRT_FILE_FLAGS.DELETED;
                 if (chkFileFlagISFILE.CheckState == CheckState.Checked) min |= VIRT_FILE_FLAGS.ISFILE;

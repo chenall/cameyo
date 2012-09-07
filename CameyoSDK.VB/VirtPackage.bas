@@ -34,7 +34,7 @@ Public Const APIRET_CANCELLED As Long = 20
 '' VirtFilesDb flags
 Public Const VIRT_FILE_FLAGS_ISFILE As Long = &H1 '' File or directory?
 Public Const VIRT_FILE_FLAGS_DELETED As Long = &H2 '' Deleted by virtual app (NOT_FOUND)
-Public Const VIRT_FILE_FLAGS_DEPLOYED As Long = &H8 '' Set upon first file opening
+Public Const VIRT_FILE_FLAGS_DEPLOY_UPON_PRELOAD As Long = &H8 '' Set upon first file opening
 '' 0x10 is reserved
 '
 '' UI isolation constants:

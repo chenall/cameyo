@@ -312,7 +312,7 @@ namespace PackageEditor
 
                     newItem.flags = (VIRT_FILE_FLAGS)childFile.virtFsNode.FileFlags;
 
-                    if ((newItem.flags & VirtPackageAPI.VIRT_FILE_FLAGS.DEPLOYED) != 0)
+                    if ((newItem.flags & VirtPackageAPI.VIRT_FILE_FLAGS.DEPLOY_UPON_PRELOAD) != 0)
                         newItem.ImageIndex = 6;
                     else
                         newItem.ImageIndex = 3;
@@ -474,7 +474,7 @@ namespace PackageEditor
                 virtFsFileNode.FileFlags = VIRT_FILE_FLAGS.ISFILE;      //it's a file
                 if (Path.GetExtension(virtFsFileNode.FileName).Equals(".dll"))
                 {
-                  virtFsFileNode.FileFlags |= VIRT_FILE_FLAGS.DEPLOYED;
+                    virtFsFileNode.FileFlags |= VIRT_FILE_FLAGS.DEPLOY_UPON_PRELOAD;
                 }
 
 
