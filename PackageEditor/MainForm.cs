@@ -164,7 +164,8 @@ namespace PackageEditor
         private bool PackageOpen(String packageExeFile)
         {
             VirtPackage.APIRET apiRet;
-            return PackageOpen(packageExeFile, true, out apiRet);
+            bool ret = PackageOpen(packageExeFile, true, out apiRet);
+            return (ret);
         }
 
         private bool PackageOpen(String packageExeFile, bool displayWaitMsg, out VirtPackage.APIRET apiRet)
@@ -179,7 +180,55 @@ namespace PackageEditor
                 PleaseWait.PleaseWaitBegin(PackageEditor.Messages.Messages.openingPackage, PackageEditor.Messages.Messages.opening + " " + System.IO.Path.GetFileName(packageExeFile) + "...", packageExeFile);
             }
 
-            if (virtPackage.Open(packageExeFile, out apiRet))
+            ret = virtPackage.Open(packageExeFile, out apiRet);
+
+            // OLD_VERSION conversion
+            if (!ret && apiRet == VirtPackage.APIRET.OLD_VERSION)
+            {
+                if (displayWaitMsg)
+                    PleaseWait.PleaseWaitEnd();     // Otherwise it'll hide our below MessageBox
+                if (MessageBox.Show("This package was built with an older version and needs to be converted.\nConvert now?",
+                    "Conversion required", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    int exitCode = 0;
+                    if (ExecProg(PackagerExe(),"-Quiet -ConvertOldPkg \"" + packageExeFile + "\"", true, ref exitCode) && exitCode == 0)
+                    {
+                        string newPkgFile = packageExeFile, oldPkgFile = packageExeFile;
+                        int pos = newPkgFile.LastIndexOf('.');
+                        newPkgFile = newPkgFile.Insert(pos, ".new");
+                        oldPkgFile = oldPkgFile.Insert(pos, ".old");
+                        bool trouble = false;
+                        try { File.Delete(oldPkgFile); } catch { }
+                        try 
+                        { 
+                            File.Move(packageExeFile, oldPkgFile);
+                        } 
+                        catch 
+                        { 
+                            MessageBox.Show("Package could not be renamed to:\n" + oldPkgFile);
+                            trouble = true;
+                        }
+                        try
+                        {
+                            File.Move(newPkgFile, packageExeFile);
+                        }
+                        catch 
+                        { 
+                            MessageBox.Show("New package could not be renamed to:\n" + packageExeFile);
+                            trouble = true;
+                        }
+                        if (!trouble)
+                        {
+                            ret = virtPackage.Open(packageExeFile, out apiRet);
+                            MessageBox.Show("Package was successfully converted. Your old package was saved in:\n" + oldPkgFile);
+                        }
+                    }
+                    else
+                        MessageBox.Show("Error converting package! " + exitCode);
+                }
+            }
+
+            if (ret)
             {
                 regLoaded = false;
                 dirty = false;
@@ -299,7 +348,7 @@ namespace PackageEditor
                 VirtPackage.APIRET apiRet;
                 if (!PackageOpen(openFileDialog.FileName, true, out apiRet))
                 {
-                    MessageBox.Show(String.Format("Failed to open package. API error:{0}", apiRet));
+                    MessageBox.Show(String.Format("Failed to open package. API error: {0}", apiRet));
                 }
             }
         }
@@ -883,6 +932,14 @@ namespace PackageEditor
             return false;
         }
 
+        static public string PackagerExe()
+        {
+            if (Win64.IsWin64())
+                return Path.Combine(Utils.MyPath(), "Packager64.exe");
+            else
+                return Path.Combine(Utils.MyPath(), "Packager.exe");
+        }
+
         // dragdrop function (DragDrop) to open a new file dropping it in the main form
         private void MainForm_DragDrop(object sender, DragEventArgs e)
         {
@@ -903,11 +960,10 @@ namespace PackageEditor
                 try
                 {
                     // Syntax: myPath\Packager.exe -ChangeEngine AppName.cameyo.exe AppVirtDll.dll
-                    string myPath = Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
                     int exitCode = 0;
-                    if (!ExecProg(Path.Combine(myPath, "Packager.exe"), "-ChangeEngine \"" + openedFile + "\" "+
+                    if (!ExecProg(PackagerExe(), "-ChangeEngine \"" + openedFile + "\" "+
                         "\"" + files[0] + "\"", true, ref exitCode))
-                        MessageBox.Show("Could not execute: " + Path.Combine(myPath, "Packager.exe"));
+                        MessageBox.Show("Could not execute: " + PackagerExe());
                 }
                 finally
                 {
@@ -925,7 +981,7 @@ namespace PackageEditor
                     string myPath = Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
                     int exitCode = 0;
                     if (!ExecProg(openedFile, "-ChangeLoader \"" + files[0] + "\"", true, ref exitCode))
-                        MessageBox.Show("Could not execute: " + Path.Combine(myPath, "Packager.exe"));
+                        MessageBox.Show("Could not execute: " + PackagerExe());
                 }
                 finally
                 {
@@ -1303,7 +1359,7 @@ namespace PackageEditor
         private void lnkCapture_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             int exitCode = 0;
-            if (!Cameyo.OpenSrc.Common.Utils.ExecProg(Path.Combine(Utils.MyPath(), "Packager.exe"), null, false, ref exitCode))
+            if (!Cameyo.OpenSrc.Common.Utils.ExecProg(PackagerExe(), null, false, ref exitCode))
                 MessageBox.Show("Can't start the app packager");
             else
                 Application.Exit();
