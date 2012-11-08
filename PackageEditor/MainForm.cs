@@ -495,6 +495,12 @@ namespace PackageEditor
             // BaseDirName
             DisplayBaseDirName();
 
+            // VirtMode
+            if (virtPackage.GetProperty("VirtMode").Equals("RAM", StringComparison.InvariantCultureIgnoreCase))
+                propertyVirtModeRam.Checked = true;
+            else
+                propertyVirtModeDisk.Checked = true;
+
             // Isolation
             int isolationType = virtPackage.GetIsolationMode();
             propertyIsolationDataMode.Checked = (isolationType == VirtPackage.ISOLATIONMODE_DATA);
@@ -635,6 +641,10 @@ namespace PackageEditor
                 Ret &= virtPackage.SetProperty("Expiration", propertyExpirationDatePicker.Value.ToString("dd/MM/yyyy"));
             else
                 Ret &= virtPackage.SetProperty("Expiration", "");
+            if (propertyVirtModeRam.Checked)
+                Ret &= virtPackage.SetProperty("VirtMode", "RAM");
+            else
+                Ret &= virtPackage.SetProperty("VirtMode", "");
 
             // propertyIntegrate, propertyVintegrate
             str = virtPackage.GetProperty("OnStartUnvirtualized");
