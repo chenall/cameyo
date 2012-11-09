@@ -630,6 +630,7 @@
             // 
             resources.ApplyResources(this.propertyFileVersion, "propertyFileVersion");
             this.propertyFileVersion.Name = "propertyFileVersion";
+            this.propertyFileVersion.TextChanged += new System.EventHandler(this.PropertyChange);
             // 
             // label2
             // 
@@ -640,11 +641,13 @@
             // 
             resources.ApplyResources(this.propertyFriendlyName, "propertyFriendlyName");
             this.propertyFriendlyName.Name = "propertyFriendlyName";
+            this.propertyFriendlyName.TextChanged += new System.EventHandler(this.PropertyChange);
             // 
             // propertyAppID
             // 
             resources.ApplyResources(this.propertyAppID, "propertyAppID");
             this.propertyAppID.Name = "propertyAppID";
+            this.propertyAppID.TextChanged += new System.EventHandler(this.PropertyChange);
             // 
             // label1
             // 
@@ -684,6 +687,7 @@
             this.propertyVirtModeDisk.Name = "propertyVirtModeDisk";
             this.propertyVirtModeDisk.TabStop = true;
             this.propertyVirtModeDisk.UseVisualStyleBackColor = true;
+            this.propertyVirtModeDisk.Click += new System.EventHandler(this.PropertyChange);
             // 
             // propertyVirtModeRam
             // 
@@ -691,6 +695,7 @@
             this.propertyVirtModeRam.Name = "propertyVirtModeRam";
             this.propertyVirtModeRam.TabStop = true;
             this.propertyVirtModeRam.UseVisualStyleBackColor = true;
+            this.propertyVirtModeRam.Click += new System.EventHandler(this.PropertyChange);
             // 
             // label9
             // 

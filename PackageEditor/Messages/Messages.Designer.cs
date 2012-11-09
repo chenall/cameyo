@@ -187,6 +187,15 @@ namespace PackageEditor.Messages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Save changes?.
+        /// </summary>
+        internal static string saveChanges {
+            get {
+                return ResourceManager.GetString("saveChanges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &amp;Save.
         /// </summary>
         internal static string saving {
@@ -196,7 +205,7 @@ namespace PackageEditor.Messages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Package saved.
+        ///   Looks up a localized string similar to Saving package.
         /// </summary>
         internal static string savingPackage {
             get {

@@ -272,8 +272,12 @@ namespace PackageEditor
             if (this.dirty || fsEditor.dirty || regEditor.dirty)
             {
                 System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-                if (MessageBox.Show(PackageEditor.Messages.Messages.discardChanges, PackageEditor.Messages.Messages.confirm, MessageBoxButtons.YesNo) != DialogResult.Yes)
-                    return false;
+                if (MessageBox.Show(PackageEditor.Messages.Messages.saveChanges, PackageEditor.Messages.Messages.confirm, MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    saveToolStripMenuItem_Click(this, null);
+                    if (this.dirty || fsEditor.dirty || regEditor.dirty)    // Still not saved
+                        return false;
+                }
             }
 
             // If regLoadThread is working, wait for it to finish
