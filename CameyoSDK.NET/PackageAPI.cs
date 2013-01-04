@@ -604,8 +604,8 @@ namespace VirtPackageAPI
         // QuickReadIniValues (wrapper)
         public static System.Collections.Hashtable QuickReadIniValues(string PacakgeExeFile)
         {
-            StringBuilder sb = new StringBuilder(8192);
-            VirtPackage.QuickReadIni(PacakgeExeFile, sb, 8192);
+            StringBuilder sb = new StringBuilder(16384);
+            VirtPackage.QuickReadIni(PacakgeExeFile, sb, 16384);
             return VirtPackage.ReadIniSettingsBuf(sb.ToString());
         }
 

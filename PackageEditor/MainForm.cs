@@ -409,10 +409,10 @@ namespace PackageEditor
 
                 xmlOut.WriteStartElement("Properties");
                 xmlOut.WriteStartElement("Property");
-                xmlOut.WriteAttributeString("AppName", "TestApp");
+                xmlOut.WriteAttributeString("AppID", "TestApp");
                 xmlOut.WriteEndElement();
                 xmlOut.WriteStartElement("Property");
-                xmlOut.WriteAttributeString("AppVersion", "1.0");
+                xmlOut.WriteAttributeString("Version", "1.0");
                 xmlOut.WriteEndElement();
                 xmlOut.WriteStartElement("Property");
                 xmlOut.WriteAttributeString("IconFile", "Icon.exe");
@@ -421,7 +421,7 @@ namespace PackageEditor
                 xmlOut.WriteAttributeString("StopInheritance", "");
                 xmlOut.WriteEndElement();
                 xmlOut.WriteStartElement("Property");
-                xmlOut.WriteAttributeString("BuildOutput", "[AppName].exe");
+                xmlOut.WriteAttributeString("BuildOutput", "[AppID].exe");
                 xmlOut.WriteEndElement();
                 xmlOut.WriteEndElement();
 
