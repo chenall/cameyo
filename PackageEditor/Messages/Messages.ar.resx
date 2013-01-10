@@ -117,4 +117,54 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="btnApply" xml:space="preserve">
+    <value>تنفيذ
+</value>
+  </data>
+  <data name="cannotSave" xml:space="preserve">
+    <value>تعذر حفض الرزمة</value>
+  </data>
+  <data name="changesWillTakeEffectOnNextStart" xml:space="preserve">
+    <value>هذا التعديل سيفعل عند التشغيل القادم.</value>
+  </data>
+  <data name="confirm" xml:space="preserve">
+    <value>تأكيد</value>
+  </data>
+  <data name="discardChanges" xml:space="preserve">
+    <value>تغييراتك ستضيع. تجاهل التغييرات؟</value>
+  </data>
+  <data name="displayMenu" xml:space="preserve">
+    <value>عرض لائحة الخدمات</value>
+  </data>
+  <data name="fullAccess" xml:space="preserve">
+    <value>النفوذ الكامل</value>
+  </data>
+  <data name="isolated" xml:space="preserve">
+    <value>معزولة</value>
+  </data>
+  <data name="menuRequiresAtLeastTwo" xml:space="preserve">
+    <value>لائحة الخيارات تحتاج إلى برنامجين على الأقل</value>
+  </data>
+  <data name="menuRequiresAtLeastTwoTransform" xml:space="preserve">
+    <value>لائحة الخيارات تحتاج إلى برنامجين على الأقل:هل تريد تحويرها إلى أمر؟</value>
+  </data>
+  <data name="opening" xml:space="preserve">
+    <value>جاري الفتح</value>
+  </data>
+  <data name="openingPackage" xml:space="preserve">
+    <value>جاري فتح الرزمة</value>
+  </data>
+  <data name="packageBuiltOk" xml:space="preserve">
+    <value>تم خلق الرزمات بنجاح في :</value>
+  </data>
+  <data name="packageSaved" xml:space="preserve">
+    <value>تم حفض الرزمة</value>
+  </data>
+  <data name="saving" xml:space="preserve">
+    <value>تسجيل
+</value>
+  </data>
+  <data name="savingPackage" xml:space="preserve">
+    <value>بصدد حفض الرزمة</value>
+  </data>
 </root>

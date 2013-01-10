@@ -414,7 +414,7 @@ namespace Cameyo.OpenSrc.Common
             langs.Add(new LangItem("Deutsch", "DE", "de-DE"));
             langs.Add(new LangItem("Italian", "IT", "it-IT"));
             langs.Add(new LangItem("Chinese", "CN", "zh-CN"));
-            //langs.Add(new LangItem("Arabic", "AR", "ar"));
+            langs.Add(new LangItem("Arabic", "AR", "ar"));
             langs.Add(new LangItem("Indonesian", "ID", "id-ID"));
             return langs;
         }

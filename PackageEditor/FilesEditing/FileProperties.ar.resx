@@ -117,4 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="buttonCancel.Text" xml:space="preserve">
+    <value>إلغاء</value>
+  </data>
+  <data name="buttonOK.Text" xml:space="preserve">
+    <value>نعم</value>
+  </data>
+  <data name="chkFileFlagDELETED.Text" xml:space="preserve">
+    <value>حُذِف: يعرض للطبقات الإفتراضية على أنه مُسح</value>
+  </data>
+  <data name="chkFileFlagDEPLOYED.Text" xml:space="preserve">
+    <value>منشور: يستخرج مباشرة عند أول إشتغال</value>
+  </data>
+  <data name="chkFileFlagDISCONNECTED.Text" xml:space="preserve">
+    <value>عند تغيير الملف من قاعدة البيانات</value>
+  </data>
+  <data name="chkFileFlagISFILE.Text" xml:space="preserve">
+    <value>ملف(ليس مجلد)</value>
+  </data>
+  <data name="chkFileFlagPKG_FILE.Text" xml:space="preserve">
+    <value>جزء من الرزمة الأصلية</value>
+  </data>
+  <data name="groupBox.Text" xml:space="preserve">
+    <value>الخصائص</value>
+  </data>
 </root>

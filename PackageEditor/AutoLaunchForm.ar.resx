@@ -117,4 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="$this.Text" xml:space="preserve">
+    <value>البدء</value>
+  </data>
+  <data name="btnAdd.Text" xml:space="preserve">
+    <value>إضافة
+</value>
+  </data>
+  <data name="btnCancel.Text" xml:space="preserve">
+    <value>إلغاء</value>
+  </data>
+  <data name="btnModify.Text" xml:space="preserve">
+    <value>تعديل
+</value>
+  </data>
+  <data name="btnOk.Text" xml:space="preserve">
+    <value>نعم</value>
+  </data>
+  <data name="btnRemove.Text" xml:space="preserve">
+    <value>حذف
+</value>
+  </data>
+  <data name="columnHeader1.Text" xml:space="preserve">
+    <value>الإسم</value>
+  </data>
+  <data name="columnHeader2.Text" xml:space="preserve">
+    <value>الأمر</value>
+  </data>
+  <data name="columnHeader3.Text" xml:space="preserve">
+    <value>ملف</value>
+  </data>
+  <data name="columnHeader4.Text" xml:space="preserve">
+    <value>القيمة</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>المَعلَمَات:</value>
+  </data>
+  <data name="propertyCmdRadio.Text" xml:space="preserve">
+    <value>أمر خصوصي:</value>
+  </data>
+  <data name="propertyMenuRadio.Text" xml:space="preserve">
+    <value>عرض لائحة الخدمات للإختيار منها:</value>
+  </data>
 </root>

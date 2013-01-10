@@ -117,4 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="$this.Text" xml:space="preserve">
+    <value>تخزين المعلومات:</value>
+  </data>
+  <data name="btnCancel.Text" xml:space="preserve">
+    <value>إلغاء</value>
+  </data>
+  <data name="btnOk.Text" xml:space="preserve">
+    <value>نعم</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>أين يجدر بكاميو إن يحفض معلومات التطبيقة:</value>
+  </data>
+  <data name="propertyLocalStorageCustom.Text" xml:space="preserve">
+    <value>مكان معدّل:</value>
+  </data>
+  <data name="propertyLocalStorageDefault.Text" xml:space="preserve">
+    <value>بديهياً: القرص الصلب / دروب بوكس / حوامل الناقل التسلسلي بالنظر إلى مكان حفض التطبيقة</value>
+  </data>
+  <data name="propertyLocalStorageExeDir.Text" xml:space="preserve">
+    <value>تحت مجلد التطبيقة</value>
+  </data>
 </root>
