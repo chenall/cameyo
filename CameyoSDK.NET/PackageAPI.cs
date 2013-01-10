@@ -640,9 +640,10 @@ namespace VirtPackageAPI
             byte[] pIniBuf,
             UInt32 cbIniBuf)
         {
-            return Is32Bit()
+            int ret = Is32Bit()
                 ? QuickBuildAppendiceIndex32(pLastFileBytes, cbLastFileBytes, pNewIndex, ref pcbNewIndex, pSandboxCfg, cbSandboxCfg, pIniBuf, cbIniBuf)
                 : QuickBuildAppendiceIndex64(pLastFileBytes, cbLastFileBytes, pNewIndex, ref pcbNewIndex, pSandboxCfg, cbSandboxCfg, pIniBuf, cbIniBuf);
+            return ret;
         }
 
         // QuickExtractAppendiceIndex (reserved for internal use)
