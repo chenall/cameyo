@@ -153,7 +153,6 @@
             this.panelWelcome = new System.Windows.Forms.Panel();
             this.panel15 = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
-            this.lblLogoTitle = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel13 = new System.Windows.Forms.Panel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
@@ -1094,22 +1093,16 @@
             // panel15
             // 
             resources.ApplyResources(this.panel15, "panel15");
-            this.panel15.BackColor = System.Drawing.SystemColors.Control;
+            this.panel15.BackColor = System.Drawing.Color.Transparent;
             this.panel15.Controls.Add(this.panel14);
             this.panel15.Name = "panel15";
             // 
             // panel14
             // 
             resources.ApplyResources(this.panel14, "panel14");
-            this.panel14.Controls.Add(this.lblLogoTitle);
+            this.panel14.BackColor = System.Drawing.Color.Transparent;
             this.panel14.Controls.Add(this.pictureBox2);
             this.panel14.Name = "panel14";
-            // 
-            // lblLogoTitle
-            // 
-            resources.ApplyResources(this.lblLogoTitle, "lblLogoTitle");
-            this.lblLogoTitle.ForeColor = System.Drawing.Color.Gray;
-            this.lblLogoTitle.Name = "lblLogoTitle";
             // 
             // pictureBox2
             // 
@@ -1294,7 +1287,6 @@
             this.panelWelcome.ResumeLayout(false);
             this.panel15.ResumeLayout(false);
             this.panel14.ResumeLayout(false);
-            this.panel14.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel13.ResumeLayout(false);
             this.panel13.PerformLayout();
@@ -1434,7 +1426,6 @@
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.Panel panel14;
-        private System.Windows.Forms.Label lblLogoTitle;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.ToolStripMenuItem langToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem englishMenuItem;

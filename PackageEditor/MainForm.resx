@@ -140,7 +140,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj0yLjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAi
-        HAAAAk1TRnQBSQFMAgEBBgEAAdQBBgHUAQYBEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        HAAAAk1TRnQBSQFMAgEBBgEAAeQBBgHkAQYBEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABIAMAAQEBAAEgBgABIB4AAwQBBgMTARoDHwEsAyABLgMgAS8DIAEvAyABLgMeASsDEgEYAwQBBQ8A
         AQEDBAEGAwoBDgMNARIDFgEfAxoBJAMcASgDHwEsAx8BLQMeASsDGwEmAxgBIgMPARQDDAEQAwUBBwMA
         AQGIAAMCAQMDBQQHAQkDUwHxA4EB/wOBAf8DgQH/A4EB/wNTAfEDBgEIAwQBBgMBAQIQAAMEBAUBBwKB
@@ -791,7 +791,7 @@
     <value>regFilesList</value>
   </data>
   <data name="&gt;&gt;regFilesList.Type" xml:space="preserve">
-    <value>PackageEditor.ListViewEx, PackageEditor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>PackageEditor.ListViewEx, PackageEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;regFilesList.Parent" xml:space="preserve">
     <value>regSplitContainer.Panel2</value>
@@ -2943,39 +2943,6 @@
   <data name="panel14.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
-  <data name="lblLogoTitle.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblLogoTitle.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 26.25pt, style=Italic</value>
-  </data>
-  <data name="lblLogoTitle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblLogoTitle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>74, 329</value>
-  </data>
-  <data name="lblLogoTitle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 39</value>
-  </data>
-  <data name="lblLogoTitle.TabIndex" type="System.Int32, mscorlib">
-    <value>28</value>
-  </data>
-  <data name="lblLogoTitle.Text" xml:space="preserve">
-    <value>Package Editor</value>
-  </data>
-  <data name="&gt;&gt;lblLogoTitle.Name" xml:space="preserve">
-    <value>lblLogoTitle</value>
-  </data>
-  <data name="&gt;&gt;lblLogoTitle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblLogoTitle.Parent" xml:space="preserve">
-    <value>panel14</value>
-  </data>
-  <data name="&gt;&gt;lblLogoTitle.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="pictureBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
@@ -3013,7 +2980,7 @@
     <value>panel14</value>
   </data>
   <data name="&gt;&gt;pictureBox2.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="panel14.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 6</value>
@@ -3343,7 +3310,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabWelcome.Size" type="System.Drawing.Size, System.Drawing">
-    <value>772, 390</value>
+    <value>772, 348</value>
   </data>
   <data name="tabWelcome.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -3367,7 +3334,7 @@
     <value>12, 37</value>
   </data>
   <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>780, 416</value>
+    <value>780, 374</value>
   </data>
   <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -3442,7 +3409,7 @@
     <value>Bottom</value>
   </data>
   <data name="bottomPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 463</value>
+    <value>0, 421</value>
   </data>
   <data name="bottomPanel.Size" type="System.Drawing.Size, System.Drawing">
     <value>804, 47</value>
@@ -3472,7 +3439,7 @@
     <value>0, 0</value>
   </data>
   <data name="bkPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>804, 510</value>
+    <value>804, 468</value>
   </data>
   <data name="bkPanel.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -3502,7 +3469,7 @@
     <value>Stretch</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>804, 510</value>
+    <value>804, 468</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
