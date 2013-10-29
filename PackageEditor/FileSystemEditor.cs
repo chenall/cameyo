@@ -291,7 +291,7 @@ namespace PackageEditor
             fsFolderInfoIsolationCombo.SelectedIndex = -1;
             if (folderNode == null)
                 return;
-            fsFolderInfoIsolationCombo.Enabled = (folderNode != fsFolderTree.Nodes[0]);
+            fsFolderInfoIsolationCombo.Enabled = true; //(folderNode != fsFolderTree.Nodes[0]);
             VirtFsNode virtFsNode = folderNode.virtFsNode;    // Avoids CS1690
 
             // Fill info panel
@@ -348,7 +348,8 @@ namespace PackageEditor
             if (node == null)
                 return;
             String fullName = treeHelper.GetFullNodeName(node);
-            virtPackage.SetFileSandbox(fullName,
+            virtPackage.SetFileSandbox(
+                node != fsFolderTree.Nodes[0] ? fullName : "",   // Root = ""
                 treeHelper.ComboIndexToSandboxFlags(fsFolderInfoIsolationCombo.SelectedIndex), false);
             node.sandboxFlags = virtPackage.GetFileSandbox(fullName, false);
             RefreshFolderNodeRecursively(node, 0);
@@ -787,7 +788,7 @@ retry_input:
             }
         }
 
-        private void RefreshFolderNodeRecursively(FolderTreeNode node, int iteration)
+        public void RefreshFolderNodeRecursively(FolderTreeNode node, int iteration)
         {
             FolderTreeNode curNode = node;
 

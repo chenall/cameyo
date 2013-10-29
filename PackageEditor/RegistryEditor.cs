@@ -194,7 +194,7 @@ namespace PackageEditor
             fsFolderInfoIsolationCombo.SelectedIndex = -1;
             if (folderNode == null)
                 return;
-            fsFolderInfoIsolationCombo.Enabled = (folderNode != fsFolderTree.Nodes[0]);
+            fsFolderInfoIsolationCombo.Enabled = true; //(folderNode != fsFolderTree.Nodes[0]);
 
             // Fill info panel
             String fullName = treeHelper.GetFullNodeName(folderNode);
@@ -232,7 +232,8 @@ namespace PackageEditor
             if (node == null)
                 return;
             String fullName = treeHelper.GetFullNodeName(node);
-            virtPackage.SetRegistrySandbox(fullName,
+            virtPackage.SetRegistrySandbox(
+                node != fsFolderTree.Nodes[0] ? fullName : "",   // Root = ""
                 treeHelper.ComboIndexToSandboxFlags(fsFolderInfoIsolationCombo.SelectedIndex), false);
             RefreshFolderNodeRecursively(node, 0);
             dirty = true;
@@ -320,7 +321,7 @@ namespace PackageEditor
 
         }
 
-        private void RefreshFolderNodeRecursively(TreeNode curNode, int iteration)
+        public void RefreshFolderNodeRecursively(TreeNode curNode, int iteration)
         {
             String fullName = treeHelper.GetFullNodeName(curNode);
             UInt32 sandboxFlags = virtPackage.GetRegistrySandbox(fullName, false);

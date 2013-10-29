@@ -861,6 +861,20 @@ reask:
             }
         }
 
+        private void DisplayIsolationMode()
+        {
+            // Isolation mode
+            int isolationType = virtPackage.GetIsolationMode();
+            propertyIsolationDataMode.Checked = propertyIsolationIsolated.Checked = propertyIsolationMerge.Checked = false;
+
+            propertyIsolationDataMode.Checked = (isolationType == VirtPackage.ISOLATIONMODE_DATA);
+            propertyIsolationIsolated.Checked = (isolationType == VirtPackage.ISOLATIONMODE_ISOLATED);
+            propertyIsolationMerge.Checked = (isolationType == VirtPackage.ISOLATIONMODE_FULL_ACCESS);
+            if (propertyIsolationDataMode.Checked)
+                virtPackage.SetProperty("DataMode", "TRUE");   // Important to be able to switch to Isolated mode (to unisolate %Personal% etc)
+            propertyIsolationMode_CheckedChanged(this, null);
+        }
+
         private void OnPackageOpen()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
@@ -890,13 +904,7 @@ reask:
             propertyVirtMode_CheckedChanged(this, null);
 
             // Isolation
-            int isolationType = virtPackage.GetIsolationMode();
-            propertyIsolationDataMode.Checked = (isolationType == VirtPackage.ISOLATIONMODE_DATA);
-            propertyIsolationIsolated.Checked = (isolationType == VirtPackage.ISOLATIONMODE_ISOLATED);
-            propertyIsolationMerge.Checked = (isolationType == VirtPackage.ISOLATIONMODE_FULL_ACCESS);
-            if (propertyIsolationDataMode.Checked)
-                virtPackage.SetProperty("DataMode", "TRUE");   // Important to be able to switch to Isolated mode (to unisolate %Personal% etc)
-            propertyIsolationMode_CheckedChanged(this, null);
+            DisplayIsolationMode();
 
             // Icon
             if (!String.IsNullOrEmpty(virtPackage.openedFile))
@@ -1041,7 +1049,7 @@ reask:
 
         public void OnTabActivate()
         {
-            //no needed anymore: DisplayIsolation();
+            DisplayIsolationMode();
         }
 
         public bool OnPackageSave()
@@ -1862,6 +1870,19 @@ reask:
             {
                 helpIsolationMode.Text = helpIsolationModeFull;
                 picFullAccess.Visible = true;
+            }
+
+			// Refresh fsFolderTree & regFolderTree
+            if (fsFolderTree.Nodes.Count > 0 && regFolderTree.Nodes.Count > 0)   // Only if fsEditor is initialized
+            {
+                // Isolation. Note: it is allowed to have no checkbox selected at all.
+                virtPackage.SetIsolationMode(
+                    propertyIsolationIsolated.Checked ? VirtPackage.ISOLATIONMODE_ISOLATED :
+                    propertyIsolationMerge.Checked ? VirtPackage.ISOLATIONMODE_FULL_ACCESS :
+                    propertyIsolationDataMode.Checked ? VirtPackage.ISOLATIONMODE_DATA :
+                    VirtPackage.ISOLATIONMODE_CUSTOM);
+                fsEditor.RefreshFolderNodeRecursively((FolderTreeNode)fsFolderTree.Nodes[0], 0);
+                regEditor.RefreshFolderNodeRecursively(regFolderTree.Nodes[0], 0);
             }
         }
 
