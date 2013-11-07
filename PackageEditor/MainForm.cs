@@ -865,14 +865,24 @@ reask:
         {
             // Isolation mode
             int isolationType = virtPackage.GetIsolationMode();
-            propertyIsolationDataMode.Checked = propertyIsolationIsolated.Checked = propertyIsolationMerge.Checked = false;
 
-            propertyIsolationDataMode.Checked = (isolationType == VirtPackage.ISOLATIONMODE_DATA);
-            propertyIsolationIsolated.Checked = (isolationType == VirtPackage.ISOLATIONMODE_ISOLATED);
-            propertyIsolationMerge.Checked = (isolationType == VirtPackage.ISOLATIONMODE_FULL_ACCESS);
+            propertyIsolationDataMode.CheckedChanged -= propertyIsolationMode_CheckedChanged;
+            propertyIsolationIsolated.CheckedChanged -= propertyIsolationMode_CheckedChanged;
+            propertyIsolationMerge.CheckedChanged -= propertyIsolationMode_CheckedChanged;
+            {
+                propertyIsolationDataMode.Checked = propertyIsolationIsolated.Checked = propertyIsolationMerge.Checked = false;
+                propertyIsolationDataMode.Checked = (isolationType == VirtPackage.ISOLATIONMODE_DATA);
+                propertyIsolationIsolated.Checked = (isolationType == VirtPackage.ISOLATIONMODE_ISOLATED);
+                propertyIsolationMerge.Checked = (isolationType == VirtPackage.ISOLATIONMODE_FULL_ACCESS);
+            }
+            propertyIsolationDataMode.CheckedChanged += propertyIsolationMode_CheckedChanged;
+            propertyIsolationIsolated.CheckedChanged += propertyIsolationMode_CheckedChanged;
+            propertyIsolationMerge.CheckedChanged += propertyIsolationMode_CheckedChanged;
+
             if (propertyIsolationDataMode.Checked)
                 virtPackage.SetProperty("DataMode", "TRUE");   // Important to be able to switch to Isolated mode (to unisolate %Personal% etc)
-            propertyIsolationMode_CheckedChanged(this, null);
+
+            propertyIsolationMode_CheckedChanged(null, null);
         }
 
         private void OnPackageOpen()
@@ -1873,16 +1883,18 @@ reask:
             }
 
 			// Refresh fsFolderTree & regFolderTree
-            if (fsFolderTree.Nodes.Count > 0 && regFolderTree.Nodes.Count > 0)   // Only if fsEditor is initialized
+            // Isolation. Note: it is allowed to have no checkbox selected at all.
+            if (sender != null)    // null means this function was called manually by DisplayIsolationMode
             {
-                // Isolation. Note: it is allowed to have no checkbox selected at all.
                 virtPackage.SetIsolationMode(
                     propertyIsolationIsolated.Checked ? VirtPackage.ISOLATIONMODE_ISOLATED :
                     propertyIsolationMerge.Checked ? VirtPackage.ISOLATIONMODE_FULL_ACCESS :
                     propertyIsolationDataMode.Checked ? VirtPackage.ISOLATIONMODE_DATA :
                     VirtPackage.ISOLATIONMODE_CUSTOM);
-                fsEditor.RefreshFolderNodeRecursively((FolderTreeNode)fsFolderTree.Nodes[0], 0);
-                regEditor.RefreshFolderNodeRecursively(regFolderTree.Nodes[0], 0);
+                if (fsFolderTree.Nodes.Count > 0)    // Only if fsEditor is initialized
+                    fsEditor.RefreshFolderNodeRecursively((FolderTreeNode)fsFolderTree.Nodes[0], 0);
+                if (regFolderTree.Nodes.Count > 0)   // Only if regEditor is initialized
+                    regEditor.RefreshFolderNodeRecursively(regFolderTree.Nodes[0], 0);
             }
         }
 
