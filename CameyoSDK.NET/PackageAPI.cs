@@ -1881,6 +1881,7 @@ namespace VirtPackageAPI
 
         static public bool SetProperties(string appExe, Hashtable values, string packagerExe)
         {
+            // -SetProperties
             int exitCode = -1;
             string properties = "";
             foreach (DictionaryEntry value in values)
@@ -1899,7 +1900,7 @@ namespace VirtPackageAPI
             return Path.Combine(Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName), "Packager.exe");
         }
 
-        static private bool ExecProg(String fileName, String args, bool wait, ref int exitCode)
+        static public bool ExecProg(String fileName, String args, bool wait, ref int exitCode)
         {
             try
             {
