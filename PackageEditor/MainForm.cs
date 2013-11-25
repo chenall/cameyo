@@ -1578,7 +1578,6 @@ reask:
 #endif
         }
 
-
         private void resetCredLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             RegistryKey cameyoKey = Registry.CurrentUser.CreateSubKey(@"Software\Cameyo");
@@ -1599,6 +1598,14 @@ reask:
             customEventsForm.ShowDialog();
             dirty |= customEventsForm.dirty;
             customEventsForm.Dispose();
+        }
+
+        private void lnkActiveDirectory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var form = new ADPermissionsForm(virtPackage);
+            form.ShowDialog();
+            dirty |= form.dirty;
+            form.Dispose();
         }
 
         private void lnkAutoUpdate_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

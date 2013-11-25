@@ -149,6 +149,7 @@
             this.lnkCustomEvents = new System.Windows.Forms.LinkLabel();
             this.propertyStopInheritance = new System.Windows.Forms.TextBox();
             this.groupConstraints = new System.Windows.Forms.GroupBox();
+            this.lnkActiveDirectory = new System.Windows.Forms.LinkLabel();
             this.propertyTtlResistRemove = new System.Windows.Forms.CheckBox();
             this.propertyProtPassword = new System.Windows.Forms.TextBox();
             this.propertyTtlDaysValue = new System.Windows.Forms.NumericUpDown();
@@ -1110,6 +1111,7 @@
             // 
             // groupConstraints
             // 
+            this.groupConstraints.Controls.Add(this.lnkActiveDirectory);
             this.groupConstraints.Controls.Add(this.propertyTtlResistRemove);
             this.groupConstraints.Controls.Add(this.propertyProtPassword);
             this.groupConstraints.Controls.Add(this.propertyTtlDaysValue);
@@ -1120,6 +1122,13 @@
             resources.ApplyResources(this.groupConstraints, "groupConstraints");
             this.groupConstraints.Name = "groupConstraints";
             this.groupConstraints.TabStop = false;
+            // 
+            // lnkActiveDirectory
+            // 
+            resources.ApplyResources(this.lnkActiveDirectory, "lnkActiveDirectory");
+            this.lnkActiveDirectory.Name = "lnkActiveDirectory";
+            this.lnkActiveDirectory.TabStop = true;
+            this.lnkActiveDirectory.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkActiveDirectory_LinkClicked);
             // 
             // propertyTtlResistRemove
             // 
@@ -1657,6 +1666,7 @@
         private System.Windows.Forms.Label lblNotCommercial;
         private System.Windows.Forms.LinkLabel lnkUpgrade;
         private System.Windows.Forms.CheckBox propertyScmDirect;
+        private System.Windows.Forms.LinkLabel lnkActiveDirectory;
 
     }
 }
