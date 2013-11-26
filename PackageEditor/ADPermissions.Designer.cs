@@ -35,14 +35,15 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblOfflineUsage = new System.Windows.Forms.Label();
             this.numOfflineUsage = new System.Windows.Forms.NumericUpDown();
             this.cbAuthDenyMsg = new System.Windows.Forms.CheckBox();
             this.tbAuthDenyMsg = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbNestedCheck = new System.Windows.Forms.CheckBox();
+            this.btnRemove = new System.Windows.Forms.Button();
             this.lblTotalEvents = new System.Windows.Forms.Label();
-            this.btnErase = new System.Windows.Forms.Button();
-            this.btnUp = new System.Windows.Forms.Button();
-            this.btnDown = new System.Windows.Forms.Button();
             this.btnAddSave = new System.Windows.Forms.Button();
             this.txtCmd = new System.Windows.Forms.TextBox();
             this.comboBox = new System.Windows.Forms.ComboBox();
@@ -50,14 +51,14 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tbRequireDomainConnection = new System.Windows.Forms.TextBox();
             this.cbRequireDomainConnection = new System.Windows.Forms.CheckBox();
-            this.lblOfflineUsage = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.panel8.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numOfflineUsage)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -91,6 +92,7 @@
             // panel2
             // 
             resources.ApplyResources(this.panel2, "panel2");
+            this.panel2.Controls.Add(this.groupBox4);
             this.panel2.Controls.Add(this.groupBox3);
             this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Controls.Add(this.groupBox2);
@@ -101,11 +103,19 @@
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.lblOfflineUsage);
             this.groupBox3.Controls.Add(this.numOfflineUsage);
-            this.groupBox3.Controls.Add(this.cbAuthDenyMsg);
-            this.groupBox3.Controls.Add(this.tbAuthDenyMsg);
             resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // lblOfflineUsage
+            // 
+            resources.ApplyResources(this.lblOfflineUsage, "lblOfflineUsage");
+            this.lblOfflineUsage.Name = "lblOfflineUsage";
             // 
             // numOfflineUsage
             // 
@@ -125,10 +135,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbNestedCheck);
+            this.groupBox1.Controls.Add(this.btnRemove);
             this.groupBox1.Controls.Add(this.lblTotalEvents);
-            this.groupBox1.Controls.Add(this.btnErase);
-            this.groupBox1.Controls.Add(this.btnUp);
-            this.groupBox1.Controls.Add(this.btnDown);
             this.groupBox1.Controls.Add(this.btnAddSave);
             this.groupBox1.Controls.Add(this.txtCmd);
             this.groupBox1.Controls.Add(this.comboBox);
@@ -137,34 +146,23 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
+            // cbNestedCheck
+            // 
+            resources.ApplyResources(this.cbNestedCheck, "cbNestedCheck");
+            this.cbNestedCheck.Name = "cbNestedCheck";
+            this.cbNestedCheck.UseVisualStyleBackColor = true;
+            // 
+            // btnRemove
+            // 
+            resources.ApplyResources(this.btnRemove, "btnRemove");
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
             // lblTotalEvents
             // 
             resources.ApplyResources(this.lblTotalEvents, "lblTotalEvents");
             this.lblTotalEvents.Name = "lblTotalEvents";
-            // 
-            // btnErase
-            // 
-            resources.ApplyResources(this.btnErase, "btnErase");
-            this.btnErase.Image = global::PackageEditor.Properties.Resources.delete_16_h;
-            this.btnErase.Name = "btnErase";
-            this.btnErase.UseVisualStyleBackColor = true;
-            this.btnErase.Click += new System.EventHandler(this.btnErase_Click);
-            // 
-            // btnUp
-            // 
-            resources.ApplyResources(this.btnUp, "btnUp");
-            this.btnUp.Image = global::PackageEditor.Properties.Resources.up;
-            this.btnUp.Name = "btnUp";
-            this.btnUp.UseVisualStyleBackColor = true;
-            this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
-            // 
-            // btnDown
-            // 
-            resources.ApplyResources(this.btnDown, "btnDown");
-            this.btnDown.Image = global::PackageEditor.Properties.Resources.down;
-            this.btnDown.Name = "btnDown";
-            this.btnDown.UseVisualStyleBackColor = true;
-            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
             // 
             // btnAddSave
             // 
@@ -215,16 +213,15 @@
             resources.ApplyResources(this.cbRequireDomainConnection, "cbRequireDomainConnection");
             this.cbRequireDomainConnection.Name = "cbRequireDomainConnection";
             this.cbRequireDomainConnection.UseVisualStyleBackColor = true;
+            this.cbRequireDomainConnection.CheckedChanged += new System.EventHandler(this.cbRequireDomainConnection_CheckedChanged);
             // 
-            // lblOfflineUsage
+            // groupBox4
             // 
-            resources.ApplyResources(this.lblOfflineUsage, "lblOfflineUsage");
-            this.lblOfflineUsage.Name = "lblOfflineUsage";
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
+            this.groupBox4.Controls.Add(this.tbAuthDenyMsg);
+            this.groupBox4.Controls.Add(this.cbAuthDenyMsg);
+            resources.ApplyResources(this.groupBox4, "groupBox4");
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.TabStop = false;
             // 
             // ADPermissionsForm
             // 
@@ -248,6 +245,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -260,9 +259,6 @@
         private System.Windows.Forms.ComboBox comboBox;
         private System.Windows.Forms.Button btnAddSave;
         private System.Windows.Forms.TextBox txtCmd;
-        private System.Windows.Forms.Button btnDown;
-        private System.Windows.Forms.Button btnUp;
-        private System.Windows.Forms.Button btnErase;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnCancel;
@@ -277,5 +273,8 @@
         private System.Windows.Forms.NumericUpDown numOfflineUsage;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblOfflineUsage;
+        private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.CheckBox cbNestedCheck;
+        private System.Windows.Forms.GroupBox groupBox4;
     }
 }

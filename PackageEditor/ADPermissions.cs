@@ -15,7 +15,7 @@ namespace PackageEditor
         private VirtPackage virtPackage;
         List<ADEntity> allowedEntities;
         List<ADEntity> deniedEntities;
-        List<ADEntity> curEntities;
+        List<ADEntity> curEntities = null;
         public String oldPropertiesChecksum;
         public bool dirty;
 
@@ -49,6 +49,7 @@ namespace PackageEditor
             PropertyToADEntities("ADDeniedGroups", deniedEntities);
             cbRequireDomainConnection.Checked = (virtPackage.GetProperty("ADAllowedDomainsMode") == "1");
             tbRequireDomainConnection.Text = virtPackage.GetProperty("ADAllowedDomains");
+            cbNestedCheck.Checked = (virtPackage.GetProperty("ADNestedCheck") == "1");
 
             curEntities = allowedEntities;
             comboBox.SelectedIndex = 0;
@@ -87,6 +88,7 @@ namespace PackageEditor
             ADEntitiesToProperty(deniedEntities, "ADDeniedGroups");
             virtPackage.SetProperty("ADAllowedDomainsMode", cbRequireDomainConnection.Checked ? "1" : "0");
             virtPackage.SetProperty("ADAllowedDomains", tbRequireDomainConnection.Text.Trim());
+            virtPackage.SetProperty("ADNestedCheck", cbNestedCheck.Checked ? "1" : "0");
 
             dirty = (GetPropertiesChecksum() != oldPropertiesChecksum);
             DialogResult = DialogResult.OK;
@@ -100,11 +102,12 @@ namespace PackageEditor
         private void RefreshDisplay()
         {
             listBox.Items.Clear();
-            for (int i = 0; i < curEntities.Count; i++)
+            if (curEntities != null)
             {
-                listBox.Items.Add(curEntities[i].name);
+                for (int i = 0; i < curEntities.Count; i++)
+                    listBox.Items.Add(curEntities[i].name);
+                listBox_SelectedIndexChanged(null, null);
             }
-            listBox_SelectedIndexChanged(null, null);
 
             // lblTotalEvents
             int totalEntities = allowedEntities.Count + deniedEntities.Count;
@@ -112,6 +115,9 @@ namespace PackageEditor
                 lblTotalEvents.Text = "None";
             else
                 lblTotalEvents.Text = string.Format("{0} groups", totalEntities);
+
+            bool enabled = (totalEntities > 0 || cbRequireDomainConnection.Checked);
+            numOfflineUsage.Enabled = cbAuthDenyMsg.Enabled = tbAuthDenyMsg.Enabled = enabled;
         }
 
         private void btnAddSave_Click(object sender, EventArgs e)
@@ -137,6 +143,16 @@ namespace PackageEditor
             //listBox.SelectedIndex = -1;   // Force refresh
         }
 
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            if (listBox.SelectedIndex == -1)
+                return;
+            curEntities.RemoveAt(listBox.SelectedIndex);
+            listBox.Items.RemoveAt(listBox.SelectedIndex);
+            listBox.SelectedIndex = -1;
+            RefreshDisplay();
+        }
+
         private void listBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
@@ -151,40 +167,6 @@ namespace PackageEditor
             btnAddSave.Text = PackageEditor.Messages.Messages.btnApply;
             ADEntity entity = curEntities[listBox.SelectedIndex];
             txtCmd.Text = entity.name;
-        }
-
-        private void btnErase_Click(object sender, EventArgs e)
-        {
-            if (listBox.SelectedIndex == -1)
-                return;
-            curEntities.RemoveAt(listBox.SelectedIndex);
-            listBox.Items.RemoveAt(listBox.SelectedIndex);
-            listBox.SelectedIndex = -1;
-            RefreshDisplay();
-        }
-
-        private void btnUp_Click(object sender, EventArgs e)
-        {
-            if (listBox.SelectedIndex == -1 || listBox.SelectedIndex == 0)
-                return;
-            curEntities.Reverse(listBox.SelectedIndex - 1, 2);
-            listBox.Items.Insert(listBox.SelectedIndex + 1, listBox.Items[listBox.SelectedIndex - 1]);
-            listBox.Items.Remove(listBox.SelectedIndex - 1);
-            int selectedIndex = listBox.SelectedIndex;
-            RefreshDisplay();
-            listBox.SelectedIndex = selectedIndex - 1;
-        }
-
-        private void btnDown_Click(object sender, EventArgs e)
-        {
-            if (listBox.SelectedIndex == -1 || listBox.SelectedIndex == listBox.Items.Count - 1)
-                return;
-            int selectedIndex = listBox.SelectedIndex;
-            curEntities.Reverse(listBox.SelectedIndex, 2);
-            listBox.Items.Insert(listBox.SelectedIndex, listBox.Items[listBox.SelectedIndex + 1]);
-            listBox.Items.Remove(selectedIndex + 2);
-            RefreshDisplay();
-            listBox.SelectedIndex = selectedIndex + 1;
         }
 
         private void ADEntitiesToProperty(List<ADEntity> inEntities, String outPropertyName)
@@ -224,6 +206,11 @@ namespace PackageEditor
                     curEntities = deniedEntities;
                     break;
             }
+            RefreshDisplay();
+        }
+
+        private void cbRequireDomainConnection_CheckedChanged(object sender, EventArgs e)
+        {
             RefreshDisplay();
         }
     }
