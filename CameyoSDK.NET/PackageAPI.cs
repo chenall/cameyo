@@ -1775,6 +1775,8 @@ namespace VirtPackageAPI
             if (!File.Exists(appVirtDll))
                 return "";
             System.Diagnostics.FileVersionInfo fileVersionInfo = System.Diagnostics.FileVersionInfo.GetVersionInfo(appVirtDll);
+            if (fileVersionInfo == null)
+                return "";
             m_EngineVersion = fileVersionInfo.FileVersion.Replace(" ", "").Replace(",", ".");  // virtPkg.EngineVer is in the form: "1, 7, 534, 0"
             return m_EngineVersion;
         }
