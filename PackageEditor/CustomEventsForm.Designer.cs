@@ -149,8 +149,8 @@
             // 
             // btnDown
             // 
-            this.btnDown.Image = global::PackageEditor.Properties.Resources.down;
             resources.ApplyResources(this.btnDown, "btnDown");
+            this.btnDown.Image = global::PackageEditor.Properties.Resources.down;
             this.btnDown.Name = "btnDown";
             this.btnDown.UseVisualStyleBackColor = true;
             this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
@@ -181,16 +181,16 @@
             // 
             // btnUp
             // 
-            this.btnUp.Image = global::PackageEditor.Properties.Resources.up;
             resources.ApplyResources(this.btnUp, "btnUp");
+            this.btnUp.Image = global::PackageEditor.Properties.Resources.up;
             this.btnUp.Name = "btnUp";
             this.btnUp.UseVisualStyleBackColor = true;
             this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
             // 
             // btnErase
             // 
-            this.btnErase.Image = global::PackageEditor.Properties.Resources.delete_16_h;
             resources.ApplyResources(this.btnErase, "btnErase");
+            this.btnErase.Image = global::PackageEditor.Properties.Resources.delete_16_h;
             this.btnErase.Name = "btnErase";
             this.btnErase.UseVisualStyleBackColor = true;
             this.btnErase.Click += new System.EventHandler(this.btnErase_Click);

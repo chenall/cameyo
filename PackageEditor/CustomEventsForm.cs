@@ -55,8 +55,7 @@ namespace PackageEditor
             curCustomEvents = onStartVirtualized;
             comboBox.SelectedIndex = 0;
             RefreshDisplay();
-            if (listBox.Items.Count > 0)
-                listBox.SelectedIndex = 0;   // Auto-select the first item, for convenience
+            listBox.SelectedIndex = -1;   // Otherwise it's impossible to deselect listbox items (and hence the "Add" button can never be accessed)
         }
 
         private String GetPropertiesChecksum()
@@ -290,8 +289,7 @@ namespace PackageEditor
                     break;
             }
             RefreshDisplay();
-            if (listBox.Items.Count > 0)
-                listBox.SelectedIndex = 0;   // Auto-select the first item, for convenience
+            listBox.SelectedIndex = -1;   // Otherwise it's impossible to deselect listbox items (and hence the "Add" button can never be accessed)
         }
     }
 
