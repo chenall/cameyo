@@ -34,12 +34,13 @@
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.tbAuthDenyMsg = new System.Windows.Forms.TextBox();
+            this.cbAuthDenyMsg = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblOfflineUsage = new System.Windows.Forms.Label();
             this.numOfflineUsage = new System.Windows.Forms.NumericUpDown();
-            this.cbAuthDenyMsg = new System.Windows.Forms.CheckBox();
-            this.tbAuthDenyMsg = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbNestedCheck = new System.Windows.Forms.CheckBox();
             this.btnRemove = new System.Windows.Forms.Button();
@@ -51,14 +52,13 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tbRequireDomainConnection = new System.Windows.Forms.TextBox();
             this.cbRequireDomainConnection = new System.Windows.Forms.CheckBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.panel8.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numOfflineUsage)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -98,6 +98,25 @@
             this.panel2.Controls.Add(this.groupBox2);
             this.panel2.Name = "panel2";
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.tbAuthDenyMsg);
+            this.groupBox4.Controls.Add(this.cbAuthDenyMsg);
+            resources.ApplyResources(this.groupBox4, "groupBox4");
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.TabStop = false;
+            // 
+            // tbAuthDenyMsg
+            // 
+            resources.ApplyResources(this.tbAuthDenyMsg, "tbAuthDenyMsg");
+            this.tbAuthDenyMsg.Name = "tbAuthDenyMsg";
+            // 
+            // cbAuthDenyMsg
+            // 
+            resources.ApplyResources(this.cbAuthDenyMsg, "cbAuthDenyMsg");
+            this.cbAuthDenyMsg.Name = "cbAuthDenyMsg";
+            this.cbAuthDenyMsg.UseVisualStyleBackColor = true;
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.label1);
@@ -121,17 +140,6 @@
             // 
             resources.ApplyResources(this.numOfflineUsage, "numOfflineUsage");
             this.numOfflineUsage.Name = "numOfflineUsage";
-            // 
-            // cbAuthDenyMsg
-            // 
-            resources.ApplyResources(this.cbAuthDenyMsg, "cbAuthDenyMsg");
-            this.cbAuthDenyMsg.Name = "cbAuthDenyMsg";
-            this.cbAuthDenyMsg.UseVisualStyleBackColor = true;
-            // 
-            // tbAuthDenyMsg
-            // 
-            resources.ApplyResources(this.tbAuthDenyMsg, "tbAuthDenyMsg");
-            this.tbAuthDenyMsg.Name = "tbAuthDenyMsg";
             // 
             // groupBox1
             // 
@@ -215,14 +223,6 @@
             this.cbRequireDomainConnection.UseVisualStyleBackColor = true;
             this.cbRequireDomainConnection.CheckedChanged += new System.EventHandler(this.cbRequireDomainConnection_CheckedChanged);
             // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.tbAuthDenyMsg);
-            this.groupBox4.Controls.Add(this.cbAuthDenyMsg);
-            resources.ApplyResources(this.groupBox4, "groupBox4");
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.TabStop = false;
-            // 
             // ADPermissionsForm
             // 
             this.AcceptButton = this.btnOk;
@@ -238,6 +238,8 @@
             this.Load += new System.EventHandler(this.ADPermissionsForm_Load);
             this.panel8.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numOfflineUsage)).EndInit();
@@ -245,8 +247,6 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
