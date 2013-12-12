@@ -140,6 +140,7 @@
             this.regExportBtn = new System.Windows.Forms.ToolStripButton();
             this.tabAdvanced = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.cbVolatileRegistry = new System.Windows.Forms.CheckBox();
             this.propertyScmDirect = new System.Windows.Forms.CheckBox();
             this.propertyDisplayLogo = new System.Windows.Forms.CheckBox();
             this.cbDatFile = new System.Windows.Forms.CheckBox();
@@ -1050,6 +1051,7 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.cbVolatileRegistry);
             this.groupBox5.Controls.Add(this.propertyScmDirect);
             this.groupBox5.Controls.Add(this.propertyDisplayLogo);
             this.groupBox5.Controls.Add(this.cbDatFile);
@@ -1061,6 +1063,12 @@
             resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.TabStop = false;
+            // 
+            // cbVolatileRegistry
+            // 
+            resources.ApplyResources(this.cbVolatileRegistry, "cbVolatileRegistry");
+            this.cbVolatileRegistry.Name = "cbVolatileRegistry";
+            this.cbVolatileRegistry.UseVisualStyleBackColor = true;
             // 
             // propertyScmDirect
             // 
@@ -1667,6 +1675,7 @@
         private System.Windows.Forms.LinkLabel lnkUpgrade;
         private System.Windows.Forms.CheckBox propertyScmDirect;
         private System.Windows.Forms.LinkLabel lnkActiveDirectory;
+        private System.Windows.Forms.CheckBox cbVolatileRegistry;
 
     }
 }
