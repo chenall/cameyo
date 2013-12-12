@@ -1102,8 +1102,9 @@ reask:
             // ScmDirect (direct-registration services support)
             if (propertyScmDirect.Checked)
                 Ret &= virtPackage.SetProperty("Services", "Direct") && virtPackage.SetProperty("RegMode", "Extract");
-            else
-                Ret &= virtPackage.SetProperty("Services", "") && virtPackage.SetProperty("RegMode", "");
+            // Conflicts with cbVolatileRegistry:
+            //else
+            //    Ret &= virtPackage.SetProperty("Services", "") && virtPackage.SetProperty("RegMode", "");
 
             // DisplayLogo
             Ret &= propertyDisplayLogo.Checked ? virtPackage.SetProperty("Branding", "") : virtPackage.SetProperty("Branding", "None");
