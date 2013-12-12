@@ -932,6 +932,11 @@ reask:
             // StopInheritance
             propertyStopInheritance.Text = virtPackage.GetProperty("StopInheritance");
 
+            // VolatileRegistry
+            cbVolatileRegistry.Checked = 
+                !virtPackage.GetProperty("RegMode").Equals("Extract", StringComparison.InvariantCultureIgnoreCase) &&
+                !virtPackage.GetProperty("LegacyReg").Equals("1", StringComparison.InvariantCultureIgnoreCase);
+
             // Integrate
             command = GetIntegrateStartCommand();
             if (command == "")
@@ -1073,6 +1078,8 @@ reask:
             Ret &= virtPackage.SetProperty("Version", propertyFileVersion.Text);
             //Ret &= virtPackage.SetProperty("DataDirName", propertyDataDirName.Text);
             Ret &= virtPackage.SetProperty("StopInheritance", propertyStopInheritance.Text);
+            Ret &= virtPackage.SetProperty("RegMode", cbVolatileRegistry.Checked ? "" : "Extract");
+            virtPackage.SetProperty("LegacyReg", "");   // Deprecated
             if (propertyExpiration.Checked)
                 Ret &= virtPackage.SetProperty("Expiration", propertyExpirationDatePicker.Value.ToString("dd/MM/yyyy"));
             else
