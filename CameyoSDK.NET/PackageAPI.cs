@@ -76,7 +76,6 @@ namespace VirtPackageAPI
         public const int SANDBOXFLAGS_COPY_ON_WRITE = 2;
         public const int SANDBOXFLAGS_STRICTLY_ISOLATED = 3;
 
-        // UI isolation constants:
         public const int ISOLATIONMODE_CUSTOM = 0;
         public const int ISOLATIONMODE_ISOLATED = 1;
         public const int ISOLATIONMODE_FULL_ACCESS = 2;
@@ -1437,25 +1436,57 @@ namespace VirtPackageAPI
         public int GetIsolationMode()
         {
             // Isolation. Note: it is allowed to have no checkbox selected at all.
-            if (GetFileSandbox("") == VirtPackage.SANDBOXFLAGS_COPY_ON_WRITE &&
-                GetRegistrySandbox("") == VirtPackage.SANDBOXFLAGS_COPY_ON_WRITE &&
-                GetFileSandbox("%Personal%") == VirtPackage.SANDBOXFLAGS_PASSTHROUGH &&
-                GetFileSandbox("%Desktop%") == VirtPackage.SANDBOXFLAGS_PASSTHROUGH &&
-                GetFileSandbox("UNC") == VirtPackage.SANDBOXFLAGS_PASSTHROUGH)
-                return ISOLATIONMODE_DATA;
-            else if (GetFileSandbox("") == VirtPackage.SANDBOXFLAGS_COPY_ON_WRITE &&
-                GetRegistrySandbox("") == VirtPackage.SANDBOXFLAGS_COPY_ON_WRITE)
-                return ISOLATIONMODE_ISOLATED;
-            else if (GetFileSandbox("") == VirtPackage.SANDBOXFLAGS_PASSTHROUGH &&
-                GetRegistrySandbox("") == VirtPackage.SANDBOXFLAGS_PASSTHROUGH)
-                return ISOLATIONMODE_FULL_ACCESS;
+            string isolationModeStr = GetProperty("IsolationMode");
+            if (!string.IsNullOrEmpty(isolationModeStr))
+            {
+                if (isolationModeStr.Equals("Data", StringComparison.InvariantCultureIgnoreCase))
+                    return ISOLATIONMODE_DATA;
+                else if (isolationModeStr.Equals("FullAccess", StringComparison.InvariantCultureIgnoreCase))
+                    return ISOLATIONMODE_FULL_ACCESS;
+                else if (isolationModeStr.Equals("Isolated", StringComparison.InvariantCultureIgnoreCase))
+                    return ISOLATIONMODE_ISOLATED;
+                else
+                    return ISOLATIONMODE_CUSTOM;
+            }
             else
-                return ISOLATIONMODE_CUSTOM;
+            {
+                // Legacy (before "IsolationMode" property)
+                if (GetFileSandbox("") == VirtPackage.SANDBOXFLAGS_COPY_ON_WRITE &&
+                    GetRegistrySandbox("") == VirtPackage.SANDBOXFLAGS_COPY_ON_WRITE &&
+                    GetFileSandbox("%Personal%") == VirtPackage.SANDBOXFLAGS_PASSTHROUGH &&
+                    GetFileSandbox("%Desktop%") == VirtPackage.SANDBOXFLAGS_PASSTHROUGH &&
+                    GetFileSandbox("UNC") == VirtPackage.SANDBOXFLAGS_PASSTHROUGH)
+                    return ISOLATIONMODE_DATA;
+                else if (GetFileSandbox("") == VirtPackage.SANDBOXFLAGS_COPY_ON_WRITE &&
+                    GetRegistrySandbox("") == VirtPackage.SANDBOXFLAGS_COPY_ON_WRITE)
+                    return ISOLATIONMODE_ISOLATED;
+                else if (GetFileSandbox("") == VirtPackage.SANDBOXFLAGS_PASSTHROUGH &&
+                    GetRegistrySandbox("") == VirtPackage.SANDBOXFLAGS_PASSTHROUGH)
+                    return ISOLATIONMODE_FULL_ACCESS;
+                else
+                    return ISOLATIONMODE_CUSTOM;
+            }
         }
 
         public void SetIsolationMode(int IsolationMode)
         {
-            uint sandboxMode = 0;
+            switch (IsolationMode)
+            {
+                case ISOLATIONMODE_DATA:
+                    SetProperty("IsolationMode", "Data");
+                    break;
+                case ISOLATIONMODE_ISOLATED:
+                    SetProperty("IsolationMode", "Isolated");
+                    break;
+                case ISOLATIONMODE_FULL_ACCESS:
+                    SetProperty("IsolationMode", "FullAccess");
+                    break;
+                case ISOLATIONMODE_CUSTOM:
+                default:
+                    SetProperty("IsolationMode", "Custom");
+                    break;
+            }
+            /*uint sandboxMode = 0;
             if (IsolationMode == ISOLATIONMODE_ISOLATED || IsolationMode == ISOLATIONMODE_DATA)
                 sandboxMode = VirtPackage.SANDBOXFLAGS_COPY_ON_WRITE;
             else if (IsolationMode == ISOLATIONMODE_FULL_ACCESS)
@@ -1483,7 +1514,7 @@ namespace VirtPackageAPI
                     SetFileSandbox("%Desktop%", sandboxMode);
                     SetFileSandbox("UNC", sandboxMode);
                 }
-            }
+            }*/
         }
 
         static public Hashtable ReadIniSettingsBuf(String iniBuf)

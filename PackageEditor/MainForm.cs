@@ -748,7 +748,7 @@ reask:
                 {
                     string outFilesDir = outDir;
                     xmlOut.WriteStartDocument();
-                    xmlOut.WriteStartElement("ZeroInstallerXml");
+                    xmlOut.WriteStartElement("CameyoPkg");
 
                     // Properties
                     string autoLaunch = virtPackage.GetProperty("AutoLaunch");
