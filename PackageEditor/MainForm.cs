@@ -879,8 +879,8 @@ reask:
             propertyIsolationIsolated.CheckedChanged += propertyIsolationMode_CheckedChanged;
             propertyIsolationMerge.CheckedChanged += propertyIsolationMode_CheckedChanged;
 
-            if (propertyIsolationDataMode.Checked)
-                virtPackage.SetProperty("DataMode", "TRUE");   // Important to be able to switch to Isolated mode (to unisolate %Personal% etc)
+            //if (propertyIsolationDataMode.Checked)
+            //    virtPackage.SetProperty("DataMode", "TRUE");   // Important to be able to switch to Isolated mode (to unisolate %Personal% etc)
 
             propertyIsolationMode_CheckedChanged(null, null);
         }
