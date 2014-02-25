@@ -1486,35 +1486,6 @@ namespace VirtPackageAPI
                     SetProperty("IsolationMode", "Custom");
                     break;
             }
-            /*uint sandboxMode = 0;
-            if (IsolationMode == ISOLATIONMODE_ISOLATED || IsolationMode == ISOLATIONMODE_DATA)
-                sandboxMode = VirtPackage.SANDBOXFLAGS_COPY_ON_WRITE;
-            else if (IsolationMode == ISOLATIONMODE_FULL_ACCESS)
-                sandboxMode = VirtPackage.SANDBOXFLAGS_PASSTHROUGH;
-            if (sandboxMode != 0)
-            {
-                SetFileSandbox("", sandboxMode);
-                SetRegistrySandbox("", sandboxMode);
-            }
-
-            // Do / undo special folders newly / previously set by Data Isolation mode
-            if (IsolationMode == ISOLATIONMODE_DATA)
-            {
-                SetProperty("DataMode", "TRUE");
-                SetFileSandbox("%Personal%", VirtPackage.SANDBOXFLAGS_PASSTHROUGH);
-                SetFileSandbox("%Desktop%", VirtPackage.SANDBOXFLAGS_PASSTHROUGH);
-                SetFileSandbox("UNC", VirtPackage.SANDBOXFLAGS_PASSTHROUGH);
-            }
-            else
-            {
-                if (GetProperty("DataMode") == "TRUE")     // Need to undo special dirs changed by Data Isolation mode (as opposed to set by user)
-                {
-                    SetProperty("DataMode", "FALSE");
-                    SetFileSandbox("%Personal%", sandboxMode);
-                    SetFileSandbox("%Desktop%", sandboxMode);
-                    SetFileSandbox("UNC", sandboxMode);
-                }
-            }*/
         }
 
         static public Hashtable ReadIniSettingsBuf(String iniBuf)
