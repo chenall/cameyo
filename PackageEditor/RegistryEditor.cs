@@ -56,8 +56,8 @@ namespace PackageEditor
 
             fsFolderInfoFullName.Text = "";
             fsFolderInfoIsolationCombo.Text = "";
-            fsFolderInfoIsolationCombo.Items.Add("Full acces");
-            fsFolderInfoIsolationCombo.Items.Add("Isolated");
+            fsFolderInfoIsolationCombo.Items.Add(PackageEditor.Messages.Messages.fullAccess);
+            fsFolderInfoIsolationCombo.Items.Add(PackageEditor.Messages.Messages.isolated);
             fsFolderTree.AfterSelect += OnFolderTreeSelect;
             fsFolderInfoIsolationCombo.SelectionChangeCommitted += OnFolderSandboxChange;
             regRemoveBtn.Click += OnRemoveBtnClick;

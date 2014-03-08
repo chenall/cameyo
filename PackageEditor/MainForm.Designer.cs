@@ -54,10 +54,6 @@
             this.tbValue = new System.Windows.Forms.TextBox();
             this.tbSize = new System.Windows.Forms.TextBox();
             this.tbFile = new System.Windows.Forms.TextBox();
-            this.regFilesList = new PackageEditor.ListViewEx();
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.regFolderInfoIsolationCombo = new System.Windows.Forms.ComboBox();
@@ -89,16 +85,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.propertyFriendlyName = new System.Windows.Forms.TextBox();
             this.propertyAppID = new System.Windows.Forms.TextBox();
+            this.lnkChangeIcon = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
+            this.propertyIcon = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.propertyVirtModeDisk = new System.Windows.Forms.RadioButton();
             this.propertyVirtModeRam = new System.Windows.Forms.RadioButton();
             this.label9 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.lnkAutoLaunch = new System.Windows.Forms.LinkLabel();
             this.propertyAutoLaunch = new System.Windows.Forms.Label();
-            this.lnkChangeIcon = new System.Windows.Forms.LinkLabel();
             this.lnkChangeDataStorage = new System.Windows.Forms.LinkLabel();
             this.propertyDataStorage = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -107,7 +103,6 @@
             this.propertyIsolationIsolated = new System.Windows.Forms.RadioButton();
             this.propertyIsolationMerge = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
-            this.propertyIcon = new System.Windows.Forms.PictureBox();
             this.lblAutoLaunch = new System.Windows.Forms.Label();
             this.dropboxButton = new System.Windows.Forms.Button();
             this.tabFileSystem = new System.Windows.Forms.TabPage();
@@ -167,6 +162,10 @@
             this.panel12 = new System.Windows.Forms.PictureBox();
             this.panel11 = new System.Windows.Forms.PictureBox();
             this.bkPanel = new System.Windows.Forms.Panel();
+            this.regFilesList = new PackageEditor.ListViewEx();
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -183,10 +182,10 @@
             this.tabControl.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.propertyIcon)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.propertyIcon)).BeginInit();
             this.tabFileSystem.SuspendLayout();
             this.panel5.SuspendLayout();
             this.fileToolStrip.SuspendLayout();
@@ -407,38 +406,6 @@
             this.tbFile.Name = "tbFile";
             this.tbFile.ReadOnly = true;
             // 
-            // regFilesList
-            // 
-            this.regFilesList.AllowColumnReorder = true;
-            this.regFilesList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader3,
-            this.columnHeader4,
-            this.columnHeader5});
-            resources.ApplyResources(this.regFilesList, "regFilesList");
-            this.regFilesList.DoubleClickActivation = false;
-            this.regFilesList.FullRowSelect = true;
-            this.regFilesList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            ((System.Windows.Forms.ListViewItem)(resources.GetObject("regFilesList.Items"))),
-            ((System.Windows.Forms.ListViewItem)(resources.GetObject("regFilesList.Items1")))});
-            this.regFilesList.Name = "regFilesList";
-            this.regFilesList.UseCompatibleStateImageBehavior = false;
-            this.regFilesList.View = System.Windows.Forms.View.Details;
-            this.regFilesList.SubItemClicked += new PackageEditor.SubItemEventHandler(this.regFilesList_SubItemClicked);
-            this.regFilesList.SubItemEndEditing += new PackageEditor.SubItemEndEditingEventHandler(this.regFilesList_SubItemEndEditing);
-            this.regFilesList.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.regFilesList_ColumnClick);
-            // 
-            // columnHeader3
-            // 
-            resources.ApplyResources(this.columnHeader3, "columnHeader3");
-            // 
-            // columnHeader4
-            // 
-            resources.ApplyResources(this.columnHeader4, "columnHeader4");
-            // 
-            // columnHeader5
-            // 
-            resources.ApplyResources(this.columnHeader5, "columnHeader5");
-            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.panel6);
@@ -615,7 +582,9 @@
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.propertyFriendlyName);
             this.groupBox3.Controls.Add(this.propertyAppID);
+            this.groupBox3.Controls.Add(this.lnkChangeIcon);
             this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Controls.Add(this.propertyIcon);
             resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
@@ -648,26 +617,36 @@
             this.propertyAppID.Name = "propertyAppID";
             this.propertyAppID.TextChanged += new System.EventHandler(this.PropertyChange);
             // 
+            // lnkChangeIcon
+            // 
+            resources.ApplyResources(this.lnkChangeIcon, "lnkChangeIcon");
+            this.lnkChangeIcon.Name = "lnkChangeIcon";
+            this.lnkChangeIcon.TabStop = true;
+            this.lnkChangeIcon.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkChangeIcon_LinkClicked);
+            // 
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
+            // 
+            // propertyIcon
+            // 
+            resources.ApplyResources(this.propertyIcon, "propertyIcon");
+            this.propertyIcon.Name = "propertyIcon";
+            this.propertyIcon.TabStop = false;
             // 
             // groupBox1
             // 
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.groupBox8);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.lnkAutoLaunch);
             this.groupBox1.Controls.Add(this.propertyAutoLaunch);
-            this.groupBox1.Controls.Add(this.lnkChangeIcon);
             this.groupBox1.Controls.Add(this.lnkChangeDataStorage);
             this.groupBox1.Controls.Add(this.propertyDataStorage);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.propertyIcon);
             this.groupBox1.Controls.Add(this.lblAutoLaunch);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
@@ -701,11 +680,6 @@
             resources.ApplyResources(this.label9, "label9");
             this.label9.Name = "label9";
             // 
-            // label6
-            // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.Name = "label6";
-            // 
             // lnkAutoLaunch
             // 
             resources.ApplyResources(this.lnkAutoLaunch, "lnkAutoLaunch");
@@ -717,13 +691,6 @@
             // 
             resources.ApplyResources(this.propertyAutoLaunch, "propertyAutoLaunch");
             this.propertyAutoLaunch.Name = "propertyAutoLaunch";
-            // 
-            // lnkChangeIcon
-            // 
-            resources.ApplyResources(this.lnkChangeIcon, "lnkChangeIcon");
-            this.lnkChangeIcon.Name = "lnkChangeIcon";
-            this.lnkChangeIcon.TabStop = true;
-            this.lnkChangeIcon.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkChangeIcon_LinkClicked);
             // 
             // lnkChangeDataStorage
             // 
@@ -779,12 +746,6 @@
             // 
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            // 
-            // propertyIcon
-            // 
-            resources.ApplyResources(this.propertyIcon, "propertyIcon");
-            this.propertyIcon.Name = "propertyIcon";
-            this.propertyIcon.TabStop = false;
             // 
             // lblAutoLaunch
             // 
@@ -1108,6 +1069,8 @@
             // 
             resources.ApplyResources(this.pictureBox2, "pictureBox2");
             this.pictureBox2.Image = global::PackageEditor.Properties.Resources._071;
+            this.pictureBox2.MaximumSize = new System.Drawing.Size(383, 318);
+            this.pictureBox2.MinimumSize = new System.Drawing.Size(383, 318);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.TabStop = false;
             // 
@@ -1214,6 +1177,38 @@
             resources.ApplyResources(this.bkPanel, "bkPanel");
             this.bkPanel.Name = "bkPanel";
             // 
+            // regFilesList
+            // 
+            this.regFilesList.AllowColumnReorder = true;
+            this.regFilesList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5});
+            resources.ApplyResources(this.regFilesList, "regFilesList");
+            this.regFilesList.DoubleClickActivation = false;
+            this.regFilesList.FullRowSelect = true;
+            this.regFilesList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            ((System.Windows.Forms.ListViewItem)(resources.GetObject("regFilesList.Items"))),
+            ((System.Windows.Forms.ListViewItem)(resources.GetObject("regFilesList.Items1")))});
+            this.regFilesList.Name = "regFilesList";
+            this.regFilesList.UseCompatibleStateImageBehavior = false;
+            this.regFilesList.View = System.Windows.Forms.View.Details;
+            this.regFilesList.SubItemClicked += new PackageEditor.SubItemEventHandler(this.regFilesList_SubItemClicked);
+            this.regFilesList.SubItemEndEditing += new PackageEditor.SubItemEndEditingEventHandler(this.regFilesList_SubItemEndEditing);
+            this.regFilesList.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.regFilesList_ColumnClick);
+            // 
+            // columnHeader3
+            // 
+            resources.ApplyResources(this.columnHeader3, "columnHeader3");
+            // 
+            // columnHeader4
+            // 
+            resources.ApplyResources(this.columnHeader4, "columnHeader4");
+            // 
+            // columnHeader5
+            // 
+            resources.ApplyResources(this.columnHeader5, "columnHeader5");
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
@@ -1254,13 +1249,13 @@
             this.tabGeneral.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.propertyIcon)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.propertyIcon)).EndInit();
             this.tabFileSystem.ResumeLayout(false);
             this.tabFileSystem.PerformLayout();
             this.panel5.ResumeLayout(false);
@@ -1323,7 +1318,6 @@
         private System.Windows.Forms.TextBox propertyAppID;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.LinkLabel lnkAutoLaunch;
         private System.Windows.Forms.Label propertyAutoLaunch;
         private System.Windows.Forms.LinkLabel lnkChangeIcon;
