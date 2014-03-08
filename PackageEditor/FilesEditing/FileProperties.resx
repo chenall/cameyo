@@ -121,29 +121,29 @@
   <data name="pictureBox2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAANf7bzMYAQAAACBjSFJNAABs
-        mwAAcm8AAPauAACFgwAAbvcAAOhBAAAxdAAAF2yhti2bAAAACXBIWXMAAAsPAAALDwGS+QOlAAADPklE
-        QVQ4T2VTa0uTYRge0Ycggr7WF/sJ+qEsc+bUjFh4SBM7GGVO23RuTtx04vYq2szDmvOYTVRmai7tg7k5
-        NYan1BQlTxthTZ2kpgmxDELh6n7fSKxuuHmel+e5rue+r/t6eTyKmJiYqPArV55ci4x8q1KpvjP5DEZG
-        huFyubDq8UCcmoqo69G4/yDRG3iJ7wgLD38SRRgWy8vJzXXzg4Jw9tw56A0GzM/NYXR0BHZ7L9Y/r2Nn
-        ZwfTU1MYHh6Cx7OKkrIyEAH8L5wHi+VJpWnosfbAoNejuFiHykojZRXK6GJbezs6LBZutbx8id7eXtQ/
-        fcrdsdqsECWLwAu7fHlGo9VgYmIcKyvLcLvdWKZ1cvId7T9hdvY9pmemMUO59HEJGxvr2NzchMlkQpAg
-        eIYnFAoDUpKTMTQ0iJ97e9jb34eTeu981YWCokJkKDOhUuegqbkRs/Nz3PmP3V2UlpZCGBkZwOlwkX/R
-        fSM2FrnZ2VArlShgGBipzLR0KZJESUgRP0SGXAYpiVmg0SBDJsNVodDNgTmCwECHUqVEPgE7qWdrdzeX
-        dTU1YLRaZGZlgqEzy4sXeNPfh2fP6hEdE+04IIiIiGBEIhGMFRX4ur2NLhIsKysLXq8XjkEHpPRidk4O
-        tqj3zo4ONDY2Il0uZw4IfH19o8RiMV6/7sZjnQ6f19bAhrm5GTqajK6kGNU11ZBRS2w0NJjADw7+7QM2
-        4uPjz0gkYuTl5eGDy0nzX4Opvp6IPOjq6oSCWtBXGLgKKqlKi6UDarXa94CA3dxNSEBbWyv67XaMkZEG
-        +vvhXFzkCDSMFmXkk+dmM1eBmqbyF5j9YDWoq6vDQF8fFmhcLqcT1p4ebhqFuiJUUQt2mw3mpiZOq38J
-        jghCQiCXywm4yGnAiri6vEyWtiFFIoGBQM6FeZjIiaGhISzB0cMkx/l8vq2EzNHS3ITa6ipOQBtZvPBR
-        Ee4lJSGR/NDaYqYfzIm4+DgbgU9SHvlDcszf319Ar37b+rKJ3e9ejI2PoZZek2UqIE6TwFhl5BxII/4m
-        EAhCCXjivzZ8fHxOkZi6Ai2zoi8vh0KhwJ2EO7h5+xbEkodzMqm02M/P7/Th8n8BYhxIH6BtB3gAAAAA
-        SUVORK5CYII=
+        mwAAcm8AAPauAACFgwAAbvcAAOhBAAAxdAAAF2yhti2bAAAACXBIWXMAAAsOAAALDgFAvuFBAAADRUlE
+        QVQ4T0WT7UtTYRjGD9KHIIK+1hf7E/RDWerM+Rax8CUrrDR6cdqma3PiphO3k2gztTXnS2YTlZmWS/tg
+        25wWw7fUFCXfNqKaOkktE2IZhMHVfc5GXvBwDpzn9zz3fd3XYTilp6enJp09++h8Sso7tVr9i73HYmxs
+        FB6PB2s+HyR5eUi9kIabt2/5o88IXAlJSY9SieHhktJSryAmBidOnoTBaMTiwgLGx8fgdA5g4+sGdnZ2
+        MDszg9HREfh8a6iurQUdgIjTp8CxjEyWD5vdBqPBgKoqPerrTbQaUEsbu58/R4/Vyj+tL19iYGAALU+e
+        8HvsDjvEOWIwCYmJc1qdFlNTk1hdXYHX68UKPaen39P7F8zPf8Ds3CzmaH36/AmbmxvY2tqC2WxGjDB2
+        jhGJRJG5OTkYGRnGn7097P39Czf13vuqD+WVFShQFUKtKUF7RxvmFxf47793d1FTUwNRSkok70OUIMp7
+        6eJFlBYXQ6NSoZxlYaIy8+/KkC3ORq7kDgoUcsjIzHKtFgVyOc6JRF4e5hQVHe1SqVW4R2Av9Wzv7+dX
+        c1MTWJ0OhUWFYOmb9cULvB0axNOnLUhLT3MFcYZJTk5mxWIxTHV1+LG9jT4yrKioCH6/H65hF2R0Y3FJ
+        Cb5T7709PWhra8NdhYIN4gwTFhaWKpFI8Pp1Px7o9fi6vg5Olo4O6Gky+uoqNDY1Qk4tcWptNUMQGxvI
+        AaeMjIzjUqkEZWVl+Ohx0/zXYW5poYN86OvrhZJaMNQZ+QrqqUqrtQcajSYsiAd0PSsL3d1dGHI6MUFB
+        ejM0BPfyMn+AltWhlnLyzGLhK9DQVILYvjgPmpub8WZwEEs0Lo/bDbvNxk+jQl+JBmrB6XDA0t7OexXE
+        /itEGBcHhUJB4DLvAWfi2soKRdqBXKkURoLcS4swUxLj4+O4Aw4E0IAOCQQCRzWFo7OjHY8bG3gDHRTx
+        ivuVuJGdjVuUh65OC/1gblzOuOwg5gitEJ4mHYyIiBDSrT+/f9vC7i8/JiYn8JhukxcqIcmXwtRg4hNI
+        I/4pFArjiTkcQPcVEhoaepTM1Jfr2FXDw4dQKpXIzMrElWtXIZHeWZDLZFXh4eHHaG+wfIb5B2IcSB9l
+        Lc+QAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="pictureBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 55</value>
+    <value>9, 51</value>
   </data>
   <data name="pictureBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>16, 16</value>
+    <value>16, 15</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="pictureBox2.TabIndex" type="System.Int32, mscorlib">
@@ -164,23 +164,23 @@
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAANf7bzMYAQAAACBjSFJNAABs
-        mwAAcm8AAPauAACFgwAAbvcAAOhBAAAxdAAAF2yhti2bAAAACXBIWXMAAAsPAAALDwGS+QOlAAAB4ElE
-        QVQ4T2NgQAMd60P+48LoarHyW1YF/r/29Mj/2y9Ow/Gt5yf+d6wJ/U+UAQ1Lff4vP9bwf+2pDjhedbz5
-        P0icKAOq57v9n3eg9P+Sw7VwvOhQ1X+QOFEGlMxw/D9tR+b/WXvz4XjGrpz/IHGiDMibZPW/Z1PM/wlb
-        Ev9P3JIEpvs3x/8HiRNlQHq3yf+8uaYYGCSO1YDEZr0P6Z2G/5NbDf4D2f/Teg3+Z88wwsAgcZB8cpvB
-        /7QOQxD7W1KLvg1DXK2GZVy95sfu9eH/O9dE/K9f5vM/faouBq5b6v2/c13Ef5C6uAbNb5HVajZwF4WW
-        yFtGVqp+rFhg+T99is7/5ImaGDh9qs7/igVW/yMqVb+FlishNMNM8SmQtgwulv9YudDif8okjf8JfWpw
-        nDpZ83/lIsv/wcVy33xzJexxBqZHupilf67Ux+olVv8T+9X+x3Yr/U+aoPa/Bsj3y5X67pkqglszzFTn
-        JCFLrwyxj7XLrP6nAW0G0R7pot9cEwUIa4YZYh/Ha+maKgQ0xPK/c5Lgd8dIHoKaGYGamYGYFYg5gJjb
-        0IPD2Sac84WRJ7svkM8LEoPKgdSA1IL0wAFIgAuIBYBYEogVgFidU5jBDEjrALEaVEwCqoYTaggDAPrB
-        G8IyJqFyAAAAAElFTkSuQmCC
+        mwAAcm8AAPauAACFgwAAbvcAAOhBAAAxdAAAF2yhti2bAAAACXBIWXMAAAsOAAALDgFAvuFBAAAB6ElE
+        QVQ4T2NABx3rQ/7jwlAl+EHLqsD/154e+X/7xWk4vvX8xP+ONaHEGdCw1Of/8mMN/9ee6oDjVceb/4PE
+        oUrwg+r5bv/nHSj9v+RwLRwvOlT1HyQOVYIflMxw/D9tR+b/WXvz4XjGrpz/IHGoEvwgb5LV/55NMf8n
+        bEn8P3FLEpju3xz/HyQOVYIfpHeb/M+ba4qBQeJQJaggsVnvQ3qn4f/kVoP/QPb/tF6D/9kzjDAwSBwk
+        n9xm8D+twxDE/pbUom/DEFerYRlXr/mxe334/841Ef/rl/n8T5+qi4Hrlnr/71wX8R+kLq5B81tktZoN
+        1A0MDKEl8paRlaofKxZY/k+fovM/eaImBk6fqvO/YoHV/4hK1W+h5UoIzTDgUyBtGVws/7FyocX/lEka
+        /xP61OA4dbLm/8pFlv+Di+W++eZK2EO1YAKPdDFL/1ypj9VLrP4n9qv9j+1W+p80Qe1/DZDvlyv13TNV
+        BLdmGHBOErL0yhD7WLvM6n8a0GYQ7ZEu+s01UYCwZhiwj+O1dE0VAhpi+d85SfC7YyQPQc2MQMwMxKxA
+        zAHE3IYeHM424ZwvjDzZfYF8XpAYVA6kBqQWpAcOQAJcQCwAxJJArADE6pzCDGZAWgeI1aBiEkAMUsMJ
+        xEA9DAwA+sEbwvVu9XYAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 38</value>
+    <value>9, 35</value>
   </data>
   <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>16, 16</value>
+    <value>16, 15</value>
   </data>
   <data name="pictureBox1.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -202,10 +202,10 @@
     <value>Top, Left, Right</value>
   </data>
   <data name="tbFullPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 19</value>
+    <value>9, 18</value>
   </data>
   <data name="tbFullPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>421, 13</value>
+    <value>421, 14</value>
   </data>
   <data name="tbFullPath.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -226,10 +226,10 @@
     <value>True</value>
   </data>
   <data name="chkFileFlagDEPLOYED.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 38</value>
+    <value>31, 35</value>
   </data>
   <data name="chkFileFlagDEPLOYED.Size" type="System.Drawing.Size, System.Drawing">
-    <value>266, 17</value>
+    <value>330, 15</value>
   </data>
   <data name="chkFileFlagDEPLOYED.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -253,10 +253,10 @@
     <value>True</value>
   </data>
   <data name="chkFileFlagDELETED.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 55</value>
+    <value>31, 51</value>
   </data>
   <data name="chkFileFlagDELETED.Size" type="System.Drawing.Size, System.Drawing">
-    <value>246, 17</value>
+    <value>306, 15</value>
   </data>
   <data name="chkFileFlagDELETED.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -280,10 +280,10 @@
     <value>Top</value>
   </data>
   <data name="groupBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 10</value>
+    <value>10, 9</value>
   </data>
   <data name="groupBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>438, 78</value>
+    <value>438, 72</value>
   </data>
   <data name="groupBox.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -307,10 +307,10 @@
     <value>Bottom, Right</value>
   </data>
   <data name="buttonOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>264, 97</value>
+    <value>264, 90</value>
   </data>
   <data name="buttonOK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 26</value>
+    <value>88, 24</value>
   </data>
   <data name="buttonOK.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -334,10 +334,10 @@
     <value>Bottom, Right</value>
   </data>
   <data name="buttonCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>358, 97</value>
+    <value>358, 90</value>
   </data>
   <data name="buttonCancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 26</value>
+    <value>88, 24</value>
   </data>
   <data name="buttonCancel.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -364,10 +364,10 @@
     <value>False</value>
   </data>
   <data name="chkFileFlagISFILE.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 113</value>
+    <value>13, 104</value>
   </data>
   <data name="chkFileFlagISFILE.Size" type="System.Drawing.Size, System.Drawing">
-    <value>109, 17</value>
+    <value>144, 16</value>
   </data>
   <data name="chkFileFlagISFILE.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -394,10 +394,10 @@
     <value>True</value>
   </data>
   <data name="chkFileFlagPKG_FILE.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 108</value>
+    <value>19, 100</value>
   </data>
   <data name="chkFileFlagPKG_FILE.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 17</value>
+    <value>192, 16</value>
   </data>
   <data name="chkFileFlagPKG_FILE.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -427,10 +427,10 @@
     <value>False</value>
   </data>
   <data name="chkFileFlagDISCONNECTED.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 104</value>
+    <value>30, 96</value>
   </data>
   <data name="chkFileFlagDISCONNECTED.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 17</value>
+    <value>216, 16</value>
   </data>
   <data name="chkFileFlagDISCONNECTED.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -457,13 +457,13 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+    <value>6, 12</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>458, 130</value>
+    <value>458, 120</value>
   </data>
   <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 10, 10, 10</value>
+    <value>10, 9, 10, 9</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>

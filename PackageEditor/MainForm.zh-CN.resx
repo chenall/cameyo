@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="$this.Text" xml:space="preserve">
-    <value>程序包编辑器 V2.1</value>
+    <value>程序包编辑器 2.1</value>
   </data>
   <data name="chkCleanAsk.Text" xml:space="preserve">
     <value>删除前确认</value>
