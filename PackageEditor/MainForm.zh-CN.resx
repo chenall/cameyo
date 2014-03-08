@@ -244,7 +244,7 @@
     <value>例子：“iexplore.exe;myapp.exe”</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
-    <value>工作室</value>
+    <value>工作模式</value>
   </data>
   <data name="langToolStripMenuItem.Text" xml:space="preserve">
     <value>语言(&amp;L)</value>
