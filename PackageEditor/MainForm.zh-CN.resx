@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="$this.Text" xml:space="preserve">
-    <value>程序包编辑器</value>
+    <value>程序包编辑器 V2.6</value>
   </data>
   <data name="chkCleanAsk.Text" xml:space="preserve">
     <value>删除前确认</value>
@@ -154,13 +154,13 @@
     <value>发布</value>
   </data>
   <data name="englishMenuItem.Text" xml:space="preserve">
-    <value>英语</value>
+    <value>English</value>
   </data>
   <data name="exitToolStripMenuItem.Text" xml:space="preserve">
     <value>退出(&amp;X)</value>
   </data>
   <data name="exportAsZeroInstallerXmlToolStripMenuItem.Text" xml:space="preserve">
-    <value>导出为ZeroInstaller XML(&amp;E)</value>
+    <value>导出为XML(&amp;E)</value>
   </data>
   <data name="fileContextMenuDelete.Text" xml:space="preserve">
     <value>删除</value>
@@ -187,7 +187,7 @@
     <value>添加空文件夹</value>
   </data>
   <data name="fsFolderInfoIsolationLbl.Text" xml:space="preserve">
-    <value>文件夹隔离</value>
+    <value>文件系统访问</value>
   </data>
   <data name="fsRemoveBtn.Text" xml:space="preserve">
     <value>删除</value>
@@ -205,28 +205,28 @@
     <value>扩展属性</value>
   </data>
   <data name="groupBox5.Text" xml:space="preserve">
-    <value>高级</value>
+    <value>扩展高级功能（完整功能需授权）</value>
   </data>
   <data name="groupBox6.Text" xml:space="preserve">
     <value>时间限制</value>
   </data>
   <data name="groupBox7.Text" xml:space="preserve">
-    <value>删除应用程序痕迹</value>
+    <value>应用程序数据处理</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>程序名:</value>
+    <value>应用名(AppID):</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
-    <value>文件版本：</value>
+    <value>应用版本：</value>
   </data>
   <data name="label11.Text" xml:space="preserve">
     <value>最近编辑</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>说明：</value>
+    <value>应用介绍：</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
-    <value>隔离：</value>
+    <value>注册表访问：</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>安全模式：</value>
@@ -238,7 +238,7 @@
     <value>图标：</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
-    <value>在虚拟机外执行子程序:</value>
+    <value>在虚拟进程外执行的程序:</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
     <value>例子：“iexplore.exe;myapp.exe”</value>
@@ -265,7 +265,7 @@
     <value>自定义事件</value>
   </data>
   <data name="lnkPackageEdit.Text" xml:space="preserve">
-    <value>打开已经存在的虚拟程序包</value>
+    <value>打开其它Cameyo虚拟应用程序包</value>
   </data>
   <data name="newToolStripMenuItem.Text" xml:space="preserve">
     <value>创建新的虚拟程序包(&amp;N)</value>
@@ -274,7 +274,7 @@
     <value>打开虚拟程序包(&amp;O)</value>
   </data>
   <data name="propertyExpiration.Text" xml:space="preserve">
-    <value>终止日期</value>
+    <value>过期时间</value>
   </data>
   <data name="propertyIsolationDataMode.Text" xml:space="preserve">
     <value>数据模式：应用程序只能存储文件到我的文档，桌面和网络硬盘</value>
@@ -322,13 +322,13 @@
     <value>西班牙语</value>
   </data>
   <data name="tabAdvanced.Text" xml:space="preserve">
-    <value>高级</value>
+    <value>高级设置</value>
   </data>
   <data name="tabFileSystem.Text" xml:space="preserve">
-    <value>文件</value>
+    <value>文件系统</value>
   </data>
   <data name="tabGeneral.Text" xml:space="preserve">
-    <value>常规</value>
+    <value>基本设置</value>
   </data>
   <data name="tabRegistry.Text" xml:space="preserve">
     <value>注册表</value>
@@ -340,16 +340,16 @@
     <value>导出为注册表文件(&amp;E)</value>
   </data>
   <data name="groupBox4.Text" xml:space="preserve">
-    <value>集成</value>
+    <value>集成到系统中</value>
   </data>
   <data name="rdbIntegrateNone.Text" xml:space="preserve">
-    <value>不集成</value>
+    <value>不集成（不对系统进行任何改变）</value>
   </data>
   <data name="rdbIntegrateStandard.Text" xml:space="preserve">
-    <value>重建快捷方式和关联</value>
+    <value>重建快捷方式和文件关联（自动添加应用程序的快捷方式和文件关联）</value>
   </data>
   <data name="rdbIntegrateVirtual.Text" xml:space="preserve">
-    <value>虚拟集成：添加虚拟层到Windows资源管理器</value>
+    <value>虚拟集成: 添加虚拟层到Windows资源管理器（深度集成，就像是已经安装到系统中一样）</value>
   </data>
   <data name="chineseMenuItem.Text" xml:space="preserve">
     <value>简体中文</value>
@@ -359,5 +359,26 @@
   </data>
   <data name="propertyVirtModeRam.Text" xml:space="preserve">
     <value>内存模式: 直接从内存运行,不释放文件到硬盘上.</value>
+  </data>
+  <data name="cbDatFile.Text" xml:space="preserve">
+    <value>将数据包保存为.DAT，和启动程序分开（超过2 GB的应用建议启用）</value>
+  </data>
+  <data name="cbVolatileRegistry.Text" xml:space="preserve">
+    <value>Volatile virtual registry</value>
+  </data>
+  <data name="exportXmlToolStripMenuItem.Text" xml:space="preserve">
+    <value>导出为XML格式(&amp;E)</value>
+  </data>
+  <data name="lnkAutoUpdate.Text" xml:space="preserve">
+    <value>自动更新</value>
+  </data>
+  <data name="lnkUpgrade.Text" xml:space="preserve">
+    <value>升级到企业版/开发版（解锁高级功能）</value>
+  </data>
+  <data name="propertyDisplayLogo.Text" xml:space="preserve">
+    <value>显示 Cameyo 标志</value>
+  </data>
+  <data name="propertyScmDirect.Text" xml:space="preserve">
+    <value>允许在本地系统创建服务信息（部份虚拟进程需要在系统中安装启动服务）</value>
   </data>
 </root>
