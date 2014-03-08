@@ -492,6 +492,7 @@ namespace PackageEditor
             propertyFriendlyName.Text = virtPackage.GetProperty("FriendlyName");
             //propertyFriendlyName.TextChanged += PropertyChange;
 
+            propertyFileVersion.Text = virtPackage.GetProperty("Version");
             // AutoLaunch
             //FillAutoLaunchCombo(propertyAutoLaunch);
             DisplayAutoLaunch();
@@ -641,6 +642,7 @@ namespace PackageEditor
             Ret &= virtPackage.SetProperty("AppID", propertyAppID.Text);
             Ret &= virtPackage.SetProperty("FriendlyName", propertyFriendlyName.Text);
             Ret &= virtPackage.SetProperty("StopInheritance", propertyStopInheritance.Text);
+            Ret &= virtPackage.SetProperty("Version", propertyFileVersion.Text);
             if (propertyExpiration.Checked)
                 Ret &= virtPackage.SetProperty("Expiration", propertyExpirationDatePicker.Value.ToString("dd/MM/yyyy"));
             else

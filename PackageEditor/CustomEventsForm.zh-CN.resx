@@ -124,7 +124,7 @@
     <value>等待程序结束</value>
   </data>
   <data name="btnAddSave.Text" xml:space="preserve">
-    <value>添加(&amp;A)</value>
+    <value>添加&amp;保存(&amp;A)</value>
   </data>
   <data name="btnCancel.Text" xml:space="preserve">
     <value>取消(&amp;C)</value>
@@ -133,16 +133,28 @@
     <value>确定(&amp;O)</value>
   </data>
   <data name="comboBox.Items" xml:space="preserve">
-    <value>启动(非虚拟化)</value>
+    <value>应用启动时(非虚拟化)</value>
   </data>
   <data name="comboBox.Items1" xml:space="preserve">
-    <value>启动(虚拟化)</value>
+    <value>应用启动时(虚拟化)</value>
   </data>
   <data name="comboBox.Items2" xml:space="preserve">
-    <value>停止（虚拟化）</value>
+    <value>应用停止时（虚拟化）</value>
   </data>
   <data name="comboBox.Items3" xml:space="preserve">
-    <value>停止（非虚拟化）</value>
+    <value>应用停止时（非虚拟化）</value>
+  </data>
+  <data name="comboBox.Items4" xml:space="preserve">
+    <value>On process start (virtualized)</value>
+  </data>
+  <data name="comboBox.Items5" xml:space="preserve">
+    <value>On process start (unvirtualized)</value>
+  </data>
+  <data name="comboBox.Items6" xml:space="preserve">
+    <value>On process stop (virtualized)</value>
+  </data>
+  <data name="comboBox.Items7" xml:space="preserve">
+    <value>On process stop (unvirtualized)</value>
   </data>
   <data name="enterCommand" xml:space="preserve">
     <value>请输入要执行的命令</value>

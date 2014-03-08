@@ -121,7 +121,7 @@
     <value>程序包浏览器</value>
   </data>
   <data name="btnCancel.Text" xml:space="preserve">
-    <value />
+    <value>取消</value>
   </data>
   <data name="btnOk.Text" xml:space="preserve">
     <value>确定</value>
