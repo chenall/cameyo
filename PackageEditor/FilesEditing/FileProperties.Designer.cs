@@ -30,6 +30,7 @@
     {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FileProperties));
             this.groupBox = new System.Windows.Forms.GroupBox();
+            this.chkFileFlagDEPLOYED_RAM = new System.Windows.Forms.CheckBox();
             this.tbFullPath = new System.Windows.Forms.TextBox();
             this.chkFileFlagDEPLOYED = new System.Windows.Forms.CheckBox();
             this.chkFileFlagDELETED = new System.Windows.Forms.CheckBox();
@@ -38,7 +39,6 @@
             this.chkFileFlagISFILE = new System.Windows.Forms.CheckBox();
             this.chkFileFlagPKG_FILE = new System.Windows.Forms.CheckBox();
             this.chkFileFlagDISCONNECTED = new System.Windows.Forms.CheckBox();
-            this.chkFileFlagDEPLOYED_RAM = new System.Windows.Forms.CheckBox();
             this.groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,6 +51,12 @@
             resources.ApplyResources(this.groupBox, "groupBox");
             this.groupBox.Name = "groupBox";
             this.groupBox.TabStop = false;
+            // 
+            // chkFileFlagDEPLOYED_RAM
+            // 
+            resources.ApplyResources(this.chkFileFlagDEPLOYED_RAM, "chkFileFlagDEPLOYED_RAM");
+            this.chkFileFlagDEPLOYED_RAM.Name = "chkFileFlagDEPLOYED_RAM";
+            this.chkFileFlagDEPLOYED_RAM.UseVisualStyleBackColor = true;
             // 
             // tbFullPath
             // 
@@ -102,12 +108,6 @@
             resources.ApplyResources(this.chkFileFlagDISCONNECTED, "chkFileFlagDISCONNECTED");
             this.chkFileFlagDISCONNECTED.Name = "chkFileFlagDISCONNECTED";
             this.chkFileFlagDISCONNECTED.UseVisualStyleBackColor = true;
-            // 
-            // chkFileFlagDEPLOYED_RAM
-            // 
-            resources.ApplyResources(this.chkFileFlagDEPLOYED_RAM, "chkFileFlagDEPLOYED_RAM");
-            this.chkFileFlagDEPLOYED_RAM.Name = "chkFileFlagDEPLOYED_RAM";
-            this.chkFileFlagDEPLOYED_RAM.UseVisualStyleBackColor = true;
             // 
             // FileProperties
             // 

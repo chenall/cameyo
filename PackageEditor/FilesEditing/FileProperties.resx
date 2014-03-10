@@ -127,10 +127,10 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="chkFileFlagDEPLOYED_RAM.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 57</value>
+    <value>9, 53</value>
   </data>
   <data name="chkFileFlagDEPLOYED_RAM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 17</value>
+    <value>276, 15</value>
   </data>
   <data name="chkFileFlagDEPLOYED_RAM.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -154,10 +154,10 @@
     <value>Top, Left, Right</value>
   </data>
   <data name="tbFullPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 19</value>
+    <value>9, 18</value>
   </data>
   <data name="tbFullPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>421, 13</value>
+    <value>421, 14</value>
   </data>
   <data name="tbFullPath.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -178,10 +178,10 @@
     <value>True</value>
   </data>
   <data name="chkFileFlagDEPLOYED.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 39</value>
+    <value>9, 36</value>
   </data>
   <data name="chkFileFlagDEPLOYED.Size" type="System.Drawing.Size, System.Drawing">
-    <value>222, 17</value>
+    <value>282, 15</value>
   </data>
   <data name="chkFileFlagDEPLOYED.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -205,10 +205,10 @@
     <value>True</value>
   </data>
   <data name="chkFileFlagDELETED.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 75</value>
+    <value>9, 69</value>
   </data>
   <data name="chkFileFlagDELETED.Size" type="System.Drawing.Size, System.Drawing">
-    <value>246, 17</value>
+    <value>306, 15</value>
   </data>
   <data name="chkFileFlagDELETED.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -232,10 +232,10 @@
     <value>Top</value>
   </data>
   <data name="groupBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 10</value>
+    <value>10, 9</value>
   </data>
   <data name="groupBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>438, 97</value>
+    <value>438, 90</value>
   </data>
   <data name="groupBox.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -259,10 +259,10 @@
     <value>Bottom, Right</value>
   </data>
   <data name="buttonOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>264, 113</value>
+    <value>264, 104</value>
   </data>
   <data name="buttonOK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 26</value>
+    <value>88, 24</value>
   </data>
   <data name="buttonOK.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -286,10 +286,10 @@
     <value>Bottom, Right</value>
   </data>
   <data name="buttonCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>358, 113</value>
+    <value>358, 104</value>
   </data>
   <data name="buttonCancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 26</value>
+    <value>88, 24</value>
   </data>
   <data name="buttonCancel.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -316,10 +316,10 @@
     <value>False</value>
   </data>
   <data name="chkFileFlagISFILE.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 122</value>
+    <value>10, 113</value>
   </data>
   <data name="chkFileFlagISFILE.Size" type="System.Drawing.Size, System.Drawing">
-    <value>109, 17</value>
+    <value>144, 16</value>
   </data>
   <data name="chkFileFlagISFILE.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -346,10 +346,10 @@
     <value>True</value>
   </data>
   <data name="chkFileFlagPKG_FILE.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 117</value>
+    <value>16, 108</value>
   </data>
   <data name="chkFileFlagPKG_FILE.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 17</value>
+    <value>192, 16</value>
   </data>
   <data name="chkFileFlagPKG_FILE.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -379,10 +379,10 @@
     <value>False</value>
   </data>
   <data name="chkFileFlagDISCONNECTED.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 113</value>
+    <value>27, 104</value>
   </data>
   <data name="chkFileFlagDISCONNECTED.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 17</value>
+    <value>216, 16</value>
   </data>
   <data name="chkFileFlagDISCONNECTED.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -409,13 +409,13 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+    <value>6, 12</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>458, 146</value>
+    <value>458, 135</value>
   </data>
   <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 10, 10, 10</value>
+    <value>10, 9, 10, 9</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
