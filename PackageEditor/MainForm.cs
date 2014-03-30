@@ -216,6 +216,22 @@ namespace PackageEditor
             closeToolStripMenuItem.Enabled = enable;
 
             // Developers, please respect copyright restrictions!
+            String Ver = System.IO.Directory.GetCurrentDirectory();
+            Ver = Ver.Substring(Ver.Length-3,1);
+
+            if (VirtPackage.PkgVer == 1)
+            {
+                lnkAutoUpdate.Visible = false;
+                propertyDisplayLogo.Visible = false;
+                lblNotCommercial.Visible = false;
+                lnkUpgrade.Visible = false;
+                cbDatFile.Visible = false;
+                cbVolatileRegistry.Visible = false;
+                lnkActiveDirectory.Visible = false;
+                propertyProt.Visible = false;
+                lnkCustomEvents.Visible = true;
+                return;
+            }
             int licenseType = VirtPackage.LicDataLoadFromFile(null);
             if (licenseType < VirtPackage.LICENSETYPE_DEV)
             {
@@ -287,8 +303,8 @@ namespace PackageEditor
             {
                 if (displayWaitMsg)   // Hide progress window
                     PleaseWait.PleaseWaitEnd();     // Otherwise it'll hide our below MessageBox
-                if (MessageBox.Show("This package was built with an older version and needs to be converted.\nConvert now?",
-                    "Conversion required", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                if (MessageBox.Show("当前虚拟化包是旧版(V2.0.890或以前)的,是否要转换为新版?",
+                    "程序包升级", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                 {
                     int exitCode = 0;
                     if (displayWaitMsg)   // Restore progress window
@@ -332,6 +348,11 @@ namespace PackageEditor
                     else
                         MessageBox.Show("Error converting package! " + exitCode);
                 }
+                else {
+                    VirtPackage.PkgVer = 1;
+                    ret = virtPackage.Open(packageExeFile, out apiRet);
+                }
+
             }
 
             if (ret)
@@ -452,6 +473,7 @@ namespace PackageEditor
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             string packageEditor = resources.GetString("$this.Text");
+            packageEditor += (VirtPackage.PkgVer == 1 ? " V1.x " : " V2.x ");
             if (isElevatedProcess)
                 packageEditor += " (Admin)";
             if (virtPackage != null && virtPackage.opened && !string.IsNullOrEmpty(virtPackage.openedFile))
@@ -496,12 +518,13 @@ reask:
                     MessageBox.Show("Must have .dat extension");
                     goto reask;
                 }
+                /*
                 if (!cbDatFile.Checked && !Path.GetExtension(saveFileDialog.FileName).Equals(".exe", StringComparison.InvariantCultureIgnoreCase))
                 {
                     MessageBox.Show("Must have .exe extension");
                     goto reask;
                 }
-
+                */
                 // cbDatFile: Loader.exe
                 // Must be copied before PackageSave, as it will apply hPkg->IconSrcFile (if any) onto Loader.exe
                 if (cbDatFile.Checked)
@@ -528,7 +551,7 @@ reask:
 
                     virtPackage.openedFile = saveFileDialog.FileName;
                     this.Text = CaptionText();
-                    MessageBox.Show(PackageEditor.Messages.Messages.packageSaved);
+                    MessageBox.Show(PackageEditor.Messages.Messages.packageSaved,saveFileDialog.FileName);
                 }
             }
         }
@@ -546,8 +569,8 @@ reask:
             string packageExeFile = virtPackage.openedFile;
             if (cbDatFile.Checked/* && Path.GetExtension(packageExeFile).Equals(".exe", StringComparison.InvariantCultureIgnoreCase)*/)
                 packageExeFile = Path.ChangeExtension(packageExeFile, ".dat");
-            if (!cbDatFile.Checked/* && Path.GetExtension(packageExeFile).Equals(".dat", StringComparison.InvariantCultureIgnoreCase)*/)
-                packageExeFile = Path.ChangeExtension(packageExeFile, ".exe");
+            //if (!cbDatFile.Checked/* && Path.GetExtension(packageExeFile).Equals(".dat", StringComparison.InvariantCultureIgnoreCase)*/)
+//                packageExeFile = Path.ChangeExtension(packageExeFile, ".exe");
 
             string tmpFileName = packageExeFile; //.new: +".new";
             //.new:TryDeleteFile(tmpFileName);
@@ -594,7 +617,7 @@ reask:
                 String property = virtPackage.GetProperty("AutoLaunch");
                 //virtPackage.Open(packageExeFile);
                 //.new:if (ok)
-                    MessageBox.Show("Package saved.");
+                MessageBox.Show(tmpFileName,PackageEditor.Messages.Messages.packageSaved);
                 /*.new:else
                     MessageBox.Show("Cannot rename: " + tmpFileName + " to: " + packageExeFile);*/
             }
@@ -1441,12 +1464,14 @@ reask:
                 }
                 return;
             }
+            /*
             else if (System.IO.Path.GetExtension(files[0]).ToLower() != ".exe" &&
                 System.IO.Path.GetExtension(files[0]).ToLower() != ".dat")
             {
                 MessageBox.Show("You can only open files with .exe extension");
                 return;
             }
+            */
             // open in a new thread to avoid blocking of explorer in case of big files
             this.BeginInvoke(Del_Open, new Object[] { files[0] });
             this.Activate();

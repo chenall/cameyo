@@ -480,16 +480,16 @@ namespace Cameyo.OpenSrc.Common
         {
             List<LangItem> langs = new List<LangItem>();
             langs.Add(new LangItem("English", "EN", "en-US"));
-            langs.Add(new LangItem("Français", "FR", "fr-FR"));
-            langs.Add(new LangItem("Español", "ES", "es-ES"));
-            langs.Add(new LangItem("Deutsch", "DE", "de-DE"));
-            langs.Add(new LangItem("Italian", "IT", "it-IT"));
-            langs.Add(new LangItem("Turkish", "TR", "tr-TR"));
+            //langs.Add(new LangItem("Français", "FR", "fr-FR"));
+            //langs.Add(new LangItem("Español", "ES", "es-ES"));
+            //langs.Add(new LangItem("Deutsch", "DE", "de-DE"));
+            //langs.Add(new LangItem("Italian", "IT", "it-IT"));
+            //langs.Add(new LangItem("Turkish", "TR", "tr-TR"));
             langs.Add(new LangItem("Chinese", "CN", "zh-CN"));
-            langs.Add(new LangItem("Polish", "PL", "pl-PL"));
-            langs.Add(new LangItem("Arabic", "AR", "ar-SA"));
-            langs.Add(new LangItem("Indonesian", "ID", "id-ID"));
-            langs.Add(new LangItem("Afrikaans", "ZA", "af-ZA"));
+            //langs.Add(new LangItem("Polish", "PL", "pl-PL"));
+            //langs.Add(new LangItem("Arabic", "AR", "ar-SA"));
+            //langs.Add(new LangItem("Indonesian", "ID", "id-ID"));
+            //langs.Add(new LangItem("Afrikaans", "ZA", "af-ZA"));
             return langs;
         }
 
@@ -540,7 +540,7 @@ namespace Cameyo.OpenSrc.Common
             }
             catch 
             {
-                culture = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
+                culture = System.Globalization.CultureInfo.CreateSpecificCulture("zh-CN");
             }
             System.Threading.Thread.CurrentThread.CurrentUICulture = culture;
             System.Threading.Thread.CurrentThread.CurrentCulture = culture;

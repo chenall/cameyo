@@ -129,6 +129,12 @@
   <data name="confirm" xml:space="preserve">
     <value>确认</value>
   </data>
+  <data name="customEventsCount" xml:space="preserve">
+    <value>{0} 个自定义事件</value>
+  </data>
+  <data name="customEventsNone" xml:space="preserve">
+    <value>无自定义事件</value>
+  </data>
   <data name="discardChanges" xml:space="preserve">
     <value>刚才做的更改将会丢失，确定放弃更改？</value>
   </data>
@@ -136,16 +142,19 @@
     <value>显示菜单</value>
   </data>
   <data name="fullAccess" xml:space="preserve">
-    <value>完全访问</value>
+    <value>完全访问 (Full acces)</value>
+  </data>
+  <data name="incorrectRootDir" xml:space="preserve">
+    <value>根目录必须包含盘符比如:"C_"或"D_",也可以用变量"%Program Files%",您的输入目录有误,将会无法正常使用,是否继续?</value>
   </data>
   <data name="isolated" xml:space="preserve">
-    <value>隔离</value>
+    <value>只读访问 (Isolated)</value>
   </data>
   <data name="menuRequiresAtLeastTwo" xml:space="preserve">
-    <value>至少需要两个菜单项</value>
+    <value>菜单中至少需要两个命令</value>
   </data>
   <data name="menuRequiresAtLeastTwoTransform" xml:space="preserve">
-    <value>至少需要两个菜单项，是否转换成单独命令？</value>
+    <value>至少需要两个菜单命令，是否转化成直接启动命令？</value>
   </data>
   <data name="opening" xml:space="preserve">
     <value>正在打开</value>
@@ -159,13 +168,32 @@
   <data name="packageSaved" xml:space="preserve">
     <value>已保存</value>
   </data>
+  <data name="reqElevation" xml:space="preserve">
+    <value>是否关闭 Package Editor 并请求使用管理员权限运行?</value>
+  </data>
+  <data name="reqElevationSaveWorkFirst" xml:space="preserve">
+    <value>请先保存当前工作</value>
+  </data>
+  <data name="reqElevationTitle" xml:space="preserve">
+    <value>需要管理员权限</value>
+  </data>
+  <data name="saveChanges" xml:space="preserve">
+    <value>是否保存?</value>
+  </data>
   <data name="saving" xml:space="preserve">
     <value>保存(&amp;S)</value>
   </data>
   <data name="savingPackage" xml:space="preserve">
     <value>正在保存</value>
   </data>
-  <data name="saveChanges" xml:space="preserve">
-    <value>是否保存?</value>
+  <data name="storageDirSubdirWarning" xml:space="preserve">
+    <value>您指定的目录是一个根目录,
+应用运行时产生的数据文件都会存放在该目录下
+删除应用时会同时删除该目录下的所有文件
+建议至少加上%AppID%,比如"d:\%AppID%",
+你确认使用以下目录作为应用的数据储存目录?</value>
+  </data>
+  <data name="strictlyIsolated" xml:space="preserve">
+    <value>禁止访问(Strictly isolated)</value>
   </data>
 </root>
