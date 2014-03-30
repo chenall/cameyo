@@ -30,8 +30,6 @@
     {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FileProperties));
             this.groupBox = new System.Windows.Forms.GroupBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tbFullPath = new System.Windows.Forms.TextBox();
             this.chkFileFlagDEPLOYED = new System.Windows.Forms.CheckBox();
             this.chkFileFlagDELETED = new System.Windows.Forms.CheckBox();
@@ -40,33 +38,19 @@
             this.chkFileFlagISFILE = new System.Windows.Forms.CheckBox();
             this.chkFileFlagPKG_FILE = new System.Windows.Forms.CheckBox();
             this.chkFileFlagDISCONNECTED = new System.Windows.Forms.CheckBox();
+            this.chkFileFlagDEPLOYED_RAM = new System.Windows.Forms.CheckBox();
             this.groupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox
             // 
-            this.groupBox.Controls.Add(this.pictureBox2);
-            this.groupBox.Controls.Add(this.pictureBox1);
+            this.groupBox.Controls.Add(this.chkFileFlagDEPLOYED_RAM);
             this.groupBox.Controls.Add(this.tbFullPath);
             this.groupBox.Controls.Add(this.chkFileFlagDEPLOYED);
             this.groupBox.Controls.Add(this.chkFileFlagDELETED);
             resources.ApplyResources(this.groupBox, "groupBox");
             this.groupBox.Name = "groupBox";
             this.groupBox.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            resources.ApplyResources(this.pictureBox2, "pictureBox2");
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            resources.ApplyResources(this.pictureBox1, "pictureBox1");
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.TabStop = false;
             // 
             // tbFullPath
             // 
@@ -119,6 +103,12 @@
             this.chkFileFlagDISCONNECTED.Name = "chkFileFlagDISCONNECTED";
             this.chkFileFlagDISCONNECTED.UseVisualStyleBackColor = true;
             // 
+            // chkFileFlagDEPLOYED_RAM
+            // 
+            resources.ApplyResources(this.chkFileFlagDEPLOYED_RAM, "chkFileFlagDEPLOYED_RAM");
+            this.chkFileFlagDEPLOYED_RAM.Name = "chkFileFlagDEPLOYED_RAM";
+            this.chkFileFlagDEPLOYED_RAM.UseVisualStyleBackColor = true;
+            // 
             // FileProperties
             // 
             this.AcceptButton = this.buttonOK;
@@ -135,8 +125,6 @@
             this.Name = "FileProperties";
             this.groupBox.ResumeLayout(false);
             this.groupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -153,7 +141,6 @@
     private System.Windows.Forms.CheckBox chkFileFlagDISCONNECTED;
     private System.Windows.Forms.CheckBox chkFileFlagDEPLOYED;
     private System.Windows.Forms.TextBox tbFullPath;
-    private System.Windows.Forms.PictureBox pictureBox2;
-    private System.Windows.Forms.PictureBox pictureBox1;
+    private System.Windows.Forms.CheckBox chkFileFlagDEPLOYED_RAM;
   }
 }

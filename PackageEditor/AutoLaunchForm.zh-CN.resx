@@ -136,24 +136,24 @@
     <value>删除(&amp;R)</value>
   </data>
   <data name="columnHeader1.Text" xml:space="preserve">
-    <value>项目</value>
+    <value>标题</value>
   </data>
   <data name="columnHeader2.Text" xml:space="preserve">
     <value>命令</value>
   </data>
   <data name="columnHeader3.Text" xml:space="preserve">
-    <value>备注</value>
+    <value>说明</value>
   </data>
   <data name="columnHeader4.Text" xml:space="preserve">
     <value>参数</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
-    <value>参数(可选):</value>
+    <value>参数(可选)</value>
   </data>
   <data name="propertyCmdRadio.Text" xml:space="preserve">
     <value>自定义命令</value>
   </data>
   <data name="propertyMenuRadio.Text" xml:space="preserve">
-    <value>显示以下菜单：</value>
+    <value>显示以下菜单</value>
   </data>
 </root>

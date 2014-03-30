@@ -15,8 +15,8 @@ namespace PackageEditor
         private VirtPackage virtPackage;
         private FileSystemEditor fileSystemEditor;
         private bool allowSelectFolder;
-        const int IMGINDEX_FOLDER = 0;
-        const int IMGINDEX_FILE = 3;
+        const int IMGINDEX_FOLDER = 1;
+        const int IMGINDEX_FILE = 6;
 
         public VirtFilesBrowse(VirtPackage virtPackage, FileSystemEditor fileSystemEditor)
         {
@@ -34,8 +34,8 @@ namespace PackageEditor
               if (!fd.deleted)
               {
                 TreeNode filenode = treeNodeCollection.Add(Path.GetFileName(fd.virtFsNode.FileName));
-                filenode.ImageIndex = 3;
-                filenode.SelectedImageIndex = 3;
+                filenode.ImageIndex = 6;
+                filenode.SelectedImageIndex = 6;
               }
             }
           }

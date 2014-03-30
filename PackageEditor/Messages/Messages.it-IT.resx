@@ -165,4 +165,7 @@
   <data name="savingPackage" xml:space="preserve">
     <value>Salvataggio pacchetto</value>
   </data>
+  <data name="saveChanges" xml:space="preserve">
+    <value>Salvare le modifiche?</value>
+  </data>
 </root>

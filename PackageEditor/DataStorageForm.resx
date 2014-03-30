@@ -172,7 +172,7 @@
     <value>Right</value>
   </data>
   <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>273, 0</value>
+    <value>247, 0</value>
   </data>
   <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>200, 35</value>
@@ -196,10 +196,10 @@
     <value>Bottom</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 119</value>
+    <value>0, 163</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>473, 35</value>
+    <value>447, 35</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -214,6 +214,57 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="propertyDataDir.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="propertyDataDir.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 114</value>
+  </data>
+  <data name="propertyDataDir.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 17</value>
+  </data>
+  <data name="propertyDataDir.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="propertyDataDir.Text" xml:space="preserve">
+    <value>Store user data in a different directory:</value>
+  </data>
+  <data name="&gt;&gt;propertyDataDir.Name" xml:space="preserve">
+    <value>propertyDataDir</value>
+  </data>
+  <data name="&gt;&gt;propertyDataDir.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;propertyDataDir.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;propertyDataDir.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="propertyDataDirName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>39, 137</value>
+  </data>
+  <data name="propertyDataDirName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>396, 20</value>
+  </data>
+  <data name="propertyDataDirName.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="propertyDataDirName.Text" xml:space="preserve">
+    <value>%AppData%\VOS\%AppID%\CHANGES</value>
+  </data>
+  <data name="&gt;&gt;propertyDataDirName.Name" xml:space="preserve">
+    <value>propertyDataDirName</value>
+  </data>
+  <data name="&gt;&gt;propertyDataDirName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;propertyDataDirName.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;propertyDataDirName.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="propertyLocalStorageExeDir.AutoSize" type="System.Boolean, mscorlib">
@@ -241,16 +292,19 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;propertyLocalStorageExeDir.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="propertyLocalStorageCustomDir.Location" type="System.Drawing.Point, System.Drawing">
     <value>39, 88</value>
   </data>
   <data name="propertyLocalStorageCustomDir.Size" type="System.Drawing.Size, System.Drawing">
-    <value>395, 20</value>
+    <value>396, 20</value>
   </data>
   <data name="propertyLocalStorageCustomDir.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
+  </data>
+  <data name="propertyLocalStorageCustomDir.Text" xml:space="preserve">
+    <value>%AppData%\VOS\%AppID%</value>
   </data>
   <data name="&gt;&gt;propertyLocalStorageCustomDir.Name" xml:space="preserve">
     <value>propertyLocalStorageCustomDir</value>
@@ -262,7 +316,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;propertyLocalStorageCustomDir.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="propertyLocalStorageCustom.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -289,7 +343,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;propertyLocalStorageCustom.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="propertyLocalStorageDefault.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -316,7 +370,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;propertyLocalStorageDefault.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="groupBox1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -325,7 +379,7 @@
     <value>0, 0</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>473, 119</value>
+    <value>447, 163</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -352,7 +406,7 @@
     <value>0, 0</value>
   </data>
   <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>473, 119</value>
+    <value>447, 163</value>
   </data>
   <data name="panel3.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
@@ -369,14 +423,14 @@
   <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="$this.Localizable" type="System.Boolean, mscorlib">
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>473, 154</value>
+    <value>447, 198</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>

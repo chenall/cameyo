@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-	<!-- 
+  <!-- 
     Microsoft ResX Schema 
     
     Version 2.0
@@ -59,110 +59,113 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-		<xsd:element name="root" msdata:IsDataSet="true">
-			<xsd:complexType>
-				<xsd:choice maxOccurs="unbounded">
-					<xsd:element name="metadata">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" />
-							</xsd:sequence>
-							<xsd:attribute name="name" use="required" type="xsd:string" />
-							<xsd:attribute name="type" type="xsd:string" />
-							<xsd:attribute name="mimetype" type="xsd:string" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="assembly">
-						<xsd:complexType>
-							<xsd:attribute name="alias" type="xsd:string" />
-							<xsd:attribute name="name" type="xsd:string" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="data">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="resheader">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" />
-						</xsd:complexType>
-					</xsd:element>
-				</xsd:choice>
-			</xsd:complexType>
-		</xsd:element>
-	</xsd:schema>
-	<resheader name="resmimetype">
-		<value>text/microsoft-resx</value>
-	</resheader>
-	<resheader name="version">
-		<value>2.0</value>
-	</resheader>
-	<resheader name="reader">
-		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<resheader name="writer">
-		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<data name="cannotSave" xml:space="preserve">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="cannotSave" xml:space="preserve">
     <value>Impossible d'enregistrer le package</value>
   </data>
-	<data name="confirm" xml:space="preserve">
+  <data name="confirm" xml:space="preserve">
     <value>Confirmer</value>
   </data>
-	<data name="discardChanges" xml:space="preserve">
+  <data name="discardChanges" xml:space="preserve">
     <value>Vos modifications seront perdues. Ignorer les modifications?</value>
   </data>
-	<data name="opening" xml:space="preserve">
+  <data name="opening" xml:space="preserve">
     <value>Ouverture</value>
   </data>
-	<data name="openingPackage" xml:space="preserve">
+  <data name="openingPackage" xml:space="preserve">
     <value>Ouverture du package</value>
   </data>
-	<data name="packageBuiltOk" xml:space="preserve">
+  <data name="packageBuiltOk" xml:space="preserve">
     <value>Package créé avec succès dans:</value>
   </data>
-	<data name="packageSaved" xml:space="preserve">
+  <data name="packageSaved" xml:space="preserve">
     <value>Package sauvegardé</value>
   </data>
-	<data name="saving" xml:space="preserve">
+  <data name="saving" xml:space="preserve">
     <value>&amp;Enregistrer</value>
   </data>
-	<data name="savingPackage" xml:space="preserve">
+  <data name="savingPackage" xml:space="preserve">
     <value>Sauvegarde en cours</value>
   </data>
-	<data name="changesWillTakeEffectOnNextStart" xml:space="preserve">
+  <data name="changesWillTakeEffectOnNextStart" xml:space="preserve">
     <value>Ce changement prendra effet lors du prochain démarrage du programme.</value>
   </data>
-	<data name="fullAccess" xml:space="preserve">
+  <data name="fullAccess" xml:space="preserve">
     <value>Accès total</value>
   </data>
-	<data name="isolated" xml:space="preserve">
+  <data name="isolated" xml:space="preserve">
     <value>Isolé</value>
   </data>
-	<data name="menuRequiresAtLeastTwo" xml:space="preserve">
+  <data name="menuRequiresAtLeastTwo" xml:space="preserve">
     <value>Le menu nécessite au moins deux commandes.</value>
   </data>
-	<data name="menuRequiresAtLeastTwoTransform" xml:space="preserve">
+  <data name="menuRequiresAtLeastTwoTransform" xml:space="preserve">
     <value>Le menu nécessite au moins deux commandes. Transformer en commande spécifique?</value>
   </data>
-	<data name="btnApply" xml:space="preserve">
+  <data name="btnApply" xml:space="preserve">
     <value>&amp;Appliquer</value>
   </data>
-	<data name="displayMenu" xml:space="preserve">
+  <data name="displayMenu" xml:space="preserve">
     <value>Afficher menu</value>
+  </data>
+  <data name="saveChanges" xml:space="preserve">
+    <value>Enregistrer les modifications ?</value>
   </data>
 </root>

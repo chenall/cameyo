@@ -117,4 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="buttonCancel.Text" xml:space="preserve">
+    <value>Annulla</value>
+  </data>
+  <data name="buttonOK.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="chkFileFlagDELETED.Text" xml:space="preserve">
+    <value>Cancellato: mostra all'applicazione virtuale come rimosso</value>
+  </data>
+  <data name="chkFileFlagDEPLOYED.Text" xml:space="preserve">
+    <value>Già estratto: estrae il file al momento della prima esecuzione</value>
+  </data>
+  <data name="chkFileFlagDISCONNECTED.Text" xml:space="preserve">
+    <value>Il file su disco è stato modificato rispetto al DB</value>
+  </data>
+  <data name="chkFileFlagISFILE.Text" xml:space="preserve">
+    <value>File (non cartella)</value>
+  </data>
+  <data name="chkFileFlagPKG_FILE.Text" xml:space="preserve">
+    <value>Parte del pacchetto originale</value>
+  </data>
+  <data name="groupBox.Text" xml:space="preserve">
+    <value>Proprietà</value>
+  </data>
 </root>

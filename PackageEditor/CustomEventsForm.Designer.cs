@@ -38,6 +38,7 @@
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblTotalEvents = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnDown = new System.Windows.Forms.Button();
             this.listBox = new System.Windows.Forms.ListBox();
@@ -55,7 +56,6 @@
             this.txtArgs = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.bottomPanel.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -124,6 +124,8 @@
             // 
             // panel2
             // 
+            resources.ApplyResources(this.panel2, "panel2");
+            this.panel2.Controls.Add(this.lblTotalEvents);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.btnDown);
             this.panel2.Controls.Add(this.listBox);
@@ -131,20 +133,24 @@
             this.panel2.Controls.Add(this.btnUp);
             this.panel2.Controls.Add(this.btnErase);
             this.panel2.Controls.Add(this.panel3);
-            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
+            // 
+            // lblTotalEvents
+            // 
+            resources.ApplyResources(this.lblTotalEvents, "lblTotalEvents");
+            this.lblTotalEvents.Name = "lblTotalEvents";
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.pictureBox1, "pictureBox1");
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
             // 
             // btnDown
             // 
-            this.btnDown.Image = global::PackageEditor.Properties.Resources.down;
             resources.ApplyResources(this.btnDown, "btnDown");
+            this.btnDown.Image = global::PackageEditor.Properties.Resources.down;
             this.btnDown.Name = "btnDown";
             this.btnDown.UseVisualStyleBackColor = true;
             this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
@@ -164,33 +170,36 @@
             resources.GetString("comboBox.Items"),
             resources.GetString("comboBox.Items1"),
             resources.GetString("comboBox.Items2"),
-            resources.GetString("comboBox.Items3")});
+            resources.GetString("comboBox.Items3"),
+            resources.GetString("comboBox.Items4"),
+            resources.GetString("comboBox.Items5"),
+            resources.GetString("comboBox.Items6"),
+            resources.GetString("comboBox.Items7")});
             resources.ApplyResources(this.comboBox, "comboBox");
             this.comboBox.Name = "comboBox";
             this.comboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
             // 
             // btnUp
             // 
-            this.btnUp.Image = global::PackageEditor.Properties.Resources.up;
             resources.ApplyResources(this.btnUp, "btnUp");
+            this.btnUp.Image = global::PackageEditor.Properties.Resources.up;
             this.btnUp.Name = "btnUp";
             this.btnUp.UseVisualStyleBackColor = true;
             this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
             // 
             // btnErase
             // 
-            this.btnErase.Image = global::PackageEditor.Properties.Resources.delete_16_h;
             resources.ApplyResources(this.btnErase, "btnErase");
+            this.btnErase.Image = global::PackageEditor.Properties.Resources.delete_16_h;
             this.btnErase.Name = "btnErase";
             this.btnErase.UseVisualStyleBackColor = true;
             this.btnErase.Click += new System.EventHandler(this.btnErase_Click);
             // 
             // panel3
             // 
+            resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.groupBox1);
-            this.panel3.Controls.Add(this.panel5);
-            resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Name = "panel3";
             // 
             // label2
@@ -201,6 +210,7 @@
             // 
             // groupBox1
             // 
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.txtCmd);
             this.groupBox1.Controls.Add(this.boxWait);
             this.groupBox1.Controls.Add(this.btnBrowse);
@@ -208,7 +218,6 @@
             this.groupBox1.Controls.Add(this.txtArgs);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label4);
-            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
@@ -225,15 +234,15 @@
             // 
             // btnBrowse
             // 
-            this.btnBrowse.Image = global::PackageEditor.Properties.Resources.folder_closed_16_h;
             resources.ApplyResources(this.btnBrowse, "btnBrowse");
+            this.btnBrowse.Image = global::PackageEditor.Properties.Resources.folder_closed_16_h;
             this.btnBrowse.Name = "btnBrowse";
             this.btnBrowse.UseVisualStyleBackColor = true;
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.btnAddSave);
             resources.ApplyResources(this.panel4, "panel4");
+            this.panel4.Controls.Add(this.btnAddSave);
             this.panel4.Name = "panel4";
             // 
             // btnAddSave
@@ -258,11 +267,6 @@
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
             // 
-            // panel5
-            // 
-            resources.ApplyResources(this.panel5, "panel5");
-            this.panel5.Name = "panel5";
-            // 
             // CustomEventsForm
             // 
             this.AcceptButton = this.btnOk;
@@ -280,6 +284,7 @@
             this.bottomPanel.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -304,7 +309,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtArgs;
         private System.Windows.Forms.Button btnBrowse;
-        private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button btnDown;
         private System.Windows.Forms.Button btnUp;
         private System.Windows.Forms.Button btnErase;
@@ -318,5 +322,6 @@
         private System.Windows.Forms.Panel bkPanel;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ListBox listBox;
+        private System.Windows.Forms.Label lblTotalEvents;
     }
 }

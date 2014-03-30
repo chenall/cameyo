@@ -13,10 +13,14 @@ namespace PackageEditor
     public partial class CustomEventsForm : Form
     {
         private VirtPackage virtPackage;
-        List<CustomEvent> onStartUnvirtualized;
         List<CustomEvent> onStartVirtualized;
-        List<CustomEvent> onStopVirtualized;
+        List<CustomEvent> onStartUnvirtualized;
         List<CustomEvent> onStopUnvirtualized;
+        List<CustomEvent> onStopVirtualized;
+        List<CustomEvent> onProcessStartVirtualized;
+        List<CustomEvent> onProcessStartUnvirtualized;
+        List<CustomEvent> onProcessStopVirtualized;
+        List<CustomEvent> onProcessStopUnvirtualized;
         List<CustomEvent> curCustomEvents;
         public String oldPropertiesChecksum;
         public bool dirty;
@@ -24,47 +28,69 @@ namespace PackageEditor
         public CustomEventsForm(VirtPackage virtPackage)
         {
             this.virtPackage = virtPackage;
-            onStartUnvirtualized = new List<CustomEvent>();
             onStartVirtualized = new List<CustomEvent>();
+            onStartUnvirtualized = new List<CustomEvent>();
             onStopVirtualized = new List<CustomEvent>();
             onStopUnvirtualized = new List<CustomEvent>();
+            onProcessStartVirtualized = new List<CustomEvent>();
+            onProcessStartUnvirtualized = new List<CustomEvent>();
+            onProcessStopVirtualized = new List<CustomEvent>();
+            onProcessStopUnvirtualized = new List<CustomEvent>();
             InitializeComponent();
         }
 
         private void CustomEventsForm_Load(object sender, EventArgs e)
         {
             dirty = false;
+            ActiveControl = comboBox;
             oldPropertiesChecksum = GetPropertiesChecksum();
-            PropertyToCustomEvents("OnStartUnVirtualized", onStartUnvirtualized);
             PropertyToCustomEvents("OnStartVirtualized", onStartVirtualized);
+            PropertyToCustomEvents("OnStartUnVirtualized", onStartUnvirtualized);
             PropertyToCustomEvents("OnStopVirtualized", onStopVirtualized);
             PropertyToCustomEvents("OnStopUnvirtualized", onStopUnvirtualized);
-            curCustomEvents = onStartUnvirtualized;
+            PropertyToCustomEvents("OnProcessStartVirtualized", onProcessStartVirtualized);
+            PropertyToCustomEvents("OnProcessStartUnvirtualized", onProcessStartUnvirtualized);
+            PropertyToCustomEvents("OnProcessStopVirtualized", onProcessStopVirtualized);
+            PropertyToCustomEvents("OnProcessStopUnvirtualized", onProcessStopUnvirtualized);
+            curCustomEvents = onStartVirtualized;
             comboBox.SelectedIndex = 0;
             RefreshDisplay();
+            listBox.SelectedIndex = -1;   // Otherwise it's impossible to deselect listbox items (and hence the "Add" button can never be accessed)
         }
 
         private String GetPropertiesChecksum()
         {
             String checksum = "";
             String value;
-            value = ""; virtPackage.GetProperty("OnStartUnvirtualized", ref value);
-            checksum += value + ";";
             value = ""; virtPackage.GetProperty("OnStartVirtualized", ref value);
+            checksum += value + ";";
+            value = ""; virtPackage.GetProperty("OnStartUnvirtualized", ref value);
             checksum += value + ";";
             value = ""; virtPackage.GetProperty("OnStopVirtualized", ref value);
             checksum += value + ";";
             value = ""; virtPackage.GetProperty("OnStopUnvirtualized", ref value);
+            checksum += value + ";";
+            value = ""; virtPackage.GetProperty("OnProcessStartVirtualized", ref value);
+            checksum += value + ";";
+            value = ""; virtPackage.GetProperty("OnProcessStartUnvirtualized", ref value);
+            checksum += value + ";";
+            value = ""; virtPackage.GetProperty("OnProcessStopVirtualized", ref value);
+            checksum += value + ";";
+            value = ""; virtPackage.GetProperty("OnProcessStopUnvirtualized", ref value);
             checksum += value + ";";
             return (checksum);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            CustomEventsToProperty(onStartUnvirtualized, "OnStartUnvirtualized");
             CustomEventsToProperty(onStartVirtualized, "OnStartVirtualized");
+            CustomEventsToProperty(onStartUnvirtualized, "OnStartUnvirtualized");
             CustomEventsToProperty(onStopVirtualized, "OnStopVirtualized");
             CustomEventsToProperty(onStopUnvirtualized, "OnStopUnvirtualized");
+            CustomEventsToProperty(onProcessStartVirtualized, "OnProcessStartVirtualized");
+            CustomEventsToProperty(onProcessStartUnvirtualized, "OnProcessStartUnvirtualized");
+            CustomEventsToProperty(onProcessStopVirtualized, "OnProcessStopVirtualized");
+            CustomEventsToProperty(onProcessStopUnvirtualized, "OnProcessStopUnvirtualized");
             dirty = (GetPropertiesChecksum() != oldPropertiesChecksum);
             DialogResult = DialogResult.OK;
         }
@@ -84,12 +110,22 @@ namespace PackageEditor
                     cmdDisplay += " [" + curCustomEvents[i].args + "]";
                 listBox.Items.Add(cmdDisplay);
             }
-
             listBox_SelectedIndexChanged(null, null);
+
+            // lblTotalEvents
+            int totalEvents = onStartVirtualized.Count + onStartUnvirtualized.Count +
+                onStopVirtualized.Count + onStopUnvirtualized.Count +
+                onProcessStartVirtualized.Count + onProcessStartUnvirtualized.Count +
+                onProcessStopVirtualized.Count + onProcessStopUnvirtualized.Count;
+            if (totalEvents == 0)
+                lblTotalEvents.Text = Messages.Messages.customEventsNone;
+            else
+                lblTotalEvents.Text = string.Format(Messages.Messages.customEventsCount, totalEvents);
         }
 
         private void btnAddSave_Click(object sender, EventArgs e)
         {
+            int saveSelectedIndex = listBox.SelectedIndex;
             System.ComponentModel.ComponentResourceManager localResources = new System.ComponentModel.ComponentResourceManager(typeof(CustomEventsForm));
             if (txtCmd.Text == "")
             {
@@ -111,7 +147,9 @@ namespace PackageEditor
                 customEvent.execWait = boxWait.Checked;
             }
             RefreshDisplay();
-            listBox.SelectedIndex = -1;
+            listBox.SelectedIndex = -1;   // Force refresh
+            listBox.SelectedIndex = saveSelectedIndex;   // Re-select edited item
+            ActiveControl = comboBox;
         }
 
         private void listBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -179,7 +217,6 @@ namespace PackageEditor
                 if (inCustomEvents[i].execWait)
                     outPropertyValue += ">wait";
             }
-
             virtPackage.SetProperty(outPropertyName, outPropertyValue);
         }
 
@@ -218,13 +255,19 @@ namespace PackageEditor
 
         private void comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // On app start (virtualized)
+            // On app start (unvirtualized)
+            // On app stop (virtualized)
+            // On app stop (unvirtualized)
+            // On process execution (virtualized)
+            // On process execution (unvirtualized)
             switch (comboBox.SelectedIndex)
             {
                 case 0:
-                    curCustomEvents = onStartUnvirtualized;
+                    curCustomEvents = onStartVirtualized;
                     break;
                 case 1:
-                    curCustomEvents = onStartVirtualized;
+                    curCustomEvents = onStartUnvirtualized;
                     break;
                 case 2:
                     curCustomEvents = onStopVirtualized;
@@ -232,8 +275,21 @@ namespace PackageEditor
                 case 3:
                     curCustomEvents = onStopUnvirtualized;
                     break;
+                case 4:
+                    curCustomEvents = onProcessStartVirtualized;
+                    break;
+                case 5:
+                    curCustomEvents = onProcessStartUnvirtualized;
+                    break;
+                case 6:
+                    curCustomEvents = onProcessStopVirtualized;
+                    break;
+                case 7:
+                    curCustomEvents = onProcessStopUnvirtualized;
+                    break;
             }
             RefreshDisplay();
+            listBox.SelectedIndex = -1;   // Otherwise it's impossible to deselect listbox items (and hence the "Add" button can never be accessed)
         }
     }
 

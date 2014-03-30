@@ -22,30 +22,64 @@ namespace PackageEditor
 {
     public partial class MainForm : Form
     {
-        private VirtPackage virtPackage;
+        private VirtPackage virtPackage = null;
         private FileSystemEditor fsEditor;
         private RegistryEditor regEditor;
         private bool regLoaded;
-        private Thread regLoadThread;
+        private Thread regLoadThread = null;
         private MRU mru;
-        public bool dirty;
+        public bool dirty, dirtyIcon;
         private bool dragging;
         private Control[] Editors;
+        private string memorizedPassword;
+        string helpVirtModeDisk, helpVirtModeRam;
+        string helpIsolationModeData, helpIsolationModeIsolated, helpIsolationModeFull;
+        private bool isElevatedProcess = Cameyo.OpenSrc.Common.Utils.IsElevatedProcess();
 
         // creation of delegate for PackageOpen
         private delegate bool DelegatePackageOpen(String path);
         DelegatePackageOpen Del_Open;
+
+        void SplitTextHelp(RadioButton radio, out string helpText)
+        {
+            helpText = radio.Text;
+
+            int index = helpText.IndexOf(':');
+            if (index == -1)
+                index = helpText.IndexOf((char)0xff1a);   // Chinese ':'
+            if (index == -1)
+            {
+                helpText = "";
+                return;
+            }
+
+            helpText = helpText.Substring(index);
+            radio.Text = radio.Text.Substring(0, radio.Text.Length - helpText.Length);
+            helpText = helpText.Trim(':', ' ', (char)0xff1a);
+            helpText = char.ToUpper(helpText[0]) + helpText.Substring(1) + ".";
+        }
 
         public MainForm(string packageExeFile, bool notifyPackageBuilt)
         {
             InitializeComponent();
             dragging = false;
 
+            // helpVirtMode
+            SplitTextHelp(propertyVirtModeRam, out helpVirtModeRam);
+            SplitTextHelp(propertyVirtModeDisk, out helpVirtModeDisk);
+
+            // helpIsolationMode
+            SplitTextHelp(propertyIsolationDataMode, out helpIsolationModeData);
+            SplitTextHelp(propertyIsolationIsolated, out helpIsolationModeIsolated);
+            SplitTextHelp(propertyIsolationMerge, out helpIsolationModeFull);
+
+            // panelWelcome
             panelWelcome.Parent = this;
             panelWelcome.BringToFront();
             panelWelcome.Dock = DockStyle.None;
             panelWelcome.Dock = DockStyle.Fill;
             tabControl.TabPages.Remove(tabWelcome);
+            this.Text = CaptionText();
 
             // delegate for PackageOpen init
             Del_Open = new DelegatePackageOpen(this.PackageOpen);
@@ -53,14 +87,14 @@ namespace PackageEditor
             tabControl.Visible = false;
             panelWelcome.Visible = !tabControl.Visible;
             regLoaded = false;
-            dirty = false;
+            dirty = dirtyIcon = false;
             virtPackage = new VirtPackage();
             mru = new MRU("Software\\Cameyo\\Packager\\MRU");
 
             fsEditor = new FileSystemEditor(virtPackage, fsFolderTree, fsFilesList,
                 fsFolderInfoFullName, fsFolderInfoIsolationCombo, fsAddBtn, fsRemoveBtn, fsAddEmptyDirBtn, fsSaveFileAsBtn, fsAddDirBtn);
-            regEditor = new RegistryEditor(virtPackage, regFolderTree, regFilesList,
-                regFolderInfoFullName, regFolderInfoIsolationCombo, regRemoveBtn, regEditBtn);
+            regEditor = new RegistryEditor(virtPackage, new RegistryEditor.DelegateRequireElevation(RequireElevation),
+                regFolderTree, regFilesList, regFolderInfoFullName, regFolderInfoIsolationCombo, regRemoveBtn, regEditBtn);
 
             regFilesList.DoubleClickActivation = true;
             Editors = new Control[] { tbFile, tbValue, tbType, tbSize };
@@ -96,6 +130,10 @@ namespace PackageEditor
             dropboxButton.Hide();
             //resetCredLink.Hide();
 #endif
+            // Display logo
+            /*string branding = "";
+            try { Environment.GetEnvironmentVariable("CAMEYO_RO_PROPERTY_BRANDING"); } catch { }
+            propertyDisplayLogo.Visible = !string.IsNullOrEmpty(branding);   // Freeware Cameyo does not have this feature*/
 
             // Culture
             langToolStripMenuItem.DropDownItems.Clear();
@@ -116,12 +154,21 @@ namespace PackageEditor
             regLoadThread = null;
         }
 
-        private void ThreadedRegLoadStop()
+        private void ThreadedRegLoadStop(int timeout)
         {
             regEditor.threadedRegLoadStop();
             if (regLoadThread != null)
             {
-                regLoadThread.Join();
+                if (timeout == -1)
+                    regLoadThread.Join();
+                else
+                {
+                    if (regLoadThread.IsAlive)
+                    {
+                        regLoadThread.Join(timeout);
+                        regLoadThread.Abort();
+                    }
+                }
                 regLoadThread = null;
             }
         }
@@ -149,16 +196,39 @@ namespace PackageEditor
             else if (tabControl.SelectedTab == tabFileSystem)
                 fsEditor.OnTabActivate();
             else if (tabControl.SelectedTab == tabRegistry)
+            {
+                if (regEditor.workKey == null && (regLoadThread == null || !regLoadThread.IsAlive))
+                {
+                    regLoadThread = new Thread(ThreadedRegLoad);   // 2:5 moved to here
+                    regLoadThread.Start();   // 2:5 moved to here
+                }
                 regEditor.OnTabActivate();
+            }
         }
 
         private void EnableDisablePackageControls(bool enable)
         {
             tabControl.Visible = enable;
             panelWelcome.Visible = !enable;
+            exportXmlToolStripMenuItem.Enabled = enable;
             saveToolStripMenuItem.Enabled = enable;
             saveasToolStripMenuItem.Enabled = enable;
             closeToolStripMenuItem.Enabled = enable;
+
+            // Developers, please respect copyright restrictions!
+            int licenseType = VirtPackage.LicDataLoadFromFile(null);
+            if (licenseType < VirtPackage.LICENSETYPE_DEV)
+            {
+                lnkAutoUpdate.Visible = false;
+                propertyDisplayLogo.Visible = false;
+            }
+            if (licenseType < VirtPackage.LICENSETYPE_PRO)
+            {
+                groupConstraints.Visible = false;
+                lnkCustomEvents.Visible = false;
+            }
+            lblNotCommercial.Visible = (licenseType < VirtPackage.LICENSETYPE_DEV);   // "Not for commercial use"
+            lnkUpgrade.Visible = (licenseType < VirtPackage.LICENSETYPE_PRO);         // "Upgrade"
         }
 
         private bool PackageOpen(String packageExeFile)
@@ -170,28 +240,63 @@ namespace PackageEditor
 
         private bool PackageOpen(String packageExeFile, bool displayWaitMsg, out VirtPackage.APIRET apiRet)
         {
-            bool ret;
+            if (File.Exists(Path.ChangeExtension(packageExeFile, ".dat")))
+                packageExeFile = Path.ChangeExtension(packageExeFile, ".dat");
+
+          retry:
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            bool ret = false;
             apiRet = 0;
             if (virtPackage.opened && !PackageClose())      // User doesn't want to discard changes
                 return false;
             if (displayWaitMsg)
-            {
-                System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
                 PleaseWait.PleaseWaitBegin(PackageEditor.Messages.Messages.openingPackage, PackageEditor.Messages.Messages.opening + " " + System.IO.Path.GetFileName(packageExeFile) + "...", packageExeFile);
-            }
 
-            ret = virtPackage.Open(packageExeFile, out apiRet);
+            // virtPackage.Open
+            if (!string.IsNullOrEmpty(memorizedPassword))
+                ret = virtPackage.Open(packageExeFile + "|" + memorizedPassword, out apiRet);
+            else
+                ret = virtPackage.Open(packageExeFile, out apiRet);
+            if (apiRet == VirtPackage.APIRET.PASSWORD_REQUIRED || apiRet == VirtPackage.APIRET.PASSWORD_MISMATCH)
+            {
+                string password = "";
+                while (string.IsNullOrEmpty(password))
+                {
+                    if (displayWaitMsg)   // Hide progress window
+                        PleaseWait.PleaseWaitEnd();   // Otherwise it'll hide our below MessageBox
+                    var passwordInput = new PasswordInput();
+                    if (passwordInput.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+                        return false;
+                    password = passwordInput.tbPassword.Text;
+                    ret = virtPackage.Open(packageExeFile + "|" + password, out apiRet);
+                    if (apiRet == VirtPackage.APIRET.SUCCESS)
+                        memorizedPassword = password;
+                    if (apiRet == VirtPackage.APIRET.PASSWORD_MISMATCH)
+                    {
+                        MessageBox.Show("Incorrect password");
+                        password = "";
+                    }
+                    if (displayWaitMsg)   // Restore progress window
+                        PleaseWait.PleaseWaitBegin(PackageEditor.Messages.Messages.openingPackage, PackageEditor.Messages.Messages.opening + " " + System.IO.Path.GetFileName(packageExeFile) + "...", packageExeFile);
+                }
+
+            }
 
             // OLD_VERSION conversion
             if (!ret && apiRet == VirtPackage.APIRET.OLD_VERSION)
             {
-                if (displayWaitMsg)
+                if (displayWaitMsg)   // Hide progress window
                     PleaseWait.PleaseWaitEnd();     // Otherwise it'll hide our below MessageBox
                 if (MessageBox.Show("This package was built with an older version and needs to be converted.\nConvert now?",
                     "Conversion required", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                 {
                     int exitCode = 0;
-                    if (ExecProg(PackagerExe(),"-Quiet -ConvertOldPkg \"" + packageExeFile + "\"", true, ref exitCode) && exitCode == 0)
+                    if (displayWaitMsg)   // Restore progress window
+                        PleaseWait.PleaseWaitBegin(PackageEditor.Messages.Messages.openingPackage, "Converting " + System.IO.Path.GetFileName(packageExeFile) + "...", packageExeFile);
+                    bool convertedOk = (ExecProg(PackagerExe(), "-Quiet -ConvertOldPkg \"" + packageExeFile + "\"", true, ref exitCode) && exitCode == 0);
+                    if (displayWaitMsg)   // Hide progress window
+                        PleaseWait.PleaseWaitEnd();   // Otherwise it'll hide our below MessageBox
+                    if (convertedOk)
                     {
                         string newPkgFile = packageExeFile, oldPkgFile = packageExeFile;
                         int pos = newPkgFile.LastIndexOf('.');
@@ -219,8 +324,9 @@ namespace PackageEditor
                         }
                         if (!trouble)
                         {
-                            ret = virtPackage.Open(packageExeFile, out apiRet);
+                            //ret = virtPackage.Open(packageExeFile, out apiRet);
                             MessageBox.Show("Package was successfully converted. Your old package was saved in:\n" + oldPkgFile);
+                            goto retry;   // Takes care of password etc
                         }
                     }
                     else
@@ -231,7 +337,7 @@ namespace PackageEditor
             if (ret)
             {
                 regLoaded = false;
-                dirty = false;
+                dirty = dirtyIcon = false;
                 this.OnPackageOpen();
                 fsEditor.OnPackageOpen();
 
@@ -241,9 +347,9 @@ namespace PackageEditor
                 regSplitContainer.Visible = false;
                 regProgressTimer.Enabled = true;
 
-                ThreadedRegLoadStop();
-                regLoadThread = new Thread(ThreadedRegLoad);
-                regLoadThread.Start();
+                ThreadedRegLoadStop(-1);
+                //2.5:was here:regLoadThread = new Thread(ThreadedRegLoad);
+                //2.5:was here:regLoadThread.Start();
 
                 tabControl.SelectedIndex = 0;
                 EnableDisablePackageControls(true);
@@ -281,12 +387,13 @@ namespace PackageEditor
             }
 
             // If regLoadThread is working, wait for it to finish
-            ThreadedRegLoadStop();
+            ThreadedRegLoadStop(3 * 1000);
 
             this.OnPackageClose();
             fsEditor.OnPackageClose();
             regEditor.OnPackageClose();
             virtPackage.Close();
+            this.Text = CaptionText();
             if (disableControls)
                 EnableDisablePackageControls(false);
             return true;
@@ -299,7 +406,8 @@ namespace PackageEditor
                 message += "- AppID is a required field to save a package.\r\n";
             if (String.IsNullOrEmpty(virtPackage.GetProperty("AutoLaunch")))
                 message += "- The package does not have any program(s) selected to launch.\r\nPlease select a program to launch on the tab:General > Panel:Basics > Item:Startup.";
-
+            if (propertyProt.Checked && string.IsNullOrEmpty(propertyProtPassword.Text))
+                message += "- No password specified.";
             return message == "";
         }
 
@@ -328,7 +436,7 @@ namespace PackageEditor
 
             if (ret == 0)
             {
-                this.dirty = false;
+                dirty = dirtyIcon = false;
                 fsEditor.dirty = false;
                 regEditor.dirty = false;
                 return true;
@@ -340,27 +448,20 @@ namespace PackageEditor
             }
         }
 
-        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        private string CaptionText()
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            //openFileDialog.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "\\Cameyo apps";
-            openFileDialog.Multiselect = false;
-            openFileDialog.Filter = "Virtual app (*.cameyo.exe;*.virtual.exe)|*.cameyo.exe;*.virtual.exe|All files (*.*)|*.*";
-            //openFileDialog.DefaultExt = "virtual.exe";
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                VirtPackage.APIRET apiRet;
-                if (!PackageOpen(openFileDialog.FileName, true, out apiRet))
-                {
-                    MessageBox.Show(String.Format("Failed to open package. API error: {0}", apiRet));
-                }
-            }
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            string packageEditor = resources.GetString("$this.Text");
+            if (isElevatedProcess)
+                packageEditor += " (Admin)";
+            if (virtPackage != null && virtPackage.opened && !string.IsNullOrEmpty(virtPackage.openedFile))
+                packageEditor += " - " + virtPackage.openedFile;
+            return packageEditor;
         }
 
         private void saveasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            string packageEditor = resources.GetString("$this.Text");
+            //System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 
             String message;
             if (!PackageCanSave(out message))
@@ -373,80 +474,362 @@ namespace PackageEditor
             {
                 saveFileDialog.InitialDirectory = Path.GetDirectoryName(virtPackage.openedFile);
                 saveFileDialog.FileName = Path.GetFileName(virtPackage.openedFile);
+
+                // cbDatFile: correct open file's name
+                if (cbDatFile.Checked && Path.GetExtension(virtPackage.openedFile).Equals(".exe", StringComparison.InvariantCultureIgnoreCase))
+                    saveFileDialog.FileName = Path.ChangeExtension(virtPackage.openedFile, ".dat");
+                if (!cbDatFile.Checked && Path.GetExtension(virtPackage.openedFile).Equals(".dat", StringComparison.InvariantCultureIgnoreCase))
+                    saveFileDialog.FileName = Path.ChangeExtension(virtPackage.openedFile, ".exe");
             }
             else
             {
-                saveFileDialog.FileName = "New app.cameyo.exe";
+                saveFileDialog.FileName = (cbDatFile.Checked ? "New app.cameyo.dat" : "New app.cameyo.exe");
             }
             saveFileDialog.AddExtension = true;
-            saveFileDialog.Filter = "Virtual app (*.cameyo.exe;*.virtual.exe)|*.cameyo.exe;*.virtual.exe";
-            saveFileDialog.DefaultExt = "cameyo.exe";
-
+            saveFileDialog.Filter = (cbDatFile.Checked ? "Virtual app (*.cameyo.dat)|*.cameyo.dat" : "Virtual app (*.cameyo.exe)|*.cameyo.exe");
+            saveFileDialog.DefaultExt = (cbDatFile.Checked ? "cameyo.dat" : "cameyo.exe");
+reask:
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
+                if (cbDatFile.Checked && !Path.GetExtension(saveFileDialog.FileName).Equals(".dat", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    MessageBox.Show("Must have .dat extension");
+                    goto reask;
+                }
+                if (!cbDatFile.Checked && !Path.GetExtension(saveFileDialog.FileName).Equals(".exe", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    MessageBox.Show("Must have .exe extension");
+                    goto reask;
+                }
+
+                // cbDatFile: Loader.exe
+                // Must be copied before PackageSave, as it will apply hPkg->IconSrcFile (if any) onto Loader.exe
+                if (cbDatFile.Checked)
+                {
+                    if (!TryCopyFile(Path.Combine(Utils.MyPath(), "Loader.exe"), Path.ChangeExtension(saveFileDialog.FileName, ".exe"), true))
+                    {
+                        MessageBox.Show("Cannot copy Loader.exe to: " + Path.ChangeExtension(saveFileDialog.FileName, ".exe"));
+                        return;
+                    }
+                }
+
+                bool _dirtyIcon = this.dirtyIcon;   // Save this before PackageSave resets it
                 if (PackageSave(saveFileDialog.FileName))
                 {
+                    // Copy icon .dat -> .exe, only if icon wasn't dirty.
+                    // Because if it was dirty, it means PackageSave has already taken care 
+                    // of applying it to the accompanying Loader.exe.
+                    if (!_dirtyIcon)
+                    {
+                        VirtPackage.PackUtils_CopyIconsFromExeToExe(
+                            Path.ChangeExtension(saveFileDialog.FileName, ".dat"),
+                            Path.ChangeExtension(saveFileDialog.FileName, ".exe"));
+                    }
+
                     virtPackage.openedFile = saveFileDialog.FileName;
-                    this.Text = packageEditor + " - " + saveFileDialog.FileName;
+                    this.Text = CaptionText();
                     MessageBox.Show(PackageEditor.Messages.Messages.packageSaved);
                 }
             }
         }
 
-        private void exportAsZeroInstallerXmlToolStripMenuItem_Click(object sender, EventArgs e)
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // TODO:piba,ZeroInstaller, exportAsZeroInstallerXml
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            if (String.IsNullOrEmpty(virtPackage.openedFile))
+            {
+                // This is a new package.. so save as to get a filename.
+                saveasToolStripMenuItem_Click(sender, e);
+                return;
+            }
+
+            // cbDatFile: correct open file's name if cbDatFile was checked/unchecked during this editing session
+            string packageExeFile = virtPackage.openedFile;
+            if (cbDatFile.Checked/* && Path.GetExtension(packageExeFile).Equals(".exe", StringComparison.InvariantCultureIgnoreCase)*/)
+                packageExeFile = Path.ChangeExtension(packageExeFile, ".dat");
+            if (!cbDatFile.Checked/* && Path.GetExtension(packageExeFile).Equals(".dat", StringComparison.InvariantCultureIgnoreCase)*/)
+                packageExeFile = Path.ChangeExtension(packageExeFile, ".exe");
+
+            string tmpFileName = packageExeFile; //.new: +".new";
+            //.new:TryDeleteFile(tmpFileName);
+
+            // cbDatFile: Loader.exe
+            // Must be copied before PackageSave, as it will apply hPkg->IconSrcFile (if any) onto Loader.exe
+            if (cbDatFile.Checked)
+            {
+                if (!TryCopyFile(Path.Combine(Utils.MyPath(), "Loader.exe"), Path.ChangeExtension(tmpFileName, ".exe"), true))
+                {
+                    MessageBox.Show("Cannot copy Loader.exe to: " + Path.ChangeExtension(tmpFileName, ".exe"));
+                    return;
+                }
+            }
+
+            bool _dirtyIcon = this.dirtyIcon;   // Save this before PackageSave resets it
+            if (PackageSave(tmpFileName))
+            {
+                // Copy icon .dat -> .exe, only if icon wasn't dirty.
+                // Because if it was dirty, it means PackageSave has already taken care 
+                // of applying it to the accompanying Loader.exe.
+                if (!_dirtyIcon)
+                {
+                    VirtPackage.PackUtils_CopyIconsFromExeToExe(
+                        Path.ChangeExtension(tmpFileName, ".dat"),
+                        Path.ChangeExtension(tmpFileName, ".exe"));
+                }
+
+                // Release (close) original file, and delete it (otherwise it won't be erasable)
+                ThreadedRegLoadStop(-1);
+                PackageClose(false);
+                //virtPackage.Close();
+
+                //.new:TryDeleteFile(packageExeFile);
+                //.new:bool ok = TryMoveFile(tmpFileName, packageExeFile);
+                VirtPackage.APIRET apiRet;
+                if (!PackageOpen(packageExeFile, false, out apiRet))
+                {
+                    MessageBox.Show(apiRet.ToString());
+                    closeToolStripMenuItem_Click(sender, e);
+                    virtPackage.opened = false;
+                    return;
+                }
+                String property = virtPackage.GetProperty("AutoLaunch");
+                //virtPackage.Open(packageExeFile);
+                //.new:if (ok)
+                    MessageBox.Show("Package saved.");
+                /*.new:else
+                    MessageBox.Show("Cannot rename: " + tmpFileName + " to: " + packageExeFile);*/
+            }
+            else
+            {
+                // Save failed. Delete .new file.
+                //.new:System.IO.File.Delete(packageExeFile + ".new");
+            }
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            //openFileDialog.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "\\Cameyo apps";
+            openFileDialog.Multiselect = false;
+            openFileDialog.Filter = "Virtual app (*.cameyo.exe;*.cameyo.dat)|*.cameyo.exe;*.cameyo.dat|All files (*.*)|*.*";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                memorizedPassword = "";
+                if (Path.GetExtension(openFileDialog.FileName).Equals(".exe", StringComparison.InvariantCultureIgnoreCase) &&
+                    File.Exists(Path.ChangeExtension(virtPackage.openedFile, ".dat")) &&
+                    Utils.GetFileSize(openFileDialog.FileName) < 2 * 1024 * 1024)   // Looks like Loader.exe
+                {
+                    openFileDialog.FileName = Path.ChangeExtension(virtPackage.openedFile, ".dat");
+                }
+                VirtPackage.APIRET apiRet;
+                if (!PackageOpen(openFileDialog.FileName, true, out apiRet))
+                {
+                    MessageBox.Show(String.Format("Failed to open package. API error: {0}", apiRet));
+                }
+            }
+        }
+
+        private void BlueprintFilesRecurse(XmlWriter xmlOut, TreeNodeCollection folderNodes, string outFilesDir)
+        {
+            foreach (FolderTreeNode curFolder in folderNodes)
+            {
+                if (curFolder.deleted)
+                    continue;
+                if (curFolder.childFiles != null)
+                {
+                    foreach (FileData file in curFolder.childFiles)
+                    {
+                        if (file.deleted)
+                            continue;
+                        xmlOut.WriteStartElement("File");
+                        xmlOut.WriteAttributeString("source", file.virtFsNode.FileName);
+                        xmlOut.WriteAttributeString("targetdir", Path.GetDirectoryName(file.virtFsNode.FileName));
+                        //todo: if (autoLaunchFiles >>>>> )
+                        //    xmlOut.WriteAttributeString("autoLaunch", autoLaunchFiles);
+                        xmlOut.WriteEndElement();
+
+                        // Copy actual file itself
+                        string targetFile = Path.Combine(outFilesDir, file.virtFsNode.FileName);
+                        if (!string.IsNullOrEmpty(file.addedFrom))
+                        {
+                            try
+                            {
+                                Directory.CreateDirectory(Path.GetDirectoryName(targetFile));
+                                File.Copy(file.addedFrom, targetFile);
+                            }
+                            catch { }
+                        }
+                        else
+                        {
+                            virtPackage.ExtractFile(file.virtFsNode.FileName, Path.GetDirectoryName(targetFile));
+                        }
+                    }
+                }
+                BlueprintFilesRecurse(xmlOut, curFolder.Nodes, outFilesDir);
+            }
+        }
+
+        private void BlueprintRegKeysRecurse(XmlWriter xmlOut, RegistryKey regKey, string curKeyName, string curKeyPortion)
+        {
+            if (!string.IsNullOrEmpty(curKeyPortion))
+            {
+                xmlOut.WriteStartElement("Key");
+                xmlOut.WriteAttributeString("path", curKeyPortion);
+            }
+
+            // Save values
+            foreach (var value in regKey.GetValueNames())
+            {
+                var type = regKey.GetValueKind(value);
+                xmlOut.WriteStartElement("Value");
+                xmlOut.WriteAttributeString("name", value);
+                switch (type)
+                {
+                    case RegistryValueKind.String:
+                        xmlOut.WriteAttributeString("string", (string)regKey.GetValue(value));
+                        break;
+                    case RegistryValueKind.DWord:
+                        xmlOut.WriteAttributeString("dword", ((Int32)regKey.GetValue(value)).ToString());
+                        break;
+                    case RegistryValueKind.Binary:
+                        byte[] bin = (byte[])regKey.GetValue(value);
+                        xmlOut.WriteAttributeString("bin", Utils.HexDump(bin));
+                        break;
+                }
+                xmlOut.WriteEndElement();
+            }
+
+            // Recurse on subkeys
+            foreach (var key in regKey.GetSubKeyNames())
+            {
+                RegistryKey subRegKey = regKey.OpenSubKey(key);
+                BlueprintRegKeysRecurse(xmlOut, subRegKey, Path.Combine(curKeyName, key), key);
+            }
+
+            if (!string.IsNullOrEmpty(curKeyPortion))
+                xmlOut.WriteEndElement();
+        }
+
+        private void exportXmlToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // TODO: require password
+            FolderBrowserDialog saveFileDialog = new FolderBrowserDialog();
+            saveFileDialog.ShowNewFolderButton = true;
+            /*SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.AddExtension = true;
-            saveFileDialog.Filter = "ZeroInstaller configuration file (*.xml)|*.xml";
-            saveFileDialog.DefaultExt = "xml";
+            saveFileDialog.Filter = "Cameyo Blueprint (*.xml)|*.xml";
+            saveFileDialog.DefaultExt = "xml";*/
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                XmlTextWriter xmlOut = new XmlTextWriter(saveFileDialog.FileName, Encoding.Default);
-                xmlOut.Formatting = Formatting.Indented;
-                xmlOut.WriteStartDocument();
-                xmlOut.WriteStartElement("ZeroInstallerXml");
+                string appID = virtPackage.GetProperty("AppID");
+                string outDir = Path.Combine(saveFileDialog.SelectedPath, appID + ".Blueprint");
+                if (Directory.Exists(outDir))
+                {
+                    if (MessageBox.Show(outDir + "\nalready exists. Continue?", "Confirm", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.No)
+                        return;
+                }
+                else
+                {
+                    try
+                    {
+                        if (Directory.CreateDirectory(outDir) == null)
+                            throw new Exception("Cannot create directory " + outDir);
+                    }
+                    catch 
+                    {
+                        MessageBox.Show("Cannot create directory: " + outDir);
+                        return;
+                    }
+                }
 
-                xmlOut.WriteStartElement("Properties");
-                xmlOut.WriteStartElement("Property");
-                xmlOut.WriteAttributeString("AppID", "TestApp");
-                xmlOut.WriteEndElement();
-                xmlOut.WriteStartElement("Property");
-                xmlOut.WriteAttributeString("Version", "1.0");
-                xmlOut.WriteEndElement();
-                xmlOut.WriteStartElement("Property");
-                xmlOut.WriteAttributeString("IconFile", "Icon.exe");
-                xmlOut.WriteEndElement();
-                xmlOut.WriteStartElement("Property");
-                xmlOut.WriteAttributeString("StopInheritance", "");
-                xmlOut.WriteEndElement();
-                xmlOut.WriteStartElement("Property");
-                xmlOut.WriteAttributeString("BuildOutput", "[AppID].exe");
-                xmlOut.WriteEndElement();
-                xmlOut.WriteEndElement();
+                XmlWriterSettings writerSettings = new XmlWriterSettings();
+                writerSettings.OmitXmlDeclaration = true;
+                writerSettings.Indent = true;
+                using (XmlWriter xmlOut = XmlWriter.Create(Path.Combine(outDir, appID + ".xml"), writerSettings))
+                {
+                    string outFilesDir = outDir;
+                    xmlOut.WriteStartDocument();
+                    xmlOut.WriteStartElement("CameyoPkg");
 
-                xmlOut.WriteStartElement("FileSystem");
-                xmlOut.WriteEndElement();
+                    // Properties
+                    string autoLaunch = virtPackage.GetProperty("AutoLaunch");
+                    xmlOut.WriteStartElement("Properties");
+                    {
+                        xmlOut.WriteStartElement("Property");
+                        xmlOut.WriteAttributeString("AppID", virtPackage.GetProperty("AppID"));
+                        xmlOut.WriteEndElement();
+                        xmlOut.WriteStartElement("Property");
+                        xmlOut.WriteAttributeString("Version", virtPackage.GetProperty("Version"));
+                        xmlOut.WriteEndElement();
+                        xmlOut.WriteStartElement("Property");
+                        xmlOut.WriteAttributeString("BaseDirName", virtPackage.GetProperty("BaseDirName"));
+                        xmlOut.WriteEndElement();
+                        //xmlOut.WriteStartElement("Property");
+                        //xmlOut.WriteAttributeString("IconFile", "Icon.exe");
+                        //xmlOut.WriteEndElement();
+                        xmlOut.WriteStartElement("Property");
+                        xmlOut.WriteAttributeString("StopInheritance", virtPackage.GetProperty("StopInheritance"));
+                        xmlOut.WriteEndElement();
+                        xmlOut.WriteStartElement("Property");
+                        xmlOut.WriteAttributeString("BuildOutput", "[AppID].exe");
+                        xmlOut.WriteEndElement();
+                        // AutoLaunch
+                        if (!string.IsNullOrEmpty(autoLaunch))
+                        {
+                            xmlOut.WriteStartElement("Property");
+                            xmlOut.WriteAttributeString("AutoLaunch", autoLaunch);
+                            xmlOut.WriteEndElement();
+                        }
+                    }
+                    xmlOut.WriteEndElement();
 
-                xmlOut.WriteStartElement("Registry");
-                xmlOut.WriteEndElement();
+                    // AutoLaunch property -> autoLaunchFiles list
+                    var autoLaunchFiles = new List<string>();
+                    /*todo:string[] autoLaunches = autoLaunch.Split(';');
+                    foreach (string item in autoLaunches)
+                    {
+                        string[] elements = item.Split('>');
+                        if (elements.Length > 0)
+                            autoLaunchFiles.Add(elements[0]);
+                    }*/
 
-                xmlOut.WriteStartElement("Sandbox");
-                xmlOut.WriteStartElement("FileSystem");
-                xmlOut.WriteAttributeString("access", "Full");
-                xmlOut.WriteEndElement();
+                    // FileSystem
+                    xmlOut.WriteStartElement("FileSystem");
+                    if (fsFolderTree.Nodes.Count != 0 && fsFolderTree.Nodes[0].Nodes.Count != 0)
+                    {
+                        BlueprintFilesRecurse(xmlOut, fsFolderTree.Nodes[0].Nodes, outFilesDir);
+                    }
+                    xmlOut.WriteEndElement();
 
-                xmlOut.WriteStartElement("Registry");
-                xmlOut.WriteAttributeString("access", "Full");
-                xmlOut.WriteEndElement();
-                xmlOut.WriteEndElement();
+                    // Registry
+                    xmlOut.WriteStartElement("Registry");
+                    if (regEditor.workKey == null)
+                        ThreadedRegLoad();   // If registry isn't loaded yet, load it now (synchronously)
+                    if (regEditor.workKey != null)
+                        BlueprintRegKeysRecurse(xmlOut, regEditor.workKey, "", "");
+                    xmlOut.WriteEndElement();
 
-                xmlOut.WriteEndElement();
-                xmlOut.WriteEndDocument();
-                xmlOut.Flush();
-                xmlOut.Close();
+                    // Sandbox
+                    xmlOut.WriteStartElement("Sandbox");
+                    {
+                        xmlOut.WriteStartElement("FileSystem");
+                        xmlOut.WriteAttributeString("access", "Full");
+                        xmlOut.WriteEndElement();
 
-                xmlOut.Close();
+                        xmlOut.WriteStartElement("Registry");
+                        xmlOut.WriteAttributeString("access", "Full");
+                        xmlOut.WriteEndElement();
+                    }
+                    xmlOut.WriteEndElement();
+
+                    xmlOut.WriteEndElement();
+                    xmlOut.WriteEndDocument();
+                    xmlOut.Flush();
+                    xmlOut.Close();
+
+                    xmlOut.Close();
+
+                    MessageBox.Show("Created in:\n" + outDir);
+                }
             }
         }
 
@@ -478,21 +861,44 @@ namespace PackageEditor
             }
         }
 
+        private void DisplayIsolationMode()
+        {
+            // Isolation mode
+            int isolationType = virtPackage.GetIsolationMode();
+
+            propertyIsolationDataMode.CheckedChanged -= propertyIsolationMode_CheckedChanged;
+            propertyIsolationIsolated.CheckedChanged -= propertyIsolationMode_CheckedChanged;
+            propertyIsolationMerge.CheckedChanged -= propertyIsolationMode_CheckedChanged;
+            {
+                propertyIsolationDataMode.Checked = propertyIsolationIsolated.Checked = propertyIsolationMerge.Checked = false;
+                propertyIsolationDataMode.Checked = (isolationType == VirtPackage.ISOLATIONMODE_DATA);
+                propertyIsolationIsolated.Checked = (isolationType == VirtPackage.ISOLATIONMODE_ISOLATED);
+                propertyIsolationMerge.Checked = (isolationType == VirtPackage.ISOLATIONMODE_FULL_ACCESS);
+            }
+            propertyIsolationDataMode.CheckedChanged += propertyIsolationMode_CheckedChanged;
+            propertyIsolationIsolated.CheckedChanged += propertyIsolationMode_CheckedChanged;
+            propertyIsolationMerge.CheckedChanged += propertyIsolationMode_CheckedChanged;
+
+            //if (propertyIsolationDataMode.Checked)
+            //    virtPackage.SetProperty("DataMode", "TRUE");   // Important to be able to switch to Isolated mode (to unisolate %Personal% etc)
+
+            propertyIsolationMode_CheckedChanged(null, null);
+        }
+
         private void OnPackageOpen()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            string packageEditor = resources.GetString("$this.Text");
             String command;
 
             // AppID
             propertyAppID.Text = virtPackage.GetProperty("AppID");
             //propertyAppID.TextChanged += PropertyChange;
 
-            // FriendlyName
+            // FriendlyName, Version
             propertyFriendlyName.Text = virtPackage.GetProperty("FriendlyName");
+            propertyFileVersion.Text = virtPackage.GetProperty("Version");
             //propertyFriendlyName.TextChanged += PropertyChange;
 
-            propertyFileVersion.Text = virtPackage.GetProperty("Version");
             // AutoLaunch
             //FillAutoLaunchCombo(propertyAutoLaunch);
             DisplayAutoLaunch();
@@ -505,14 +911,10 @@ namespace PackageEditor
                 propertyVirtModeRam.Checked = true;
             else
                 propertyVirtModeDisk.Checked = true;
+            propertyVirtMode_CheckedChanged(this, null);
 
             // Isolation
-            int isolationType = virtPackage.GetIsolationMode();
-            propertyIsolationDataMode.Checked = (isolationType == VirtPackage.ISOLATIONMODE_DATA);
-            propertyIsolationIsolated.Checked = (isolationType == VirtPackage.ISOLATIONMODE_ISOLATED);
-            propertyIsolationMerge.Checked = (isolationType == VirtPackage.ISOLATIONMODE_FULL_ACCESS);
-            if (propertyIsolationDataMode.Checked)
-                virtPackage.SetProperty("DataMode", "TRUE");   // Important to be able to switch to Isolated mode (to unisolate %Personal% etc)
+            DisplayIsolationMode();
 
             // Icon
             if (!String.IsNullOrEmpty(virtPackage.openedFile))
@@ -524,8 +926,16 @@ namespace PackageEditor
                 }
             }
 
+            // DataDirName
+            //propertyDataDirName.Text = virtPackage.GetProperty("DataDirName");
+
             // StopInheritance
             propertyStopInheritance.Text = virtPackage.GetProperty("StopInheritance");
+
+            // VolatileRegistry
+            cbVolatileRegistry.Checked = 
+                !virtPackage.GetProperty("RegMode").Equals("Extract", StringComparison.InvariantCultureIgnoreCase) &&
+                !virtPackage.GetProperty("LegacyReg").Equals("1", StringComparison.InvariantCultureIgnoreCase);
 
             // Integrate
             command = GetIntegrateStartCommand();
@@ -553,6 +963,8 @@ namespace PackageEditor
                     rdbCleanAll.Checked = true;
             }
 
+            // DatFile 
+            cbDatFile.Checked = Path.GetExtension(virtPackage.openedFile).Equals(".dat", StringComparison.InvariantCultureIgnoreCase);
 
             // Expiration
             String expiration = virtPackage.GetProperty("Expiration");
@@ -571,11 +983,33 @@ namespace PackageEditor
                 }
             }
 
-            if (!String.IsNullOrEmpty(virtPackage.openedFile))
-                this.Text = packageEditor + " - " + virtPackage.openedFile;
+            // TTL
+            String ttlDays = virtPackage.GetProperty("TtlDays");
+            int ttlDaysVal;
+            try { ttlDaysVal = Convert.ToInt32(ttlDays); }
+            catch { ttlDaysVal = 0; }
+            propertyTtlDays.Checked = !String.IsNullOrEmpty(ttlDays);
+            propertyTtlDaysValue.Value = ttlDaysVal;
+            propertyTtlResistRemove.Checked = virtPackage.GetProperty("TtlResistRemove") == "1";
+
+            // Package protection
+            propertyProt.Checked = !string.IsNullOrEmpty(virtPackage.GetProperty("PkgProtActions")) && virtPackage.GetProperty("PkgProtActions") != "0";
+            if (string.IsNullOrEmpty(virtPackage.GetProperty("PkgProtPassword")))
+                propertyProtPassword.Text = "";
             else
-                this.Text = packageEditor;
-            dirty = false;
+                propertyProtPassword.Text = "[UNCHANGED]";
+
+            // ScmDirect (direct-registration services support)
+            propertyScmDirect.Visible = virtPackage.GetProperty("NewServices") == "1";
+            propertyScmDirect.Checked = virtPackage.GetProperty("Services").Equals("Direct", StringComparison.InvariantCultureIgnoreCase) &&
+                virtPackage.GetProperty("RegMode").Equals("Extract", StringComparison.InvariantCultureIgnoreCase);
+
+            // DisplayLogo
+            propertyDisplayLogo.Checked = string.IsNullOrEmpty(virtPackage.GetProperty("Branding"));
+
+            // Open
+            this.Text = CaptionText();
+            dirty = dirtyIcon = false;
         }
 
         private void RemoveIfStartswith(ref String str, String value)
@@ -630,7 +1064,7 @@ namespace PackageEditor
 
         public void OnTabActivate()
         {
-            //no needed anymore: DisplayIsolation();
+            DisplayIsolationMode();
         }
 
         public bool OnPackageSave()
@@ -641,16 +1075,39 @@ namespace PackageEditor
             // AppID + AutoLaunch
             Ret &= virtPackage.SetProperty("AppID", propertyAppID.Text);
             Ret &= virtPackage.SetProperty("FriendlyName", propertyFriendlyName.Text);
-            Ret &= virtPackage.SetProperty("StopInheritance", propertyStopInheritance.Text);
             Ret &= virtPackage.SetProperty("Version", propertyFileVersion.Text);
+            //Ret &= virtPackage.SetProperty("DataDirName", propertyDataDirName.Text);
+            Ret &= virtPackage.SetProperty("StopInheritance", propertyStopInheritance.Text);
+            Ret &= virtPackage.SetProperty("RegMode", cbVolatileRegistry.Checked ? "" : "Extract");
+            virtPackage.SetProperty("LegacyReg", "");   // Deprecated
             if (propertyExpiration.Checked)
                 Ret &= virtPackage.SetProperty("Expiration", propertyExpirationDatePicker.Value.ToString("dd/MM/yyyy"));
             else
                 Ret &= virtPackage.SetProperty("Expiration", "");
+            if (propertyTtlDays.Checked)
+                Ret &= virtPackage.SetProperty("TtlDays", propertyTtlDaysValue.Value.ToString());
+            else
+                Ret &= virtPackage.SetProperty("TtlDays", "");
+            Ret &= virtPackage.SetProperty("TtlResistRemove", propertyTtlResistRemove.Checked ? "1" : "0");
             if (propertyVirtModeRam.Checked)
                 Ret &= virtPackage.SetProperty("VirtMode", "RAM");
             else
-                Ret &= virtPackage.SetProperty("VirtMode", "");
+                Ret &= virtPackage.SetProperty("VirtMode", "DISK");
+
+            // Package protection
+            Ret &= virtPackage.SetProtection(propertyProtPassword.Text, (propertyProt.Checked ? 3 : 0), null);
+            if (!string.IsNullOrEmpty(propertyProtPassword.Text) && propertyProtPassword.Text != "[UNCHANGED]")
+                memorizedPassword = propertyProtPassword.Text;
+
+            // ScmDirect (direct-registration services support)
+            if (propertyScmDirect.Checked)
+                Ret &= virtPackage.SetProperty("Services", "Direct") && virtPackage.SetProperty("RegMode", "Extract");
+            // Conflicts with cbVolatileRegistry:
+            //else
+            //    Ret &= virtPackage.SetProperty("Services", "") && virtPackage.SetProperty("RegMode", "");
+
+            // DisplayLogo
+            Ret &= propertyDisplayLogo.Checked ? virtPackage.SetProperty("Branding", "") : virtPackage.SetProperty("Branding", "None");
 
             // propertyIntegrate, propertyVintegrate
             str = virtPackage.GetProperty("OnStartUnvirtualized");
@@ -666,7 +1123,7 @@ namespace PackageEditor
 
                 newCommand = "%MyExe%" + '>' + newCommand.Trim();
             }
-            if (oldCommand == "")
+            if (string.IsNullOrEmpty(oldCommand) && !string.IsNullOrEmpty(newCommand))
                 str += ";" + newCommand;
             else
             {
@@ -695,7 +1152,7 @@ namespace PackageEditor
 
                 newCommand = "%MyExe%" + '>' + newCommand.Trim();
             }
-            if (oldCommand == "")
+            if (string.IsNullOrEmpty(oldCommand) && !string.IsNullOrEmpty(newCommand))
                 str += ";" + newCommand;
             else
             {
@@ -729,7 +1186,7 @@ namespace PackageEditor
 
             // AutoLaunch (and SaveAutoLaunchCmd + SaveAutoLaunchMenu) already set by AutoLaunchForm
 
-            // BaseDirName already set by SetProperty
+            // BaseDirName & DataDirName already set by SetProperty
 
             // Isolation. Note: it is allowed to have no checkbox selected at all.
             virtPackage.SetIsolationMode(
@@ -745,19 +1202,19 @@ namespace PackageEditor
 
         private void OnPackageClose()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            string packageEditor = resources.GetString("$this.Text");
+            //System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 
             propertyAppID.Text = "";
             propertyFriendlyName.Text = "";
+            propertyFileVersion.Text = "";
             propertyAutoLaunch.Text = "";
             propertyIcon.Image = null;
+            //propertyDataDirName.Text = "";
             propertyStopInheritance.Text = "";
             //propertyCleanupOnExit.Checked = false;
-            this.Text = packageEditor;
         }
 
-        private bool DeleteFile(String FileName)
+        private bool TryDeleteFile(String FileName)
         {
             bool ret = true;
             try
@@ -771,7 +1228,7 @@ namespace PackageEditor
             return ret;
         }
 
-        private bool MoveFile(String srcFileName, String destFileName)
+        private bool TryMoveFile(String srcFileName, String destFileName)
         {
             bool ret = true;
             try
@@ -785,49 +1242,26 @@ namespace PackageEditor
             return ret;
         }
 
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        private bool TryCopyFile(String srcFileName, String destFileName, bool overwrite)
         {
-            if (String.IsNullOrEmpty(virtPackage.openedFile))
+            bool ret = true;
+            try
             {
-                // Its a new package.. so save as to get a filename.
-                saveasToolStripMenuItem_Click(sender, e);
-                return;
+                System.IO.File.Copy(srcFileName, destFileName, overwrite);
             }
-            String tmpFileName = virtPackage.openedFile + ".new";
-            DeleteFile(tmpFileName);
-            //DeleteFile(virtPackage.openedFile + ".bak");
-            if (PackageSave(tmpFileName))
+            catch
             {
-                // Release (close) original file, and delete it (otherwise it won't be erasable)
-                String packageExeFile = virtPackage.openedFile;
-
-                ThreadedRegLoadStop();
-                PackageClose(false);
-                //virtPackage.Close();
-
-                DeleteFile(packageExeFile);
-                bool ok;
-                ok = MoveFile(tmpFileName, packageExeFile);
-                VirtPackage.APIRET apiRet;
-                if (!PackageOpen(packageExeFile, false, out apiRet))
-                    MessageBox.Show(apiRet.ToString());
-                String property = virtPackage.GetProperty("AutoLaunch");
-                //virtPackage.Open(packageExeFile);
-                if (ok)
-                    MessageBox.Show("Package saved.");
-                else
-                    MessageBox.Show("Cannot rename: " + tmpFileName + " to: " + packageExeFile);
+                ret = false;
             }
-            else
-            {
-                // Save failed. Delete .new file.
-                System.IO.File.Delete(virtPackage.openedFile + ".new");
-            }
+            return ret;
         }
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            memorizedPassword = "";
             PackageClose();
+            mru = new MRU("Software\\Cameyo\\Packager\\MRU");
+            DisplayMRU();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -843,13 +1277,13 @@ namespace PackageEditor
             string propertyLocalStorageExeDir = resources.GetString("propertyLocalStorageExeDir.Text");
             string propertyLocalStorageCustom = resources.GetString("propertyLocalStorageCustom.Text");
 
-            String baseDirName = virtPackage.GetProperty("BaseDirName");
+            string baseDirName = virtPackage.GetProperty("BaseDirName");
             if (baseDirName == "")
                 propertyDataStorage.Text = propertyLocalStorageDefault;   // Use hard disk or USB drive (wherever application is launched from)
-            else if (baseDirName.Equals("%ExeDir%\\%AppID%.cameyo.data", StringComparison.InvariantCultureIgnoreCase))
+            else if (baseDirName.Equals("%ExeDir%\\%AppID%.cameyo.files", StringComparison.InvariantCultureIgnoreCase))
                 propertyDataStorage.Text = propertyLocalStorageExeDir;   // "Under the executable's directory"
             else
-                propertyDataStorage.Text = propertyLocalStorageCustom + ": " + baseDirName;
+                propertyDataStorage.Text = propertyLocalStorageCustom + " " + baseDirName;
         }
 
         private void PropertyChange(object sender, EventArgs e)
@@ -873,6 +1307,7 @@ namespace PackageEditor
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Multiselect = false;
+            openFileDialog.Filter = "Executable files (*.exe)|*.exe|All file types|*.*";
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 if (openFileDialog.FileName.EndsWith(".ico", StringComparison.InvariantCultureIgnoreCase))
@@ -884,6 +1319,7 @@ namespace PackageEditor
                     {
                         propertyIcon.Image = ico.ToBitmap();
                         //propertyNewIconFileName.Text = openFileDialog.FileName;
+                        dirtyIcon = true;
                         dirty = true;
                     }
                     else
@@ -894,7 +1330,7 @@ namespace PackageEditor
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            ThreadedRegLoadStop();
+            ThreadedRegLoadStop(3 * 1000);
         }
 
         private void lnkAutoLaunch_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -994,7 +1430,7 @@ namespace PackageEditor
                 try
                 {
                     // Syntax: myPath\Packager.exe -ChangeLoader AppName.cameyo.exe Loader.exe
-                    string myPath = Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
+                    //string myPath = Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
                     int exitCode = 0;
                     if (!ExecProg(openedFile, "-ChangeLoader \"" + files[0] + "\"", true, ref exitCode))
                         MessageBox.Show("Could not execute: " + PackagerExe());
@@ -1005,7 +1441,8 @@ namespace PackageEditor
                 }
                 return;
             }
-            else if (System.IO.Path.GetExtension(files[0]).ToLower() != ".exe")
+            else if (System.IO.Path.GetExtension(files[0]).ToLower() != ".exe" &&
+                System.IO.Path.GetExtension(files[0]).ToLower() != ".dat")
             {
                 MessageBox.Show("You can only open files with .exe extension");
                 return;
@@ -1149,7 +1586,6 @@ namespace PackageEditor
 #endif
         }
 
-
         private void resetCredLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             RegistryKey cameyoKey = Registry.CurrentUser.CreateSubKey(@"Software\Cameyo");
@@ -1170,6 +1606,21 @@ namespace PackageEditor
             customEventsForm.ShowDialog();
             dirty |= customEventsForm.dirty;
             customEventsForm.Dispose();
+        }
+
+        private void lnkActiveDirectory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var form = new ADPermissionsForm(virtPackage);
+            form.ShowDialog();
+            dirty |= form.dirty;
+            form.Dispose();
+        }
+
+        private void lnkAutoUpdate_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            AutoUpdateForm form = new AutoUpdateForm(virtPackage);
+            form.ShowDialog();
+            form.Dispose();
         }
 
         private void regFilesList_SubItemClicked(object sender, SubItemEventArgs e)
@@ -1205,11 +1656,9 @@ namespace PackageEditor
             //MainForm_Resize(null, null);
         }
 
-        private void MainForm_Shown(object sender, EventArgs e)
+        private void DisplayMRU()
         {
-            ListViewHelper.EnableDoubleBuffer(listViewMRU);
-            Win32imports.SendMessage(listViewMRU.Handle, Win32imports.LVM_SETICONSPACING, (uint)410, (uint)410);
-
+            listViewMRU.Items.Clear();
             foreach (MRUitem item in mru.GetItems())
             {
                 if (!File.Exists(item.file))
@@ -1224,9 +1673,17 @@ namespace PackageEditor
                 ListViewItem lvItem = listViewMRU.Items.Add(fileName);
                 lvItem.ImageIndex = imageId;
                 lvItem.Tag = item.file;
+                lvItem.ToolTipText = item.file;
                 lvItem.Group = listViewMRU.Groups["recentlyEditedGroup"];
             }
+        }
 
+        private void MainForm_Shown(object sender, EventArgs e)
+        {
+            listViewMRU.ShowItemToolTips = true;
+            ListViewHelper.EnableDoubleBuffer(listViewMRU);
+            Win32imports.SendMessage(listViewMRU.Handle, Win32imports.LVM_SETICONSPACING, (uint)410, (uint)410);
+            DisplayMRU();
             /*foreach (DeployedApp deployedApp in VirtPackage.DeployedApps())
             {
                 if (!File.Exists(deployedApp.CarrierExeName))
@@ -1405,8 +1862,102 @@ namespace PackageEditor
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             MessageBox.Show(PackageEditor.Messages.Messages.changesWillTakeEffectOnNextStart);
         }
+
+        private void propertyVirtMode_CheckedChanged(object sender, EventArgs e)
+        {
+            picRAM.Visible = picDisk.Visible = false;
+            if (propertyVirtModeRam.Checked)
+            {
+                helpVirtMode.Text = helpVirtModeRam;
+                picRAM.Visible = true;
+            }
+            else if (propertyVirtModeDisk.Checked)
+            {
+                helpVirtMode.Text = helpVirtModeDisk;
+                picDisk.Visible = true;
+            }
+        }
+
+        private void propertyIsolationMode_CheckedChanged(object sender, EventArgs e)
+        {
+            picDataMode.Visible = picIsolatedMode.Visible = picFullAccess.Visible = false;
+            if (propertyIsolationDataMode.Checked)
+            {
+                helpIsolationMode.Text = helpIsolationModeData;
+                picDataMode.Visible = true;
+            }
+            else if (propertyIsolationIsolated.Checked)
+            {
+                helpIsolationMode.Text = helpIsolationModeIsolated;
+                picIsolatedMode.Visible = true;
+            }
+            else if (propertyIsolationMerge.Checked)
+            {
+                helpIsolationMode.Text = helpIsolationModeFull;
+                picFullAccess.Visible = true;
+            }
+
+			// Refresh fsFolderTree & regFolderTree
+            // Isolation. Note: it is allowed to have no checkbox selected at all.
+            if (sender != null)    // null means this function was called manually by DisplayIsolationMode
+            {
+                virtPackage.SetIsolationMode(
+                    propertyIsolationIsolated.Checked ? VirtPackage.ISOLATIONMODE_ISOLATED :
+                    propertyIsolationMerge.Checked ? VirtPackage.ISOLATIONMODE_FULL_ACCESS :
+                    propertyIsolationDataMode.Checked ? VirtPackage.ISOLATIONMODE_DATA :
+                    VirtPackage.ISOLATIONMODE_CUSTOM);
+                if (fsFolderTree.Nodes.Count > 0)    // Only if fsEditor is initialized
+                    fsEditor.RefreshFolderNodeRecursively((FolderTreeNode)fsFolderTree.Nodes[0], 0);
+                if (regFolderTree.Nodes.Count > 0)   // Only if regEditor is initialized
+                    regEditor.RefreshFolderNodeRecursively(regFolderTree.Nodes[0], 0);
+            }
+        }
+
+        private void propertyProtPassword_Enter(object sender, EventArgs e)
+        {
+            if (propertyProtPassword.Text == "[UNCHANGED]")
+                propertyProtPassword.Text = "";
+        }
+
+        private void propertyProt_CheckedChanged(object sender, EventArgs e)
+        {
+            if (propertyProtPassword.Text == "[UNCHANGED]" && propertyProt.Checked)
+                propertyProtPassword.Text = "";
+        }
+
+        private void lnkUpgrade_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Cameyo.OpenSrc.Common.Utils.ShellExec("http://www.cameyo.com/upgrade");
+        }
+
+        public bool RequireElevation()
+        {
+            if (isElevatedProcess)
+                return true;
+            else
+            {
+                if (this.dirty)
+                    MessageBox.Show(Messages.Messages.reqElevationSaveWorkFirst, Messages.Messages.reqElevationTitle);
+                else
+                {
+                    if (MessageBox.Show(Messages.Messages.reqElevation, Messages.Messages.reqElevationTitle,
+                        MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                    {
+                        int exitCode = -1;
+                        string fileName = virtPackage.openedFile;   // Must be before closing the package
+                        closeToolStripMenuItem_Click(null, null);   // Must be done before execution, otherwise the new Package Editor will fail (sharing violation)
+                        string myExeName = System.IO.Path.Combine(Utils.MyPath(), "PackageEditor.exe");
+                        if (Cameyo.OpenSrc.Common.Utils.ShellExec(myExeName, "\"" + fileName + "\"", "runas", ref exitCode, false))
+                            exitToolStripMenuItem_Click(null, null);
+                    }
+                }
+                return false;
+            }
+        }
     }
 
+    //
+    // RegListViewSorter class
     class RegListViewSorter : ListViewSorter
     {
         protected override int CompareItems(ListViewItem x, ListViewItem y)
@@ -1440,6 +1991,8 @@ namespace PackageEditor
         }
     }
 
+    //
+    // ListViewSorter class
     abstract class ListViewSorter : IComparer
     {
         protected int currentcolumn = -1;
@@ -1466,6 +2019,8 @@ namespace PackageEditor
         abstract protected int CompareItems(ListViewItem x, ListViewItem y);
     }
 
+    //
+    // MRUitem, class
     public class MRUitem
     {
         public MRUitem(String name, String file)
@@ -1477,6 +2032,8 @@ namespace PackageEditor
         public String file;
     }
 
+    //
+    // MRU class
     public class MRU
     {
         public int maxItems;

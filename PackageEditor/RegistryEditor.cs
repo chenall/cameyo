@@ -21,11 +21,14 @@ namespace PackageEditor
         private ToolStripButton regRemoveBtn;
         private ToolStripButton regEditBtn;
         private TreeHelper treeHelper;
-        private RegistryKey workKey;
+        public RegistryKey workKey;
         public bool dirty;
         private string masterkey;
         private ArrayList currentkey;
         private AutoResetEvent regLoadAutoResetEvent;
+
+        public delegate bool DelegateRequireElevation();
+        private DelegateRequireElevation requireElevation;
 
         public delegate bool DelegateAddFileOrFolder(String path);
         public DelegateAddFileOrFolder Del_AddFOrF;
@@ -40,13 +43,14 @@ namespace PackageEditor
         {
             get { return currentkey; }
             set { currentkey = value; }
-        }   
+        }
 
-        public RegistryEditor(VirtPackage virtPackage, TreeView fsFolderTree, ListView fsFilesList, 
-            Label fsFolderInfoFullName, ComboBox fsFolderInfoIsolationCombo,
-            ToolStripButton regRemoveBtn, ToolStripButton regEditBtn)
+        public RegistryEditor(VirtPackage virtPackage, DelegateRequireElevation requireElevation,
+            TreeView fsFolderTree, ListView fsFilesList, Label fsFolderInfoFullName, 
+            ComboBox fsFolderInfoIsolationCombo, ToolStripButton regRemoveBtn, ToolStripButton regEditBtn)
         {
             this.virtPackage = virtPackage;
+            this.requireElevation = requireElevation;
             this.fsFolderTree = fsFolderTree;
             this.fsFilesList = fsFilesList;
             this.fsFolderInfoFullName = fsFolderInfoFullName;
@@ -58,6 +62,7 @@ namespace PackageEditor
             fsFolderInfoIsolationCombo.Text = "";
             fsFolderInfoIsolationCombo.Items.Add(PackageEditor.Messages.Messages.fullAccess);
             fsFolderInfoIsolationCombo.Items.Add(PackageEditor.Messages.Messages.isolated);
+            fsFolderInfoIsolationCombo.Items.Add(PackageEditor.Messages.Messages.strictlyIsolated);
             fsFolderTree.AfterSelect += OnFolderTreeSelect;
             fsFolderInfoIsolationCombo.SelectionChangeCommitted += OnFolderSandboxChange;
             regRemoveBtn.Click += OnRemoveBtnClick;
@@ -72,23 +77,23 @@ namespace PackageEditor
         // function to add files and folders recursively
         private bool AddFileOrFolder(String path)
         {
-          if (Path.GetExtension(path).Equals(".reg", StringComparison.CurrentCultureIgnoreCase))
-          {
-            importRegFile(path);
-          }
-          else
-            MessageBox.Show("Only .reg files are supported for imporing into the Registry tab");
-          return true;
+            if (Path.GetExtension(path).Equals(".reg", StringComparison.CurrentCultureIgnoreCase))
+            {
+                importRegFile(path);
+            }
+            else
+                MessageBox.Show("Only .reg files are supported for imporing into the Registry tab");
+            return true;
         }
 
         public void OnPackageOpenBeforeUI()     // Slow operation, for threading. Must NOT perform any UI.
         {
             try
             {
-              regLoadAutoResetEvent = new AutoResetEvent(false);
-              workKey = virtPackage.GetRegWorkKeyEx(regLoadAutoResetEvent);
-              if (workKey == null)    // No virtual registry?
-                return;
+                regLoadAutoResetEvent = new AutoResetEvent(false);
+                workKey = virtPackage.GetRegWorkKeyEx(regLoadAutoResetEvent);
+                if (workKey == null)    // No virtual registry?
+                    return;
             }
             catch
             {
@@ -101,7 +106,7 @@ namespace PackageEditor
             fsFolderTree.Nodes.Clear();
             TreeNode rootNode = new TreeNode("Registry");
             treeHelper.SetFolderNodeImage(rootNode,
-                false, virtPackage.GetRegistrySandbox("", false));
+                false, false, virtPackage.GetRegistrySandbox("", false));
             fsFolderTree.Nodes.Add(rootNode);
             if (workKey != null)
                 PopulateSubKeys(workKey, "", rootNode);
@@ -144,7 +149,8 @@ namespace PackageEditor
 
         public bool OnPackageSave()
         {
-            return (virtPackage.SaveRegWorkKey());
+            //return (virtPackage.SaveRegWorkKey());
+            return true;
         }
 
         private void PopulateSubKeys(RegistryKey parentKey, String subKeyName, TreeNode curNode)
@@ -165,7 +171,7 @@ namespace PackageEditor
                 // Update image
                 String fullName = treeHelper.GetFullNodeName(newNode);
                 UInt32 sandboxFlags = virtPackage.GetRegistrySandbox(fullName, false);
-                treeHelper.SetFolderNodeImage(newNode, false, sandboxFlags);
+                treeHelper.SetFolderNodeImage(newNode, false, false, sandboxFlags);
 
                 // Recurse
                 PopulateSubKeys(curKey, subKey, newNode);
@@ -188,7 +194,7 @@ namespace PackageEditor
             fsFolderInfoIsolationCombo.SelectedIndex = -1;
             if (folderNode == null)
                 return;
-            fsFolderInfoIsolationCombo.Enabled = (folderNode != fsFolderTree.Nodes[0]);
+            fsFolderInfoIsolationCombo.Enabled = true; //(folderNode != fsFolderTree.Nodes[0]);
 
             // Fill info panel
             String fullName = treeHelper.GetFullNodeName(folderNode);
@@ -201,7 +207,7 @@ namespace PackageEditor
             if (workKey == null)
                 return;
             RegistryKey regKey = workKey.OpenSubKey(fullName);
-            if (regKey == null) 
+            if (regKey == null)
                 return;
             String[] values = regKey.GetValueNames();
             currentkey = new ArrayList();
@@ -226,7 +232,8 @@ namespace PackageEditor
             if (node == null)
                 return;
             String fullName = treeHelper.GetFullNodeName(node);
-            virtPackage.SetRegistrySandbox(fullName,
+            virtPackage.SetRegistrySandbox(
+                node != fsFolderTree.Nodes[0] ? fullName : "",   // Root = ""
                 treeHelper.ComboIndexToSandboxFlags(fsFolderInfoIsolationCombo.SelectedIndex), false);
             RefreshFolderNodeRecursively(node, 0);
             dirty = true;
@@ -235,15 +242,24 @@ namespace PackageEditor
         private void OnRemoveBtnClick(object sender, EventArgs e)
         {
             TreeNode node = fsFolderTree.SelectedNode;
-            if (node == null)
+            if (node == null || workKey == null)
                 return;
+
+            // Require elevation
+            if (!requireElevation())
+                return;
+
+            // Confirm
             if (MessageBox.Show("Delete key?", "Confirm", MessageBoxButtons.YesNo) != DialogResult.Yes)
                 return;
+
+            // Delete key
             String fullName = treeHelper.GetFullNodeName(node);
             try
             {
                 workKey.DeleteSubKeyTree(fullName);
                 node.Remove();
+                virtPackage.SaveRegWorkKey();
             }
             catch
             {
@@ -253,11 +269,22 @@ namespace PackageEditor
 
         private void OnEditClick(object sender, EventArgs e)
         {
+            // Valid registry?
+            if (workKey == null)
+            {
+                MessageBox.Show("No registry in this package");
+                return;
+            }
+
+                // Require elevation
+            if (!requireElevation())
+                return;
+
             // Notification window
             PackageBuiltNotify packageBuiltNotify = new PackageBuiltNotify();
             String friendlyKeyName = System.IO.Path.GetFileName(System.IO.Path.GetDirectoryName(workKey.Name));
             packageBuiltNotify.Do("Registry editor will now open. Please edit entries under the key '" +
-                friendlyKeyName + "'. Once you close the registry editor, your changes will be applied.", 
+                friendlyKeyName + "'. Once you close the registry editor, your changes will be applied.",
                 "", "", "RegeditExplain");
 
             // Set LastKey to the work key
@@ -284,22 +311,23 @@ namespace PackageEditor
                 proc.Start();
                 proc.WaitForExit();
                 OnPackageOpenUI();
+                virtPackage.SaveRegWorkKey();
                 dirty = true;
             }
             catch
             {
                 // Exception will occur if user refuses UAC elevation for example..
             }
-            
+
         }
 
-        private void RefreshFolderNodeRecursively(TreeNode curNode, int iteration)
+        public void RefreshFolderNodeRecursively(TreeNode curNode, int iteration)
         {
             String fullName = treeHelper.GetFullNodeName(curNode);
             UInt32 sandboxFlags = virtPackage.GetRegistrySandbox(fullName, false);
             if (iteration == 0)
             {
-                treeHelper.SetFolderNodeImage(curNode, false, sandboxFlags);
+                treeHelper.SetFolderNodeImage(curNode, false, false, sandboxFlags);
                 if (curNode.Nodes.Count > 0)
                     RefreshFolderNodeRecursively(curNode.Nodes[0], iteration + 1);
             }
@@ -307,7 +335,7 @@ namespace PackageEditor
             {
                 while (curNode != null)
                 {
-                    treeHelper.SetFolderNodeImage(curNode, false, sandboxFlags);
+                    treeHelper.SetFolderNodeImage(curNode, false, false, sandboxFlags);
                     if (curNode.Nodes.Count > 0)
                         RefreshFolderNodeRecursively(curNode.Nodes[0], iteration + 1);
                     curNode = curNode.NextNode;
@@ -317,52 +345,57 @@ namespace PackageEditor
 
         public void toolStripMenuItemExport_Click(object sender, EventArgs e)
         {
-          RegFileExport();
+            RegFileExport();
         }
 
         private void importRegFile(string path)
         {
-          String RegFileName = path;
-          RegistryKey key = workKey;
-          RegistryFunctions registryFunctions = new RegistryFunctions();
-          registryFunctions.ImportVirtualRegistryFromFile(RegFileName, key);
+            String RegFileName = path;
+            RegistryKey key = workKey;
+            RegistryFunctions registryFunctions = new RegistryFunctions();
+            registryFunctions.ImportVirtualRegistryFromFile(RegFileName, key);
 
-          // Refresh the local registry tree
-          OnPackageOpenUI();
-          dirty = true;     
+            // Refresh the local registry tree
+            OnPackageOpenUI();
+            dirty = true;
         }
 
         internal void threadedRegLoadStop()
         {
-          if (regLoadAutoResetEvent != null)
-            regLoadAutoResetEvent.Set();
+            if (regLoadAutoResetEvent != null)
+                regLoadAutoResetEvent.Set();
         }
 
         internal void RegFileExport()
         {
-          SaveFileDialog sfd = new SaveFileDialog();
-          sfd.AddExtension = true;
-          sfd.Filter = "Registry file (*.reg)|*.reg";
-          if (sfd.ShowDialog() == DialogResult.OK)
-          {
-            String RegFileName = sfd.FileName;
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.AddExtension = true;
+            sfd.Filter = "Registry file (*.reg)|*.reg";
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                String RegFileName = sfd.FileName;
 
-            // Read Registry Keys in the package
-            RegistryKey key = workKey;
-            String virtKey = treeHelper.GetFullNodeName(fsFolderTree.SelectedNode);
-            RegistryFunctions registryFunctions = new RegistryFunctions();
-            registryFunctions.ExportVirtualRegistryToFile(RegFileName, key, virtKey);
-          }
+                // Read Registry Keys in the package
+                RegistryKey key = workKey;
+                String virtKey = treeHelper.GetFullNodeName(fsFolderTree.SelectedNode);
+                RegistryFunctions registryFunctions = new RegistryFunctions();
+                registryFunctions.ExportVirtualRegistryToFile(RegFileName, key, virtKey);
+            }
         }
 
         internal void RegFileImport()
         {
-          OpenFileDialog ofd = new OpenFileDialog();
-          ofd.Filter = "Registry file (*.reg)|*.reg";
-          if (ofd.ShowDialog() == DialogResult.OK)
-          {
-            AddFileOrFolder(ofd.FileName);
-          }
+            // Require elevation
+            if (!requireElevation())
+                return;
+
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Registry file (*.reg)|*.reg";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                AddFileOrFolder(ofd.FileName);
+                virtPackage.SaveRegWorkKey();
+            }
         }
     }
 }

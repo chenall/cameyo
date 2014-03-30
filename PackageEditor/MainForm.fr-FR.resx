@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -410,5 +410,20 @@
   </data>
   <data name="cbDontShowAgain.Text" xml:space="preserve">
     <value>Ne plus afficher</value>
+  </data>
+  <data name="cbDatFile.Text" xml:space="preserve">
+    <value>Enregistrer le package comme .DAT, séparément du fichier exécutable (recommandé pour les applications de plus de 2 Go)</value>
+  </data>
+  <data name="chineseMenuItem.Text" xml:space="preserve">
+    <value>Chinois</value>
+  </data>
+  <data name="exportXmlToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Exporter modèle XML</value>
+  </data>
+  <data name="propertyVirtModeDisk.Text" xml:space="preserve">
+    <value>Mode disque : Fichiers des apps virtuels pré-extraits sur le disque en fonction des besoins; plus rapide pour les applications fréquemment utilisées</value>
+  </data>
+  <data name="propertyVirtModeRam.Text" xml:space="preserve">
+    <value>RAM mode : Les applications virtuelles sont exécutées directement à partir de la mémoire vive</value>
   </data>
 </root>

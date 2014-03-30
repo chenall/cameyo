@@ -35,7 +35,10 @@ namespace PackageEditor
                 if (friendlyPath != "")
                     lblLink.Text = System.IO.Path.GetDirectoryName(friendlyPath);
                 else
+                {
                     lblLink.Text = "";
+                    lblLink.Visible = false;
+                }
 
                 int dw = 0;
                 try

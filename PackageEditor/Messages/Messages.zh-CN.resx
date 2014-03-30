@@ -130,42 +130,42 @@
     <value>确认</value>
   </data>
   <data name="discardChanges" xml:space="preserve">
-    <value>您刚才做的更改将会丢失，确定放弃更改？</value>
+    <value>刚才做的更改将会丢失，确定放弃更改？</value>
   </data>
   <data name="displayMenu" xml:space="preserve">
     <value>显示菜单</value>
   </data>
   <data name="fullAccess" xml:space="preserve">
-    <value>完全访问 (Full acces)</value>
+    <value>完全访问</value>
   </data>
   <data name="isolated" xml:space="preserve">
-    <value>只读访问 (Isolated)</value>
+    <value>隔离</value>
   </data>
   <data name="menuRequiresAtLeastTwo" xml:space="preserve">
-    <value>菜单中至少需要两个命令</value>
+    <value>至少需要两个菜单项</value>
   </data>
   <data name="menuRequiresAtLeastTwoTransform" xml:space="preserve">
-    <value>至少需要两个菜单命令，是否转化成直接启动命令？</value>
+    <value>至少需要两个菜单项，是否转换成单独命令？</value>
   </data>
   <data name="opening" xml:space="preserve">
     <value>正在打开</value>
   </data>
   <data name="openingPackage" xml:space="preserve">
-    <value>正在打开程序包</value>
+    <value>正在打开虚拟包</value>
   </data>
   <data name="packageBuiltOk" xml:space="preserve">
-    <value>成功创建在:</value>
+    <value>虚拟包建立成功</value>
   </data>
   <data name="packageSaved" xml:space="preserve">
     <value>已保存</value>
   </data>
-  <data name="saveChanges" xml:space="preserve">
-    <value>保存改动?</value>
-  </data>
   <data name="saving" xml:space="preserve">
-    <value>正在保存</value>
+    <value>保存(&amp;S)</value>
   </data>
   <data name="savingPackage" xml:space="preserve">
-    <value>保存(&amp;S)</value>
+    <value>正在保存</value>
+  </data>
+  <data name="saveChanges" xml:space="preserve">
+    <value>是否保存?</value>
   </data>
 </root>

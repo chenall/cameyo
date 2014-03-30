@@ -244,7 +244,7 @@
     <value>Icona:</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
-    <value>I seguenti processi lanciati saranno esclusi dalla virtualizzazione:</value>
+    <value>Processi da escludere dalla virtualizzazione:</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
     <value>Esempio: "iexplore.exe;myapp.exe"</value>
@@ -353,5 +353,17 @@
   </data>
   <data name="toolStripMenuItemExport.Text" xml:space="preserve">
     <value>&amp;Esporta come file .reg</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Virtualizzazione:</value>
+  </data>
+  <data name="propertyVirtModeDisk.Text" xml:space="preserve">
+    <value>Modalità disco: Le applicazioni virtuali pre-estraggono i files su hard disk man mano che ne hanno bisogno; più veloce per applicaizoni di uso frequente</value>
+  </data>
+  <data name="propertyVirtModeRam.Text" xml:space="preserve">
+    <value>Modalità RAM: Le applicazioni virtuali vengono eseguite direttamente dalla memoria</value>
+  </data>
+  <data name="cbDatFile.Text" xml:space="preserve">
+    <value>Salva pacchetto come file .DAT separato (consigliato per apps maggiori di 2gb)</value>
   </data>
 </root>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -398,5 +398,35 @@
   </data>
   <data name="cbDontShowAgain.Text" xml:space="preserve">
     <value>No volver a mostrar</value>
+  </data>
+  <data name="chineseMenuItem.Text" xml:space="preserve">
+    <value>Chino</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>Integración</value>
+  </data>
+  <data name="propertyVirtModeDisk.Text" xml:space="preserve">
+    <value>Modo Disco: aplicaciones virtuales pre-extrae archivos en el disco según sea necesario; más rápido para aplicaciones de uso frecuente</value>
+  </data>
+  <data name="propertyVirtModeRam.Text" xml:space="preserve">
+    <value>Modo RAM:Aplicaciones virtuales se ejecutan directamente en memoria.</value>
+  </data>
+  <data name="rdbIntegrateNone.Text" xml:space="preserve">
+    <value>No integración</value>
+  </data>
+  <data name="rdbIntegrateStandard.Text" xml:space="preserve">
+    <value>Recrear accesos directos y asociaciones</value>
+  </data>
+  <data name="rdbIntegrateVirtual.Text" xml:space="preserve">
+    <value>Integracion virtual: añadir capa virtual en el Explorador de Windows</value>
+  </data>
+  <data name="cbDatFile.Text" xml:space="preserve">
+    <value>Guardar el package como .DAT, separado del ejecutable (recomendado para aplicaciones de más de 2 GB)</value>
+  </data>
+  <data name="exportXmlToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Exportar modelo de XML</value>
+  </data>
+  <data name="lnkAutoUpdate.Text" xml:space="preserve">
+    <value>Actualización automática</value>
   </data>
 </root>

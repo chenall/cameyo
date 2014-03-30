@@ -35,6 +35,8 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.propertyDataDir = new System.Windows.Forms.CheckBox();
+            this.propertyDataDirName = new System.Windows.Forms.TextBox();
             this.propertyLocalStorageExeDir = new System.Windows.Forms.RadioButton();
             this.propertyLocalStorageCustomDir = new System.Windows.Forms.TextBox();
             this.propertyLocalStorageCustom = new System.Windows.Forms.RadioButton();
@@ -81,6 +83,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.propertyDataDir);
+            this.groupBox1.Controls.Add(this.propertyDataDirName);
             this.groupBox1.Controls.Add(this.propertyLocalStorageExeDir);
             this.groupBox1.Controls.Add(this.propertyLocalStorageCustomDir);
             this.groupBox1.Controls.Add(this.propertyLocalStorageCustom);
@@ -88,6 +92,18 @@
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
+            // 
+            // propertyDataDir
+            // 
+            resources.ApplyResources(this.propertyDataDir, "propertyDataDir");
+            this.propertyDataDir.Name = "propertyDataDir";
+            this.propertyDataDir.UseVisualStyleBackColor = true;
+            this.propertyDataDir.CheckedChanged += new System.EventHandler(this.propertyDataDir_CheckedChanged);
+            // 
+            // propertyDataDirName
+            // 
+            resources.ApplyResources(this.propertyDataDirName, "propertyDataDirName");
+            this.propertyDataDirName.Name = "propertyDataDirName";
             // 
             // propertyLocalStorageExeDir
             // 
@@ -107,6 +123,7 @@
             this.propertyLocalStorageCustom.Name = "propertyLocalStorageCustom";
             this.propertyLocalStorageCustom.TabStop = true;
             this.propertyLocalStorageCustom.UseVisualStyleBackColor = true;
+            this.propertyLocalStorageCustom.CheckedChanged += new System.EventHandler(this.propertyLocalStorageCustom_CheckedChanged);
             // 
             // propertyLocalStorageDefault
             // 
@@ -126,6 +143,7 @@
             this.Name = "DataStorageForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.Load += new System.EventHandler(this.DataStorageForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -147,5 +165,7 @@
         private System.Windows.Forms.RadioButton propertyLocalStorageCustom;
         private System.Windows.Forms.RadioButton propertyLocalStorageDefault;
         private System.Windows.Forms.RadioButton propertyLocalStorageExeDir;
+        private System.Windows.Forms.CheckBox propertyDataDir;
+        private System.Windows.Forms.TextBox propertyDataDirName;
     }
 }
