@@ -62,7 +62,7 @@ namespace PackageEditor
             fsFolderInfoIsolationCombo.Text = "";
             fsFolderInfoIsolationCombo.Items.Add(PackageEditor.Messages.Messages.fullAccess);
             fsFolderInfoIsolationCombo.Items.Add(PackageEditor.Messages.Messages.isolated);
-            fsFolderInfoIsolationCombo.Items.Add(PackageEditor.Messages.Messages.strictlyIsolated);
+            if (VirtPackage.PkgVer > 1) fsFolderInfoIsolationCombo.Items.Add(PackageEditor.Messages.Messages.strictlyIsolated);
             fsFolderTree.AfterSelect += OnFolderTreeSelect;
             fsFolderInfoIsolationCombo.SelectionChangeCommitted += OnFolderSandboxChange;
             regRemoveBtn.Click += OnRemoveBtnClick;

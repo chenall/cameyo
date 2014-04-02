@@ -263,8 +263,13 @@ namespace PackageEditor
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             bool ret = false;
             apiRet = 0;
-            if (virtPackage.opened && !PackageClose())      // User doesn't want to discard changes
-                return false;
+            if (virtPackage.opened)      // User doesn't want to discard changes
+            {
+                if (PackageClose())
+                    VirtPackage.PkgVer = 2;
+                else
+                    return false;
+            }
             if (displayWaitMsg)
                 PleaseWait.PleaseWaitBegin(PackageEditor.Messages.Messages.openingPackage, PackageEditor.Messages.Messages.opening + " " + System.IO.Path.GetFileName(packageExeFile) + "...", packageExeFile);
 
@@ -325,12 +330,14 @@ namespace PackageEditor
                             File.Move(packageExeFile, oldPkgFile);
                         } 
                         catch 
-                        { 
+                        {
                             MessageBox.Show("Package could not be renamed to:\n" + oldPkgFile);
                             trouble = true;
                         }
                         try
                         {
+                            if (!Path.GetExtension(newPkgFile).Equals(".exe", StringComparison.InvariantCultureIgnoreCase))
+                                newPkgFile = Path.ChangeExtension(newPkgFile, ".exe");
                             File.Move(newPkgFile, packageExeFile);
                         }
                         catch 
@@ -1410,9 +1417,9 @@ reask:
         static public string PackagerExe()
         {
             if (Win64.IsWin64())
-                return Path.Combine(Utils.MyPath(), "Packager64.exe");
+                return Path.Combine(Utils.MyPath(), "2.x\\Packager64.exe");
             else
-                return Path.Combine(Utils.MyPath(), "Packager.exe");
+                return Path.Combine(Utils.MyPath(), "2.x\\Packager.exe");
         }
 
         // dragdrop function (DragDrop) to open a new file dropping it in the main form

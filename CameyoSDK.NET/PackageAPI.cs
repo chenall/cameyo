@@ -199,7 +199,6 @@ namespace VirtPackageAPI
             else
                 if (PkgVer == 1) PackageClose64(hPkg);
                 else PackageClose64_v2(hPkg);
-            PkgVer = 2;
         }
 
         // PackageSave
@@ -1773,7 +1772,7 @@ namespace VirtPackageAPI
         {
             // Isolation. Note: it is allowed to have no checkbox selected at all.
             string isolationModeStr = GetProperty("IsolationMode");
-            if (!string.IsNullOrEmpty(isolationModeStr))
+            if (PkgVer != 1 && !string.IsNullOrEmpty(isolationModeStr))
             {
                 if (isolationModeStr.Equals("Data", StringComparison.InvariantCultureIgnoreCase))
                     return ISOLATIONMODE_DATA;
@@ -1806,6 +1805,40 @@ namespace VirtPackageAPI
 
         public void SetIsolationMode(int IsolationMode)
         {
+            if (PkgVer == 1)
+            {//for 2.0.890
+                uint sandboxMode = 0;
+                if (IsolationMode == ISOLATIONMODE_ISOLATED || IsolationMode == ISOLATIONMODE_DATA)
+                    sandboxMode = VirtPackage.SANDBOXFLAGS_COPY_ON_WRITE;
+                else if (IsolationMode == ISOLATIONMODE_FULL_ACCESS)
+                    sandboxMode = VirtPackage.SANDBOXFLAGS_PASSTHROUGH;
+                if (sandboxMode != 0)
+                {
+                    SetFileSandbox("", sandboxMode);
+                    SetRegistrySandbox("", sandboxMode);
+                }
+
+                // Do / undo special folders newly / previously set by Data Isolation mode
+                if (IsolationMode == ISOLATIONMODE_DATA)
+                {
+                    SetProperty("DataMode", "TRUE");
+                    SetFileSandbox("%Personal%", VirtPackage.SANDBOXFLAGS_PASSTHROUGH);
+                    SetFileSandbox("%Desktop%", VirtPackage.SANDBOXFLAGS_PASSTHROUGH);
+                    SetFileSandbox("UNC", VirtPackage.SANDBOXFLAGS_PASSTHROUGH);
+                }
+                else
+                {
+                    if (GetProperty("DataMode") == "TRUE")     // Need to undo special dirs changed by Data Isolation mode (as opposed to set by user)
+                    {
+                        SetProperty("DataMode", "FALSE");
+                        SetFileSandbox("%Personal%", sandboxMode);
+                        SetFileSandbox("%Desktop%", sandboxMode);
+                        SetFileSandbox("UNC", sandboxMode);
+                    }
+                }
+                return;
+            }
+            //For 2.6.1191
             switch (IsolationMode)
             {
                 case ISOLATIONMODE_DATA:

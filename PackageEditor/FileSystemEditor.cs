@@ -78,7 +78,7 @@ namespace PackageEditor
             fsFolderInfoIsolationCombo.Text = "";
             fsFolderInfoIsolationCombo.Items.Add(PackageEditor.Messages.Messages.fullAccess);
             fsFolderInfoIsolationCombo.Items.Add(PackageEditor.Messages.Messages.isolated);
-            fsFolderInfoIsolationCombo.Items.Add(PackageEditor.Messages.Messages.strictlyIsolated);
+            if (VirtPackage.PkgVer > 1) fsFolderInfoIsolationCombo.Items.Add(PackageEditor.Messages.Messages.strictlyIsolated);
             fsFolderTree.AfterSelect += OnFolderTreeSelect;
             fsFolderInfoIsolationCombo.SelectionChangeCommitted += OnFolderSandboxChange;
             fsAddBtn.Click += OnAddBtnClick;
@@ -314,9 +314,9 @@ namespace PackageEditor
                     newItem.flags = (VIRT_FILE_FLAGS)childFile.virtFsNode.FileFlags;
 
                     if ((newItem.flags & VirtPackageAPI.VIRT_FILE_FLAGS.DEPLOY_UPON_PRELOAD) != 0)
-                        newItem.ImageIndex = 7;
+                        newItem.ImageIndex = VirtPackage.PkgVer > 1 ? 7 : 6;
                     else
-                        newItem.ImageIndex = 6;
+                        newItem.ImageIndex = VirtPackage.PkgVer > 1 ? 6 : 3;
                     //ListViewItem.ListViewSubItem x = new ListViewItem.ListViewSubItem();
                     //x.Text = ((VIRT_FILE_FLAGS)childFile.virtFsNode.FileFlags).ToString();
                     //newItem.SubItems.Add(x);
@@ -982,8 +982,8 @@ retry_input:
         public void SetFolderNodeImage(TreeNode node, bool toRemove, bool virtFsDeleted, UInt32 sandboxFlags)
         {
             if (toRemove)
-                node.ImageIndex = node.SelectedImageIndex = 4;
-            else if (virtFsDeleted)
+                node.ImageIndex = node.SelectedImageIndex =VirtPackage.PkgVer > 1 ? 4 : 5;
+            else if (VirtPackage.PkgVer > 1  && virtFsDeleted)
                 node.ImageIndex = node.SelectedImageIndex = 3;
             else
             {

@@ -1289,6 +1289,8 @@
             // 
             resources.ApplyResources(this.pictureBox2, "pictureBox2");
             this.pictureBox2.Image = global::PackageEditor.Properties.Resources._071;
+            this.pictureBox2.MaximumSize = new System.Drawing.Size(383, 318);
+            this.pictureBox2.MinimumSize = new System.Drawing.Size(383, 318);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.TabStop = false;
             // 
