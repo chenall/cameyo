@@ -156,7 +156,7 @@ namespace PackageEditor
             string args = string.Format("-TestAutoUpdate " +
                 "\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\"",
                 tbLocation.Text, tbVersionTest.Text, virtPackage.GetProperty("AppID"), virtPackage.GetProperty("BuildUID"), virtPackage.GetProperty("CloudPkgId"));
-            if (Cameyo.OpenSrc.Common.Utils.ExecProg(Path.Combine(Utils.MyPath(), "Loader.exe"), args, false, ref exitCode))
+            if (Cameyo.OpenSrc.Common.Utils.ExecProg(Path.Combine(Utils.MyPath(), "2.x\\Loader.exe"), args, false, ref exitCode))
             {
                 if (exitCode == (int)VirtPackageAPI.VirtPackage.APIRET.SUCCESS)
                     didTesting = true;

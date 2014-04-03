@@ -162,8 +162,20 @@ namespace VirtPackageAPI
             String AppVirtDll,
             String LoaderExe,
             ref IntPtr hPkg);
+        [DllImport(DLL32_v2, EntryPoint = "PackageCreate", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.StdCall)]
+        private extern static int PackageCreate32_v2(
+            String AppID,
+            String AppVirtDll,
+            String LoaderExe,
+            ref IntPtr hPkg);
         [DllImport(DLL64_v1, EntryPoint = "PackageCreate", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.StdCall)]
         private extern static int PackageCreate64(
+            String AppID,
+            String AppVirtDll,
+            String LoaderExe,
+            ref IntPtr hPkg);
+        [DllImport(DLL64_v2, EntryPoint = "PackageCreate", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.StdCall)]
+        private extern static int PackageCreate64_v2(
             String AppID,
             String AppVirtDll,
             String LoaderExe,
@@ -174,7 +186,7 @@ namespace VirtPackageAPI
             String LoaderExe,
             ref IntPtr hPkg)
         {
-            return Is32Bit() ? PackageCreate32(AppID, AppVirtDll, LoaderExe, ref hPkg): PackageCreate64(AppID, AppVirtDll, LoaderExe, ref hPkg);
+            return Is32Bit() ? (PkgVer == 1 ? PackageCreate32(AppID, AppVirtDll, LoaderExe, ref hPkg) : PackageCreate32_v2(AppID, AppVirtDll, LoaderExe, ref hPkg)) : (PkgVer == 1 ? PackageCreate64(AppID, AppVirtDll, LoaderExe, ref hPkg) : PackageCreate64_v2(AppID, AppVirtDll, LoaderExe, ref hPkg));
         }
 
         // PackageClose
@@ -1328,9 +1340,7 @@ namespace VirtPackageAPI
 
         public bool Create(String AppID, String AppVirtDll, String LoaderExe)
         {
-            String BasePath = Path.GetDirectoryName(AppVirtDll);
-            PkgVer = 1;
-            APIRET Ret = (APIRET)PackageCreate(AppID, Path.Combine(BasePath,"1.x\\AppVirtDll.dll"),Path.Combine(BasePath,"1.x\\Loader.exe"), ref hPkg);
+            APIRET Ret = (APIRET)PackageCreate(AppID, AppVirtDll, LoaderExe, ref hPkg);
             if (Ret == APIRET.SUCCESS)
             {
                 opened = true;

@@ -536,7 +536,7 @@ reask:
                 // Must be copied before PackageSave, as it will apply hPkg->IconSrcFile (if any) onto Loader.exe
                 if (cbDatFile.Checked)
                 {
-                    if (!TryCopyFile(Path.Combine(Utils.MyPath(), "Loader.exe"), Path.ChangeExtension(saveFileDialog.FileName, ".exe"), true))
+                    if (!TryCopyFile(Path.Combine(Utils.MyPath(), "2.x\\Loader.exe"), Path.ChangeExtension(saveFileDialog.FileName, ".exe"), true))
                     {
                         MessageBox.Show("Cannot copy Loader.exe to: " + Path.ChangeExtension(saveFileDialog.FileName, ".exe"));
                         return;
@@ -1745,9 +1745,15 @@ reask:
         {
             if (!PackageClose())
                 return;
+            String BasePath = Path.GetDirectoryName(Application.ExecutablePath);
+            if (MessageBox.Show("请选择新的程序包要使用的版本,点<是>使用旧版(1.X),点<否>使用新版(2.X)", "选择版本", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                VirtPackage.PkgVer = 1;
+            else
+                VirtPackage.PkgVer = 2;
+
             if (!virtPackage.Create("New Package ID",
-                Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "AppVirtDll.dll"),
-                Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Loader.exe")))
+                Path.Combine(BasePath, VirtPackage.PkgVer.ToString() + ".x\\AppVirtDll.dll"),
+                Path.Combine(BasePath, VirtPackage.PkgVer.ToString() + ".x\\Loader.exe")))
             {
                 MessageBox.Show("Faild to create a new package.");
                 return;
