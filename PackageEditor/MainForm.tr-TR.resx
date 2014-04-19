@@ -360,4 +360,43 @@
   <data name="chineseMenuItem.Text" xml:space="preserve">
     <value>Çince</value>
   </data>
+  <data name="cbDatFile.Text" xml:space="preserve">
+    <value>Paketi .exe dosyasından ayrı olarak .DAT şeklinde kaydet (2 GB üstü uygulamalar için önerilir)</value>
+  </data>
+  <data name="cbVolatileRegistry.Text" xml:space="preserve">
+    <value>Değişken sanal kayıt</value>
+  </data>
+  <data name="exportXmlToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Paket taslağını çıkart</value>
+  </data>
+  <data name="groupConstraints.Text" xml:space="preserve">
+    <value>Güvenlik ve süre kısıtlaması</value>
+  </data>
+  <data name="lblNotCommercial.Text" xml:space="preserve">
+    <value>49 makinaya kadar yetkilendirilmiş</value>
+  </data>
+  <data name="lnkActiveDirectory.Text" xml:space="preserve">
+    <value>Active Directory izinleri</value>
+  </data>
+  <data name="lnkAutoUpdate.Text" xml:space="preserve">
+    <value>Oto güncelleme</value>
+  </data>
+  <data name="lnkUpgrade.Text" xml:space="preserve">
+    <value>Şirket / Geliştirici Güncellemesi</value>
+  </data>
+  <data name="propertyDisplayLogo.Text" xml:space="preserve">
+    <value>Cameyo logosunu göster</value>
+  </data>
+  <data name="propertyProt.Text" xml:space="preserve">
+    <value>Düzenlemeye karşı şifreyle koru:</value>
+  </data>
+  <data name="propertyScmDirect.Text" xml:space="preserve">
+    <value>Sistem araçlarının hedef bilgisayara kurulmasına izin ver</value>
+  </data>
+  <data name="propertyTtlDays.Text" xml:space="preserve">
+    <value>(Gün) sonra erişime kapat:</value>
+  </data>
+  <data name="propertyTtlResistRemove.Text" xml:space="preserve">
+    <value>Uygulama silinse dahi son kullanım sayacını tut</value>
+  </data>
 </root>

@@ -150,4 +150,16 @@
   <data name="label4.Text" xml:space="preserve">
     <value>Ek bilgiler (zorunlu değil):</value>
   </data>
+  <data name="comboBox.Items4" xml:space="preserve">
+    <value>İşlem açılışında (sanallaştırılmış)</value>
+  </data>
+  <data name="comboBox.Items5" xml:space="preserve">
+    <value>İşlem açılışında (sanallaştırılmadan)</value>
+  </data>
+  <data name="comboBox.Items6" xml:space="preserve">
+    <value>İşlem kapanışında (sanallaştırılmış)</value>
+  </data>
+  <data name="comboBox.Items7" xml:space="preserve">
+    <value>İşlem kapanışına (sanallaştırılmadan)</value>
+  </data>
 </root>

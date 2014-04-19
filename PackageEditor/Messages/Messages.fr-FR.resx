@@ -168,4 +168,28 @@
   <data name="saveChanges" xml:space="preserve">
     <value>Enregistrer les modifications ?</value>
   </data>
+  <data name="customEventsCount" xml:space="preserve">
+    <value>{0} événements personnalisés </value>
+  </data>
+  <data name="customEventsNone" xml:space="preserve">
+    <value>Pas événements personnalisés </value>
+  </data>
+  <data name="incorrectRootDir" xml:space="preserve">
+    <value>Les répertoires racines doivent inclure une lettre de lecteur, i.e: "C_", "%Program Files%". Le chemin d'accès que vous avez entré semble incorrect. \n Voulez-vous quand même continuer ?</value>
+  </data>
+  <data name="reqElevation" xml:space="preserve">
+    <value>L'éditeur de package va maintenant se fermer et s'exécuter avec des privilèges élevés (mode Admin).</value>
+  </data>
+  <data name="reqElevationSaveWorkFirst" xml:space="preserve">
+    <value>Veuillez commencer par enregistrer votre travail.</value>
+  </data>
+  <data name="reqElevationTitle" xml:space="preserve">
+    <value>Élévation requise</value>
+  </data>
+  <data name="storageDirSubdirWarning" xml:space="preserve">
+    <value>Vous avez spécifié un chemin d'accès sans sous-dossier. Les fichiers seront extraits directement dans ce dossier. Êtes-vous sûr de que vouloir continuer ?</value>
+  </data>
+  <data name="strictlyIsolated" xml:space="preserve">
+    <value>Strictement isolé</value>
+  </data>
 </root>

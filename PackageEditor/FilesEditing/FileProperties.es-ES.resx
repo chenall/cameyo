@@ -144,4 +144,7 @@
   <data name="groupBox.Text" xml:space="preserve">
     <value>Propriedades</value>
   </data>
+  <data name="chkFileFlagDEPLOYED_RAM.Text" xml:space="preserve">
+    <value>Extracción a la Fuerza (modo de virtualización RAM)</value>
+  </data>
 </root>

@@ -141,4 +141,7 @@
   <data name="groupBox.Text" xml:space="preserve">
     <value>Özellikler</value>
   </data>
+  <data name="chkFileFlagDEPLOYED_RAM.Text" xml:space="preserve">
+    <value>Çıkarmaya zorla (RAM sanallaştırması modunda)</value>
+  </data>
 </root>

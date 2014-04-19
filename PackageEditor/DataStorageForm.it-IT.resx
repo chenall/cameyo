@@ -138,4 +138,7 @@
   <data name="propertyLocalStorageExeDir.Text" xml:space="preserve">
     <value>Nella cartella del file eseguibile</value>
   </data>
+  <data name="propertyDataDir.Text" xml:space="preserve">
+    <value>Salva i dati utente in una cartella diversa:</value>
+  </data>
 </root>

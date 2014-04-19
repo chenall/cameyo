@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -152,5 +152,17 @@
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Paramètres (optionnel):</value>
+  </data>
+  <data name="comboBox.Items4" xml:space="preserve">
+    <value>Au démarrage du processus (virtualisé)</value>
+  </data>
+  <data name="comboBox.Items5" xml:space="preserve">
+    <value>Au démarrage du processus (non virtualisé)</value>
+  </data>
+  <data name="comboBox.Items6" xml:space="preserve">
+    <value>A l'arrêt du processus (virtualisé)</value>
+  </data>
+  <data name="comboBox.Items7" xml:space="preserve">
+    <value>A l'arrêt du processus (non virtualisé)</value>
   </data>
 </root>

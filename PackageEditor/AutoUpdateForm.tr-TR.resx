@@ -117,4 +117,71 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Otomatik güncelleme</value>
+  </data>
+  <data name="btnBack.Text" xml:space="preserve">
+    <value>&lt; &amp;Geri</value>
+  </data>
+  <data name="btnCancel.Text" xml:space="preserve">
+    <value>&amp;İptal</value>
+  </data>
+  <data name="btnGenerateXml.Text" xml:space="preserve">
+    <value>XML dosyası oluştur</value>
+  </data>
+  <data name="btnNext.Text" xml:space="preserve">
+    <value>&amp;İleri &gt;</value>
+  </data>
+  <data name="btnTest.Text" xml:space="preserve">
+    <value>Otomatik güncellemeyi test et</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>XML kayıt yolu:</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Paket kayıt yolunu güncelle</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Otomatik güncelleme</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>XML dosyası oluşturmayı otomatik yapma</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Sonuçlama ve Test etme</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Otomatik güncellemeyi açmak ister misiniz?</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Uygulama sürümü:</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Sürüm test değeri:</value>
+  </data>
+  <data name="literalFinish.Text" xml:space="preserve">
+    <value>&amp;Bitir</value>
+  </data>
+  <data name="radioDisableFeature.Text" xml:space="preserve">
+    <value>Kapalı</value>
+  </data>
+  <data name="radioEnableFeature.Text" xml:space="preserve">
+    <value>Açık</value>
+  </data>
+  <data name="textBox2.Text" xml:space="preserve">
+    <value>XML ve uygulama dosyalarının yerleştirileceği konum:
+Örnekler:
+    \\sunucu\yerel\uygulamalar\App.cameyo.xml
+    http://www.sunucum.com/apps/App.cameyo.xml
+    https://www.sunucum.com/apps/App.cameyo.xml</value>
+  </data>
+  <data name="textBox3.Text" xml:space="preserve">
+    <value>Sürüm bilgisi içeren bir XML dosyası ana sunucuya kaydedilecektir. Bu buton mevcut paket için dosyayı oluşturmanızı sağlayacak.</value>
+  </data>
+  <data name="textBox4.Text" xml:space="preserve">
+    <value>Lütfen XML ve EXE dosyalarını sunucunuzda aynı yere kaydedin ve isimlerinin aynı olmasına dikkat edin.
+Örnekler:
+    http://www.sunucum.com/apps/App.cameyo.xml
+    http://www.sunucum.com/apps/App.cameyo.exe</value>
+  </data>
 </root>

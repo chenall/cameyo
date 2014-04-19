@@ -150,4 +150,16 @@
   <data name="label4.Text" xml:space="preserve">
     <value>Parametri (opzionale):</value>
   </data>
+  <data name="comboBox.Items4" xml:space="preserve">
+    <value>All'avvio del processo (virtualizzato)</value>
+  </data>
+  <data name="comboBox.Items5" xml:space="preserve">
+    <value>All'avvio del processo (non virtualizzato)</value>
+  </data>
+  <data name="comboBox.Items6" xml:space="preserve">
+    <value>All'arresto del processo (virtualizzato)</value>
+  </data>
+  <data name="comboBox.Items7" xml:space="preserve">
+    <value>All'arresto del processo (non virtualizzato)</value>
+  </data>
 </root>

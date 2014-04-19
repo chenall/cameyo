@@ -117,4 +117,72 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Aggiornamento automatico</value>
+  </data>
+  <data name="btnBack.Text" xml:space="preserve">
+    <value>&lt; &amp;Indietro</value>
+  </data>
+  <data name="btnCancel.Text" xml:space="preserve">
+    <value>&amp;Annulla</value>
+  </data>
+  <data name="btnGenerateXml.Text" xml:space="preserve">
+    <value>Genera file XML</value>
+  </data>
+  <data name="btnNext.Text" xml:space="preserve">
+    <value>&amp;Avanti &gt;</value>
+  </data>
+  <data name="btnTest.Text" xml:space="preserve">
+    <value>Prova l'aggiornamento automatico</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Percorso XML:</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Aggiorna posizione del pacchetto</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Aggiornamento automatico</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Aggiornamento automatico generazione del file XML</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Completamento e verifica</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Vuoi attivare gli aggiornamenti automatici?</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Versione app:</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Valore di test per la versione:</value>
+  </data>
+  <data name="literalFinish.Text" xml:space="preserve">
+    <value>&amp;Fine</value>
+  </data>
+  <data name="radioDisableFeature.Text" xml:space="preserve">
+    <value>Disattiva</value>
+  </data>
+  <data name="radioEnableFeature.Text" xml:space="preserve">
+    <value>Attiva</value>
+  </data>
+  <data name="textBox2.Text" xml:space="preserve">
+    <value>Percorso in cui metterai l'XML finale e l'eseguibile dell'applicazione:
+Esempi:
+  \\server\public\apps\App.cameyo.xml
+  http://www.mioserver.com/apps/app.cameyo.xml
+  https://www.mioserver.com/apps/App.cameyo.xml</value>
+  </data>
+  <data name="textBox3.Text" xml:space="preserve">
+    <value>Un file XML contenente le informazioni di versione verrà posizionato in un server centrale.
+Questo pulsante lo genererà per te per il pacchetto attualmente aperto.</value>
+  </data>
+  <data name="textBox4.Text" xml:space="preserve">
+    <value>Carica il file XML e l'EXE nello stesso percorso del tuo server, ed assicurati che abbiano lo stesso nome.
+Esempio:
+  http://www.mioserver.com/apps/app.cameyo.xml
+http://www.mioserver.com/apps/app.cameyo.exe</value>
+  </data>
 </root>

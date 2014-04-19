@@ -426,4 +426,34 @@
   <data name="propertyVirtModeRam.Text" xml:space="preserve">
     <value>RAM mode : Les applications virtuelles sont exécutées directement à partir de la mémoire vive</value>
   </data>
+  <data name="cbVolatileRegistry.Text" xml:space="preserve">
+    <value>Base de registres volatile</value>
+  </data>
+  <data name="groupConstraints.Text" xml:space="preserve">
+    <value>Sécurité et expiration</value>
+  </data>
+  <data name="lblNotCommercial.Text" xml:space="preserve">
+    <value>Autorisé pour un maximum de 49 machines</value>
+  </data>
+  <data name="lnkActiveDirectory.Text" xml:space="preserve">
+    <value>Permission Active Directory</value>
+  </data>
+  <data name="lnkUpgrade.Text" xml:space="preserve">
+    <value>Mise à niveau Société / développeur</value>
+  </data>
+  <data name="propertyDisplayLogo.Text" xml:space="preserve">
+    <value>Afficher le logo de Cameyo</value>
+  </data>
+  <data name="propertyProt.Text" xml:space="preserve">
+    <value>Mot de passe de protection contre l'édition :</value>
+  </data>
+  <data name="propertyScmDirect.Text" xml:space="preserve">
+    <value>Permettre aux services système de s'enregistrer sur la machine cible</value>
+  </data>
+  <data name="propertyTtlDays.Text" xml:space="preserve">
+    <value>Expire après (jours) :</value>
+  </data>
+  <data name="propertyTtlResistRemove.Text" xml:space="preserve">
+    <value>Garder le compteur expiration même après la suppression de l'application</value>
+  </data>
 </root>

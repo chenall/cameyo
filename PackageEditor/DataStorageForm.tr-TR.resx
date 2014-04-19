@@ -138,4 +138,7 @@
   <data name="propertyLocalStorageExeDir.Text" xml:space="preserve">
     <value>Uygulamanın bulunduğu klasörde</value>
   </data>
+  <data name="propertyDataDir.Text" xml:space="preserve">
+    <value>Kullanıcı verilerini başka bir dizine kaydet:</value>
+  </data>
 </root>

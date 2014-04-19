@@ -129,9 +129,6 @@
   <data name="groupBox1.Text" xml:space="preserve">
     <value>请选择该应用程序的数据存储位置：</value>
   </data>
-  <data name="propertyDataDir.Text" xml:space="preserve">
-    <value>在不同的目录存放用户数据：</value>
-  </data>
   <data name="propertyLocalStorageCustom.Text" xml:space="preserve">
     <value>自定义位置:</value>
   </data>
@@ -140,5 +137,8 @@
   </data>
   <data name="propertyLocalStorageExeDir.Text" xml:space="preserve">
     <value>可执行应用程序同一目录下</value>
+  </data>
+  <data name="propertyDataDir.Text" xml:space="preserve">
+    <value>保存用户数据到其它目录:</value>
   </data>
 </root>

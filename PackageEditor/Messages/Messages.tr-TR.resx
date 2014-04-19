@@ -168,4 +168,28 @@
   <data name="savingPackage" xml:space="preserve">
     <value>Paket kaydediliyor</value>
   </data>
+  <data name="customEventsCount" xml:space="preserve">
+    <value>{0} kullanıcı olayları</value>
+  </data>
+  <data name="customEventsNone" xml:space="preserve">
+    <value>Kullanıcı olayı yok</value>
+  </data>
+  <data name="incorrectRootDir" xml:space="preserve">
+    <value>kök dizinleri sürücü harfi içermelidir, örn: "C_", "%Program Files%". Girmiş olduğunuz yol geçersiz görünüyor.\n Yine de devam etmek istiyor musunuz?</value>
+  </data>
+  <data name="reqElevation" xml:space="preserve">
+    <value>Paket Düzenleyici şimdi kapanacak ve yönetici olarak başlatılacak.</value>
+  </data>
+  <data name="reqElevationSaveWorkFirst" xml:space="preserve">
+    <value>Lütfen önce işleminizi kaydedin.</value>
+  </data>
+  <data name="reqElevationTitle" xml:space="preserve">
+    <value>Yönetici izni gerekli</value>
+  </data>
+  <data name="storageDirSubdirWarning" xml:space="preserve">
+    <value>Yan klasörleri bulunmayan bir yol seçtiniz. Uygulama dosyaları bu klasöre kopyalanacaktır. Devam etmek istediğinize emin misiniz?</value>
+  </data>
+  <data name="strictlyIsolated" xml:space="preserve">
+    <value>Tam izolasyon</value>
+  </data>
 </root>

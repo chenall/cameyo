@@ -366,4 +366,40 @@
   <data name="cbDatFile.Text" xml:space="preserve">
     <value>Salva pacchetto come file .DAT separato (consigliato per apps maggiori di 2gb)</value>
   </data>
+  <data name="cbVolatileRegistry.Text" xml:space="preserve">
+    <value>Registro virtuale volatile</value>
+  </data>
+  <data name="exportXmlToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Esporta pacchetto Blueprint</value>
+  </data>
+  <data name="groupConstraints.Text" xml:space="preserve">
+    <value>Sicurezza e scadenza</value>
+  </data>
+  <data name="lblNotCommercial.Text" xml:space="preserve">
+    <value>Autorizzato fino a 49 macchine</value>
+  </data>
+  <data name="lnkActiveDirectory.Text" xml:space="preserve">
+    <value>Permessi di Active Directory</value>
+  </data>
+  <data name="lnkAutoUpdate.Text" xml:space="preserve">
+    <value>Aggiornamento automatico</value>
+  </data>
+  <data name="lnkUpgrade.Text" xml:space="preserve">
+    <value>Upgrade per aziende e sviluppatori</value>
+  </data>
+  <data name="propertyDisplayLogo.Text" xml:space="preserve">
+    <value>Mosta il logo di Cameyo</value>
+  </data>
+  <data name="propertyProt.Text" xml:space="preserve">
+    <value>Password per protezione dalle modifiche:</value>
+  </data>
+  <data name="propertyScmDirect.Text" xml:space="preserve">
+    <value>Permetti ai servizi di sistema di venire registrati sul pc di destinazione</value>
+  </data>
+  <data name="propertyTtlDays.Text" xml:space="preserve">
+    <value>Scadenza dopo (giorni):</value>
+  </data>
+  <data name="propertyTtlResistRemove.Text" xml:space="preserve">
+    <value>Mantieni il contatore della scadenza dopo la rimozione dell'applicazione</value>
+  </data>
 </root>

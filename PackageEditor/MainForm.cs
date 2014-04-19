@@ -434,8 +434,15 @@ namespace PackageEditor
                 message += "- AppID is a required field to save a package.\r\n";
             if (String.IsNullOrEmpty(virtPackage.GetProperty("AutoLaunch")))
                 message += "- The package does not have any program(s) selected to launch.\r\nPlease select a program to launch on the tab:General > Panel:Basics > Item:Startup.";
-            if (propertyProt.Checked && string.IsNullOrEmpty(propertyProtPassword.Text))
-                message += "- No password specified.";
+            if (propertyProt.Checked)
+            {
+                if (string.IsNullOrEmpty(propertyProtPassword.Text))
+                    message += "- No password specified.";
+                else if (propertyProtPassword.Text != "[UNCHANGED]" && string.IsNullOrEmpty(tbPasswordConfirm.Text))
+                    message += "- Please confirm password.";
+                else if (propertyProtPassword.Text != "[UNCHANGED]" && propertyProtPassword.Text != tbPasswordConfirm.Text)
+                    message += "- Password confirmation mismatch. Please confirm password.";
+            }
             return message == "";
         }
 
@@ -640,7 +647,7 @@ reask:
             OpenFileDialog openFileDialog = new OpenFileDialog();
             //openFileDialog.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "\\Cameyo apps";
             openFileDialog.Multiselect = false;
-            openFileDialog.Filter = "Virtual app (*.cameyo.exe;*.cameyo.dat)|*.cameyo.exe;*.cameyo.dat|All files (*.*)|*.*";
+            openFileDialog.Filter = "Executable files (*.exe)|*.exe|Virtual app (*.cameyo.exe;*.cameyo.dat)|*.cameyo.exe;*.cameyo.dat|All files (*.*)|*.*";
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 memorizedPassword = "";
@@ -1028,6 +1035,7 @@ reask:
                 propertyProtPassword.Text = "";
             else
                 propertyProtPassword.Text = "[UNCHANGED]";
+            tbPasswordConfirm.Text = propertyProtPassword.Text;
 
             // ScmDirect (direct-registration services support)
             propertyScmDirect.Visible = virtPackage.GetProperty("NewServices") == "1";
@@ -1288,8 +1296,8 @@ reask:
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            memorizedPassword = "";
             PackageClose();
+            memorizedPassword = "";   // Must be after PackageClose; otherwise PackageClose may call PackageSave, which may memorize password
             mru = new MRU("Software\\Cameyo\\Packager\\MRU");
             DisplayMRU();
         }
@@ -1954,13 +1962,19 @@ reask:
         private void propertyProtPassword_Enter(object sender, EventArgs e)
         {
             if (propertyProtPassword.Text == "[UNCHANGED]")
+            {
                 propertyProtPassword.Text = "";
+                tbPasswordConfirm.Text = "";
+            }
         }
 
         private void propertyProt_CheckedChanged(object sender, EventArgs e)
         {
             if (propertyProtPassword.Text == "[UNCHANGED]" && propertyProt.Checked)
+            {
                 propertyProtPassword.Text = "";
+                tbPasswordConfirm.Text = "";
+            }
         }
 
         private void lnkUpgrade_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

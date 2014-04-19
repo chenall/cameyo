@@ -354,4 +354,55 @@
   <data name="toolStripMenuItemExport.Text" xml:space="preserve">
     <value>&amp;Exportiere in .reg-Datei</value>
   </data>
+  <data name="cbDatFile.Text" xml:space="preserve">
+    <value>Packet als .DAT speichern, getrennt von ausführbarer Datei, (Empfohlen für Anwendungen über 2 GB)</value>
+  </data>
+  <data name="cbVolatileRegistry.Text" xml:space="preserve">
+    <value>Volatile (mehrfach zugriff auf die virtuelle Registrierungsdatenbank</value>
+  </data>
+  <data name="chineseMenuItem.Text" xml:space="preserve">
+    <value>Chinesisch</value>
+  </data>
+  <data name="exportXmlToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Packet Abdruck exportieren</value>
+  </data>
+  <data name="groupConstraints.Text" xml:space="preserve">
+    <value>Sicherheit und Ablaufdatum</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Virtualisierung:</value>
+  </data>
+  <data name="lblNotCommercial.Text" xml:space="preserve">
+    <value>Für 49 Rechner authorisiert</value>
+  </data>
+  <data name="lnkActiveDirectory.Text" xml:space="preserve">
+    <value>Aktive Verzeichnisrechte</value>
+  </data>
+  <data name="lnkAutoUpdate.Text" xml:space="preserve">
+    <value>Ändern</value>
+  </data>
+  <data name="lnkUpgrade.Text" xml:space="preserve">
+    <value>Firmen / Entwickler Upgrade</value>
+  </data>
+  <data name="propertyDisplayLogo.Text" xml:space="preserve">
+    <value>Cameyo´s Logo anzeigen</value>
+  </data>
+  <data name="propertyProt.Text" xml:space="preserve">
+    <value>Passwortschutz gegen Änderungen</value>
+  </data>
+  <data name="propertyScmDirect.Text" xml:space="preserve">
+    <value>Erlaube das registrieren von Diensten auf dem Zielrechner</value>
+  </data>
+  <data name="propertyTtlDays.Text" xml:space="preserve">
+    <value>Ablauf in (Tagen)</value>
+  </data>
+  <data name="propertyTtlResistRemove.Text" xml:space="preserve">
+    <value>Ablaufzähler auch nach entfernern der Anwendung behalten</value>
+  </data>
+  <data name="propertyVirtModeDisk.Text" xml:space="preserve">
+    <value>Anwendungen</value>
+  </data>
+  <data name="propertyVirtModeRam.Text" xml:space="preserve">
+    <value>RAM Modus: Virtuelle Anwendungen laufen direkt im Speicher</value>
+  </data>
 </root>

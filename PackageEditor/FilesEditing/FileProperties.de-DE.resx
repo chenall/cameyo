@@ -141,4 +141,7 @@
   <data name="groupBox.Text" xml:space="preserve">
     <value>Eigenschaften</value>
   </data>
+  <data name="chkFileFlagDEPLOYED_RAM.Text" xml:space="preserve">
+    <value>Entpacken erzwingen (RAM Virtueller Modus)</value>
+  </data>
 </root>

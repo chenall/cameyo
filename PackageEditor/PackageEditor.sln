@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackageEditor", "PackageEditor.csproj", "{30663298-6894-488B-8D17-501DBDCF91BD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CameyoSDK.NET", "..\CameyoSDK.NET\CameyoSDK.NET.csproj", "{36419994-CA8A-4300-826F-722E50FDFDFC}"

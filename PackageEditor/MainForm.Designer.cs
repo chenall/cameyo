@@ -150,6 +150,8 @@
             this.lnkCustomEvents = new System.Windows.Forms.LinkLabel();
             this.propertyStopInheritance = new System.Windows.Forms.TextBox();
             this.groupConstraints = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tbPasswordConfirm = new System.Windows.Forms.TextBox();
             this.lnkActiveDirectory = new System.Windows.Forms.LinkLabel();
             this.propertyTtlResistRemove = new System.Windows.Forms.CheckBox();
             this.propertyProtPassword = new System.Windows.Forms.TextBox();
@@ -629,13 +631,13 @@
             // 
             // tabGeneral
             // 
+            this.tabGeneral.BackColor = System.Drawing.Color.White;
             this.tabGeneral.Controls.Add(this.dropboxLabel);
             this.tabGeneral.Controls.Add(this.groupBox3);
             this.tabGeneral.Controls.Add(this.groupBox1);
             this.tabGeneral.Controls.Add(this.dropboxButton);
             resources.ApplyResources(this.tabGeneral, "tabGeneral");
             this.tabGeneral.Name = "tabGeneral";
-            this.tabGeneral.UseVisualStyleBackColor = true;
             // 
             // dropboxLabel
             // 
@@ -892,11 +894,11 @@
             // 
             // tabFileSystem
             // 
+            this.tabFileSystem.BackColor = System.Drawing.Color.White;
             this.tabFileSystem.Controls.Add(this.panel5);
             this.tabFileSystem.Controls.Add(this.fileToolStrip);
             resources.ApplyResources(this.tabFileSystem, "tabFileSystem");
             this.tabFileSystem.Name = "tabFileSystem";
-            this.tabFileSystem.UseVisualStyleBackColor = true;
             // 
             // panel5
             // 
@@ -974,6 +976,7 @@
             // 
             // panel8
             // 
+            this.panel8.BackColor = System.Drawing.Color.White;
             this.panel8.Controls.Add(this.panel1);
             this.panel8.Controls.Add(this.panel7);
             resources.ApplyResources(this.panel8, "panel8");
@@ -1041,13 +1044,13 @@
             // 
             // tabAdvanced
             // 
+            this.tabAdvanced.BackColor = System.Drawing.Color.White;
             this.tabAdvanced.Controls.Add(this.groupBox5);
             this.tabAdvanced.Controls.Add(this.groupConstraints);
             this.tabAdvanced.Controls.Add(this.groupBox7);
             this.tabAdvanced.Controls.Add(this.groupBox4);
             resources.ApplyResources(this.tabAdvanced, "tabAdvanced");
             this.tabAdvanced.Name = "tabAdvanced";
-            this.tabAdvanced.UseVisualStyleBackColor = true;
             // 
             // groupBox5
             // 
@@ -1119,6 +1122,8 @@
             // 
             // groupConstraints
             // 
+            this.groupConstraints.Controls.Add(this.label6);
+            this.groupConstraints.Controls.Add(this.tbPasswordConfirm);
             this.groupConstraints.Controls.Add(this.lnkActiveDirectory);
             this.groupConstraints.Controls.Add(this.propertyTtlResistRemove);
             this.groupConstraints.Controls.Add(this.propertyProtPassword);
@@ -1130,6 +1135,16 @@
             resources.ApplyResources(this.groupConstraints, "groupConstraints");
             this.groupConstraints.Name = "groupConstraints";
             this.groupConstraints.TabStop = false;
+            // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
+            // 
+            // tbPasswordConfirm
+            // 
+            resources.ApplyResources(this.tbPasswordConfirm, "tbPasswordConfirm");
+            this.tbPasswordConfirm.Name = "tbPasswordConfirm";
             // 
             // lnkActiveDirectory
             // 
@@ -1289,8 +1304,6 @@
             // 
             resources.ApplyResources(this.pictureBox2, "pictureBox2");
             this.pictureBox2.Image = global::PackageEditor.Properties.Resources._071;
-            this.pictureBox2.MaximumSize = new System.Drawing.Size(383, 318);
-            this.pictureBox2.MinimumSize = new System.Drawing.Size(383, 318);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.TabStop = false;
             // 
@@ -1678,6 +1691,8 @@
         private System.Windows.Forms.CheckBox propertyScmDirect;
         private System.Windows.Forms.LinkLabel lnkActiveDirectory;
         private System.Windows.Forms.CheckBox cbVolatileRegistry;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox tbPasswordConfirm;
 
     }
 }

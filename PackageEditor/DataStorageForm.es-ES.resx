@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -137,5 +137,8 @@
   </data>
   <data name="propertyLocalStorageExeDir.Text" xml:space="preserve">
     <value>Bajo del directorio del archivo ejecutable</value>
+  </data>
+  <data name="propertyDataDir.Text" xml:space="preserve">
+    <value>Almacenar  datos de usuario en un  directorio diferente:</value>
   </data>
 </root>

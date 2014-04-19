@@ -168,4 +168,28 @@
   <data name="saveChanges" xml:space="preserve">
     <value>Salvare le modifiche?</value>
   </data>
+  <data name="customEventsCount" xml:space="preserve">
+    <value>{0} eventi personalizzati</value>
+  </data>
+  <data name="customEventsNone" xml:space="preserve">
+    <value>Nessun evento personalizzato</value>
+  </data>
+  <data name="incorrectRootDir" xml:space="preserve">
+    <value>Le cartelle di root devono includere una lettera di unità, ad es.: "C_", "%Program Files%". Il percorso inserito non sembra valido.\n Procedere comunque?</value>
+  </data>
+  <data name="reqElevation" xml:space="preserve">
+    <value>il Package Editor verrà ora riaperto con privilegi elevati (Admin mode)</value>
+  </data>
+  <data name="reqElevationSaveWorkFirst" xml:space="preserve">
+    <value>Salvare il lavoro prima di procedere.</value>
+  </data>
+  <data name="reqElevationTitle" xml:space="preserve">
+    <value>Privilegi elevati necessari</value>
+  </data>
+  <data name="storageDirSubdirWarning" xml:space="preserve">
+    <value>Hai specificato un percorso privo di sottocartelle. I file verranno estratti direttamente in questa cartella. Sei sicuro di voler procedere?</value>
+  </data>
+  <data name="strictlyIsolated" xml:space="preserve">
+    <value>Strettamente isolata</value>
+  </data>
 </root>

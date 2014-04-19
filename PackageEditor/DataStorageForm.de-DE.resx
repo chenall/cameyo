@@ -138,4 +138,7 @@
   <data name="propertyLocalStorageExeDir.Text" xml:space="preserve">
     <value>Im Verzeichnis der Anwendung</value>
   </data>
+  <data name="propertyDataDir.Text" xml:space="preserve">
+    <value>Benutzerdaten in anderem Verzeichnis speichern:</value>
+  </data>
 </root>

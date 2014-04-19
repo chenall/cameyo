@@ -429,4 +429,34 @@
   <data name="lnkAutoUpdate.Text" xml:space="preserve">
     <value>Actualización automática</value>
   </data>
+  <data name="cbVolatileRegistry.Text" xml:space="preserve">
+    <value>Registro virtual volátil</value>
+  </data>
+  <data name="groupConstraints.Text" xml:space="preserve">
+    <value>Seguridad y expiración</value>
+  </data>
+  <data name="lblNotCommercial.Text" xml:space="preserve">
+    <value>Autorizado para un máximo de 49 máquinas</value>
+  </data>
+  <data name="lnkActiveDirectory.Text" xml:space="preserve">
+    <value>Permisos de Directorio Activo</value>
+  </data>
+  <data name="lnkUpgrade.Text" xml:space="preserve">
+    <value>Actualización de Empresa / desarrollador</value>
+  </data>
+  <data name="propertyDisplayLogo.Text" xml:space="preserve">
+    <value>Muestra el logotipo de Cameyo</value>
+  </data>
+  <data name="propertyProt.Text" xml:space="preserve">
+    <value>Proteger por contraseña contra edición:</value>
+  </data>
+  <data name="propertyScmDirect.Text" xml:space="preserve">
+    <value>Permitir a los servicios del sistema que se registren en el equipo de destino</value>
+  </data>
+  <data name="propertyTtlDays.Text" xml:space="preserve">
+    <value>Caduca después de (días):</value>
+  </data>
+  <data name="propertyTtlResistRemove.Text" xml:space="preserve">
+    <value>Mantener contador de caducidad incluso después de eliminar la aplicación</value>
+  </data>
 </root>

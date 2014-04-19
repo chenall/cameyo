@@ -655,7 +655,7 @@ namespace PackageEditor
             }
 retry_input:
             String newFolderName = "";
-            if (TreeHelper.InputBox("Add empty folder", "Folder name:", ref newFolderName) != DialogResult.OK ||
+            if (TreeHelper.InputFolderBox("Add empty folder", "Folder name:", ref newFolderName) != DialogResult.OK ||
                 string.IsNullOrEmpty(newFolderName))
             {
                 return;
@@ -1066,6 +1066,63 @@ retry_input:
             form.ClientSize = new Size(396, 107);
             form.Controls.AddRange(new Control[] { label, textBox, buttonOk, buttonCancel });
             form.ClientSize = new Size(Math.Max(300, label.Right + 10), form.ClientSize.Height);
+            form.FormBorderStyle = FormBorderStyle.FixedDialog;
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.MinimizeBox = false;
+            form.MaximizeBox = false;
+            form.AcceptButton = buttonOk;
+            form.CancelButton = buttonCancel;
+
+            DialogResult dialogResult = form.ShowDialog();
+            value = textBox.Text;
+            return dialogResult;
+        }
+        public static DialogResult InputFolderBox(string title, string promptText, ref string value)
+        {
+            Form form = new Form();
+            Label label = new Label();
+            TextBox textBox = new TextBox();
+            Button buttonOk = new Button();
+            Button buttonCancel = new Button();
+            ListBox v_dir = new ListBox();
+
+            form.Text = title;
+            label.Text = promptText;
+            textBox.Text = value;
+
+            buttonOk.Text = "OK";
+            buttonCancel.Text = "Cancel";
+            buttonOk.DialogResult = DialogResult.OK;
+            buttonCancel.DialogResult = DialogResult.Cancel;
+
+            label.SetBounds(102, 20, 372, 13);
+            textBox.SetBounds(112, 36, 372, 20);
+            buttonOk.SetBounds(228, 72, 75, 23);
+            buttonCancel.SetBounds(309, 72, 75, 23);
+
+            label.AutoSize = true;
+            textBox.Anchor = textBox.Anchor | AnchorStyles.Right;
+            buttonOk.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            buttonCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+
+            v_dir.MultiColumn = false;
+            v_dir.Items.Add("NONE");
+            v_dir.Items.Add("%WinDir%");
+            v_dir.Items.Add("%Program Files%");
+            v_dir.Items.Add("%System%");
+            v_dir.Items.Add("%Fonts%");
+            v_dir.Items.Add("%AppData%");
+            v_dir.Items.Add("%SendTo%");
+            v_dir.Items.Add("%Recent%");
+            v_dir.Items.Add("%Recent%");
+            v_dir.Items.Add("%Recent%");
+            v_dir.Items.Add("%Recent%");
+            v_dir.Items.Add("%Recent%");
+            v_dir.SetBounds(3,3, 100, 100);
+
+            form.ClientSize = new Size(396, 107);
+            form.Controls.AddRange(new Control[] { v_dir,label, textBox, buttonOk, buttonCancel });
+            form.ClientSize = new Size(Math.Max(300, v_dir.Right + 10), form.ClientSize.Height);
             form.FormBorderStyle = FormBorderStyle.FixedDialog;
             form.StartPosition = FormStartPosition.CenterScreen;
             form.MinimizeBox = false;

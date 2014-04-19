@@ -175,7 +175,7 @@ Exemples:
      http://www.myserver.com/apps/App.cameyo.xml</value>
   </data>
   <data name="textBox3.Text" xml:space="preserve">
-    <value>Un fichier XML contenant les informatio de version sera placé dans un serveur central.
+    <value>Un fichier XML contenant les informations de version sera placé dans un serveur central.
 Ce bouton va le générer, pour le paquet actuellement ouvert.</value>
   </data>
   <data name="textBox4.Text" xml:space="preserve">

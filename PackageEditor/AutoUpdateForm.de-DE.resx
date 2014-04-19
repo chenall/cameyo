@@ -117,4 +117,65 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Automatisches Update</value>
+  </data>
+  <data name="btnBack.Text" xml:space="preserve">
+    <value>&lt; &amp;Zurück</value>
+  </data>
+  <data name="btnCancel.Text" xml:space="preserve">
+    <value>&amp;Abbrechen</value>
+  </data>
+  <data name="btnGenerateXml.Text" xml:space="preserve">
+    <value>XML Datei erstellen</value>
+  </data>
+  <data name="btnNext.Text" xml:space="preserve">
+    <value>&amp;Weiter&gt;</value>
+  </data>
+  <data name="btnTest.Text" xml:space="preserve">
+    <value>Automatisches Update testen</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>XML Speicherort</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Paket Speicherort aktualisieren</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Automatisches Update</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Automatisches Update XML Datei erstellen</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Beenden und testen</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Möchten Sie das automatische Update aktivieren?</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>App Version</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Version Testwert:</value>
+  </data>
+  <data name="literalFinish.Text" xml:space="preserve">
+    <value>&amp;Beenden</value>
+  </data>
+  <data name="radioDisableFeature.Text" xml:space="preserve">
+    <value>Deaktivieren</value>
+  </data>
+  <data name="radioEnableFeature.Text" xml:space="preserve">
+    <value>Aktivieren</value>
+  </data>
+  <data name="textBox2.Text" xml:space="preserve">
+    <value>Pfad für die erzeugte XML Datei und die ausführbare Datei der Anwendung:
+Beispiele:
+    \\server\public\apps\App.cameyo.xml
+    http://www.myserver.com/apps/App.cameyo.xml
+    https://www.myserver.com/apps/App.cameyo.xml</value>
+  </data>
+  <data name="textBox3.Text" xml:space="preserve">
+    <value>Diese Schaltfläche generiert es für das derzeit geöffnete Packet.</value>
+  </data>
 </root>
