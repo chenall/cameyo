@@ -210,8 +210,9 @@
   <data name="groupBox5.Text" xml:space="preserve">
     <value>扩展高级功能（完整功能需授权）</value>
   </data>
-      <data name="groupBox6.Text" xml:space="preserve">
+  <data name="groupBox6.Text" xml:space="preserve">
     <value>时间限制</value>
+  </data>
   <data name="groupBox7.Text" xml:space="preserve">
     <value>应用程序数据处理</value>
   </data>

@@ -206,6 +206,26 @@ namespace PackageEditor
             }
         }
 
+        static public void DisableControl(Control control)
+        {
+            control.Enabled = false;
+            control.ForeColor = System.Drawing.SystemColors.GrayText;
+            if (!control.Text.Contains("(Pro version)"))
+                control.Text += " (Pro version)";
+        }
+
+        static private String SandBoxFlagsToName(UInt32 Flags,String Default)
+        {
+            String SandboxName = "";
+            if (Flags == VirtPackage.SANDBOXFLAGS_COPY_ON_WRITE)
+               SandboxName = "Isolated";
+            else if (Flags == VirtPackage.SANDBOXFLAGS_STRICTLY_ISOLATED)
+               SandboxName = "StrictlyIsolated";
+           else
+                SandboxName = Default;
+           return SandboxName;
+        }
+
         private void EnableDisablePackageControls(bool enable)
         {
             tabControl.Visible = enable;
@@ -235,13 +255,13 @@ namespace PackageEditor
             int licenseType = VirtPackage.LicDataLoadFromFile(null);
             if (licenseType < VirtPackage.LICENSETYPE_DEV)
             {
-                lnkAutoUpdate.Visible = false;
-                propertyDisplayLogo.Visible = false;
+                DisableControl(lnkAutoUpdate);
+                DisableControl(propertyDisplayLogo);
             }
             if (licenseType < VirtPackage.LICENSETYPE_PRO)
             {
-                groupConstraints.Visible = false;
-                lnkCustomEvents.Visible = false;
+                DisableControl(groupConstraints);
+                DisableControl(lnkCustomEvents);
             }
             lblNotCommercial.Visible = (licenseType < VirtPackage.LICENSETYPE_DEV);   // "Not for commercial use"
             lnkUpgrade.Visible = (licenseType < VirtPackage.LICENSETYPE_PRO);         // "Upgrade"
@@ -545,7 +565,7 @@ reask:
                 {
                     if (!TryCopyFile(Path.Combine(Utils.MyPath(), "2.x\\Loader.exe"), Path.ChangeExtension(saveFileDialog.FileName, ".exe"), true))
                     {
-                        MessageBox.Show("Cannot copy Loader.exe to: " + Path.ChangeExtension(saveFileDialog.FileName, ".exe"));
+                        MessageBox.Show("Cannot copy "+ Path.Combine(Utils.MyPath(), "2.x\\Loader.exe") + " to: " + Path.ChangeExtension(saveFileDialog.FileName, ".exe"));
                         return;
                     }
                 }
@@ -593,9 +613,9 @@ reask:
             // Must be copied before PackageSave, as it will apply hPkg->IconSrcFile (if any) onto Loader.exe
             if (cbDatFile.Checked)
             {
-                if (!TryCopyFile(Path.Combine(Utils.MyPath(), "Loader.exe"), Path.ChangeExtension(tmpFileName, ".exe"), true))
+                if (!TryCopyFile(Path.Combine(Utils.MyPath(), "2.x\\Loader.exe"), Path.ChangeExtension(tmpFileName, ".exe"), true))
                 {
-                    MessageBox.Show("Cannot copy Loader.exe to: " + Path.ChangeExtension(tmpFileName, ".exe"));
+                    MessageBox.Show("Cannot copy " + Path.Combine(Utils.MyPath(), "2.x\\Loader.exe") + " to: " + Path.ChangeExtension(tmpFileName, ".exe"));
                     return;
                 }
             }
@@ -705,6 +725,51 @@ reask:
             }
         }
 
+        private void BlueprintFilesRecurse(XmlWriter xmlOut, TreeNodeCollection folderNodes,UInt32 flags)
+        {
+            UInt32 curFlags = 0;
+            foreach (FolderTreeNode curFolder in folderNodes)
+            {
+                if (curFolder.deleted)
+                    continue;
+                curFlags = curFolder.sandboxFlags;
+                if (curFlags != flags)
+                {
+                    xmlOut.WriteStartElement("FileSystem");
+                    xmlOut.WriteAttributeString("path", curFolder.virtFsNode.FileName);
+                    xmlOut.WriteAttributeString("access", SandBoxFlagsToName(curFlags, "Full"));
+                    xmlOut.WriteEndElement();
+                }
+                BlueprintFilesRecurse(xmlOut, curFolder.Nodes, curFlags);
+            }
+        }
+
+        private void BlueprintRegKeysRecurse(XmlWriter xmlOut, RegistryKey regKey, string curKeyPortion,UInt32 flags)
+        {
+            UInt32 curFlags = 0;
+            if (string.IsNullOrEmpty(curKeyPortion))
+            {
+                xmlOut.WriteStartElement("Registry");
+                xmlOut.WriteAttributeString("access", SandBoxFlagsToName(flags, "Isolated"));
+                xmlOut.WriteEndElement();
+            }
+            // Recurse on subkeys
+            foreach (var key in regKey.GetSubKeyNames())
+            {
+                String curkey = Path.Combine(curKeyPortion, key);
+                curFlags = virtPackage.GetRegistrySandbox(curkey);
+                if (curFlags != flags)
+                {
+                    xmlOut.WriteStartElement("Registry");
+                    xmlOut.WriteAttributeString("path", curkey);
+                    xmlOut.WriteAttributeString("access", SandBoxFlagsToName(curFlags, "Isolated"));
+                    xmlOut.WriteEndElement();
+                }
+                RegistryKey subRegKey = regKey.OpenSubKey(key);
+                BlueprintRegKeysRecurse(xmlOut, subRegKey, curkey, curFlags);
+            }
+        }
+
         private void BlueprintRegKeysRecurse(XmlWriter xmlOut, RegistryKey regKey, string curKeyName, string curKeyPortion)
         {
             if (!string.IsNullOrEmpty(curKeyPortion))
@@ -800,6 +865,9 @@ reask:
                         xmlOut.WriteStartElement("Property");
                         xmlOut.WriteAttributeString("BaseDirName", virtPackage.GetProperty("BaseDirName"));
                         xmlOut.WriteEndElement();
+                        xmlOut.WriteStartElement("Property");
+                        xmlOut.WriteAttributeString("FriendlyName", virtPackage.GetProperty("FriendlyName"));
+                        xmlOut.WriteEndElement();
                         //xmlOut.WriteStartElement("Property");
                         //xmlOut.WriteAttributeString("IconFile", "Icon.exe");
                         //xmlOut.WriteEndElement();
@@ -849,12 +917,14 @@ reask:
                     xmlOut.WriteStartElement("Sandbox");
                     {
                         xmlOut.WriteStartElement("FileSystem");
-                        xmlOut.WriteAttributeString("access", "Full");
+                        xmlOut.WriteAttributeString("access", SandBoxFlagsToName(virtPackage.GetFileSandbox(""),"Full"));
                         xmlOut.WriteEndElement();
+                        BlueprintFilesRecurse(xmlOut, fsFolderTree.Nodes[0].Nodes, virtPackage.GetFileSandbox(""));
 
-                        xmlOut.WriteStartElement("Registry");
-                        xmlOut.WriteAttributeString("access", "Full");
-                        xmlOut.WriteEndElement();
+                        //xmlOut.WriteStartElement("Registry");
+                        //xmlOut.WriteAttributeString("access", SandBoxFlagsToName(virtPackage.GetRegistrySandbox(""), "Isolated"));
+                        //xmlOut.WriteEndElement();
+                        BlueprintRegKeysRecurse(xmlOut, regEditor.workKey,"", virtPackage.GetRegistrySandbox(""));
                     }
                     xmlOut.WriteEndElement();
 

@@ -125,9 +125,9 @@ retry:
             int licenseType = VirtPackage.LicDataLoadFromFile(null);
             if (licenseType < VirtPackage.LICENSETYPE_PRO)
             {
-                propertyDataDir.Visible = false;
-                propertyDataDirName.Visible = false;
-                Height -= 50;
+                MainForm.DisableControl(propertyDataDir);
+                MainForm.DisableControl(propertyDataDirName);
+                //Height -= 50;
             }
         }
     }

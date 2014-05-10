@@ -1094,6 +1094,7 @@
             // lnkAutoUpdate
             // 
             resources.ApplyResources(this.lnkAutoUpdate, "lnkAutoUpdate");
+            this.lnkAutoUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lnkAutoUpdate.Name = "lnkAutoUpdate";
             this.lnkAutoUpdate.TabStop = true;
             this.lnkAutoUpdate.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkAutoUpdate_LinkClicked);
@@ -1111,6 +1112,7 @@
             // lnkCustomEvents
             // 
             resources.ApplyResources(this.lnkCustomEvents, "lnkCustomEvents");
+            this.lnkCustomEvents.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lnkCustomEvents.Name = "lnkCustomEvents";
             this.lnkCustomEvents.TabStop = true;
             this.lnkCustomEvents.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkCustomEvents_LinkClicked);

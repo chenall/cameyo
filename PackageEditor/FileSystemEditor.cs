@@ -655,7 +655,7 @@ namespace PackageEditor
             }
 retry_input:
             String newFolderName = "";
-            if (TreeHelper.InputFolderBox("Add empty folder", "Folder name:", ref newFolderName) != DialogResult.OK ||
+            if (TreeHelper.InputBox("Add empty folder", "Folder name:", ref newFolderName) != DialogResult.OK ||
                 string.IsNullOrEmpty(newFolderName))
             {
                 return;
