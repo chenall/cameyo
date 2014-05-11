@@ -706,6 +706,7 @@ reask:
 
                         // Copy actual file itself
                         string targetFile = Path.Combine(outFilesDir, file.virtFsNode.FileName);
+
                         if (!string.IsNullOrEmpty(file.addedFrom))
                         {
                             try
@@ -717,6 +718,7 @@ reask:
                         }
                         else
                         {
+                            Directory.CreateDirectory(Path.GetDirectoryName(targetFile));
                             virtPackage.ExtractFile(file.virtFsNode.FileName, Path.GetDirectoryName(targetFile));
                         }
                     }
@@ -853,37 +855,29 @@ reask:
                     xmlOut.WriteStartElement("CameyoPkg");
 
                     // Properties
-                    string autoLaunch = virtPackage.GetProperty("AutoLaunch");
+                    //string autoLaunch = virtPackage.GetProperty("AutoLaunch");
+
                     xmlOut.WriteStartElement("Properties");
                     {
-                        xmlOut.WriteStartElement("Property");
-                        xmlOut.WriteAttributeString("AppID", virtPackage.GetProperty("AppID"));
-                        xmlOut.WriteEndElement();
-                        xmlOut.WriteStartElement("Property");
-                        xmlOut.WriteAttributeString("Version", virtPackage.GetProperty("Version"));
-                        xmlOut.WriteEndElement();
-                        xmlOut.WriteStartElement("Property");
-                        xmlOut.WriteAttributeString("BaseDirName", virtPackage.GetProperty("BaseDirName"));
-                        xmlOut.WriteEndElement();
-                        xmlOut.WriteStartElement("Property");
-                        xmlOut.WriteAttributeString("FriendlyName", virtPackage.GetProperty("FriendlyName"));
-                        xmlOut.WriteEndElement();
-                        //xmlOut.WriteStartElement("Property");
-                        //xmlOut.WriteAttributeString("IconFile", "Icon.exe");
-                        //xmlOut.WriteEndElement();
-                        xmlOut.WriteStartElement("Property");
-                        xmlOut.WriteAttributeString("StopInheritance", virtPackage.GetProperty("StopInheritance"));
-                        xmlOut.WriteEndElement();
+                        String[] properties = {"AppID","Version","BaseDirName","FriendlyName","StopInheritance","AutoLaunch","IconFile",
+                                               "OnStartVirtualized","OnStartUnVirtualized",
+                                               "OnStopVirtualized","OnStopUnvirtualized",
+                                               "OnProcessStartVirtualized","OnProcessStartUnvirtualized",
+                                               "OnProcessStopVirtualized","OnProcessStopUnvirtualized",
+                                              };
+                        foreach(var name in properties)
+                        {
+                            string property_value = virtPackage.GetProperty(name);
+                            if (string.IsNullOrEmpty(property_value))
+                                continue;
+                            xmlOut.WriteStartElement("Property");
+                            xmlOut.WriteAttributeString(name, property_value);
+                            xmlOut.WriteEndElement();
+                        }
+
                         xmlOut.WriteStartElement("Property");
                         xmlOut.WriteAttributeString("BuildOutput", "[AppID].exe");
                         xmlOut.WriteEndElement();
-                        // AutoLaunch
-                        if (!string.IsNullOrEmpty(autoLaunch))
-                        {
-                            xmlOut.WriteStartElement("Property");
-                            xmlOut.WriteAttributeString("AutoLaunch", autoLaunch);
-                            xmlOut.WriteEndElement();
-                        }
                     }
                     xmlOut.WriteEndElement();
 
