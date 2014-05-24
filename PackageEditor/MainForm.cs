@@ -859,11 +859,12 @@ reask:
 
                     xmlOut.WriteStartElement("Properties");
                     {
-                        String[] properties = {"AppID","Version","BaseDirName","FriendlyName","StopInheritance","AutoLaunch","IconFile",
+                        String[] properties = {"AppID","Version","BaseDirName","DataDirName","FriendlyName","StopInheritance","AutoLaunch","IconFile",
                                                "OnStartVirtualized","OnStartUnVirtualized",
                                                "OnStopVirtualized","OnStopUnvirtualized",
                                                "OnProcessStartVirtualized","OnProcessStartUnvirtualized",
                                                "OnProcessStopVirtualized","OnProcessStopUnvirtualized",
+                                               "DataMode","IsolationMode","VirtMode"
                                               };
                         foreach(var name in properties)
                         {
@@ -875,6 +876,15 @@ reask:
                             xmlOut.WriteEndElement();
                         }
 
+                        string autoLaunch = virtPackage.GetProperty("AutoLaunch");
+                        string[] elements = autoLaunch.Split('>');
+                        if (elements.Length > 0)
+                            autoLaunch = elements[0];
+
+                        xmlOut.WriteStartElement("Property");
+                        xmlOut.WriteAttributeString("IconFile", autoLaunch);
+                        xmlOut.WriteEndElement();
+
                         xmlOut.WriteStartElement("Property");
                         xmlOut.WriteAttributeString("BuildOutput", "[AppID].exe");
                         xmlOut.WriteEndElement();
@@ -882,7 +892,7 @@ reask:
                     xmlOut.WriteEndElement();
 
                     // AutoLaunch property -> autoLaunchFiles list
-                    var autoLaunchFiles = new List<string>();
+                    //var autoLaunchFiles = new List<string>();
                     /*todo:string[] autoLaunches = autoLaunch.Split(';');
                     foreach (string item in autoLaunches)
                     {
