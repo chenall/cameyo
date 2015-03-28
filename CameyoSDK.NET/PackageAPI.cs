@@ -2287,20 +2287,21 @@ namespace VirtPackageAPI
         {
             try
             {
-                System.Diagnostics.ProcessStartInfo procStartInfo =
-                    new System.Diagnostics.ProcessStartInfo(fileName, args);
-                System.Diagnostics.Process proc = new System.Diagnostics.Process();
+                var procStartInfo = new System.Diagnostics.ProcessStartInfo(fileName, args);
                 procStartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
                 procStartInfo.CreateNoWindow = true;
                 procStartInfo.UseShellExecute = false;
+                var proc = new System.Diagnostics.Process();
                 proc.StartInfo = procStartInfo;
-                proc.Start();
-                if (wait)
+                if (proc.Start())
                 {
-                    proc.WaitForExit();
-                    exitCode = proc.ExitCode;
+                    if (wait)
+                    {
+                        proc.WaitForExit();
+                        exitCode = proc.ExitCode;
+                    }
+                    return true;
                 }
-                return true;
             }
             catch { }
             return false;

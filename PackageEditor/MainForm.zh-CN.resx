@@ -205,13 +205,13 @@
     <value>扩展属性</value>
   </data>
   <data name="groupBox4.Text" xml:space="preserve">
-    <value>集成到系统中</value>
+    <value>集成</value>
   </data>
   <data name="groupBox5.Text" xml:space="preserve">
     <value>扩展高级功能（完整功能需授权）</value>
   </data>
   <data name="groupBox6.Text" xml:space="preserve">
-    <value>时间限制</value>
+    <value>使用时间限制</value>
   </data>
   <data name="groupBox7.Text" xml:space="preserve">
     <value>应用程序数据处理</value>
@@ -296,7 +296,7 @@
   </data>
   <data name="rdbCleanRegOnly.Text" xml:space="preserve">
     <value>不修改注册表（注册表的更改将会保存在文件中）</value>
- </data>
+  </data>
   <data name="regEditBtn.ToolTipText" xml:space="preserve">
     <value>编辑注册表</value>
   </data>
@@ -342,9 +342,6 @@
   <data name="toolStripMenuItemExport.Text" xml:space="preserve">
     <value>导出为注册表文件(&amp;E)</value>
   </data>
-  <data name="groupBox4.Text" xml:space="preserve">
-    <value>集成</value>
-  </data>
   <data name="rdbIntegrateNone.Text" xml:space="preserve">
     <value>不集成（不对系统进行任何改变）</value>
   </data>
@@ -353,7 +350,6 @@
   </data>
   <data name="rdbIntegrateVirtual.Text" xml:space="preserve">
     <value>虚拟集成: 添加虚拟层到Windows资源管理器（深度集成，就像是已经安装到系统中一样）</value>
-
   </data>
   <data name="chineseMenuItem.Text" xml:space="preserve">
     <value>简体中文</value>
@@ -369,9 +365,6 @@
   </data>
   <data name="cbVolatileRegistry.Text" xml:space="preserve">
     <value>Volatile virtual registry</value>
-  </data>
-  <data name="exportXmlToolStripMenuItem.Text" xml:space="preserve">
-    <value>导出为XML(&amp;E)</value>
   </data>
   <data name="groupConstraints.Text" xml:space="preserve">
     <value>安全和有效期设置</value>
@@ -399,5 +392,44 @@
   </data>
   <data name="propertyTtlResistRemove.Text" xml:space="preserve">
     <value>删除应用时不重置应用有效期</value>
+  </data>
+  <data name="groupDataEncrypt.Text" xml:space="preserve">
+    <value>加密</value>
+  </data>
+  <data name="groupEditProtect.Text" xml:space="preserve">
+    <value>编辑权限</value>
+  </data>
+  <data name="groupExpiration.Text" xml:space="preserve">
+    <value>时间限制</value>
+  </data>
+  <data name="groupUsageRights.Text" xml:space="preserve">
+    <value>用户权限</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>密码确认:</value>
+  </data>
+  <data name="lnkEncryptionLearnMore.Text" xml:space="preserve">
+    <value>关于加密</value>
+  </data>
+  <data name="lnkExportPwdKey.Text" xml:space="preserve">
+    <value>导出</value>
+  </data>
+  <data name="lnkGenerateEncKey.Text" xml:space="preserve">
+    <value>生成</value>
+  </data>
+  <data name="lnkImportPwdKey.Text" xml:space="preserve">
+    <value>导入</value>
+  </data>
+  <data name="propertyEncryption.Text" xml:space="preserve">
+    <value>加密用户程序数据</value>
+  </data>
+  <data name="propertyEncryptUserCreatedPassword.Text" xml:space="preserve">
+    <value>首次运行时由用户创建密码</value>
+  </data>
+  <data name="propertyEncryptUsingPassword.Text" xml:space="preserve">
+    <value>使用密码加密:</value>
+  </data>
+  <data name="tabSecurity.Text" xml:space="preserve">
+    <value>安全</value>
   </data>
 </root>

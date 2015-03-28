@@ -35,10 +35,17 @@ namespace PackageEditor
         string helpVirtModeDisk, helpVirtModeRam;
         string helpIsolationModeData, helpIsolationModeIsolated, helpIsolationModeFull;
         private bool isElevatedProcess = Cameyo.OpenSrc.Common.Utils.IsElevatedProcess();
+        private bool generateEncKeyAlreadyWarned = false, changePwdKeyAlreadyWarned = false;
 
-        // creation of delegate for PackageOpen
+        // Creation of delegate for PackageOpen
         private delegate bool DelegatePackageOpen(String path);
         DelegatePackageOpen Del_Open;
+
+        // Encryption constants
+        const int SaltSize = 20;
+        const int Pbkdf2Iterations = 1000;
+        const int KeySizeBytes = 128 / 8;
+        const int KeySizeBits = 128;
 
         void SplitTextHelp(RadioButton radio, out string helpText)
         {
@@ -260,7 +267,10 @@ namespace PackageEditor
             }
             if (licenseType < VirtPackage.LICENSETYPE_PRO)
             {
-                DisableControl(groupConstraints);
+                DisableControl(groupEditProtect);
+                //DisableControl(groupDataEncrypt);
+                DisableControl(groupExpiration);
+                DisableControl(groupUsageRights);
                 DisableControl(lnkCustomEvents);
             }
             lblNotCommercial.Visible = (licenseType < VirtPackage.LICENSETYPE_DEV);   // "Not for commercial use"
@@ -293,6 +303,13 @@ namespace PackageEditor
             if (displayWaitMsg)
                 PleaseWait.PleaseWaitBegin(PackageEditor.Messages.Messages.openingPackage, PackageEditor.Messages.Messages.opening + " " + System.IO.Path.GetFileName(packageExeFile) + "...", packageExeFile);
 
+            System.Drawing.Icon exeIcon = null;
+            try
+            {
+                exeIcon = Win32Function.getIconFromFile(packageExeFile);   // Must be done before PackageOpen is called
+            }
+            catch { }
+
             // virtPackage.Open
             if (!string.IsNullOrEmpty(memorizedPassword))
                 ret = virtPackage.Open(packageExeFile + "|" + memorizedPassword, out apiRet);
@@ -320,6 +337,9 @@ namespace PackageEditor
                     if (displayWaitMsg)   // Restore progress window
                         PleaseWait.PleaseWaitBegin(PackageEditor.Messages.Messages.openingPackage, PackageEditor.Messages.Messages.opening + " " + System.IO.Path.GetFileName(packageExeFile) + "...", packageExeFile);
                 }
+            }
+            else if (apiRet != VirtPackage.APIRET.SUCCESS)
+            {
 
             }
 
@@ -334,59 +354,69 @@ namespace PackageEditor
                     int exitCode = 0;
                     if (displayWaitMsg)   // Restore progress window
                         PleaseWait.PleaseWaitBegin(PackageEditor.Messages.Messages.openingPackage, "Converting " + System.IO.Path.GetFileName(packageExeFile) + "...", packageExeFile);
-                    bool convertedOk = (ExecProg(PackagerExe(), "-Quiet -ConvertOldPkg \"" + packageExeFile + "\"", true, ref exitCode) && exitCode == 0);
-                    if (displayWaitMsg)   // Hide progress window
-                        PleaseWait.PleaseWaitEnd();   // Otherwise it'll hide our below MessageBox
-                    if (convertedOk)
+
+                    // Init file names: old, new
+                    string newPkgFile = packageExeFile, oldPkgFile = packageExeFile;
+                    int pos = newPkgFile.LastIndexOf('.');
+                    newPkgFile = newPkgFile.Insert(pos, ".new");
+                    oldPkgFile = oldPkgFile.Insert(pos, ".old");
+
+                    // Check whether target file already exists
+                    bool proceed = true;
+                    if (File.Exists(newPkgFile) && MessageBox.Show("Warning: output file will be overwritten:\n" + newPkgFile +
+                        "\n" + "Proceed?", "Confirm", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.No)
+                        proceed = false;
+
+                    if (proceed)
                     {
-                        string newPkgFile = packageExeFile, oldPkgFile = packageExeFile;
-                        int pos = newPkgFile.LastIndexOf('.');
-                        newPkgFile = newPkgFile.Insert(pos, ".new");
-                        oldPkgFile = oldPkgFile.Insert(pos, ".old");
-                        bool trouble = false;
-                        try { File.Delete(oldPkgFile); } catch { }
-                        try 
-                        { 
-                            File.Move(packageExeFile, oldPkgFile);
-                        } 
-                        catch 
+                        bool convertedOk = (ExecProg(PackagerExe(), "-Quiet -ConvertOldPkg \"" + packageExeFile + "\"", true, ref exitCode) && exitCode == 0);
+                        if (displayWaitMsg)   // Hide progress window
+                            PleaseWait.PleaseWaitEnd();   // Otherwise it'll hide our below MessageBox
+                        if (convertedOk)
                         {
-                            MessageBox.Show("Package could not be renamed to:\n" + oldPkgFile);
-                            trouble = true;
+                            bool trouble = false;
+                            try { File.Delete(oldPkgFile); }
+                            catch { }
+                            try
+                            {
+                                File.Move(packageExeFile, oldPkgFile);
+                            }
+                            catch
+                            {
+                                MessageBox.Show("Package could not be renamed to:\n" + oldPkgFile);
+                                trouble = true;
+                            }
+                            try
+                            {
+                                File.Move(newPkgFile, packageExeFile);
+                            }
+                            catch
+                            {
+                                MessageBox.Show("New package could not be renamed to:\n" + packageExeFile);
+                                trouble = true;
+                            }
+                            if (!trouble)
+                            {
+                                //ret = virtPackage.Open(packageExeFile, out apiRet);
+                                MessageBox.Show("Package was successfully converted. Your old package was saved in:\n" + oldPkgFile);
+                                goto retry;   // Takes care of password etc
+                            }
                         }
-                        try
-                        {
-                            if (!Path.GetExtension(newPkgFile).Equals(".exe", StringComparison.InvariantCultureIgnoreCase))
-                                newPkgFile = Path.ChangeExtension(newPkgFile, ".exe");
-                            File.Move(newPkgFile, packageExeFile);
-                        }
-                        catch 
-                        { 
-                            MessageBox.Show("New package could not be renamed to:\n" + packageExeFile);
-                            trouble = true;
-                        }
-                        if (!trouble)
-                        {
-                            //ret = virtPackage.Open(packageExeFile, out apiRet);
-                            MessageBox.Show("Package was successfully converted. Your old package was saved in:\n" + oldPkgFile);
-                            goto retry;   // Takes care of password etc
-                        }
+                        else
+                            MessageBox.Show("Error converting package! " + exitCode);
                     }
                     else
-                        MessageBox.Show("Error converting package! " + exitCode);
+                    {
+                        VirtPackage.PkgVer = 1;
+                        ret = virtPackage.Open(packageExeFile, out apiRet);
+                    }
                 }
-                else {
-                    VirtPackage.PkgVer = 1;
-                    ret = virtPackage.Open(packageExeFile, out apiRet);
-                }
-
             }
-
             if (ret)
             {
                 regLoaded = false;
                 dirty = dirtyIcon = false;
-                this.OnPackageOpen();
+                this.OnPackageOpen(exeIcon);
                 fsEditor.OnPackageOpen();
 
                 // regEditor (threaded)
@@ -458,10 +488,29 @@ namespace PackageEditor
             {
                 if (string.IsNullOrEmpty(propertyProtPassword.Text))
                     message += "- No password specified.";
+                else if (propertyProtPassword.Text.Length < 4)
+                    message += "- Password too short.";
                 else if (propertyProtPassword.Text != "[UNCHANGED]" && string.IsNullOrEmpty(tbPasswordConfirm.Text))
                     message += "- Please confirm password.";
                 else if (propertyProtPassword.Text != "[UNCHANGED]" && propertyProtPassword.Text != tbPasswordConfirm.Text)
                     message += "- Password confirmation mismatch. Please confirm password.";
+            }
+            if (propertyEncryption.Checked)
+            {
+                if (propertyEncryptUsingPassword.Checked)
+                {
+                    if (string.IsNullOrEmpty(tbEncryptionPwd.Text))
+                        message += "- No encryption password specified.";
+                    else if (tbEncryptionPwd.Text.Length < 4)
+                        message += "- Encryption password too short.";
+                    else if (tbEncryptionPwd.Text != tbEncryptionPwdConfirm.Text)
+                        message += "- Encryption passwords mismatch. Please confirm password.";
+                }
+                else if (propertyEncryptUsingKey.Checked)
+                {
+                    if (string.IsNullOrEmpty(tbEncryptionKey.Text) || tbEncryptionKey.Text.Length != 16 * 2)
+                        message += "- Please generate an encryption key.";
+                }
             }
             return message == "";
         }
@@ -643,7 +692,7 @@ reask:
                 VirtPackage.APIRET apiRet;
                 if (!PackageOpen(packageExeFile, false, out apiRet))
                 {
-                    MessageBox.Show(apiRet.ToString());
+                    MessageBox.Show(String.Format("Failed to open package. API error: {0}", apiRet));
                     closeToolStripMenuItem_Click(sender, e);
                     virtPackage.opened = false;
                     return;
@@ -789,10 +838,21 @@ reask:
                 switch (type)
                 {
                     case RegistryValueKind.String:
-                        xmlOut.WriteAttributeString("string", (string)regKey.GetValue(value));
+                        string str = (string)regKey.GetValue(value);
+                        try
+                        {
+                            if (!string.IsNullOrEmpty(str))
+                                XmlConvert.VerifyName(str);
+                            xmlOut.WriteAttributeString("string", str);
+                        }
+                        catch (XmlException)
+                        {
+                            byte[] bytes = System.Text.ASCIIEncoding.ASCII.GetBytes(str);
+                            xmlOut.WriteAttributeString("str-base64", Utils.HexDump(bytes));
+                        }
                         break;
                     case RegistryValueKind.DWord:
-                        xmlOut.WriteAttributeString("dword", ((Int32)regKey.GetValue(value)).ToString());
+                        xmlOut.WriteAttributeString("dword", ((Int32)regKey.GetValue(value)).ToString("X"));
                         break;
                     case RegistryValueKind.Binary:
                         byte[] bin = (byte[])regKey.GetValue(value);
@@ -815,6 +875,13 @@ reask:
 
         private void exportXmlToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            int licenseType = VirtPackage.LicDataLoadFromFile(null);
+            if (licenseType < VirtPackage.LICENSETYPE_PRO)
+            {
+                MessageBox.Show("Insufficient license");
+                return;
+            }
+
             // TODO: require password
             FolderBrowserDialog saveFileDialog = new FolderBrowserDialog();
             saveFileDialog.ShowNewFolderButton = true;
@@ -824,7 +891,7 @@ reask:
             saveFileDialog.DefaultExt = "xml";*/
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                string appID = virtPackage.GetProperty("AppID");
+                string appID = virtPackage.GetProperty("AppID").Trim();
                 string outDir = Path.Combine(saveFileDialog.SelectedPath, appID + ".Blueprint");
                 if (Directory.Exists(outDir))
                 {
@@ -845,9 +912,23 @@ reask:
                     }
                 }
 
-                XmlWriterSettings writerSettings = new XmlWriterSettings();
+                // Start by exporting package's properties using -ExportAllProperties
+                string packageExeFile = virtPackage.openedFile;
+                string propsFile = Path.Combine(outDir, "PropsTmp.xml");
+                int exitCode = -1;
+                bool packagerOk = (ExecProg(PackagerExe(), String.Format("-Quiet \"-ExportAllProperties:{0}\" \"{1}\"",
+                    propsFile, packageExeFile), true, ref exitCode) && exitCode == 0);
+                if (!packagerOk)
+                {
+                    MessageBox.Show("ExportAllProperties failed: " + exitCode.ToString());
+                    return;
+                }
+
+                // Complete XML with Files and Registry
+                var writerSettings = new XmlWriterSettings();
                 writerSettings.OmitXmlDeclaration = true;
                 writerSettings.Indent = true;
+                writerSettings.Encoding = Encoding.Unicode;
                 using (XmlWriter xmlOut = XmlWriter.Create(Path.Combine(outDir, appID + ".xml"), writerSettings))
                 {
                     string outFilesDir = outDir;
@@ -892,7 +973,7 @@ reask:
                     xmlOut.WriteEndElement();
 
                     // AutoLaunch property -> autoLaunchFiles list
-                    //var autoLaunchFiles = new List<string>();
+                    var autoLaunchFiles = new List<string>();
                     /*todo:string[] autoLaunches = autoLaunch.Split(';');
                     foreach (string item in autoLaunches)
                     {
@@ -937,8 +1018,7 @@ reask:
                     xmlOut.Flush();
                     xmlOut.Close();
 
-                    xmlOut.Close();
-
+                    try { File.Delete(propsFile); } catch { }
                     MessageBox.Show("Created in:\n" + outDir);
                 }
             }
@@ -994,11 +1074,12 @@ reask:
             //    virtPackage.SetProperty("DataMode", "TRUE");   // Important to be able to switch to Isolated mode (to unisolate %Personal% etc)
 
             propertyIsolationMode_CheckedChanged(null, null);
+            propertyEncryption_CheckedChanged(null, null);
         }
 
-        private void OnPackageOpen()
+        private void OnPackageOpen(Icon exeIcon)
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            var resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             String command;
 
             // AppID
@@ -1028,14 +1109,10 @@ reask:
             DisplayIsolationMode();
 
             // Icon
-            if (!String.IsNullOrEmpty(virtPackage.openedFile))
-            {
-                Icon icon = Win32Function.getIconFromFile(virtPackage.openedFile);
-                if (icon != null)
-                {
-                    propertyIcon.Image = icon.ToBitmap();
-                }
-            }
+            if (exeIcon != null)
+                propertyIcon.Image = exeIcon.ToBitmap();
+            else
+                propertyIcon.Image = null;
 
             // DataDirName
             //propertyDataDirName.Text = virtPackage.GetProperty("DataDirName");
@@ -1119,6 +1196,28 @@ reask:
             // DisplayLogo
             propertyDisplayLogo.Checked = string.IsNullOrEmpty(virtPackage.GetProperty("Branding"));
 
+            // Encryption
+            propertyEncryption.Checked = (!string.IsNullOrEmpty(virtPackage.GetProperty("EncryptionExts")));
+            if (virtPackage.GetProperty("EncryptionMethod").Equals("Pwd", StringComparison.InvariantCultureIgnoreCase))
+                propertyEncryptUsingPassword.Checked = true;
+            else if (virtPackage.GetProperty("EncryptionMethod").Equals("Key", StringComparison.InvariantCultureIgnoreCase))
+                propertyEncryptUsingKey.Checked = true;
+            else if (virtPackage.GetProperty("EncryptionMethod").Equals("CreatePwd", StringComparison.InvariantCultureIgnoreCase))
+                propertyEncryptUserCreatedPassword.Checked = true;
+            tbEncryptionKey.Text = "";
+            tbEncryptionPwd.Text = "";
+            tbEncryptionPwdConfirm.Text = "";
+            
+            // EncryptionPwdHash: SHA2 hash of the real password
+            if (virtPackage.GetProperty("EncryptionPwdHash").Length == (KeySizeBytes) * 2)   // SHA2 hash (32 bytes) encoded in HEX form
+            {
+                tbEncryptionPwd.Text = tbEncryptionPwdConfirm.Text = "[UNCHANGED]"; //virtPackage.GetProperty("EncryptionPwdHash");
+            }
+
+            // EncryptionKey: directly the key (in HEX format)
+            if (virtPackage.GetProperty("EncryptionKey").Length == KeySizeBytes * 2)
+                tbEncryptionKey.Text = virtPackage.GetProperty("EncryptionKey");
+
             // Open
             this.Text = CaptionText();
             dirty = dirtyIcon = false;
@@ -1179,6 +1278,94 @@ reask:
             DisplayIsolationMode();
         }
 
+        bool ProcessEncryptionPwd()
+        {
+            System.Security.Cryptography.Rfc2898DeriveBytes pbkdf2 = null;
+            if (tbEncryptionPwd.Text == "[UNCHANGED]")   // Password hasn't changed from when the package was loaded
+                return true;
+            if (string.IsNullOrEmpty(tbEncryptionPwd.Text))
+                return true;   // Nothing to do really
+            if (!string.IsNullOrEmpty(virtPackage.GetProperty("EncryptionPwdKey")) &&
+                !string.IsNullOrEmpty(virtPackage.GetProperty("EncryptionPwdHash")) &&
+                !string.IsNullOrEmpty(virtPackage.GetProperty("EncryptionPwdSalt")) &&
+                !string.IsNullOrEmpty(virtPackage.GetProperty("EncryptionPwdIV")))
+            {
+                // EncryptionPwd* properties are already set. Only need to re-generate them if password has changed (different from EncryptionPwdHash)
+                string pwdSaltStr = virtPackage.GetProperty("EncryptionPwdSalt");
+                var pwdSalt = Utils.HexUndump(pwdSaltStr);
+
+                // Check if password is unchanged
+                // PBKDF2 first time on entered password
+                pbkdf2 = new System.Security.Cryptography.Rfc2898DeriveBytes(tbEncryptionPwd.Text, pwdSalt, Pbkdf2Iterations);
+                var enteredPwdHash = pbkdf2.GetBytes(KeySizeBytes);
+                // PBKDF2 second time on entered password
+                pbkdf2 = new System.Security.Cryptography.Rfc2898DeriveBytes(enteredPwdHash, pwdSalt, Pbkdf2Iterations);
+                enteredPwdHash = pbkdf2.GetBytes(KeySizeBytes);
+
+                var savedPwdHash = Utils.HexUndump(virtPackage.GetProperty("EncryptionPwdHash"));
+                bool equals = true;
+                for (int i = 0; i < enteredPwdHash.Length; i++)
+                {
+                    if (enteredPwdHash[i] != savedPwdHash[i])
+                        equals = false;
+                }
+                if (equals)
+                    return true;   // Password hasn't changed
+            }
+
+            bool Ret = true;
+            var rngCsp = new System.Security.Cryptography.RNGCryptoServiceProvider();
+
+            // Steps for password-based key:
+            // 1. Generate a long key (this is just a randomly generated amount of bytes in hex, you can use 128 bytes).
+            //    Use this key to encrypt your file with AES (meaning you use it as a password)
+            byte[] randomKey = new byte[KeySizeBytes];   // Our AES algorithm uses a 128-bit key (16 bytes)
+            rngCsp.GetBytes(randomKey);   // <-- The key with which files will be encrypted / decrypted
+
+            // 2. Encrypt the key itself with AES using your password (which is a bit shorter but easier to remember. 
+            //    Now AES requires this again to be either 128, 192 or 256 bits of length so you need to make your 
+            //    password of that length. Hence you can just use PBKDF2 (or scrypt or bcrypt) to create a fixed key 
+            //    length from your password. DO NOT STORE THIS.
+            byte[] salt = new byte[SaltSize];
+            rngCsp.GetBytes(salt);
+
+            // Transform user password into a key that we can encrypt randomKey with
+            pbkdf2 = new System.Security.Cryptography.Rfc2898DeriveBytes(Encoding.ASCII.GetBytes(tbEncryptionPwd.Text), salt, Pbkdf2Iterations);
+            var keyEncryptionKey = pbkdf2.GetBytes(KeySizeBytes);   // tbEncryptionPwd.Text -> Key. This key will be used for encrypting randomKey.
+            var keyEncryptor = new System.Security.Cryptography.RijndaelManaged();
+            keyEncryptor.BlockSize = 128;
+            keyEncryptor.Mode = System.Security.Cryptography.CipherMode.CFB;
+            keyEncryptor.Padding = System.Security.Cryptography.PaddingMode.None;
+            keyEncryptor.Key = keyEncryptionKey;
+            keyEncryptor.GenerateIV();
+            var encryptor = keyEncryptor.CreateEncryptor(keyEncryptor.Key, keyEncryptor.IV);
+            var msEncrypt = new MemoryStream();
+            using (var csEncrypt = new System.Security.Cryptography.CryptoStream(msEncrypt, encryptor, System.Security.Cryptography.CryptoStreamMode.Write))
+            {
+                using (var swEncrypt = new BinaryWriter(csEncrypt))
+                {
+                    byte[] toWrite = randomKey;//Encoding.ASCII.GetBytes("1234567890123456");
+                    swEncrypt.Write(toWrite);
+                }
+            }
+            var encryptedKey = msEncrypt.ToArray();   // <-- randomKey encrypted with AES, whose key = PBKDF2(tbEncryptionPwd.Text)
+
+            // 3. Keep a hash of your hashed password using PBKDF2 (or bcrypt or scrypt). This will allow you to check 
+            //    if the password is correct before trying to decrypt your encrypted key:
+            //       hash(hash(password)) --> can be stored
+            //       hash(password) --> should not be stored
+            pbkdf2 = new System.Security.Cryptography.Rfc2898DeriveBytes(keyEncryptionKey, salt, Pbkdf2Iterations);   // Iterations slow down hashing (which helps against brute-force)
+            var keyEncryptionKeyHashed = pbkdf2.GetBytes(KeySizeBytes);                                       // Second PBKDF2 hash
+
+            // Store
+            Ret &= virtPackage.SetProperty("EncryptionPwdKey", Utils.HexDump(encryptedKey));             // Encryption key, in encrypted form
+            Ret &= virtPackage.SetProperty("EncryptionPwdHash", Utils.HexDump(keyEncryptionKeyHashed));  // Password hash, for user password validation
+            Ret &= virtPackage.SetProperty("EncryptionPwdSalt", Utils.HexDump(salt));                    // Salt used for both PBKDF2 password hashes (first and second)
+            Ret &= virtPackage.SetProperty("EncryptionPwdIV", Utils.HexDump(keyEncryptor.IV));           // IV used for encrypting the key with AES
+
+            return Ret;
+        }
+
         public bool OnPackageSave()
         {
             bool Ret = true;
@@ -1220,6 +1407,32 @@ reask:
 
             // DisplayLogo
             Ret &= propertyDisplayLogo.Checked ? virtPackage.SetProperty("Branding", "") : virtPackage.SetProperty("Branding", "None");
+
+            // Encryption
+            Ret &= virtPackage.SetProperty("EncryptionExts", propertyEncryption.Checked ? "*" : "");
+
+            // EncryptionMethod
+            if (propertyEncryptUsingKey.Checked)
+                Ret &= virtPackage.SetProperty("EncryptionMethod", "Key");
+            else if (propertyEncryptUsingPassword.Checked)
+                Ret &= virtPackage.SetProperty("EncryptionMethod", "Pwd");
+            else if (propertyEncryptUserCreatedPassword.Checked)
+                Ret &= virtPackage.SetProperty("EncryptionMethod", "CreatePwd");
+            else
+                Ret &= virtPackage.SetProperty("EncryptionMethod", "");
+
+            // EncryptionKey
+            if (tbEncryptionKey.Text.Length == 16 * 2)
+                Ret &= virtPackage.SetProperty("EncryptionKey", tbEncryptionKey.Text);
+
+            // EncryptionPwdHash
+            if (tbEncryptionPwd.Text.Length == 0)
+                Ret &= virtPackage.SetProperty("EncryptionPwdHash", "");
+            else 
+            {
+                // Only if password was changed from when the package was loaded
+                Ret &= ProcessEncryptionPwd();
+            }
 
             // propertyIntegrate, propertyVintegrate
             str = virtPackage.GetProperty("OnStartUnvirtualized");
@@ -1841,7 +2054,7 @@ reask:
                 return;
             }
             dirty = false;
-            this.OnPackageOpen();
+            this.OnPackageOpen(null);
             fsEditor.OnPackageOpen();
             regEditor.OnPackageOpenBeforeUI();
             tabControl.SelectedIndex = 0;
@@ -1915,7 +2128,9 @@ reask:
         {
             if (listViewMRU.SelectedItems.Count != 1)
                 return;
-            PackageOpen((String)listViewMRU.SelectedItems[0].Tag);
+            VirtPackage.APIRET apiRet;
+            if (!PackageOpen((String)listViewMRU.SelectedItems[0].Tag, true, out apiRet))
+                MessageBox.Show(String.Format("Failed to open package. API error: {0}", apiRet));
         }
 
         private void regImportBtn_Click(object sender, EventArgs e)
@@ -2078,6 +2293,150 @@ reask:
                     }
                 }
                 return false;
+            }
+        }
+
+        private void propertyEncryption_CheckedChanged(object sender, EventArgs e)
+        {
+            bool b = propertyEncryption.Checked;
+
+            propertyEncryptUsingKey.Enabled = b;
+            propertyEncryptUsingPassword.Enabled = b;
+            propertyEncryptUserCreatedPassword.Enabled = b;
+
+            // EncKey
+            lnkGenerateEncKey.Enabled = b && propertyEncryptUsingKey.Checked;
+            tbEncryptionKey.Enabled = b && propertyEncryptUsingKey.Checked;
+
+            // Pwd
+            tbEncryptionPwd.Enabled = b && propertyEncryptUsingPassword.Checked;
+            tbEncryptionPwdConfirm.Enabled = b && propertyEncryptUsingPassword.Checked;
+            lnkImportPwdKey.Enabled = lnkExportPwdKey.Enabled = b && propertyEncryptUsingPassword.Checked;
+        }
+
+        private void lnkGenerateEncKey_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(virtPackage.GetProperty("EncryptionKey")) && !generateEncKeyAlreadyWarned)
+            {
+                if (MessageBox.Show("You are changing the encryption key. Data previously encrypted by this application " + 
+                    "will no longer be accessible. Continue?", "Warning", MessageBoxButtons.YesNo) != System.Windows.Forms.DialogResult.Yes)
+                    return;
+                generateEncKeyAlreadyWarned = true;
+            }
+            var rngCsp = new System.Security.Cryptography.RNGCryptoServiceProvider();
+            byte[] randomBytes = new byte[16];   // Our AES algorithm uses a 128-bit key (16 bytes)
+            rngCsp.GetBytes(randomBytes);
+            tbEncryptionKey.Text = Utils.HexDump(randomBytes);
+        }
+
+        private void tbEncryptionPwd_Enter(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(virtPackage.GetProperty("EncryptionPwdKey")) && !changePwdKeyAlreadyWarned)
+            {
+                MessageBox.Show("You are changing the encryption password. Data previously encrypted by this application " +
+                    "will no longer be accessible (even if you re-type the same password).");
+                changePwdKeyAlreadyWarned = true;
+            }
+        }
+
+        private void lnkEncryptionLearnMore_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Utils.ShellExec("http://www.cameyo.com/virtualapp-encryption");
+        }
+
+        private void XmlWritePropAttr(XmlWriter xmlOut, string nodeName, string attrName, string attrValue)
+        {
+            xmlOut.WriteStartElement(nodeName);
+            xmlOut.WriteAttributeString(attrName, attrValue);
+            xmlOut.WriteEndElement();
+        }
+
+        private void lnkExportPwdKey_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (!virtPackage.opened || string.IsNullOrEmpty(virtPackage.openedFile))
+            {
+                MessageBox.Show("No file is currently open");
+                return;
+            }
+
+            ProcessEncryptionPwd();
+
+            // TODO: require password?
+            var saveFileDialog = new SaveFileDialog();
+            saveFileDialog.InitialDirectory = Path.GetDirectoryName(virtPackage.openedFile);
+            saveFileDialog.FileName = Path.ChangeExtension(Path.GetFileName(virtPackage.openedFile), ".PasswordKey.xml");
+            saveFileDialog.AddExtension = true;
+            saveFileDialog.Filter = "Password key (*.PasswordKey.xml)|*.PasswordKey.xml";
+            saveFileDialog.DefaultExt = "PasswordKey.xml";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string xmlFileName = saveFileDialog.FileName;
+
+                // Complete XML with Files and Registry
+                var writerSettings = new XmlWriterSettings();
+                writerSettings.OmitXmlDeclaration = true;
+                writerSettings.Indent = true;
+                writerSettings.Encoding = Encoding.Unicode;
+                using (XmlWriter xmlOut = XmlWriter.Create(xmlFileName, writerSettings))
+                {
+                    xmlOut.WriteStartDocument();
+                    xmlOut.WriteStartElement("CameyoPkg");
+                    {
+                        // Read existing XML Properties/Property nodes
+                        xmlOut.WriteStartElement("Properties");
+                        {
+                            XmlWritePropAttr(xmlOut, "Property", "EncryptionPwdKey", virtPackage.GetProperty("EncryptionPwdKey"));
+                            XmlWritePropAttr(xmlOut, "Property", "EncryptionPwdHash", virtPackage.GetProperty("EncryptionPwdHash"));
+                            XmlWritePropAttr(xmlOut, "Property", "EncryptionPwdSalt", virtPackage.GetProperty("EncryptionPwdSalt"));
+                            XmlWritePropAttr(xmlOut, "Property", "EncryptionPwdIV", virtPackage.GetProperty("EncryptionPwdIV"));
+                        }
+                        xmlOut.WriteEndElement();
+                    }
+                    xmlOut.WriteEndElement();
+                    xmlOut.WriteEndDocument();
+                    xmlOut.Flush();
+                    xmlOut.Close();
+
+                    xmlOut.Close();
+
+                    MessageBox.Show("Created in:\n" + xmlFileName);
+                }
+            }
+        }
+
+        private void lnkImportPwdKey_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var openFileDialog = new OpenFileDialog();
+            openFileDialog.InitialDirectory = Path.GetDirectoryName(virtPackage.openedFile);
+            openFileDialog.Multiselect = false;
+            openFileDialog.Filter = "Password key (*.PasswordKey.xml)|*.PasswordKey.xml|All files (*.*)|*.*";
+            openFileDialog.DefaultExt = "PasswordKey.xml";
+            if (openFileDialog.ShowDialog() != DialogResult.OK)
+                return;
+
+            var xd = new System.Xml.XPath.XPathDocument(openFileDialog.FileName);
+            var navigator = xd.CreateNavigator();
+            var iterator = navigator.Select("//Properties/Property");
+            int foundProps = 0;
+            foreach (System.Xml.XPath.XPathNavigator n in iterator)
+            {
+                n.MoveToFirstAttribute();
+                var name = n.Name;
+                var val = n.Value;
+                if (name == "EncryptionPwdKey" || name == "EncryptionPwdHash" || name == "EncryptionPwdSalt" || name == "EncryptionPwdIV")
+                {
+                    virtPackage.SetProperty(name, val);
+                    foundProps++;
+                }
+            }
+            if (foundProps == 4)   // All expected properties were found
+            {
+                tbEncryptionPwd.Text = tbEncryptionPwdConfirm.Text = "[UNCHANGED]";
+                MessageBox.Show("Password key imported.");
+            }
+            else
+            {
+                MessageBox.Show("No password key found in this file.");
             }
         }
     }

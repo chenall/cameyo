@@ -139,8 +139,8 @@
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj0yLjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADw
-        KQAAAk1TRnQBSQFMAgEBCQEAAQQBDAEEAQwBEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAg
+        KAAAAk1TRnQBSQFMAgEBCQEAARQBDQEUAQ0BEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABMAMAAQEBAAEgBgABMB4AAwQBBgMTARoDHwEsAyABLgMgAS8DIAEvAyABLgMeASsDEgEYAwQBBdQA
         AwIBAwMFBAcBCQNTAfEDgQH/A4EB/wOBAf8DgQH/A1MB8QMGAQgDBAEGAwEBAtwAAU4BXQFOAfABgQGO
         AYEB/wGBAY8BgQH/AYEBjwGBAf8BgQGOAYEB/wFOAV0BTgHw6AABTgFdAU4B8AGBAYMBgQH/AYEBhQGB
@@ -195,131 +195,123 @@
         AdwBpAGBAf8B2gGgAYEB/wHZAZwBgQH/AdcBmAGBAf8B0gGNAYEB/wHPAYYBgQH/Ac0BhAGBAf8BygKB
         Af8BygKBAf8DKwH8AzEBTgQAA14B3QPxAf8D6wH/A+sB/wPrAf8D6gH/A+gB/wPmAf8D4wH/A98B/wPW
         Af8DygH/A84B/wNhAe4IAAMxAfYDtQH/A+sB/wPrAf8D6wH/A+oB/wPoAf8D5gH/A+MB/wPfAf8D1gH/
-        A8oB/wPOAf8DQAH9AxcBIAQAAjEBYgH2AgAByQH/AgAByQH/AgAByQH/AQABDAHOAf8B1QHXAeIB/wPk
-        Af8D5AH/AdUB1wHiAf8BAAEMAc4B/wIAAckB/wIAAcgB/wIAAcgB/wIxAWIB9gQAAYMBhgGIAf8BuwG+
-        AcEB/wGoAZ8BmgH/Ad4BrwGLAf8B8QHTAbkB/wHxAdEBtgH/Ae0BywGtAf8B6wHIAaUB/wHpAcIBnAH/
-        AeUBuwGSAf8B5AG2AYsB/wHhAbABgQH/AdwBqgGBAf8B2wGmAYEB/wHaAaABgQH/A1YBtgQAA14B3QPt
-        Af8D5wH/A+cB/wPnAf8D5gH/AdsB3AHbAf8D0wH/A8sB/wHHAcYBxwH/A8UB/wPFAf8DxQH/A18B8wgA
-        AzEB9gOyAf8D5wH/A+cB/wPnAf8D5gH/AdsB3AHbAf8DtgH/A5wB/wGYAZcBmAH/A5cB/wOXAf8DlwH/
-        A0AB/QMRARcEAAJbAV4B0AEAAQEBzwH/AQABAQHTAf8BBQEgAdcB/wHfAeIB6wH/A+0B/wHfAeIB6wH/
-        Ad0B4AHrAf8D7QH/AeEB4wHrAf8BBQEhAdgB/wEAAQEB0wH/AgAB0AH/AlkBXAHPBAABigGMAY4B/wLR
-        AdIB/wG8AcABwwH/AcwBqwGTAf8B6QG1AYgB/wHoAbQBiAH/AegBtAGHAf8B6AGzAYYB/wHnAbEBhAH/
-        AecBsAGDAf8B5wGvAYEB/wHmAa0BgQH/AqgBQAH9A1kB9QNlAfQDVwG4BAADXgHdA+gB/wPjAf8D4wH/
-        A+MB/wPhAf8D0QH/AagBpwGoAf8DqAH/AqgBpwH/AqgBpwH/AqgBpwH/A6MB/wNKAYsIAAM5AfgDtQH/
-        A+MB/wPjAf8D4wH/A+EB/wPRAf8DAAH/AwoB/wMLAf8DCwH/AwsB/wMHAf8DQAH9AxcBIAQAA0gBhAIA
-        AcwB/wEAARgB3QH/AdoB3wHwAf8D8wH/AeYB6AHxAf8BEQErAeAB/wELASgB3wH/AeQB5gHxAf8D8wH/
-        AeAB5AHxAf8BAAEVAdwB/wIAAcwB/wNIAYQEAAGRAZIBkwH/A+EB/wHaAdsB2gH/A9gB/wHaAdsB2gH/
-        AdsC3AH/Ad0C3gH/A+AB/wHiAeMB4gH/AuQB5gH/A+cB/wHjAeAB3gH/AZABkgGTAf8EAAMIAQsDAwEE
-        BAADXgHdA+QB/wPgAf8D4AH/A+AB/wPdAf8DyQH/AawBqwGsCf8C8QHyAf8D4wH/A0wBkgwAAyEB+wPH
-        Af8D4AH/A+AB/wPgAf8D3QH/A8kB/wMCAf8DwQX/AvEB8gH/A7UB/wNcAfgDFgEfCAADEgEYAkwBXwHz
-        AQQBIQHhAf8BHwGDAecB/wHpAewB+AH/ARwBgAHmAf8BAAEXAeAB/wEAARgB4QH/ARcBMwHlAf8B4AHl
-        AfYB/wEiAYYB6AH/AQABHQHgAf8CTAFfAfMDEgEYBAABlQKXAf8D7AH/A+EB/wLfAeAB/wLeAd8B/wHd
-        At4B/wLqAesB/wHpAeoB6wH/AeYC5wH/AugB6QH/AekC6gH/AvEB8gH/AZUBlgGXAf8QAANeAd0D4QH/
-        A90B/wPdAf8D3QH/A9gB/wPJAf8CsQGwCf8D4wH/A0wBjxAAAyEB+wPFAf8D3QH/A90B/wPdAf8D2AH/
-        A8kB/wMCAf8DywX/A7UB/wNcAfgDFgEfEAADNQFXAgAByQH/ASEBhAHoAf8BGQE0AeoB/wEAASAB5wH/
-        AQABIAHnAf8BAAEgAecB/wEAASAB5wH/ARABLQHpAf8BHgGBAegB/wIAAckB/wM1AVcIAAGZAZoBmwH/
-        A/QB/wPqAf8D6gH/A+oB/wP4Af8CmgGbAf8BmQKaAf8BmQGaAZsB/wGZAZoBmwH/A5oB/wOaAf8DKwFC
-        EAADXgHdA94B/wPYAf8D2AH/A9gB/wPUAf8DyQH/ArUBtgH/AfEB8gHxAf8D6wH/A1ABmhQAAyEB+wPC
-        Af8D2AH/A9gB/wPYAf8D1AH/A8kB/wMBAf8DyAH/A7cB/wNNAfoDFgEfGAADLgFIAlsBYQHhAQABGAHf
-        Af8BhgGaAe8B/wGYAaoB8wH/AZUBpwHzAf8BhAGZAe8B/wEAARcB3wH/AlMBYQHkAy4BSAwAA50R/wOd
-        Af8DJQE3KAADXgHdA9sB/wPWAf8D1gH/A9UB/wPQAf8DyAH/AbgBuQG4Af8D4wH/A1QBrAMBAQIUAAMh
-        AfsDwAH/A9YB/wPWAf8D1QH/A9AB/wPIAf8DAQH/A4MB/wNBAfkDIQEwIAADCQEMAkYBRwGBAlkBXAHJ
-        AisBQAH8AisBQAH8AlkBXAHJAkYBRwGBAwkBDBAAA1IBqQOdAf8DnQH/A50B/wOdAf8DNgFYLAADZQHl
-        A9wB/wPXAf8D1wH/A9UB/wPOAf8DxwH/A7sB/wNUAaYDBwEKGAADKwH8A5AB/wOhAf8DoQH/A6AB/wOa
-        Af8DlQH/AwEB/wNOAfADHQEpKAADAQECAwYBCAMLAQ8DCwEPAwYBCAMBAQJYAANUAa8DXgHdA14B3QNe
-        Ad0DXgHdA14B3QNeAdkDTAGTAwIBAxwAAz0B9AMxAfYDMQH2AzEB9gMxAfYDMQH2A0IB9QNUAe4DDgET
-        GwABAQMDAQQDAwEEAwMBBAMDAQQDAwEEAwMBBAMDAQQDAwEEAwMBBAMDAQQDAwEEAwMBBAMDAQQDAwEE
-        AwABAQMAAQEDAwEEAwMBBAMDAQQDAwEEAwMBBAMDAQQDAwEEAwMBBAMDAQQDAwEEAwMBBAMDAQQDAwEE
-        AwMBBAMAAQEDAAEBAwMBBAMDAQQDAwEEAwMBBAMDAQQDAwEEAwMBBAMDAQQDAwEEAwMBBAMDAQQDAwEE
-        AwMBBAMDAQQDAAEBAwABAQMEAQYDCgEOAw0BEgMWAR8DGgEkAxwBKAMfASwDHwEtAx4BKwMbASYDGAEi
-        Aw8BFAMMARADBQEHAwABAQMGAQgDHQEqAyEBMAMgAS8DIAEvAyABLwMgAS8DIAEvAyABLwMgAS8DIAEv
-        AyABLwMgAS8DIQEwAx0BKgMGAQgDBgEIAx0BKgMhATADIAEvAyABLwMgAS8DIAEvAyABLwMgAS8DIAEv
-        AyABLwMgAS8DIAEvAyEBMAMdASoDBgEIAwYBCAMdASoDIQEwAyABLwMgAS8DIAEvAyABLwMgAS8DIAEv
-        AyABLwMgAS8DIAEvAyABLwMhATADHQEqAwYBCAgAAwQEBQEHAoEBgwH/Aw8BFAMQARYDEgEYAxIBGAMS
-        ARgDEAEVAoEBgwH/AwYBCAMEAQYIAAMgAS8BagFBASMB+QGQAgAB/wGRAgAB/wGRAgAB/wGRAgAB/wGQ
-        AgAB/wGQAgAB/wGRAgAB/wGQAgAB/wGRAgAB/wGRAgAB/wGRAgAB/wGQAgAB/wFqAUEBIwH5AyIBMgMg
-        AS8BagFBASMB+QGQAgAB/wGRAgAB/wGRAgAB/wGRAgAB/wGQAgAB/wGQAgAB/wGRAgAB/wGQAgAB/wGR
-        AgAB/wGRAgAB/wGRAgAB/wGQAgAB/wFqAUEBIwH5AyIBMgMgAS8BagFBASMB+QGQAgAB/wGRAgAB/wGR
-        AgAB/wGRAgAB/wGQAgAB/wGQAgAB/wGRAgAB/wGQAgAB/wGRAgAB/wGRAgAB/wGRAgAB/wGQAgAB/wFq
-        AUEBIwH5AyIBMgwAAoEBmwH/AoEBxAH/AoEBjQH/EAACgQGNAf8CgQHEAf8CgQGbAf8MAAMEAQUBtQEB
-        AQAB/wHGARkBAAH/AcYBGQEAAf8BxgEZAQAB/wG6ARIBAAH/AYICAAH/AgABDgH/AgABDQH/AYACAAH/
-        AbgBEQEAAf8BxgEZAQAB/wHHARoBAAH/AccBGQEAAf8BtQIAAf8DBAEFAwQBBQG1AgAB/wHGARcBAAH/
-        AcYBFwEAAf8BxgEXAQAB/wHGARcBAAH/AcYBFwEAAf8BxgEXAQAB/wHGARcBAAH/AcYBFwEAAf8BxgEX
-        AQAB/wHGARcBAAH/AccBGAEAAf8BxwEXAQAB/wG1AgAB/wMEAQUDBAEFAbUBAgEAAf8BxgEaAQAB/wHG
-        ARoBAAH/AcYBGgEAAf8BugETAQAB/wGCAgAB/wIAAYYB/wIAAYAB/wExAgAB/wG4ARIBAAH/AcYBGgEA
-        Af8BxwEbAQAB/wHHARoBAAH/AbUBAQEAAf8DBAEFCAACgQGcAf8CgQG4Af8CgQG3Af8CgQG6Af8CgQGQ
-        Af8IAAKBAZAB/wKBAboB/wKBAbcB/wKBAbgB/wKBAZwB/wgAAwIBAwG3AQIBAAH/AcMBDQEAAf8BxQEN
-        AQAB/wHEAQ0BAAH/ARQBBQEEAf8BAAEjAdwB/wEAAZ0B9AH/AQABnQH0Af8BAAEjAdwB/wESAgUB/wHE
-        AQ4BAAH/AcQBDQEAAf8BxQENAQAB/wG3AQIBAAH/AwIBAwMCAQMBtwIAAf8BwwELAQAB/wHFAQsBAAH/
-        AcQBCwEAAf8BxAELAQAB/wHFAQsBAAH/AcQBCwEAAf8BxQELAQAB/wHDAQsBAAH/AcQBCwEAAf8BxAEM
-        AQAB/wHEAQsBAAH/AcUBCwEAAf8BtwIAAf8DAgEDAwIBAwG3AQMBAAH/AcMBDgEAAf8BxQEOAQAB/wHE
-        AQ4BAAH/ARUBBgEFAf8CAAGKAf8CAAG2Af8CAAG8Af8CAAG7Af8BEwIGAf8BxAEPAQAB/wHEAQ4BAAH/
-        AcUBDgEAAf8BtwEDAQAB/wMCAQMEAAKBAZ0B/wKBAbwB/wKBAbkB/wKBAbUB/wKBAbkB/wKBAbUB/wKB
-        AZUB/wKBAZUB/wKBAbUB/wKBAbkB/wKBAbUB/wKBAbkB/wKBAbwB/wKBAZ0B/wQAAwIBAwG7AQUBAAH/
-        AcsBFAEAAf8BywETAQAB/wGsAQ8BAAH/AQABggHiAf8BAAGfAfYB/wEAAZ8B9gH/AQABnwH3Af8BAAGf
-        AfYB/wEAAYIB4gH/AawBDwEAAf8BywETAQAB/wHLARMBAAH/AboBBQEAAf8DAgEDAwIBAwG7AQMBAAH/
-        AcsBEgEAAf8BywERAQAB/wHLARIBAAH/AcsBEQEAAf8BywERAQAB/wHLARIBAAH/AcsBEgEAAf8BywES
-        AQAB/wHLAREBAAH/AcsBEQEAAf8BywERAQAB/wHLAREBAAH/AboBAwEAAf8DAgEDAwIBAwG7AQYBAAH/
-        AcsBFQEAAf8BywEUAQAB/wGsARABAAH/AgABhAH/AgABtgH/AgABtQH/AgABtgH/AgABtwH/AgABkQH/
-        AawBEAEAAf8BywEUAQAB/wHLARQBAAH/AboBBgEAAf8DAgEDBAADEAEVAoEBnQH/AoEBtgH/AoEBuwH/
-        AoEBugH/AoEBvAH/AoEBwgH/AoEBwgH/AoEBvAH/AoEBugH/AoEBvAH/AoEBtgH/AoEBnQH/AxABFQQA
-        AwIBAwG+AQkBAAH/AdEBGQEAAf8B0QEZAQAB/wEYAQ4BEAH/AQABpgH2Af8BAAGqAfkB/wEAAaoB+QH/
-        AQABqgH5Af8BAAGqAfkB/wEAAaUB9gH/ARkBDgEPAf8B0QEaAQAB/wHRARoBAAH/Ab4BCQEAAf8DAgED
-        AwIBAwG+AQcBAAH/AdEBFwEAAf8B0QEXAQAB/wHRARgBAAH/AdEBGAEAAf8B0QEYAQAB/wHRARgBAAH/
-        AdEBGAEAAf8B0QEYAQAB/wHRARgBAAH/AdEBGAEAAf8B0QEYAQAB/wHRARgBAAH/Ab4BBwEAAf8DAgED
-        AwIBAwG+AQoBAAH/AdEBGgEAAf8B0QEaAQAB/wEZAQ8BEQH/AgABNAH/AgABtgH/AgABtgH/AgABtgH/
-        AgABtgH/AgABxQH/ARoBDwEQAf8B0QEbAQAB/wHRARsBAAH/Ab4BCgEAAf8DAgEDDAACgQGiAf8CgQG+
-        Af8CgQHAAf8CgQG+Af8CgQG/Af8CgQG/Af8CgQG+Af8CgQHAAf8CgQG+Af8CgQGiAf8MAAMCAQMBwwEN
-        AQAB/wHaASIBAAH/AdoBJAEAAf8BHQEXARgB/wEAAboB+gH/AQABvAH7Af8BAAG8AfwB/wEAAbwB+wH/
-        AQABvAH7Af8BAAG6AfkB/wEdARcBGAH/AdkBIwEAAf8B2QEiAQAB/wHCAQ0BAAH/AwIBAwMCAQMBwwEL
-        AQAB/wHaASABAAH/AdoBIgEAAf8B2QEhAQAB/wHZASEBAAH/AdkBIQEAAf8B2QEhAQAB/wHaASIBAAH/
-        AdoBIgEAAf8B2gEiAQAB/wHaASIBAAH/AdkBIQEAAf8B2QEgAQAB/wHCAQsBAAH/AwIBAwMCAQMBwwEO
-        AQAB/wHaASMBAAH/AdoBJQEAAf8BHgEYARkB/wIAATQB/wIAAbYB/wIAAbYB/wIAAbUB/wIAAbUB/wIA
-        Aa8B/wEeARgBGQH/AdkBJAEAAf8B2QEjAQAB/wHCAQ4BAAH/AwIBAxAAAoEBqgH/AoEBzQH/AoEByAH/
-        AoEByAH/AoEByAH/AoEByAH/AoEBzQH/AoEBqgH/EAADAgEDAcgBFwEAAf8B4gGPAQAB/wHiAZABAAH/
-        AbwBiQEAAf8BAAGrAesB/wEAAc4B/gH/AQABzgH+Af8BAAHOAf4B/wEAAc4B/gH/AQABqwHsAf8BuwGI
-        AQAB/wHiAY8BAAH/AeIBjwEAAf8BxwEXAQAB/wMCAQMDAgEDAcgBFQEAAf8B4gGPAQAB/wHiAZABAAH/
-        AeIBkQEAAf8B4gGQAQAB/wHiAZABAAH/AeIBkAEAAf8B4gGRAQAB/wHiAZEBAAH/AeIBkAEAAf8B4gGQ
-        AQAB/wHiAY8BAAH/AeIBjwEAAf8BxwEVAQAB/wMCAQMDAgEDAcgBGAEAAf8B4gGPAQAB/wHiAZABAAH/
-        AbwBiQEAAf8CAAGgAf8CAAG2Af8CAAG2Af8CAAG5Af8CAAG5Af8CAAGWAf8BuwGIAQAB/wHiAY8BAAH/
-        AeIBjwEAAf8BxwEYAQAB/wMCAQMQAAKBAbQB/wKBAc8B/wKBAc8B/wKBAdEB/wKBAc8B/wKBAc8B/wKB
-        Ac8B/wKBAbQB/xAAAwIBAwHKAR0BAAH/AewBpwEAAf8B7AGpAQAB/wHsAaoBAgH/AZEBmQGUAf8BAAG2
-        Ae0B/wEiAdsB/QH/ASAB2wH9Af8BAAG1Ae0B/wGQAZkBlAH/AesBqAEBAf8B7AGoAQAB/wHsAacBAAH/
-        AckBHQEAAf8DAgEDAwIBAwHKARsBAAH/AewBpwEAAf8B7AGpAQAB/wHsAaoBAAH/AewBqQEBAf8B7AGq
-        AQEB/wHsAakBAQH/AewBqQEBAf8B7AGqAQEB/wHsAaoBAAH/AesBqAEAAf8B7AGoAQAB/wHsAacBAAH/
-        AckBGwEAAf8DAgEDAwIBAwHKAR4BAAH/AewBpwEAAf8B7AGpAQEB/wHsAaoBAwH/AZEBmQGUAf8CAAGv
-        Af8CAAGsAf8CAAG/Af8CAAGTAf8BkAGZAZQB/wHrAagBAgH/AewBqAEAAf8B7AGnAQAB/wHJAR4BAAH/
-        AwIBAwwAAoEBvAH/AoEBygH/AoEB1QH/AoEB1QH/AoEB1gH/AoEB1gH/AoEB1QH/AoEB1QH/AoEBygH/
-        AoEBvAH/DAADAQECAk0BKQH6AbYBEwEAAf8BtwEUAQAB/wG3ARQBAAH/AbcBFgEAAf8BnQEUAQAB/wES
-        ARYBGwH/ARIBFgEbAf8BnAEUAQAB/wG3ARUBAAH/AbcBFAEAAf8BtwETAQAB/wG1ARMBAAH/Ak0BKQH6
-        AwEBAgMBAQICTQEpAfoBtgERAQAB/wG3ARIBAAH/AbcBEgEAAf8BtwEUAQAB/wG3ARMBAAH/AbcBEwEA
-        Af8BtwETAQAB/wG3ARMBAAH/AbcBEwEAAf8BtwESAQAB/wG3AREBAAH/AbUBEQEAAf8CTQEpAfoDAQEC
-        AwEBAgJNASkB+gG2ARQBAAH/AbcBFQEAAf8BtwEVAQAB/wG3ARcBAAH/AZ0BFQEAAf8BEwEXARwB/wET
-        ARcBHAH/AZwBFQEAAf8BtwEWAQAB/wG3ARUBAAH/AbcBFAEAAf8BtQEUAQAB/wJNASkB+gMBAQIIAAKB
-        AcMB/wKBAc8B/wKBAdkB/wKBAdkB/wKBAdoB/wGBAZAB5QH/AYEBjQHkAf8CgQHaAf8CgQHZAf8CgQHZ
-        Af8CgQHPAf8CgQHCAf8MAAFhAV8BWgHkAe8B6gHoAf8B7gHoAecB/wHoAeEB3wH/AekB4gHgAf8B6gHi
-        AeEB/wHxAesB6gH/AfIB7wHuAf8B9ALvAf8B8wHvAe4B/wHxAe0B7AH/AfEC7AH/AfIB7QHrAf8CYQFg
-        AeQIAAFhAV8BWgHkAe8B6gHoAf8B7gHoAecB/wHoAeEB3wH/AekB4gHgAf8B6gHiAeEB/wHxAesB6gH/
-        AfIB7wHuAf8B9ALvAf8B8wHvAe4B/wHxAe0B7AH/AfEC7AH/AfIB7QHrAf8CYQFgAeQIAAFhAV8BWgHk
-        Ae8B6gHoAf8B7gHoAecB/wHoAeEB3wH/AekB4gHgAf8B6gHiAeEB/wHxAesB6gH/AfIB7wHuAf8B9ALv
-        Af8B8wHvAe4B/wHxAe0B7AH/AfEC7AH/AfIB7QHrAf8CYQFgAeQIAAKBAcUB/wKBAdwB/wKBAd0B/wKB
-        Ad0B/wKBAd4B/wGBAZUB4wH/AoEBxwH/AoEBxwH/AYEBkgHjAf8CgQHeAf8CgQHdAf8CgQHdAf8CgQHb
-        Af8CgQHFAf8IAAMjATQDPAFmA20B9wH0AfEB7wH/AfQB8gHwAf8B9AHyAfAB/wNfAfMDQgF1AzwBZgM8
-        AWYDPAFmAzwBZgM8AWYDJAE1CAADIwE0AzwBZgNtAfcB9AHxAe8B/wH0AfIB8AH/AfQB8gHwAf8DXwHz
-        A0IBdQM8AWYDPAFmAzwBZgM8AWYDPAFmAyQBNQgAAyMBNAM8AWYDbQH3AfQB8QHvAf8B9AHyAfAB/wH0
-        AfIB8AH/A18B8wNCAXUDPAFmAzwBZgM8AWYDPAFmAzwBZgMkATUMAAKBAc4B/wGBAZcB5gH/AoEB4gH/
-        AYEBnQHnAf8CgQHMAf8IAAKBAcwB/wGBAZsB5wH/AoEB4gH/AYEBlwHmAf8CgQHNAf8UAAM7AWMDTgGZ
-        A04BmQNOAZkDNwFaLAADOwFjA04BmQNOAZkDTgGZAzcBWiwAAzsBYwNOAZkDTgGZA04BmQM3AVosAAKB
-        AdQB/wGBAZ8B6AH/AoEB0gH/EAACgQHRAf8BgQGdAegB/wKBAdMB/9wAAoEB1AH/GAACgQHUAf//ABEA
-        AUIBTQE+BwABPgMAASgDAAFAAwABMAMAAQEBAAEBBQABgAEBFgAD/wEAAeABBwYAAcABAwYAAfgBHwYA
-        AfgBHwYAAfgBHwYAAYABAQYAAYABAQYAAYABAQYAAYABAQYAAYABAQYAAYABAQYAAfgBHwYAAfgBHwYA
-        AfgBHwYAAfgBHwYAAv8GAAHwAQ8GAAHAAQMBAAEBBAABwAEDAgABgAEBAYABAAHAAQMBAAECAYABAQGA
-        AQABgAEBAQABAQGAAQEBgAEAAYABAQEAAQEBgAEBAYABAAGAAQECAAGAAQEBgAEAAYABAQIAAYABAQGA
-        AQABgAEBAgABgAEBAYABAAGAAQECAAGAAQEBgAEAAYABAQEAAQQBgAEDAYABAQGAAQEBAAEHAYABBwGA
-        AQMBwAEDAQABBwGAAQ8BgAEHAeABBwEBAf8BgAEPAYABDwHwAQ8BAwH/AYABHwGAAR8B+AEfAv8BgAE/
-        AYABPw4AAcABAwYAAeMBxwYAAcEBgwYAAYABAQYAAYABAQYAAeABBwYAAfABDwYAAfABDwYAAeABBwYA
-        AcABAwGAAQEBgAEBAYABAQGAAQEBgAEBAYABAQGAAQEBwQGDAeAB/wHgAf8B4AH/AeMBxwb/AfcB7wj/
-        Cw==
+        A8oB/wPOAf8DQAH9AxcBIAQAAjEBYgH2AgAByQH/AgAByQH/AgAByQH/AgABzgH/AdUB1wHiAf8D5AH/
+        A+QB/wHVAdcB4gH/AgABzgH/AgAByQH/AgAByAH/AgAByAH/AjEBYgH2BAABgwGGAYgB/wG7Ab4BwQH/
+        AagBnwGaAf8B3gGvAYsB/wHxAdMBuQH/AfEB0QG2Af8B7QHLAa0B/wHrAcgBpQH/AekBwgGcAf8B5QG7
+        AZIB/wHkAbYBiwH/AeEBsAGBAf8B3AGqAYEB/wHbAaYBgQH/AdoBoAGBAf8DVgG2BAADXgHdA+0B/wPn
+        Af8D5wH/A+cB/wPmAf8B2wHcAdsB/wPTAf8DywH/AccBxgHHAf8DxQH/A8UB/wPFAf8DXwHzCAADMQH2
+        A7IB/wPnAf8D5wH/A+cB/wPmAf8B2wHcAdsB/wO2Af8DnAH/AZgBlwGYAf8DlwH/A5cB/wOXAf8DQAH9
+        AxEBFwQAAlsBXgHQAgABzwH/AgAB0wH/AgAB1wH/Ad8B4gHrAf8D7QH/Ad8B4gHrAf8B3QHgAesB/wPt
+        Af8B4QHjAesB/wIAAdgB/wIAAdMB/wIAAdAB/wJZAVwBzwQAAYoBjAGOAf8C0QHSAf8BvAHAAcMB/wHM
+        AasBkwH/AekBtQGIAf8B6AG0AYgB/wHoAbQBhwH/AegBswGGAf8B5wGxAYQB/wHnAbABgwH/AecBrwGB
+        Af8B5gGtAYEB/wKoAUAB/QNZAfUDZQH0A1cBuAQAA14B3QPoAf8D4wH/A+MB/wPjAf8D4QH/A9EB/wGo
+        AacBqAH/A6gB/wKoAacB/wKoAacB/wKoAacB/wOjAf8DSgGLCAADOQH4A7UB/wPjAf8D4wH/A+MB/wPh
+        Af8D0QH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/A0AB/QMXASAEAANIAYQCAAHMAf8CAAHdAf8B2gHf
+        AfAB/wPzAf8B5gHoAfEB/wEAAQkB4AH/AQABBgHfAf8B5AHmAfEB/wPzAf8B4AHkAfEB/wIAAdwB/wIA
+        AcwB/wNIAYQEAAGRAZIBkwH/A+EB/wHaAdsB2gH/A9gB/wHaAdsB2gH/AdsC3AH/Ad0C3gH/A+AB/wHi
+        AeMB4gH/AuQB5gH/A+cB/wHjAeAB3gH/AZABkgGTAf8EAAMIAQsDAwEEBAADXgHdA+QB/wPgAf8D4AH/
+        A+AB/wPdAf8DyQH/AawBqwGsCf8C8QHyAf8D4wH/A0wBkgwAAyEB+wPHAf8D4AH/A+AB/wPgAf8D3QH/
+        A8kB/wMAAf8DwQX/AvEB8gH/A7UB/wNcAfgDFgEfCAADEgEYAkwBXwHzAgAB4QH/AQABgwHnAf8B6QHs
+        AfgB/wEAAYAB5gH/AgAB4AH/AgAB4QH/AQABEQHlAf8B4AHlAfYB/wEAAYYB6AH/AgAB4AH/AkwBXwHz
+        AxIBGAQAAZUClwH/A+wB/wPhAf8C3wHgAf8C3gHfAf8B3QLeAf8C6gHrAf8B6QHqAesB/wHmAucB/wLo
+        AekB/wHpAuoB/wLxAfIB/wGVAZYBlwH/EAADXgHdA+EB/wPdAf8D3QH/A90B/wPYAf8DyQH/ArEBsAn/
+        A+MB/wNMAY8QAAMhAfsDxQH/A90B/wPdAf8D3QH/A9gB/wPJAf8DAAH/A8sF/wO1Af8DXAH4AxYBHxAA
+        AzUBVwIAAckB/wEAAYQB6AH/AQABEgHqAf8CAAHnAf8CAAHnAf8CAAHnAf8CAAHnAf8BAAELAekB/wEA
+        AYEB6AH/AgAByQH/AzUBVwgAAZkBmgGbAf8D9AH/A+oB/wPqAf8D6gH/A/gB/wKaAZsB/wGZApoB/wGZ
+        AZoBmwH/AZkBmgGbAf8DmgH/A5oB/wMrAUIQAANeAd0D3gH/A9gB/wPYAf8D2AH/A9QB/wPJAf8CtQG2
+        Af8B8QHyAfEB/wPrAf8DUAGaFAADIQH7A8IB/wPYAf8D2AH/A9gB/wPUAf8DyQH/AwAB/wPIAf8DtwH/
+        A00B+gMWAR8YAAMuAUgCWwFhAeECAAHfAf8BhgGaAe8B/wGYAaoB8wH/AZUBpwHzAf8BhAGZAe8B/wIA
+        Ad8B/wJTAWEB5AMuAUgMAAOdEf8DnQH/AyUBNygAA14B3QPbAf8D1gH/A9YB/wPVAf8D0AH/A8gB/wG4
+        AbkBuAH/A+MB/wNUAawDAQECFAADIQH7A8AB/wPWAf8D1gH/A9UB/wPQAf8DyAH/AwAB/wODAf8DQQH5
+        AyEBMCAAAwkBDAJGAUcBgQJZAVwByQMrAfwDKwH8AlkBXAHJAkYBRwGBAwkBDBAAA1IBqQOdAf8DnQH/
+        A50B/wOdAf8DNgFYLAADZQHlA9wB/wPXAf8D1wH/A9UB/wPOAf8DxwH/A7sB/wNUAaYDBwEKGAADKwH8
+        A5AB/wOhAf8DoQH/A6AB/wOaAf8DlQH/AwAB/wNOAfADHQEpKAADAQECAwYBCAMLAQ8DCwEPAwYBCAMB
+        AQJYAANUAa8DXgHdA14B3QNeAd0DXgHdA14B3QNeAdkDTAGTAwIBAxwAAz0B9AMxAfYDMQH2AzEB9gMx
+        AfYDMQH2A0IB9QNUAe4DDgETGwABAQMDAQQDAwEEAwMBBAMDAQQDAwEEAwMBBAMDAQQDAwEEAwMBBAMD
+        AQQDAwEEAwMBBAMDAQQDAwEEAwABAQMAAQEDAwEEAwMBBAMDAQQDAwEEAwMBBAMDAQQDAwEEAwMBBAMD
+        AQQDAwEEAwMBBAMDAQQDAwEEAwMBBAMAAQEDAAEBAwMBBAMDAQQDAwEEAwMBBAMDAQQDAwEEAwMBBAMD
+        AQQDAwEEAwMBBAMDAQQDAwEEAwMBBAMDAQQDAAEBAwABAQMEAQYDCgEOAw0BEgMWAR8DGgEkAxwBKAMf
+        ASwDHwEtAx4BKwMbASYDGAEiAw8BFAMMARADBQEHAwABAQMGAQgDHQEqAyEBMAMgAS8DIAEvAyABLwMg
+        AS8DIAEvAyABLwMgAS8DIAEvAyABLwMgAS8DIQEwAx0BKgMGAQgDBgEIAx0BKgMhATADIAEvAyABLwMg
+        AS8DIAEvAyABLwMgAS8DIAEvAyABLwMgAS8DIAEvAyEBMAMdASoDBgEIAwYBCAMdASoDIQEwAyABLwMg
+        AS8DIAEvAyABLwMgAS8DIAEvAyABLwMgAS8DIAEvAyABLwMhATADHQEqAwYBCAgAAwQEBQEHAoEBgwH/
+        Aw8BFAMQARYDEgEYAxIBGAMSARgDEAEVAoEBgwH/AwYBCAMEAQYIAAMgAS8BagFBASMB+QGQAgAB/wGR
+        AgAB/wGRAgAB/wGRAgAB/wGQAgAB/wGQAgAB/wGRAgAB/wGQAgAB/wGRAgAB/wGRAgAB/wGRAgAB/wGQ
+        AgAB/wFqAUEBIwH5AyIBMgMgAS8BagFBASMB+QGQAgAB/wGRAgAB/wGRAgAB/wGRAgAB/wGQAgAB/wGQ
+        AgAB/wGRAgAB/wGQAgAB/wGRAgAB/wGRAgAB/wGRAgAB/wGQAgAB/wFqAUEBIwH5AyIBMgMgAS8BagFB
+        ASMB+QGQAgAB/wGRAgAB/wGRAgAB/wGRAgAB/wGQAgAB/wGQAgAB/wGRAgAB/wGQAgAB/wGRAgAB/wGR
+        AgAB/wGRAgAB/wGQAgAB/wFqAUEBIwH5AyIBMgwAAoEBmwH/AoEBxAH/AoEBjQH/EAACgQGNAf8CgQHE
+        Af8CgQGbAf8MAAMEAQUBtQIAAf8BxgIAAf8BxgIAAf8BxgIAAf8BugIAAf8BggIAAf8DAAH/AwAB/wGA
+        AgAB/wG4AgAB/wHGAgAB/wHHAgAB/wHHAgAB/wG1AgAB/wMEAQUDBAEFAbUCAAH/AcYCAAH/AcYCAAH/
+        AcYCAAH/AcYCAAH/AcYCAAH/AcYCAAH/AcYCAAH/AcYCAAH/AcYCAAH/AcYCAAH/AccCAAH/AccCAAH/
+        AbUCAAH/AwQBBQMEAQUBtQIAAf8BxgIAAf8BxgIAAf8BxgIAAf8BugIAAf8BggIAAf8CAAGGAf8CAAGA
+        Af8BDwIAAf8BuAIAAf8BxgIAAf8BxwIAAf8BxwIAAf8BtQIAAf8DBAEFCAACgQGcAf8CgQG4Af8CgQG3
+        Af8CgQG6Af8CgQGQAf8IAAKBAZAB/wKBAboB/wKBAbcB/wKBAbgB/wKBAZwB/wgAAwIBAwG3AgAB/wHD
+        AgAB/wHFAgAB/wHEAgAB/wMAAf8BAAEBAdwB/wEAAZ0B9AH/AQABnQH0Af8BAAEBAdwB/wMAAf8BxAIA
+        Af8BxAIAAf8BxQIAAf8BtwIAAf8DAgEDAwIBAwG3AgAB/wHDAgAB/wHFAgAB/wHEAgAB/wHEAgAB/wHF
+        AgAB/wHEAgAB/wHFAgAB/wHDAgAB/wHEAgAB/wHEAgAB/wHEAgAB/wHFAgAB/wG3AgAB/wMCAQMDAgED
+        AbcCAAH/AcMCAAH/AcUCAAH/AcQCAAH/AwAB/wIAAYoB/wIAAbYB/wIAAbwB/wIAAbsB/wMAAf8BxAIA
+        Af8BxAIAAf8BxQIAAf8BtwIAAf8DAgEDBAACgQGdAf8CgQG8Af8CgQG5Af8CgQG1Af8CgQG5Af8CgQG1
+        Af8CgQGVAf8CgQGVAf8CgQG1Af8CgQG5Af8CgQG1Af8CgQG5Af8CgQG8Af8CgQGdAf8EAAMCAQMBuwIA
+        Af8BywIAAf8BywIAAf8BrAIAAf8BAAGCAeIB/wEAAZ8B9gH/AQABnwH2Af8BAAGfAfcB/wEAAZ8B9gH/
+        AQABggHiAf8BrAIAAf8BywIAAf8BywIAAf8BugIAAf8DAgEDAwIBAwG7AgAB/wHLAgAB/wHLAgAB/wHL
+        AgAB/wHLAgAB/wHLAgAB/wHLAgAB/wHLAgAB/wHLAgAB/wHLAgAB/wHLAgAB/wHLAgAB/wHLAgAB/wG6
+        AgAB/wMCAQMDAgEDAbsCAAH/AcsCAAH/AcsCAAH/AawCAAH/AgABhAH/AgABtgH/AgABtQH/AgABtgH/
+        AgABtwH/AgABkQH/AawCAAH/AcsCAAH/AcsCAAH/AboCAAH/AwIBAwQAAxABFQKBAZ0B/wKBAbYB/wKB
+        AbsB/wKBAboB/wKBAbwB/wKBAcIB/wKBAcIB/wKBAbwB/wKBAboB/wKBAbwB/wKBAbYB/wKBAZ0B/wMQ
+        ARUEAAMCAQMBvgIAAf8B0QIAAf8B0QIAAf8DAAH/AQABpgH2Af8BAAGqAfkB/wEAAaoB+QH/AQABqgH5
+        Af8BAAGqAfkB/wEAAaUB9gH/AwAB/wHRAgAB/wHRAgAB/wG+AgAB/wMCAQMDAgEDAb4CAAH/AdECAAH/
+        AdECAAH/AdECAAH/AdECAAH/AdECAAH/AdECAAH/AdECAAH/AdECAAH/AdECAAH/AdECAAH/AdECAAH/
+        AdECAAH/Ab4CAAH/AwIBAwMCAQMBvgIAAf8B0QIAAf8B0QIAAf8DAAH/AgABEgH/AgABtgH/AgABtgH/
+        AgABtgH/AgABtgH/AgABxQH/AwAB/wHRAgAB/wHRAgAB/wG+AgAB/wMCAQMMAAKBAaIB/wKBAb4B/wKB
+        AcAB/wKBAb4B/wKBAb8B/wKBAb8B/wKBAb4B/wKBAcAB/wKBAb4B/wKBAaIB/wwAAwIBAwHDAgAB/wHa
+        AgAB/wHaAQIBAAH/AwAB/wEAAboB+gH/AQABvAH7Af8BAAG8AfwB/wEAAbwB+wH/AQABvAH7Af8BAAG6
+        AfkB/wMAAf8B2QEBAQAB/wHZAgAB/wHCAgAB/wMCAQMDAgEDAcMCAAH/AdoCAAH/AdoCAAH/AdkCAAH/
+        AdkCAAH/AdkCAAH/AdkCAAH/AdoCAAH/AdoCAAH/AdoCAAH/AdoCAAH/AdkCAAH/AdkCAAH/AcICAAH/
+        AwIBAwMCAQMBwwIAAf8B2gEBAQAB/wHaAQMBAAH/AwAB/wIAARIB/wIAAbYB/wIAAbYB/wIAAbUB/wIA
+        AbUB/wIAAa8B/wMAAf8B2QECAQAB/wHZAQEBAAH/AcICAAH/AwIBAxAAAoEBqgH/AoEBzQH/AoEByAH/
+        AoEByAH/AoEByAH/AoEByAH/AoEBzQH/AoEBqgH/EAADAgEDAcgCAAH/AeIBjwEAAf8B4gGQAQAB/wG8
+        AYkBAAH/AQABqwHrAf8BAAHOAf4B/wEAAc4B/gH/AQABzgH+Af8BAAHOAf4B/wEAAasB7AH/AbsBiAEA
+        Af8B4gGPAQAB/wHiAY8BAAH/AccCAAH/AwIBAwMCAQMByAIAAf8B4gGPAQAB/wHiAZABAAH/AeIBkQEA
+        Af8B4gGQAQAB/wHiAZABAAH/AeIBkAEAAf8B4gGRAQAB/wHiAZEBAAH/AeIBkAEAAf8B4gGQAQAB/wHi
+        AY8BAAH/AeIBjwEAAf8BxwIAAf8DAgEDAwIBAwHIAgAB/wHiAY8BAAH/AeIBkAEAAf8BvAGJAQAB/wIA
+        AaAB/wIAAbYB/wIAAbYB/wIAAbkB/wIAAbkB/wIAAZYB/wG7AYgBAAH/AeIBjwEAAf8B4gGPAQAB/wHH
+        AgAB/wMCAQMQAAKBAbQB/wKBAc8B/wKBAc8B/wKBAdEB/wKBAc8B/wKBAc8B/wKBAc8B/wKBAbQB/xAA
+        AwIBAwHKAgAB/wHsAacBAAH/AewBqQEAAf8B7AGqAQAB/wGRAZkBlAH/AQABtgHtAf8BAAHbAf0B/wEA
+        AdsB/QH/AQABtQHtAf8BkAGZAZQB/wHrAagBAAH/AewBqAEAAf8B7AGnAQAB/wHJAgAB/wMCAQMDAgED
+        AcoCAAH/AewBpwEAAf8B7AGpAQAB/wHsAaoBAAH/AewBqQEAAf8B7AGqAQAB/wHsAakBAAH/AewBqQEA
+        Af8B7AGqAQAB/wHsAaoBAAH/AesBqAEAAf8B7AGoAQAB/wHsAacBAAH/AckCAAH/AwIBAwMCAQMBygIA
+        Af8B7AGnAQAB/wHsAakBAAH/AewBqgEAAf8BkQGZAZQB/wIAAa8B/wIAAawB/wIAAb8B/wIAAZMB/wGQ
+        AZkBlAH/AesBqAEAAf8B7AGoAQAB/wHsAacBAAH/AckCAAH/AwIBAwwAAoEBvAH/AoEBygH/AoEB1QH/
+        AoEB1QH/AoEB1gH/AoEB1gH/AoEB1QH/AoEB1QH/AoEBygH/AoEBvAH/DAADAQECAk0BKQH6AbYCAAH/
+        AbcCAAH/AbcCAAH/AbcCAAH/AZ0CAAH/AwAB/wMAAf8BnAIAAf8BtwIAAf8BtwIAAf8BtwIAAf8BtQIA
+        Af8CTQEpAfoDAQECAwEBAgJNASkB+gG2AgAB/wG3AgAB/wG3AgAB/wG3AgAB/wG3AgAB/wG3AgAB/wG3
+        AgAB/wG3AgAB/wG3AgAB/wG3AgAB/wG3AgAB/wG1AgAB/wJNASkB+gMBAQIDAQECAk0BKQH6AbYCAAH/
+        AbcCAAH/AbcCAAH/AbcCAAH/AZ0CAAH/AwAB/wMAAf8BnAIAAf8BtwIAAf8BtwIAAf8BtwIAAf8BtQIA
+        Af8CTQEpAfoDAQECCAACgQHDAf8CgQHPAf8CgQHZAf8CgQHZAf8CgQHaAf8BgQGQAeUB/wGBAY0B5AH/
+        AoEB2gH/AoEB2QH/AoEB2QH/AoEBzwH/AoEBwgH/DAABYQFfAVoB5AHvAeoB6AH/Ae4B6AHnAf8B6AHh
+        Ad8B/wHpAeIB4AH/AeoB4gHhAf8B8QHrAeoB/wHyAe8B7gH/AfQC7wH/AfMB7wHuAf8B8QHtAewB/wHx
+        AuwB/wHyAe0B6wH/AmEBYAHkCAABYQFfAVoB5AHvAeoB6AH/Ae4B6AHnAf8B6AHhAd8B/wHpAeIB4AH/
+        AeoB4gHhAf8B8QHrAeoB/wHyAe8B7gH/AfQC7wH/AfMB7wHuAf8B8QHtAewB/wHxAuwB/wHyAe0B6wH/
+        AmEBYAHkCAABYQFfAVoB5AHvAeoB6AH/Ae4B6AHnAf8B6AHhAd8B/wHpAeIB4AH/AeoB4gHhAf8B8QHr
+        AeoB/wHyAe8B7gH/AfQC7wH/AfMB7wHuAf8B8QHtAewB/wHxAuwB/wHyAe0B6wH/AmEBYAHkCAACgQHF
+        Af8CgQHcAf8CgQHdAf8CgQHdAf8CgQHeAf8BgQGVAeMB/wKBAccB/wKBAccB/wGBAZIB4wH/AoEB3gH/
+        AoEB3QH/AoEB3QH/AoEB2wH/AoEBxQH/CAADIwE0AzwBZgNtAfcB9AHxAe8B/wH0AfIB8AH/AfQB8gHw
+        Af8DXwHzA0IBdQM8AWYDPAFmAzwBZgM8AWYDPAFmAyQBNQgAAyMBNAM8AWYDbQH3AfQB8QHvAf8B9AHy
+        AfAB/wH0AfIB8AH/A18B8wNCAXUDPAFmAzwBZgM8AWYDPAFmAzwBZgMkATUIAAMjATQDPAFmA20B9wH0
+        AfEB7wH/AfQB8gHwAf8B9AHyAfAB/wNfAfMDQgF1AzwBZgM8AWYDPAFmAzwBZgM8AWYDJAE1DAACgQHO
+        Af8BgQGXAeYB/wKBAeIB/wGBAZ0B5wH/AoEBzAH/CAACgQHMAf8BgQGbAecB/wKBAeIB/wGBAZcB5gH/
+        AoEBzQH/FAADOwFjA04BmQNOAZkDTgGZAzcBWiwAAzsBYwNOAZkDTgGZA04BmQM3AVosAAM7AWMDTgGZ
+        A04BmQNOAZkDNwFaLAACgQHUAf8BgQGfAegB/wKBAdIB/xAAAoEB0QH/AYEBnQHoAf8CgQHTAf/cAAKB
+        AdQB/xgAAoEB1AH//wARAAFCAU0BPgcAAT4DAAEoAwABQAMAATADAAEBAQABAQUAAYABARYAA/8BAAHg
+        AQcGAAHAAQMGAAH4AR8GAAH4AR8GAAH4AR8GAAGAAQEGAAGAAQEGAAGAAQEGAAGAAQEGAAGAAQEGAAGA
+        AQEGAAH4AR8GAAH4AR8GAAH4AR8GAAH4AR8GAAL/BgAB8AEPBgABwAEDAQABAQQAAcABAwIAAYABAQGA
+        AQABwAEDAQABAgGAAQEBgAEAAYABAQEAAQEBgAEBAYABAAGAAQEBAAEBAYABAQGAAQABgAEBAgABgAEB
+        AYABAAGAAQECAAGAAQEBgAEAAYABAQIAAYABAQGAAQABgAEBAgABgAEBAYABAAGAAQEBAAEEAYABAwGA
+        AQEBgAEBAQABBwGAAQcBgAEDAcABAwEAAQcBgAEPAYABBwHgAQcBAQH/AYABDwGAAQ8B8AEPAQMB/wGA
+        AR8BgAEfAfgBHwL/AYABPwGAAT8OAAHAAQMGAAHjAccGAAHBAYMGAAGAAQEGAAGAAQEGAAHgAQcGAAHw
+        AQ8GAAHwAQ8GAAHgAQcGAAHAAQMBgAEBAYABAQGAAQEBgAEBAYABAQGAAQEBgAEBAcEBgwHgAf8B4AH/
+        AeAB/wHjAccG/wH3Ae8I/ws=
 </value>
   </data>
   <data name="fsFolderTree.Location" type="System.Drawing.Point, System.Drawing">
@@ -1060,7 +1052,7 @@
     <value>248, 22</value>
   </data>
   <data name="exportXmlToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Export package Blueprint</value>
+    <value>&amp;Export package properties</value>
   </data>
   <data name="englishMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>123, 22</value>
@@ -2406,16 +2398,16 @@
   <data name="regEditBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIdSURBVDhPfZNLaBNhFIUDYpriQvCBLroQiguXKu6jK0Fk
-        qhAVhKKLUEwl0SKoqxIXIrhrjJIE18FHMdmIIFg3wUpgqqGTR807Gdt0TMyTTDce7/0nxsaYHviY4Z97
-        zr3cmTH9R5OElZD+4SxxhLAQf/XSZttVeXBOWb9/Wu4dWTOZDLLZrODPfT6fh9vtfk/PjxPjopKlzp6K
-        bNw8iXfPvbh+capGR1Iul4OiKEN4PB4EAoFlqjlBGJOsztvMs9NXsRJbRWhxEd9uWVAoFJBIJPokk0mB
-        3+9Hq9WC1+tdIusxYrcIefvowsSNmRmsvL6LdmROhKRSqSF8Ph9YwWDwl91uXyDrYRHA+vL40J7wFTO2
-        ItPQl28j5bIgnU4PEA6H4XQ64XA44HK5umQ7Y7h7Kr6YGA9dopBP10TIGoXwPniJfI3FYpBlGdFoFPF4
-        HGQ5bzi3ad9esy102YzuB4lC5rDmHEOxWESpVBK7YThMVVUO4Nc7JElTk+AQfakXQpOwgSmXy+Kqadro
-        gFqtho3vWQoZQ3dbSKVS6VOtVkcH1Ot10UFbL4hJtj5OQf9s7EScE1zDtYZlUFKj0RAdBJtFvOHF0iSb
-        T4/iZzoEnrDZbI4O4I+FO/T5oYpJGvJDdJRn4oxruNawDEpqt9uiA0/C3fgN8HfwNfIKBw/sF886nc7I
-        AKuu66JgJ7iGaw3LoPh3vkPM78AT4p7JZJr8DfG2AAw2D0Z/AAAAAElFTkSuQmCC
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIdSURBVDhPfZPLaxNhFMUDYpriQvCBLroQiguXKu6jK0Fk
+        qhAVhKKLUEwl0SKoqxIhInRnjJIE/wAfxWQjgmDdBCuBqYZOHjXvZGzTMTFPMt14vPebGBtjeuDHDN/c
+        c+7lzozpP5okrIT0D2eJI4SF+KuXNtuuyoNzyvr903LvyJrJZJDNZgV/7vP5PNxu93t6fpwYF5UsdfZU
+        ZOPmSbx77sP1i1M1OpJyuRwURRnC6/UiGAwuU80Jwphkdd5mnp2+ipXYKkKLi/h2y4JCoYBEItEnmUwK
+        AoEAWq0WfD7fElmPEbtFyNtHFyZuzMxg5fVdtCNzIiSVSg3h9/vB8ng8v+x2+2OyHhYBrC8Lh/aEr5ix
+        FZmGvnwbKZcF6XR6gHA4DKfTCYfDAZfL1SXbGcPdU/HFxHjoEoV8uiZC1iiE98FL5GssFoMsy4hGo4jH
+        4yDLecO5Tfv2mm2hy2Z0P0gUMoc15xiKxSJKpZLYDcNhqqpyAL/eIUmamgSH6Eu9EJqEDUy5XBZXTdNG
+        B9RqNWx8z1LIGLrbQiqVSp9qtTo6oF6viw7aekFMsvVxCvpnYyfinOAarjUsg5IajYboINgs4g0vlibZ
+        fHoUP9Mh8ITNZnN0AH8s3KHPD1VM0pAfoqM8E2dcw7WGZVBSu90WHXgS7sZvgL+Dr5FXOHhgv3jW6XRG
+        Blh1XRcFO8E1XGtYBsW/8x1ifgeeEPdMJtPkb9Bj/5fR5LAzAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="regEditBtn.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
@@ -2859,7 +2851,7 @@
     <value>Top</value>
   </data>
   <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 312</value>
+    <value>3, 168</value>
   </data>
   <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
     <value>766, 158</value>
@@ -2881,324 +2873,6 @@
   </data>
   <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 58</value>
-  </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 12</value>
-  </data>
-  <data name="label6.TabIndex" type="System.Int32, mscorlib">
-    <value>35</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>Confirm password:</value>
-  </data>
-  <data name="&gt;&gt;label6.Name" xml:space="preserve">
-    <value>label6</value>
-  </data>
-  <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
-    <value>groupConstraints</value>
-  </data>
-  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tbPasswordConfirm.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="tbPasswordConfirm.Location" type="System.Drawing.Point, System.Drawing">
-    <value>297, 55</value>
-  </data>
-  <data name="tbPasswordConfirm.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
-    <value>*</value>
-  </data>
-  <data name="tbPasswordConfirm.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 21</value>
-  </data>
-  <data name="tbPasswordConfirm.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="&gt;&gt;tbPasswordConfirm.Name" xml:space="preserve">
-    <value>tbPasswordConfirm</value>
-  </data>
-  <data name="&gt;&gt;tbPasswordConfirm.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbPasswordConfirm.Parent" xml:space="preserve">
-    <value>groupConstraints</value>
-  </data>
-  <data name="&gt;&gt;tbPasswordConfirm.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="lnkActiveDirectory.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lnkActiveDirectory.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lnkActiveDirectory.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 18</value>
-  </data>
-  <data name="lnkActiveDirectory.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 12</value>
-  </data>
-  <data name="lnkActiveDirectory.TabIndex" type="System.Int32, mscorlib">
-    <value>33</value>
-  </data>
-  <data name="lnkActiveDirectory.Text" xml:space="preserve">
-    <value>Active Directory permissions</value>
-  </data>
-  <data name="&gt;&gt;lnkActiveDirectory.Name" xml:space="preserve">
-    <value>lnkActiveDirectory</value>
-  </data>
-  <data name="&gt;&gt;lnkActiveDirectory.Type" xml:space="preserve">
-    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lnkActiveDirectory.Parent" xml:space="preserve">
-    <value>groupConstraints</value>
-  </data>
-  <data name="&gt;&gt;lnkActiveDirectory.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="propertyTtlResistRemove.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="propertyTtlResistRemove.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="propertyTtlResistRemove.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 102</value>
-  </data>
-  <data name="propertyTtlResistRemove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>348, 16</value>
-  </data>
-  <data name="propertyTtlResistRemove.TabIndex" type="System.Int32, mscorlib">
-    <value>32</value>
-  </data>
-  <data name="propertyTtlResistRemove.Text" xml:space="preserve">
-    <value>Keep expiration counter even after application removal</value>
-  </data>
-  <data name="&gt;&gt;propertyTtlResistRemove.Name" xml:space="preserve">
-    <value>propertyTtlResistRemove</value>
-  </data>
-  <data name="&gt;&gt;propertyTtlResistRemove.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;propertyTtlResistRemove.Parent" xml:space="preserve">
-    <value>groupConstraints</value>
-  </data>
-  <data name="&gt;&gt;propertyTtlResistRemove.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="propertyProtPassword.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="propertyProtPassword.Location" type="System.Drawing.Point, System.Drawing">
-    <value>297, 31</value>
-  </data>
-  <data name="propertyProtPassword.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
-    <value>*</value>
-  </data>
-  <data name="propertyProtPassword.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 21</value>
-  </data>
-  <data name="propertyProtPassword.TabIndex" type="System.Int32, mscorlib">
-    <value>29</value>
-  </data>
-  <data name="&gt;&gt;propertyProtPassword.Name" xml:space="preserve">
-    <value>propertyProtPassword</value>
-  </data>
-  <data name="&gt;&gt;propertyProtPassword.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;propertyProtPassword.Parent" xml:space="preserve">
-    <value>groupConstraints</value>
-  </data>
-  <data name="&gt;&gt;propertyProtPassword.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="propertyTtlDaysValue.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="propertyTtlDaysValue.Location" type="System.Drawing.Point, System.Drawing">
-    <value>297, 79</value>
-  </data>
-  <data name="propertyTtlDaysValue.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 21</value>
-  </data>
-  <data name="propertyTtlDaysValue.TabIndex" type="System.Int32, mscorlib">
-    <value>31</value>
-  </data>
-  <data name="&gt;&gt;propertyTtlDaysValue.Name" xml:space="preserve">
-    <value>propertyTtlDaysValue</value>
-  </data>
-  <data name="&gt;&gt;propertyTtlDaysValue.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;propertyTtlDaysValue.Parent" xml:space="preserve">
-    <value>groupConstraints</value>
-  </data>
-  <data name="&gt;&gt;propertyTtlDaysValue.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="propertyProt.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="propertyProt.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="propertyProt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 34</value>
-  </data>
-  <data name="propertyProt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>222, 16</value>
-  </data>
-  <data name="propertyProt.TabIndex" type="System.Int32, mscorlib">
-    <value>28</value>
-  </data>
-  <data name="propertyProt.Text" xml:space="preserve">
-    <value>Password-protect against editing:</value>
-  </data>
-  <data name="&gt;&gt;propertyProt.Name" xml:space="preserve">
-    <value>propertyProt</value>
-  </data>
-  <data name="&gt;&gt;propertyProt.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;propertyProt.Parent" xml:space="preserve">
-    <value>groupConstraints</value>
-  </data>
-  <data name="&gt;&gt;propertyProt.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="propertyTtlDays.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="propertyTtlDays.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="propertyTtlDays.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 81</value>
-  </data>
-  <data name="propertyTtlDays.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 16</value>
-  </data>
-  <data name="propertyTtlDays.TabIndex" type="System.Int32, mscorlib">
-    <value>28</value>
-  </data>
-  <data name="propertyTtlDays.Text" xml:space="preserve">
-    <value>Expire after (days):</value>
-  </data>
-  <data name="&gt;&gt;propertyTtlDays.Name" xml:space="preserve">
-    <value>propertyTtlDays</value>
-  </data>
-  <data name="&gt;&gt;propertyTtlDays.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;propertyTtlDays.Parent" xml:space="preserve">
-    <value>groupConstraints</value>
-  </data>
-  <data name="&gt;&gt;propertyTtlDays.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="propertyExpiration.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="propertyExpiration.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="propertyExpiration.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 124</value>
-  </data>
-  <data name="propertyExpiration.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 16</value>
-  </data>
-  <data name="propertyExpiration.TabIndex" type="System.Int32, mscorlib">
-    <value>27</value>
-  </data>
-  <data name="propertyExpiration.Text" xml:space="preserve">
-    <value>Expiration date:</value>
-  </data>
-  <data name="&gt;&gt;propertyExpiration.Name" xml:space="preserve">
-    <value>propertyExpiration</value>
-  </data>
-  <data name="&gt;&gt;propertyExpiration.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;propertyExpiration.Parent" xml:space="preserve">
-    <value>groupConstraints</value>
-  </data>
-  <data name="&gt;&gt;propertyExpiration.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="propertyExpirationDatePicker.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="propertyExpirationDatePicker.Location" type="System.Drawing.Point, System.Drawing">
-    <value>297, 119</value>
-  </data>
-  <data name="propertyExpirationDatePicker.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="propertyExpirationDatePicker.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 21</value>
-  </data>
-  <data name="propertyExpirationDatePicker.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;propertyExpirationDatePicker.Name" xml:space="preserve">
-    <value>propertyExpirationDatePicker</value>
-  </data>
-  <data name="&gt;&gt;propertyExpirationDatePicker.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;propertyExpirationDatePicker.Parent" xml:space="preserve">
-    <value>groupConstraints</value>
-  </data>
-  <data name="&gt;&gt;propertyExpirationDatePicker.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="groupConstraints.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="groupConstraints.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 168</value>
-  </data>
-  <data name="groupConstraints.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="groupConstraints.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="groupConstraints.Size" type="System.Drawing.Size, System.Drawing">
-    <value>766, 144</value>
-  </data>
-  <data name="groupConstraints.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="groupConstraints.Text" xml:space="preserve">
-    <value>Security and expiration</value>
-  </data>
-  <data name="&gt;&gt;groupConstraints.Name" xml:space="preserve">
-    <value>groupConstraints</value>
-  </data>
-  <data name="&gt;&gt;groupConstraints.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupConstraints.Parent" xml:space="preserve">
-    <value>tabAdvanced</value>
-  </data>
-  <data name="&gt;&gt;groupConstraints.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="chkCleanDoneDialog.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3378,7 +3052,7 @@
     <value>tabAdvanced</value>
   </data>
   <data name="&gt;&gt;groupBox7.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="rdbIntegrateVirtual.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3495,7 +3169,7 @@
     <value>tabAdvanced</value>
   </data>
   <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="tabAdvanced.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -3523,6 +3197,837 @@
   </data>
   <data name="&gt;&gt;tabAdvanced.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="panel10.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panel10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 345</value>
+  </data>
+  <data name="panel10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>766, 124</value>
+  </data>
+  <data name="panel10.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;panel10.Name" xml:space="preserve">
+    <value>panel10</value>
+  </data>
+  <data name="&gt;&gt;panel10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel10.Parent" xml:space="preserve">
+    <value>tabSecurity</value>
+  </data>
+  <data name="&gt;&gt;panel10.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lnkExportPwdKey.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lnkExportPwdKey.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="lnkExportPwdKey.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lnkExportPwdKey.Location" type="System.Drawing.Point, System.Drawing">
+    <value>41, 0</value>
+  </data>
+  <data name="lnkExportPwdKey.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 12</value>
+  </data>
+  <data name="lnkExportPwdKey.TabIndex" type="System.Int32, mscorlib">
+    <value>41</value>
+  </data>
+  <data name="lnkExportPwdKey.Text" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="&gt;&gt;lnkExportPwdKey.Name" xml:space="preserve">
+    <value>lnkExportPwdKey</value>
+  </data>
+  <data name="&gt;&gt;lnkExportPwdKey.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lnkExportPwdKey.Parent" xml:space="preserve">
+    <value>panel16</value>
+  </data>
+  <data name="&gt;&gt;lnkExportPwdKey.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lnkImportPwdKey.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lnkImportPwdKey.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="lnkImportPwdKey.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lnkImportPwdKey.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="lnkImportPwdKey.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 12</value>
+  </data>
+  <data name="lnkImportPwdKey.TabIndex" type="System.Int32, mscorlib">
+    <value>42</value>
+  </data>
+  <data name="lnkImportPwdKey.Text" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="&gt;&gt;lnkImportPwdKey.Name" xml:space="preserve">
+    <value>lnkImportPwdKey</value>
+  </data>
+  <data name="&gt;&gt;lnkImportPwdKey.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lnkImportPwdKey.Parent" xml:space="preserve">
+    <value>panel16</value>
+  </data>
+  <data name="&gt;&gt;lnkImportPwdKey.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panel16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>479, 62</value>
+  </data>
+  <data name="panel16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 18</value>
+  </data>
+  <data name="panel16.TabIndex" type="System.Int32, mscorlib">
+    <value>43</value>
+  </data>
+  <data name="&gt;&gt;panel16.Name" xml:space="preserve">
+    <value>panel16</value>
+  </data>
+  <data name="&gt;&gt;panel16.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel16.Parent" xml:space="preserve">
+    <value>groupDataEncrypt</value>
+  </data>
+  <data name="&gt;&gt;panel16.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="propertyEncryptUserCreatedPassword.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="propertyEncryptUserCreatedPassword.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="propertyEncryptUserCreatedPassword.Location" type="System.Drawing.Point, System.Drawing">
+    <value>30, 41</value>
+  </data>
+  <data name="propertyEncryptUserCreatedPassword.Size" type="System.Drawing.Size, System.Drawing">
+    <value>263, 16</value>
+  </data>
+  <data name="propertyEncryptUserCreatedPassword.TabIndex" type="System.Int32, mscorlib">
+    <value>38</value>
+  </data>
+  <data name="propertyEncryptUserCreatedPassword.Text" xml:space="preserve">
+    <value>Ask user to create password on first use</value>
+  </data>
+  <data name="&gt;&gt;propertyEncryptUserCreatedPassword.Name" xml:space="preserve">
+    <value>propertyEncryptUserCreatedPassword</value>
+  </data>
+  <data name="&gt;&gt;propertyEncryptUserCreatedPassword.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;propertyEncryptUserCreatedPassword.Parent" xml:space="preserve">
+    <value>groupDataEncrypt</value>
+  </data>
+  <data name="&gt;&gt;propertyEncryptUserCreatedPassword.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lnkEncryptionLearnMore.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="lnkEncryptionLearnMore.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lnkEncryptionLearnMore.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lnkEncryptionLearnMore.Location" type="System.Drawing.Point, System.Drawing">
+    <value>476, 19</value>
+  </data>
+  <data name="lnkEncryptionLearnMore.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 12</value>
+  </data>
+  <data name="lnkEncryptionLearnMore.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
+  </data>
+  <data name="lnkEncryptionLearnMore.Text" xml:space="preserve">
+    <value>About our encryption</value>
+  </data>
+  <data name="&gt;&gt;lnkEncryptionLearnMore.Name" xml:space="preserve">
+    <value>lnkEncryptionLearnMore</value>
+  </data>
+  <data name="&gt;&gt;lnkEncryptionLearnMore.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lnkEncryptionLearnMore.Parent" xml:space="preserve">
+    <value>groupDataEncrypt</value>
+  </data>
+  <data name="&gt;&gt;lnkEncryptionLearnMore.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label12.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>47, 88</value>
+  </data>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 12</value>
+  </data>
+  <data name="label12.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Confirm password:</value>
+  </data>
+  <data name="&gt;&gt;label12.Name" xml:space="preserve">
+    <value>label12</value>
+  </data>
+  <data name="&gt;&gt;label12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
+    <value>groupDataEncrypt</value>
+  </data>
+  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tbEncryptionPwdConfirm.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="tbEncryptionPwdConfirm.Location" type="System.Drawing.Point, System.Drawing">
+    <value>297, 85</value>
+  </data>
+  <data name="tbEncryptionPwdConfirm.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
+    <value>*</value>
+  </data>
+  <data name="tbEncryptionPwdConfirm.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 21</value>
+  </data>
+  <data name="tbEncryptionPwdConfirm.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;tbEncryptionPwdConfirm.Name" xml:space="preserve">
+    <value>tbEncryptionPwdConfirm</value>
+  </data>
+  <data name="&gt;&gt;tbEncryptionPwdConfirm.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbEncryptionPwdConfirm.Parent" xml:space="preserve">
+    <value>groupDataEncrypt</value>
+  </data>
+  <data name="&gt;&gt;tbEncryptionPwdConfirm.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="tbEncryptionPwd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="tbEncryptionPwd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>297, 61</value>
+  </data>
+  <data name="tbEncryptionPwd.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
+    <value>*</value>
+  </data>
+  <data name="tbEncryptionPwd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 21</value>
+  </data>
+  <data name="tbEncryptionPwd.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;tbEncryptionPwd.Name" xml:space="preserve">
+    <value>tbEncryptionPwd</value>
+  </data>
+  <data name="&gt;&gt;tbEncryptionPwd.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbEncryptionPwd.Parent" xml:space="preserve">
+    <value>groupDataEncrypt</value>
+  </data>
+  <data name="&gt;&gt;tbEncryptionPwd.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="lnkGenerateEncKey.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="lnkGenerateEncKey.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lnkGenerateEncKey.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lnkGenerateEncKey.Location" type="System.Drawing.Point, System.Drawing">
+    <value>476, 133</value>
+  </data>
+  <data name="lnkGenerateEncKey.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 12</value>
+  </data>
+  <data name="lnkGenerateEncKey.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="lnkGenerateEncKey.Text" xml:space="preserve">
+    <value>Generate</value>
+  </data>
+  <data name="&gt;&gt;lnkGenerateEncKey.Name" xml:space="preserve">
+    <value>lnkGenerateEncKey</value>
+  </data>
+  <data name="&gt;&gt;lnkGenerateEncKey.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lnkGenerateEncKey.Parent" xml:space="preserve">
+    <value>groupDataEncrypt</value>
+  </data>
+  <data name="&gt;&gt;lnkGenerateEncKey.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="tbEncryptionKey.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="tbEncryptionKey.Location" type="System.Drawing.Point, System.Drawing">
+    <value>251, 130</value>
+  </data>
+  <data name="tbEncryptionKey.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 21</value>
+  </data>
+  <data name="tbEncryptionKey.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;tbEncryptionKey.Name" xml:space="preserve">
+    <value>tbEncryptionKey</value>
+  </data>
+  <data name="&gt;&gt;tbEncryptionKey.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbEncryptionKey.Parent" xml:space="preserve">
+    <value>groupDataEncrypt</value>
+  </data>
+  <data name="&gt;&gt;tbEncryptionKey.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="propertyEncryptUsingPassword.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="propertyEncryptUsingPassword.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="propertyEncryptUsingPassword.Location" type="System.Drawing.Point, System.Drawing">
+    <value>30, 62</value>
+  </data>
+  <data name="propertyEncryptUsingPassword.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 16</value>
+  </data>
+  <data name="propertyEncryptUsingPassword.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="propertyEncryptUsingPassword.Text" xml:space="preserve">
+    <value>Encrypt with this password:</value>
+  </data>
+  <data name="&gt;&gt;propertyEncryptUsingPassword.Name" xml:space="preserve">
+    <value>propertyEncryptUsingPassword</value>
+  </data>
+  <data name="&gt;&gt;propertyEncryptUsingPassword.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;propertyEncryptUsingPassword.Parent" xml:space="preserve">
+    <value>groupDataEncrypt</value>
+  </data>
+  <data name="&gt;&gt;propertyEncryptUsingPassword.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="propertyEncryptUsingKey.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="propertyEncryptUsingKey.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="propertyEncryptUsingKey.Location" type="System.Drawing.Point, System.Drawing">
+    <value>30, 109</value>
+  </data>
+  <data name="propertyEncryptUsingKey.Size" type="System.Drawing.Size, System.Drawing">
+    <value>419, 16</value>
+  </data>
+  <data name="propertyEncryptUsingKey.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="propertyEncryptUsingKey.Text" xml:space="preserve">
+    <value>Encrypt with key (saved inside the package, no password required):</value>
+  </data>
+  <data name="&gt;&gt;propertyEncryptUsingKey.Name" xml:space="preserve">
+    <value>propertyEncryptUsingKey</value>
+  </data>
+  <data name="&gt;&gt;propertyEncryptUsingKey.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;propertyEncryptUsingKey.Parent" xml:space="preserve">
+    <value>groupDataEncrypt</value>
+  </data>
+  <data name="&gt;&gt;propertyEncryptUsingKey.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="propertyEncryption.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="propertyEncryption.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="propertyEncryption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 18</value>
+  </data>
+  <data name="propertyEncryption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 16</value>
+  </data>
+  <data name="propertyEncryption.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="propertyEncryption.Text" xml:space="preserve">
+    <value>Encrypt application data</value>
+  </data>
+  <data name="&gt;&gt;propertyEncryption.Name" xml:space="preserve">
+    <value>propertyEncryption</value>
+  </data>
+  <data name="&gt;&gt;propertyEncryption.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;propertyEncryption.Parent" xml:space="preserve">
+    <value>groupDataEncrypt</value>
+  </data>
+  <data name="&gt;&gt;propertyEncryption.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="groupDataEncrypt.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="groupDataEncrypt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 186</value>
+  </data>
+  <data name="groupDataEncrypt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>766, 159</value>
+  </data>
+  <data name="groupDataEncrypt.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="groupDataEncrypt.Text" xml:space="preserve">
+    <value>Encryption</value>
+  </data>
+  <data name="&gt;&gt;groupDataEncrypt.Name" xml:space="preserve">
+    <value>groupDataEncrypt</value>
+  </data>
+  <data name="&gt;&gt;groupDataEncrypt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupDataEncrypt.Parent" xml:space="preserve">
+    <value>tabSecurity</value>
+  </data>
+  <data name="&gt;&gt;groupDataEncrypt.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lnkActiveDirectory.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lnkActiveDirectory.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lnkActiveDirectory.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 15</value>
+  </data>
+  <data name="lnkActiveDirectory.Size" type="System.Drawing.Size, System.Drawing">
+    <value>173, 12</value>
+  </data>
+  <data name="lnkActiveDirectory.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
+  </data>
+  <data name="lnkActiveDirectory.Text" xml:space="preserve">
+    <value>Active Directory permissions</value>
+  </data>
+  <data name="&gt;&gt;lnkActiveDirectory.Name" xml:space="preserve">
+    <value>lnkActiveDirectory</value>
+  </data>
+  <data name="&gt;&gt;lnkActiveDirectory.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lnkActiveDirectory.Parent" xml:space="preserve">
+    <value>groupUsageRights</value>
+  </data>
+  <data name="&gt;&gt;lnkActiveDirectory.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="groupUsageRights.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="groupUsageRights.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 150</value>
+  </data>
+  <data name="groupUsageRights.Size" type="System.Drawing.Size, System.Drawing">
+    <value>766, 36</value>
+  </data>
+  <data name="groupUsageRights.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="groupUsageRights.Text" xml:space="preserve">
+    <value>Usage rights</value>
+  </data>
+  <data name="&gt;&gt;groupUsageRights.Name" xml:space="preserve">
+    <value>groupUsageRights</value>
+  </data>
+  <data name="&gt;&gt;groupUsageRights.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupUsageRights.Parent" xml:space="preserve">
+    <value>tabSecurity</value>
+  </data>
+  <data name="&gt;&gt;groupUsageRights.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="propertyExpirationDatePicker.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="propertyExpirationDatePicker.Location" type="System.Drawing.Point, System.Drawing">
+    <value>297, 58</value>
+  </data>
+  <data name="propertyExpirationDatePicker.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="propertyExpirationDatePicker.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 21</value>
+  </data>
+  <data name="propertyExpirationDatePicker.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;propertyExpirationDatePicker.Name" xml:space="preserve">
+    <value>propertyExpirationDatePicker</value>
+  </data>
+  <data name="&gt;&gt;propertyExpirationDatePicker.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;propertyExpirationDatePicker.Parent" xml:space="preserve">
+    <value>groupExpiration</value>
+  </data>
+  <data name="&gt;&gt;propertyExpirationDatePicker.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="propertyExpiration.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="propertyExpiration.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="propertyExpiration.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 63</value>
+  </data>
+  <data name="propertyExpiration.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 16</value>
+  </data>
+  <data name="propertyExpiration.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="propertyExpiration.Text" xml:space="preserve">
+    <value>Expiration date:</value>
+  </data>
+  <data name="&gt;&gt;propertyExpiration.Name" xml:space="preserve">
+    <value>propertyExpiration</value>
+  </data>
+  <data name="&gt;&gt;propertyExpiration.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;propertyExpiration.Parent" xml:space="preserve">
+    <value>groupExpiration</value>
+  </data>
+  <data name="&gt;&gt;propertyExpiration.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="propertyTtlDays.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="propertyTtlDays.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="propertyTtlDays.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 20</value>
+  </data>
+  <data name="propertyTtlDays.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 16</value>
+  </data>
+  <data name="propertyTtlDays.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="propertyTtlDays.Text" xml:space="preserve">
+    <value>Expire after (days):</value>
+  </data>
+  <data name="&gt;&gt;propertyTtlDays.Name" xml:space="preserve">
+    <value>propertyTtlDays</value>
+  </data>
+  <data name="&gt;&gt;propertyTtlDays.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;propertyTtlDays.Parent" xml:space="preserve">
+    <value>groupExpiration</value>
+  </data>
+  <data name="&gt;&gt;propertyTtlDays.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="propertyTtlResistRemove.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="propertyTtlResistRemove.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="propertyTtlResistRemove.Location" type="System.Drawing.Point, System.Drawing">
+    <value>30, 42</value>
+  </data>
+  <data name="propertyTtlResistRemove.Size" type="System.Drawing.Size, System.Drawing">
+    <value>348, 16</value>
+  </data>
+  <data name="propertyTtlResistRemove.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="propertyTtlResistRemove.Text" xml:space="preserve">
+    <value>Keep expiration counter even after application removal</value>
+  </data>
+  <data name="&gt;&gt;propertyTtlResistRemove.Name" xml:space="preserve">
+    <value>propertyTtlResistRemove</value>
+  </data>
+  <data name="&gt;&gt;propertyTtlResistRemove.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;propertyTtlResistRemove.Parent" xml:space="preserve">
+    <value>groupExpiration</value>
+  </data>
+  <data name="&gt;&gt;propertyTtlResistRemove.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="propertyTtlDaysValue.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="propertyTtlDaysValue.Location" type="System.Drawing.Point, System.Drawing">
+    <value>297, 18</value>
+  </data>
+  <data name="propertyTtlDaysValue.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 21</value>
+  </data>
+  <data name="propertyTtlDaysValue.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
+  <data name="&gt;&gt;propertyTtlDaysValue.Name" xml:space="preserve">
+    <value>propertyTtlDaysValue</value>
+  </data>
+  <data name="&gt;&gt;propertyTtlDaysValue.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;propertyTtlDaysValue.Parent" xml:space="preserve">
+    <value>groupExpiration</value>
+  </data>
+  <data name="&gt;&gt;propertyTtlDaysValue.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="groupExpiration.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="groupExpiration.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 66</value>
+  </data>
+  <data name="groupExpiration.Size" type="System.Drawing.Size, System.Drawing">
+    <value>766, 84</value>
+  </data>
+  <data name="groupExpiration.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="groupExpiration.Text" xml:space="preserve">
+    <value>Expiration</value>
+  </data>
+  <data name="&gt;&gt;groupExpiration.Name" xml:space="preserve">
+    <value>groupExpiration</value>
+  </data>
+  <data name="&gt;&gt;groupExpiration.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupExpiration.Parent" xml:space="preserve">
+    <value>tabSecurity</value>
+  </data>
+  <data name="&gt;&gt;groupExpiration.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>27, 41</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 12</value>
+  </data>
+  <data name="label6.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Confirm password:</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>groupEditProtect</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tbPasswordConfirm.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="tbPasswordConfirm.Location" type="System.Drawing.Point, System.Drawing">
+    <value>297, 38</value>
+  </data>
+  <data name="tbPasswordConfirm.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
+    <value>*</value>
+  </data>
+  <data name="tbPasswordConfirm.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 21</value>
+  </data>
+  <data name="tbPasswordConfirm.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="&gt;&gt;tbPasswordConfirm.Name" xml:space="preserve">
+    <value>tbPasswordConfirm</value>
+  </data>
+  <data name="&gt;&gt;tbPasswordConfirm.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbPasswordConfirm.Parent" xml:space="preserve">
+    <value>groupEditProtect</value>
+  </data>
+  <data name="&gt;&gt;tbPasswordConfirm.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="propertyProtPassword.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="propertyProtPassword.Location" type="System.Drawing.Point, System.Drawing">
+    <value>297, 14</value>
+  </data>
+  <data name="propertyProtPassword.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
+    <value>*</value>
+  </data>
+  <data name="propertyProtPassword.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 21</value>
+  </data>
+  <data name="propertyProtPassword.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="&gt;&gt;propertyProtPassword.Name" xml:space="preserve">
+    <value>propertyProtPassword</value>
+  </data>
+  <data name="&gt;&gt;propertyProtPassword.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;propertyProtPassword.Parent" xml:space="preserve">
+    <value>groupEditProtect</value>
+  </data>
+  <data name="&gt;&gt;propertyProtPassword.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="propertyProt.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="propertyProt.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="propertyProt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 17</value>
+  </data>
+  <data name="propertyProt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>222, 16</value>
+  </data>
+  <data name="propertyProt.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="propertyProt.Text" xml:space="preserve">
+    <value>Password-protect against editing:</value>
+  </data>
+  <data name="&gt;&gt;propertyProt.Name" xml:space="preserve">
+    <value>propertyProt</value>
+  </data>
+  <data name="&gt;&gt;propertyProt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;propertyProt.Parent" xml:space="preserve">
+    <value>groupEditProtect</value>
+  </data>
+  <data name="&gt;&gt;propertyProt.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="groupEditProtect.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="groupEditProtect.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="groupEditProtect.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="groupEditProtect.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="groupEditProtect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>766, 63</value>
+  </data>
+  <data name="groupEditProtect.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="groupEditProtect.Text" xml:space="preserve">
+    <value>Edit protection</value>
+  </data>
+  <data name="&gt;&gt;groupEditProtect.Name" xml:space="preserve">
+    <value>groupEditProtect</value>
+  </data>
+  <data name="&gt;&gt;groupEditProtect.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupEditProtect.Parent" xml:space="preserve">
+    <value>tabSecurity</value>
+  </data>
+  <data name="&gt;&gt;groupEditProtect.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="tabSecurity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabSecurity.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabSecurity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>772, 472</value>
+  </data>
+  <data name="tabSecurity.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="tabSecurity.Text" xml:space="preserve">
+    <value>Security</value>
+  </data>
+  <data name="&gt;&gt;tabSecurity.Name" xml:space="preserve">
+    <value>tabSecurity</value>
+  </data>
+  <data name="&gt;&gt;tabSecurity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabSecurity.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabSecurity.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="panelWelcome.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -3918,7 +4423,7 @@
     <value>tabControl</value>
   </data>
   <data name="&gt;&gt;tabWelcome.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 34</value>
